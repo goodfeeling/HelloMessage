@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'YiiBoot通用管理后台';
+$this->title = '管理后台';
 
 $system_menus = Yii::$app->user->identity->getSystemMenus();
 $system_rights = Yii::$app->user->identity->getSystemRights();
@@ -574,3 +574,4 @@ if($otherMenu == false){
 <?= $this->blocks['footer'] ?>
 <?php endif;?>
 </html>
+>>>>>>> 2546671c4ed590049934081ed8545ffe77749e73
