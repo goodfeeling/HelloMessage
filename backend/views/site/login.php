@@ -6,7 +6,7 @@ use yii\captcha\Captcha;
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?=Url::toRoute('site/login')?>"><b>Yii</b>Boot</a>
+    <a href="<?=Url::toRoute('site/login')?>"><b>管理后台</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
