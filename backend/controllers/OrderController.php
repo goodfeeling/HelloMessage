@@ -4,26 +4,26 @@ namespace backend\controllers;
 
 use Yii;
 use yii\data\Pagination;
-use backend\models\ActivityModel;
+use backend\models\OrderModel;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ActivityController implements the CRUD actions for ActivityModel model.
+ * OrderController implements the CRUD actions for OrderModel model.
  */
-class ActivityController extends BaseController
+class OrderController extends BaseController
 {
 	public $layout = "lte_main";
 
     /**
-     * Lists all ActivityModel models.
+     * Lists all OrderModel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = ActivityModel::find();
+        $query = OrderModel::find();
          $querys = Yii::$app->request->get('query');
         if(empty($querys)== false && count($querys) > 0){
             $condition = "";
@@ -70,7 +70,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays a single ActivityModel model.
+     * Displays a single OrderModel model.
      * @param integer $id
      * @return mixed
      */
@@ -85,13 +85,13 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Creates a new ActivityModel model.
+     * Creates a new OrderModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ActivityModel();
+        $model = new OrderModel();
         if ($model->load(Yii::$app->request->post())) {
         
         
@@ -110,7 +110,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Updates an existing ActivityModel model.
+     * Updates an existing OrderModel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -139,7 +139,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Deletes an existing ActivityModel model.
+     * Deletes an existing OrderModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -147,7 +147,7 @@ class ActivityController extends BaseController
     public function actionDelete(array $ids)
     {
         if(count($ids) > 0){
-            $c = ActivityModel::deleteAll(['in', 'id', $ids]);
+            $c = OrderModel::deleteAll(['in', 'id', $ids]);
             return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
         }
         else{
@@ -159,15 +159,15 @@ class ActivityController extends BaseController
 	 
 
     /**
-     * Finds the ActivityModel model based on its primary key value.
+     * Finds the OrderModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ActivityModel the loaded model
+     * @return OrderModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ActivityModel::findOne($id)) !== null) {
+        if (($model = OrderModel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

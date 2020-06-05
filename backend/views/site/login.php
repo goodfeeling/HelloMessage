@@ -100,5 +100,4 @@ $('#login-form').bind('submit', function(e) {
     	}
     });
 });
->>>>>>> 2546671c4ed590049934081ed8545ffe77749e73
 </script>

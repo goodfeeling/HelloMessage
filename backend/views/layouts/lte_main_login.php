@@ -29,6 +29,7 @@ use yii\helpers\Url;
   <!-- jQuery 2.2.3 -->
 <script src="<?=Url::base()?>/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
+
 <body class="hold-transition login-page">
 <?= $content ?>
 
@@ -48,4 +49,3 @@ use yii\helpers\Url;
 </script>
 </body>
 </html>
->>>>>>> 2546671c4ed590049934081ed8545ffe77749e73

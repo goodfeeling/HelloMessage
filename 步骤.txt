@@ -7,7 +7,6 @@
 6、地点
 7、主题
 8、人数
-9、主持人
 
 活动人员表
 1、活动id
@@ -62,3 +61,5 @@
 Api密钥
 apiclient_cert.pem
 apiclient_key.pem
+
+datetime-local

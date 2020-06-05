@@ -11,6 +11,9 @@ use Yii;
  * @property string $addtime
  * @property string $endtime
  * @property string $money
+ * @property resource $describe
+ * @property string $theme
+ * @property string $number_people
  */
 class ActivityModel extends \backend\models\BaseModel
 {
@@ -28,9 +31,12 @@ class ActivityModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'addtime', 'endtime'], 'required'],
             [['addtime', 'endtime'], 'safe'],
-            [['name','money'], 'string', 'max' => 30]
+            [['describe'], 'string'],
+            [['name'], 'string', 'max' => 30],
+            [['money', 'number_people'], 'string', 'max' => 10],
+            [['theme'], 'string', 'max' => 50]
         ];
     }
 
@@ -45,6 +51,9 @@ class ActivityModel extends \backend\models\BaseModel
             'addtime' => '创建时间',
             'endtime' => '结束时间',
             'money' => '需要金额',
+            'describe' => '描述',
+            'theme' => '主题',
+            'number_people' => '参加人数',
         ];
     }
 
@@ -157,29 +166,98 @@ class ActivityModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-            'money' => array(
-                'name' => 'money',
-                'allowNull' => false,
+		'money' => array(
+                        'name' => 'money',
+                        'allowNull' => true,
 //                         'autoIncrement' => false,
-//                         'comment' => '活动名称',
-//                         'dbType' => "varchar(30)",
-                'defaultValue' => '',
-                'enumValues' => null,
-                'isPrimaryKey' => false,
-                'phpType' => 'string',
-                'precision' => '30',
-                'scale' => '',
-                'size' => '30',
-                'type' => 'string',
-                'unsigned' => false,
-                'label'=>$this->getAttributeLabel('money'),
-                'inputType' => 'text',
-                'isEdit' => true,
-                'isSearch' => false,
-                'isDisplay' => true,
-                'isSort' => true,
+//                         'comment' => '需要金额',
+//                         'dbType' => "varchar(10)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '10',
+                        'scale' => '',
+                        'size' => '10',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('money'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
 //                         'udc'=>'',
-            ),
+                    ),
+		'describe' => array(
+                        'name' => 'describe',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '描述',
+//                         'dbType' => "blob",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'resource',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'binary',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('describe'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'theme' => array(
+                        'name' => 'theme',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '主题',
+//                         'dbType' => "varchar(50)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '50',
+                        'scale' => '',
+                        'size' => '50',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('theme'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'number_people' => array(
+                        'name' => 'number_people',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '参加人数',
+//                         'dbType' => "varchar(10)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '10',
+                        'scale' => '',
+                        'size' => '10',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('number_people'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
 		        );
         
     }

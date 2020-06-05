@@ -31,11 +31,9 @@ class WechatConfigModel extends \backend\models\BaseModel
     {
         return [
             [['app_id', 'app_secret', 'mch_id', 'key', 'cert_pem', 'key_pem'], 'required'],
-            [['id'], 'integer'],
             [['app_id', 'app_secret', 'key'], 'string', 'max' => 100],
             [['mch_id'], 'string', 'max' => 30],
-            [['cert_pem', 'key_pem'], 'string', 'max' => 255],
-            [['id'], 'unique']
+            [['cert_pem', 'key_pem'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,10 +46,10 @@ class WechatConfigModel extends \backend\models\BaseModel
             'id' => 'ID',
             'app_id' => '微信appid',
             'app_secret' => '微信appsecret',
-            'mch_id' => '商户id',
-            'key' => 'key',
-            'cert_pem' => '商户密钥',
-            'key_pem' => '商户key',
+            'mch_id' => '商户号',
+            'key' => 'Api密钥',
+            'cert_pem' => 'apiclient_cert.pem',
+            'key_pem' => 'apiclient_key.pem',
         ];
     }
 
@@ -75,7 +73,7 @@ class WechatConfigModel extends \backend\models\BaseModel
         'id' => array(
                         'name' => 'id',
                         'allowNull' => false,
-//                         'autoIncrement' => false,
+//                         'autoIncrement' => true,
 //                         'comment' => '',
 //                         'dbType' => "int(10) unsigned",
                         'defaultValue' => '',
@@ -145,7 +143,7 @@ class WechatConfigModel extends \backend\models\BaseModel
                         'name' => 'mch_id',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '商户id',
+//                         'comment' => '商户号',
 //                         'dbType' => "varchar(30)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -168,7 +166,7 @@ class WechatConfigModel extends \backend\models\BaseModel
                         'name' => 'key',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => 'key',
+//                         'comment' => 'Api密钥',
 //                         'dbType' => "varchar(100)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -191,7 +189,7 @@ class WechatConfigModel extends \backend\models\BaseModel
                         'name' => 'cert_pem',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '商户密钥',
+//                         'comment' => 'apiclient_cert.pem',
 //                         'dbType' => "varchar(255)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -214,7 +212,7 @@ class WechatConfigModel extends \backend\models\BaseModel
                         'name' => 'key_pem',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '商户key',
+//                         'comment' => 'apiclient_key.pem',
 //                         'dbType' => "varchar(255)",
                         'defaultValue' => '',
                         'enumValues' => null,

@@ -4,21 +4,22 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_activity_user}}".
+ * This is the model class for table "{{%admin_order}}".
  *
  * @property integer $id
+ * @property integer $order_number
  * @property integer $aid
  * @property integer $uid
- * @property integer $is_join
+ * @property integer $is_pay
  */
-class ActivityUserModel extends \backend\models\BaseModel
+class OrderModel extends \backend\models\BaseModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%admin_activity_user}}';
+        return '{{%admin_order}}';
     }
 
     /**
@@ -27,9 +28,9 @@ class ActivityUserModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['aid', 'uid'], 'required'],
-            [['aid', 'uid'], 'integer'],
-            [['is_join'], 'string', 'max' => 1]
+            [['order_number', 'aid', 'uid', 'is_pay'], 'required'],
+            [['order_number', 'aid', 'uid'], 'integer'],
+            [['is_pay'], 'string', 'max' => 1]
         ];
     }
 
@@ -40,9 +41,10 @@ class ActivityUserModel extends \backend\models\BaseModel
     {
         return [
             'id' => 'ID',
-            'aid' => '活动列表id',
-            'uid' => '用户列表id',
-            'is_join' => '状态',
+            'order_number' => '订单号',
+            'aid' => '活动id',
+            'uid' => '用户id',
+            'is_pay' => '是否支付',
         ];
     }
 
@@ -86,11 +88,34 @@ class ActivityUserModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
+		'order_number' => array(
+                        'name' => 'order_number',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '订单号',
+//                         'dbType' => "int(35)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '35',
+                        'scale' => '',
+                        'size' => '35',
+                        'type' => 'integer',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('order_number'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
 		'aid' => array(
                         'name' => 'aid',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '活动列表id',
+//                         'comment' => '活动id',
 //                         'dbType' => "int(11)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -113,7 +138,7 @@ class ActivityUserModel extends \backend\models\BaseModel
                         'name' => 'uid',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '用户列表id',
+//                         'comment' => '用户id',
 //                         'dbType' => "int(11)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -132,13 +157,13 @@ class ActivityUserModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'is_join' => array(
-                        'name' => 'is_join',
+		'is_pay' => array(
+                        'name' => 'is_pay',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '状态',
+//                         'comment' => '是否支付',
 //                         'dbType' => "tinyint(1)",
-                        'defaultValue' => '0',
+                        'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'integer',
@@ -147,7 +172,7 @@ class ActivityUserModel extends \backend\models\BaseModel
                         'size' => '1',
                         'type' => 'tinyint',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('is_join'),
+                        'label'=>$this->getAttributeLabel('is_pay'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

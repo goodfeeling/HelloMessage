@@ -188,7 +188,7 @@ $modelLabel = new \backend\models\WechatConfigModel();
           <div id="cert_pem_div" class="form-group">
               <label for="cert_pem" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("cert_pem")?></label>
               <div class="col-sm-10">
-                  <textarea rows="5" class="form-control secret-content" name="WechatConfigModel[cert_pem]" placeholder="必填"></textarea>
+                  <input type="text" class="form-control" id="cert_pem" name="WechatConfigModel[cert_pem]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -196,7 +196,7 @@ $modelLabel = new \backend\models\WechatConfigModel();
           <div id="key_pem_div" class="form-group">
               <label for="key_pem" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("key_pem")?></label>
               <div class="col-sm-10">
-                  <textarea rows="5" class="form-control secret-content" name="WechatConfigModel[key_pem]" placeholder="必填"></textarea>
+                  <input type="text" class="form-control" id="key_pem" name="WechatConfigModel[key_pem]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>

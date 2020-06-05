@@ -66,6 +66,9 @@ $modelLabel = new \backend\models\ActivityModel();
               echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
               echo '<th onclick="orderby(\'endtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'endtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('endtime').'</th>';
               echo '<th onclick="orderby(\'money\', \'desc\')" '.CommonFun::sortClass($orderby, 'money').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('money').'</th>';
+              echo '<th onclick="orderby(\'describe\', \'desc\')" '.CommonFun::sortClass($orderby, 'describe').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('describe').'</th>';
+              echo '<th onclick="orderby(\'theme\', \'desc\')" '.CommonFun::sortClass($orderby, 'theme').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('theme').'</th>';
+              echo '<th onclick="orderby(\'number_people\', \'desc\')" '.CommonFun::sortClass($orderby, 'number_people').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('number_people').'</th>';
          
 			?>
 	
@@ -83,6 +86,9 @@ $modelLabel = new \backend\models\ActivityModel();
                 echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td>' . $model->endtime . '</td>';
                 echo '  <td>' . $model->money . '</td>';
+                echo '  <td>' . $model->describe . '</td>';
+                echo '  <td>' . $model->theme . '</td>';
+                echo '  <td>' . $model->number_people . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -160,7 +166,7 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="addtime_div" class="form-group">
               <label for="addtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("addtime")?></label>
               <div class="col-sm-10">
-                  <input type="datetime-local" class="form-control" id="addtime" name="ActivityModel[addtime]" placeholder="必填" />
+                  <input type="text" class="form-control" id="addtime" name="ActivityModel[addtime]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -168,7 +174,7 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="endtime_div" class="form-group">
               <label for="endtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("endtime")?></label>
               <div class="col-sm-10">
-                  <input type="datetime-local" class="form-control" id="endtime" name="ActivityModel[endtime]" placeholder="必填" />
+                  <input type="text" class="form-control" id="endtime" name="ActivityModel[endtime]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -176,7 +182,31 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="money_div" class="form-group">
               <label for="money" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("money")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="money" name="ActivityModel[money]" placeholder="必填" />
+                  <input type="text" class="form-control" id="money" name="ActivityModel[money]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="describe_div" class="form-group">
+              <label for="describe" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("describe")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="describe" name="ActivityModel[describe]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="theme_div" class="form-group">
+              <label for="theme" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("theme")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="theme" name="ActivityModel[theme]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="number_people_div" class="form-group">
+              <label for="number_people" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("number_people")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="number_people" name="ActivityModel[number_people]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -228,6 +258,9 @@ function orderby(field, op){
         $("#addtime").val("");
         $("#endtime").val("");
         $("#money").val("");
+        $("#describe").val("");
+        $("#theme").val("");
+        $("#number_people").val("");
 	
 	}
 	else{
@@ -236,6 +269,9 @@ function orderby(field, op){
         $("#addtime").val(data.addtime)
         $("#endtime").val(data.endtime)
         $("#money").val(data.money)
+        $("#describe").val(data.describe)
+        $("#theme").val(data.theme)
+        $("#number_people").val(data.number_people)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -243,6 +279,9 @@ function orderby(field, op){
       $("#addtime").attr({readonly:true,disabled:true});
       $("#endtime").attr({readonly:true,disabled:true});
       $("#money").attr({readonly:true,disabled:true});
+      $("#describe").attr({readonly:true,disabled:true});
+      $("#theme").attr({readonly:true,disabled:true});
+      $("#number_people").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -251,6 +290,9 @@ function orderby(field, op){
       $("#addtime").attr({readonly:false,disabled:false});
       $("#endtime").attr({readonly:false,disabled:false});
       $("#money").attr({readonly:false,disabled:false});
+      $("#describe").attr({readonly:false,disabled:false});
+      $("#theme").attr({readonly:false,disabled:false});
+      $("#number_people").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');
