@@ -2,29 +2,34 @@
 
 namespace backend\controllers;
 
+use backend\models\UploadForm;
 use Yii;
 use yii\data\Pagination;
-use backend\models\ActivityModel;
-use backend\models\ActivityUserModel;
+use backend\models\ImagesModel;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * ActivityController implements the CRUD actions for ActivityModel model.
+ * ImagesController implements the CRUD actions for ImagesModel model.
  */
-class ActivityController extends BaseController
+class ImagesController extends BaseController
 {
 	public $layout = "lte_main";
 
+     public function behaviors() {
+        return parent::behaviors();
+     }
+
     /**
-     * Lists all ActivityModel models.
+     * Lists all ImagesModel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = ActivityModel::find();
+        $query = ImagesModel::find();
          $querys = Yii::$app->request->get('query');
         if(empty($querys)== false && count($querys) > 0){
             $condition = "";
@@ -71,7 +76,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays a single ActivityModel model.
+     * Displays a single ImagesModel model.
      * @param integer $id
      * @return mixed
      */
@@ -86,30 +91,44 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Creates a new ActivityModel model.
+     * Creates a new ImagesModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ActivityModel();
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->validate() == true && $model->save()){
-                $msg = array('errno'=>0, 'msg'=>'保存成功');
-                return $this->asJson($msg);
+       $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'url');
+            if ($model->upload()) {
+                // 文件上传成功
+                return;
             }
-            else{
-                $msg = array('errno'=>2, 'data'=>$model->getErrors());
-                return $this->asJson($msg);
-            }
-        } else {
-            $msg = array('errno'=>2, 'msg'=>'数据出错');
-            return $this->asJson($msg);
         }
+exit;
+       if ($model->load(Yii::$app->request->post())) {
+
+             if (empty($model->status) == true){
+                 $model->status = 1;
+             }
+
+           if($model->validate() == true && $model->save()){
+               $msg = array('errno'=>0, 'msg'=>'保存成功');
+               return $this->asJson($msg);
+           }
+           else{
+               $msg = array('errno'=>2, 'data'=>$model->getErrors());
+               return $this->asJson($msg);
+           }
+       } else {
+           $msg = array('errno'=>2, 'msg'=>'数据出错');
+           return $this->asJson($msg);
+       }
     }
 
     /**
-     * Updates an existing ActivityModel model.
+     * Updates an existing ImagesModel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -120,6 +139,9 @@ class ActivityController extends BaseController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
         
+             if(empty($model->status) == true){
+                 $model->status = 1;
+             }
         
         
             if($model->validate() == true && $model->save()){
@@ -138,7 +160,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Deletes an existing ActivityModel model.
+     * Deletes an existing ImagesModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -146,7 +168,7 @@ class ActivityController extends BaseController
     public function actionDelete(array $ids)
     {
         if(count($ids) > 0){
-            $c = ActivityModel::deleteAll(['in', 'id', $ids]);
+            $c = ImagesModel::deleteAll(['in', 'id', $ids]);
             return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
         }
         else{
@@ -158,15 +180,15 @@ class ActivityController extends BaseController
 	 
 
     /**
-     * Finds the ActivityModel model based on its primary key value.
+     * Finds the ImagesModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ActivityModel the loaded model
+     * @return ImagesModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ActivityModel::findOne($id)) !== null) {
+        if (($model = ImagesModel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

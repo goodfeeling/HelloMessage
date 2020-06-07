@@ -5,9 +5,9 @@ use yii\bootstrap\ActiveForm;
 use common\utils\CommonFun;
 use yii\helpers\Url;
 
-use backend\models\ActivityUserModel;
+use backend\models\ImagesModel;
 
-$modelLabel = new \backend\models\ActivityUserModel();
+$modelLabel = new \backend\models\ImagesModel();
 ?>
 
 <?php $this->beginBlock('header');  ?>
@@ -37,7 +37,7 @@ $modelLabel = new \backend\models\ActivityUserModel();
             <!-- row start search-->
           	<div class="row">
           	<div class="col-sm-12">
-                <?php ActiveForm::begin(['id' => 'activity-user-search-form', 'method'=>'get', 'options' => ['class' => 'form-inline'], 'action'=>Url::toRoute('activity-user/index')]); ?>     
+                <?php ActiveForm::begin(['id' => 'images-search-form', 'method'=>'get', 'options' => ['class' => 'form-inline'], 'action'=>Url::toRoute('images/index')]); ?>     
                 
                   <div class="form-group" style="margin: 5px;">
                       <label><?=$modelLabel->getAttributeLabel('id')?>:</label>
@@ -62,11 +62,9 @@ $modelLabel = new \backend\models\ActivityUserModel();
               $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : '';
 		      echo '<th><input id="data_table_check" type="checkbox"></th>';
               echo '<th onclick="orderby(\'id\', \'desc\')" '.CommonFun::sortClass($orderby, 'id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('id').'</th>';
-              echo '<th onclick="orderby(\'aid\', \'desc\')" '.CommonFun::sortClass($orderby, 'aid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('aid').'</th>';
-              echo '<th onclick="orderby(\'uid\', \'desc\')" '.CommonFun::sortClass($orderby, 'uid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('uid').'</th>';
-              echo '<th onclick="orderby(\'is_join\', \'desc\')" '.CommonFun::sortClass($orderby, 'is_join').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('is_join').'</th>';
-              echo '<th onclick="orderby(\'join_time\', \'desc\')" '.CommonFun::sortClass($orderby, 'join_time').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('join_time').'</th>';
-              echo '<th onclick="orderby(\'create_time\', \'desc\')" '.CommonFun::sortClass($orderby, 'create_time').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('create_time').'</th>';
+              echo '<th onclick="orderby(\'url\', \'desc\')" '.CommonFun::sortClass($orderby, 'url').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('url').'</th>';
+              echo '<th onclick="orderby(\'created_at\', \'desc\')" '.CommonFun::sortClass($orderby, 'created_at').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('created_at').'</th>';
+              echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
          
 			?>
 	
@@ -80,11 +78,9 @@ $modelLabel = new \backend\models\ActivityUserModel();
                 echo '<tr id="rowid_' . $model->id . '">';
                 echo '  <td><label><input type="checkbox" value="' . $model->id . '"></label></td>';
                 echo '  <td>' . $model->id . '</td>';
-                echo '  <td>' . $model->aid . '</td>';
-                echo '  <td>' . $model->uid . '</td>';
-                echo '  <td>' . $model->is_join . '</td>';
-                echo '  <td>' . $model->join_time . '</td>';
-                echo '  <td>' . $model->create_time . '</td>';
+                echo '  <td>' . $model->url . '</td>';
+                echo '  <td>' . $model->created_at . '</td>';
+                echo '  <td>' . $model->status . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -144,53 +140,20 @@ $modelLabel = new \backend\models\ActivityUserModel();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
-                <?php $form = ActiveForm::begin(["id" => "activity-user-form", "class"=>"form-horizontal", "action"=>Url::toRoute("activity-user/save")]); ?>                      
+                <?php $form = ActiveForm::begin(["id" => "images-form", "class"=>"form-horizontal", "action"=>Url::toRoute("images/save")]); ?>                      
                  
           <input type="hidden" class="form-control" id="id" name="id" />
 
-          <div id="aid_div" class="form-group">
-              <label for="aid" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("aid")?></label>
+          <div id="url_div" class="form-group">
+              <label for="url" class="col-sm-2 control-label">上传文件</label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="aid" name="ActivityUserModel[aid]" placeholder="必填" />
+                  <input type="file" class="form-control" id="url" name="ImagesModel[url]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
-
-          <div id="uid_div" class="form-group">
-              <label for="uid" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("uid")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="uid" name="ActivityUserModel[uid]" placeholder="必填" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
-          <div id="is_join_div" class="form-group">
-              <label for="is_join" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("is_join")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="is_join" name="ActivityUserModel[is_join]" placeholder="必填" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
-          <div id="join_time_div" class="form-group">
-              <label for="join_time" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("join_time")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="join_time" name="ActivityUserModel[join_time]" placeholder="" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
-          <div id="create_time_div" class="form-group">
-              <label for="create_time" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("create_time")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="create_time" name="ActivityUserModel[create_time]" placeholder="" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-                    
 
 			<?php ActiveForm::end(); ?>          
                 </div>
@@ -225,7 +188,7 @@ function orderby(field, op){
 	 window.location.href=url; 
  }
  function searchAction(){
-		$('#activity-user-search-form').submit();
+		$('#images-search-form').submit();
 	}
  function viewAction(id){
 		initModel(id, 'view', 'fun');
@@ -233,38 +196,30 @@ function orderby(field, op){
 
  function initEditSystemModule(data, type){
 	if(type == 'create'){
-        $("#id").val("");
-        $("#aid").val("");
-        $("#uid").val("");
-        $("#is_join").val("");
-        $("#join_time").val("");
-        $("#create_time").val("");
+    	        $("#id").val("");
+        $("#url").val("");
+        $("#created_at").val("");
+        $("#status").val("");
 	
 	}
 	else{
-        $("#id").val(data.id)
-        $("#aid").val(data.aid)
-        $("#uid").val(data.uid)
-        $("#is_join").val(data.is_join)
-        $("#join_time").val(data.join_time)
-        $("#create_time").val(data.create_time)
+    	        $("#id").val(data.id)
+        $("#url").val(data.url)
+        $("#created_at").val(data.created_at)
+        $("#status").val(data.status)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
-      $("#aid").attr({readonly:true,disabled:true});
-      $("#uid").attr({readonly:true,disabled:true});
-      $("#is_join").attr({readonly:true,disabled:true});
-      $("#join_time").attr({readonly:true,disabled:true});
-      $("#create_time").attr({readonly:true,disabled:true});
+      $("#url").attr({readonly:true,disabled:true});
+      $("#created_at").attr({readonly:true,disabled:true});
+      $("#status").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
       $("#id").attr({readonly:false,disabled:false});
-      $("#aid").attr({readonly:false,disabled:false});
-      $("#uid").attr({readonly:false,disabled:false});
-      $("#is_join").attr({readonly:false,disabled:false});
-      $("#join_time").attr({readonly:false,disabled:false});
-      $("#create_time").attr({readonly:false,disabled:false});
+      $("#url").attr({readonly:false,disabled:false});
+      $("#created_at").attr({readonly:false,disabled:false});
+      $("#status").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');
@@ -274,7 +229,7 @@ function initModel(id, type, fun){
 	
 	$.ajax({
 		   type: "GET",
-		   url: "<?=Url::toRoute('activity-user/view')?>",
+		   url: "<?=Url::toRoute('images/view')?>",
 		   data: {"id":id},
 		   cache: false,
 		   dataType:"json",
@@ -314,7 +269,7 @@ function deleteAction(id){
 		admin_tool.confirm('请确认是否删除', function(){
 		    $.ajax({
 				   type: "GET",
-				   url: "<?=Url::toRoute('activity-user/delete')?>",
+				   url: "<?=Url::toRoute('images/delete')?>",
 				   data: {"ids":ids},
 				   cache: false,
 				   dataType:"json",
@@ -357,7 +312,7 @@ function getSelectedIdValues(formId)
 
 $('#edit_dialog_ok').click(function (e) {
     e.preventDefault();
-	$('#activity-user-form').submit();
+	$('#images-form').submit();
 });
 
 $('#create_btn').click(function (e) {
@@ -370,10 +325,10 @@ $('#delete_btn').click(function (e) {
     deleteAction('');
 });
 
-$('#activity-user-form').bind('submit', function(e) {
+$('#images-form').bind('submit', function(e) {
 	e.preventDefault();
 	var id = $("#id").val();
-	var action = id == "" ? "<?=Url::toRoute('activity-user/create')?>" : "<?=Url::toRoute('activity-user/update')?>";
+	var action = id == "" ? "<?=Url::toRoute('images/create')?>" : "<?=Url::toRoute('images/update')?>";
     $(this).ajaxSubmit({
     	type: "post",
     	dataType:"json",

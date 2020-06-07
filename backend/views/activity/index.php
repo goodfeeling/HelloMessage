@@ -68,10 +68,10 @@ $modelLabel = new \backend\models\ActivityModel();
               echo '<th onclick="orderby(\'money\', \'desc\')" '.CommonFun::sortClass($orderby, 'money').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('money').'</th>';
               echo '<th onclick="orderby(\'describe\', \'desc\')" '.CommonFun::sortClass($orderby, 'describe').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('describe').'</th>';
               echo '<th onclick="orderby(\'theme\', \'desc\')" '.CommonFun::sortClass($orderby, 'theme').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('theme').'</th>';
-              echo '<th onclick="orderby(\'number_people\', \'desc\')" '.CommonFun::sortClass($orderby, 'number_people').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('number_people').'</th>';
-         
+              echo '<th onclick="orderby(\'join_number\', \'desc\')" '.CommonFun::sortClass($orderby, 'join_number').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('join_number').'</th>';
+
 			?>
-	
+
             <th tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >操作</th>
             </tr>
             </thead>
@@ -88,7 +88,7 @@ $modelLabel = new \backend\models\ActivityModel();
                 echo '  <td>' . $model->money . '</td>';
                 echo '  <td>' . $model->describe . '</td>';
                 echo '  <td>' . $model->theme . '</td>';
-                echo '  <td>' . $model->number_people . '</td>';
+                echo '  <td>' . $model->join_number . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -96,11 +96,11 @@ $modelLabel = new \backend\models\ActivityModel();
                 echo '  </td>';
                 echo '</tr>';
             }
-            
+
             ?>
-            
-           
-           
+
+
+
             </tbody>
             <!-- <tfoot></tfoot> -->
           </table>
@@ -148,7 +148,7 @@ $modelLabel = new \backend\models\ActivityModel();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
                 <?php $form = ActiveForm::begin(["id" => "activity-form", "class"=>"form-horizontal", "action"=>Url::toRoute("activity/save")]); ?>                      
@@ -166,7 +166,7 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="addtime_div" class="form-group">
               <label for="addtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("addtime")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="addtime" name="ActivityModel[addtime]" placeholder="必填" />
+                  <input type="datetime-local" class="form-control" id="addtime" name="ActivityModel[addtime]" value="123" placeholder="yyyy-mm-dd hh:mm:ss" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -174,7 +174,7 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="endtime_div" class="form-group">
               <label for="endtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("endtime")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="endtime" name="ActivityModel[endtime]" placeholder="必填" />
+                  <input type="datetime-local" class="form-control" id="endtime" name="ActivityModel[endtime]" placeholder="yyyy-mm-dd hh:mm:ss"/>
               </div>
               <div class="clearfix"></div>
           </div>
@@ -182,15 +182,17 @@ $modelLabel = new \backend\models\ActivityModel();
           <div id="money_div" class="form-group">
               <label for="money" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("money")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="money" name="ActivityModel[money]" placeholder="" />
+                  <input type="text" class="form-control" id="money" name="ActivityModel[money]" placeholder="男生|女生 100|20" />
               </div>
               <div class="clearfix"></div>
           </div>
 
+
           <div id="describe_div" class="form-group">
               <label for="describe" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("describe")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="describe" name="ActivityModel[describe]" placeholder="" />
+                 <textarea id="describe" name="ActivityModel[describe]" placeholder="">
+                 </textarea>
               </div>
               <div class="clearfix"></div>
           </div>
@@ -203,10 +205,10 @@ $modelLabel = new \backend\models\ActivityModel();
               <div class="clearfix"></div>
           </div>
 
-          <div id="number_people_div" class="form-group">
-              <label for="number_people" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("number_people")?></label>
+          <div id="join_number_div" class="form-group">
+              <label for="join_number" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("join_number")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="number_people" name="ActivityModel[number_people]" placeholder="" />
+                  <input type="number" class="form-control" id="join_number" name="ActivityModel[join_number]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -224,206 +226,221 @@ $modelLabel = new \backend\models\ActivityModel();
 <?php $this->beginBlock('footer');  ?>
 <!-- <body></body>后代码块 -->
  <script>
-function orderby(field, op){
-	 var url = window.location.search;
-	 var optemp = field + " desc";
-	 if(url.indexOf('orderby') != -1){
-		 url = url.replace(/orderby=([^&?]*)/ig,  function($0, $1){ 
-			 var optemp = field + " desc";
-			 optemp = decodeURI($1) != optemp ? optemp : field + " asc";
-			 return "orderby=" + optemp;
-		   }); 
-	 }
-	 else{
-		 if(url.indexOf('?') != -1){
-			 url = url + "&orderby=" + encodeURI(optemp);
-		 }
-		 else{
-			 url = url + "?orderby=" + encodeURI(optemp);
-		 }
-	 }
-	 window.location.href=url; 
- }
- function searchAction(){
-		$('#activity-search-form').submit();
-	}
- function viewAction(id){
-		initModel(id, 'view', 'fun');
-	}
+     var is_exit = false;
+     var option = {
+         "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+         "emphasis": true, //Italics, bold, etc. Default true
+         "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+         "html": true, //Button which allows you to edit the generated HTML. Default false
+         "link": true, //Button to insert a link. Default true
+         "image": true, //Button to insert an image. Default true,
+         "color": true, //Button to change color of font
+     }
+    function orderby(field, op){
+         var url = window.location.search;
+         var optemp = field + " desc";
+         if(url.indexOf('orderby') != -1){
+             url = url.replace(/orderby=([^&?]*)/ig,  function($0, $1){
+                 var optemp = field + " desc";
+                 optemp = decodeURI($1) != optemp ? optemp : field + " asc";
+                 return "orderby=" + optemp;
+               });
+         }
+         else{
+             if(url.indexOf('?') != -1){
+                 url = url + "&orderby=" + encodeURI(optemp);
+             }
+             else{
+                 url = url + "?orderby=" + encodeURI(optemp);
+             }
+         }
+         window.location.href=url;
+     }
+     function searchAction(){
+            $('#activity-search-form').submit();
+        }
+     function viewAction(id){
+            initModel(id, 'view', 'fun');
+        }
 
- function initEditSystemModule(data, type){
-	if(type == 'create'){
-    	        $("#id").val("");
-        $("#name").val("");
-        $("#addtime").val("");
-        $("#endtime").val("");
-        $("#money").val("");
-        $("#describe").val("");
-        $("#theme").val("");
-        $("#number_people").val("");
-	
-	}
-	else{
-    	        $("#id").val(data.id)
-        $("#name").val(data.name)
-        $("#addtime").val(data.addtime)
-        $("#endtime").val(data.endtime)
-        $("#money").val(data.money)
-        $("#describe").val(data.describe)
-        $("#theme").val(data.theme)
-        $("#number_people").val(data.number_people)
-	}
-	if(type == "view"){
-      $("#id").attr({readonly:true,disabled:true});
-      $("#name").attr({readonly:true,disabled:true});
-      $("#addtime").attr({readonly:true,disabled:true});
-      $("#endtime").attr({readonly:true,disabled:true});
-      $("#money").attr({readonly:true,disabled:true});
-      $("#describe").attr({readonly:true,disabled:true});
-      $("#theme").attr({readonly:true,disabled:true});
-      $("#number_people").attr({readonly:true,disabled:true});
-	$('#edit_dialog_ok').addClass('hidden');
-	}
-	else{
-      $("#id").attr({readonly:false,disabled:false});
-      $("#name").attr({readonly:false,disabled:false});
-      $("#addtime").attr({readonly:false,disabled:false});
-      $("#endtime").attr({readonly:false,disabled:false});
-      $("#money").attr({readonly:false,disabled:false});
-      $("#describe").attr({readonly:false,disabled:false});
-      $("#theme").attr({readonly:false,disabled:false});
-      $("#number_people").attr({readonly:false,disabled:false});
-		$('#edit_dialog_ok').removeClass('hidden');
-		}
-		$('#edit_dialog').modal('show');
-}
+     function initEditSystemModule(data, type){
+        if(type == 'create'){
+            $("#id").val("");
+            $("#name").val("");
+            $("#addtime").val("");
+            $("#endtime").val("");
+            $("#money").val("");
+            $("#describe").val("");
+            $("#theme").val("");
+            $("#join_number").val("");
+        }
+        else{
+            $("#id").val(data.id)
+            $("#name").val(data.name)
+            $("#addtime").val(data.addtime.split(' ').join("T"))
+            $("#endtime").val(data.endtime.split(' ').join("T"))
+            $("#money").val(data.money)
+            if (!is_exit) {
+                $('#describe').wysihtml5(option);
+                is_exit = true;
+            }
+            // document.getElementById("describe").innerHTML();
+            $("#describe").val(data.describe);
+            $("#theme").val(data.theme)
+            $("#join_number").val(data.join_number)
+        }
+        if(type == "view"){
+          $("#id").attr({readonly:true,disabled:true});
+          $("#name").attr({readonly:true,disabled:true});
+          $("#addtime").attr({readonly:true,disabled:true});
+          $("#endtime").attr({readonly:true,disabled:true});
+          $("#money").attr({readonly:true,disabled:true});
+          $("#describe").attr({readonly:true,disabled:true});
+          $("#theme").attr({readonly:true,disabled:true});
+          $("#join_number").attr({readonly:true,disabled:true});
+        $('#edit_dialog_ok').addClass('hidden');
+        }
+        else{
+          $("#id").attr({readonly:false,disabled:false});
+          $("#name").attr({readonly:false,disabled:false});
+          $("#addtime").attr({readonly:false,disabled:false});
+          $("#endtime").attr({readonly:false,disabled:false});
+          $("#money").attr({readonly:false,disabled:false});
+          $("#describe").attr({readonly:false,disabled:false});
+          $("#theme").attr({readonly:false,disabled:false});
+          $("#join_number").attr({readonly:false,disabled:false});
+            $('#edit_dialog_ok').removeClass('hidden');
+            }
+            $('#edit_dialog').modal('show');
+    }
 
-function initModel(id, type, fun){
-	
-	$.ajax({
-		   type: "GET",
-		   url: "<?=Url::toRoute('activity/view')?>",
-		   data: {"id":id},
-		   cache: false,
-		   dataType:"json",
-		   error: function (xmlHttpRequest, textStatus, errorThrown) {
-			    alert("出错了，" + textStatus);
-			},
-		   success: function(data){
-			   initEditSystemModule(data, type);
+    function initModel(id, type, fun){
 
-			   ////////////////////////////////////////
-   		   }
-		});
-}
-	
-function editAction(id){
-	initModel(id, 'edit');
-}
+        $.ajax({
+               type: "GET",
+               url: "<?=Url::toRoute('activity/view')?>",
+               data: {"id":id},
+               cache: false,
+               dataType:"json",
+               error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    alert("出错了，" + textStatus);
+                },
+               success: function(data){
+                   initEditSystemModule(data, type);
 
-function deleteAction(id){
-	var ids = [];
-	if(!!id == true){
-		ids[0] = id;
-	}
-	else{
-		var checkboxs = $('#data_table :checked');
-	    if(checkboxs.size() > 0){
-	        var c = 0;
-	        for(i = 0; i < checkboxs.size(); i++){
-	            var id = checkboxs.eq(i).val();
-	            if(id != ""){
-	            	ids[c++] = id;
-	            }
-	        }
-	    }
-	}
-	if(ids.length > 0){
-		admin_tool.confirm('请确认是否删除', function(){
-		    $.ajax({
-				   type: "GET",
-				   url: "<?=Url::toRoute('activity/delete')?>",
-				   data: {"ids":ids},
-				   cache: false,
-				   dataType:"json",
-				   error: function (xmlHttpRequest, textStatus, errorThrown) {
-					    admin_tool.alert('msg_info', '出错了，' + textStatus, 'warning');
-					},
-				   success: function(data){
-					   for(i = 0; i < ids.length; i++){
-						   $('#rowid_' + ids[i]).remove();
-					   }
-					   admin_tool.alert('msg_info', '删除成功', 'success');
-					   window.location.reload();
-				   }
-				});
-		});
-	}
-	else{
-		admin_tool.alert('msg_info', '请先选择要删除的数据', 'warning');
-	}
-    
-}
+                   ////////////////////////////////////////
+               }
+            });
+    }
 
-function getSelectedIdValues(formId)
-{
-	var value="";
-	$( formId + " :checked").each(function(i)
-	{
-		if(!this.checked)
-		{
-			return true;
-		}
-		value += this.value;
-		if(i != $("input[name='id']").size()-1)
-		{
-			value += ",";
-		}
-	 });
-	return value;
-}
+    function editAction(id){
+        initModel(id, 'edit');
+    }
 
-$('#edit_dialog_ok').click(function (e) {
-    e.preventDefault();
-	$('#activity-form').submit();
-});
+    function deleteAction(id){
+        var ids = [];
+        if(!!id == true){
+            ids[0] = id;
+        }
+        else{
+            var checkboxs = $('#data_table :checked');
+            if(checkboxs.size() > 0){
+                var c = 0;
+                for(i = 0; i < checkboxs.size(); i++){
+                    var id = checkboxs.eq(i).val();
+                    if(id != ""){
+                        ids[c++] = id;
+                    }
+                }
+            }
+        }
+        if(ids.length > 0){
+            admin_tool.confirm('请确认是否删除', function(){
+                $.ajax({
+                       type: "GET",
+                       url: "<?=Url::toRoute('activity/delete')?>",
+                       data: {"ids":ids},
+                       cache: false,
+                       dataType:"json",
+                       error: function (xmlHttpRequest, textStatus, errorThrown) {
+                            admin_tool.alert('msg_info', '出错了，' + textStatus, 'warning');
+                        },
+                       success: function(data){
+                           for(i = 0; i < ids.length; i++){
+                               $('#rowid_' + ids[i]).remove();
+                           }
+                           admin_tool.alert('msg_info', '删除成功', 'success');
+                           window.location.reload();
+                       }
+                    });
+            });
+        }
+        else{
+            admin_tool.alert('msg_info', '请先选择要删除的数据', 'warning');
+        }
 
-$('#create_btn').click(function (e) {
-    e.preventDefault();
-    initEditSystemModule({}, 'create');
-});
+    }
 
-$('#delete_btn').click(function (e) {
-    e.preventDefault();
-    deleteAction('');
-});
+    function getSelectedIdValues(formId)
+    {
+        var value="";
+        $( formId + " :checked").each(function(i)
+        {
+            if(!this.checked)
+            {
+                return true;
+            }
+            value += this.value;
+            if(i != $("input[name='id']").size()-1)
+            {
+                value += ",";
+            }
+         });
+        return value;
+    }
 
-$('#activity-form').bind('submit', function(e) {
-	e.preventDefault();
-	var id = $("#id").val();
-	var action = id == "" ? "<?=Url::toRoute('activity/create')?>" : "<?=Url::toRoute('activity/update')?>";
-    $(this).ajaxSubmit({
-    	type: "post",
-    	dataType:"json",
-    	url: action,
-    	success: function(value) 
-    	{
-        	if(value.errno == 0){
-        		$('#edit_dialog').modal('hide');
-        		admin_tool.alert('msg_info', '添加成功', 'success');
-        		window.location.reload();
-        	}
-        	else{
-            	var json = value.data;
-        		for(var key in json){
-        			$('#' + key).attr({'data-placement':'bottom', 'data-content':json[key], 'data-toggle':'popover'}).addClass('popover-show').popover('show');
-        			
-        		}
-        	}
-
-    	}
+    $('#edit_dialog_ok').click(function (e) {
+        e.preventDefault();
+        $('#activity-form').submit();
     });
-});
 
-</script>
-<?php $this->endBlock(); ?>
+    $('#create_btn').click(function (e) {
+        e.preventDefault();
+        initEditSystemModule({}, 'create');
+    });
+
+    $('#delete_btn').click(function (e) {
+        e.preventDefault();
+        deleteAction('');
+    });
+
+    $('#activity-form').bind('submit', function(e) {
+        e.preventDefault();
+        var id = $("#id").val();
+        var action = id == "" ? "<?=Url::toRoute('activity/create')?>" : "<?=Url::toRoute('activity/update')?>";
+        $(this).ajaxSubmit({
+            type: "post",
+            dataType:"json",
+            url: action,
+            success: function(value)
+            {
+                if(value.errno == 0){
+                    $('#edit_dialog').modal('hide');
+                    admin_tool.alert('msg_info', '添加成功', 'success');
+                    window.location.reload();
+                }
+                else{
+                    var json = value.data;
+                    for(var key in json){
+                        $('#' + key).attr({'data-placement':'bottom', 'data-content':json[key], 'data-toggle':'popover'}).addClass('popover-show').popover('show');
+
+                    }
+                }
+
+            }
+        });
+    });
+    </script>
+
+    <?php $this->endBlock(); ?>
+

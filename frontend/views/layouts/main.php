@@ -25,32 +25,35 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">个人中心</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
 <div class="wrap">
     <div class="container">
         <?= $content ?>
     </div>
 </div>
+
+<footer class="am-menu am-cf">
+    <div class="am-menu-column index" id="index">
+        <a href="{:url('aim/lists')}">
+            <span>首页</span>
+        </a>
+    </div>
+    <div class="am-menu-column explore" id="explore">
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize">
+            <span>申请</span>
+        </a>
+    </div>
+    <div class="am-menu-column life" id="life">
+        <a href="{:url('aim/lists')}">
+            <span>发现</span>
+        </a>
+    </div>
+    <div class="am-menu-column my" id="my">
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize">
+            <span>我的</span>
+        </a>
+    </div>
+</footer>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <?php $this->endBody() ?>
 </body>

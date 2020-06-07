@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @inheritdoc

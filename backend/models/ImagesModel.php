@@ -4,22 +4,21 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_order}}".
+ * This is the model class for table "{{%admin_images}}".
  *
  * @property integer $id
- * @property string $order_number
- * @property integer $aid
- * @property integer $uid
- * @property integer $is_pay
+ * @property string $url
+ * @property string $created_at
+ * @property integer $status
  */
-class OrderModel extends \backend\models\BaseModel
+class ImagesModel extends \backend\models\BaseModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%admin_order}}';
+        return '{{%admin_images}}';
     }
 
     /**
@@ -28,10 +27,13 @@ class OrderModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['order_number', 'aid', 'uid'], 'required'],
-            [['aid', 'uid'], 'integer'],
-            [['order_number'], 'string', 'max' => 35],
-            [['is_pay'], 'string', 'max' => 1]
+            [['id', 'url'], 'required'],
+            [['id'], 'integer'],
+            [['created_at'], 'safe'],
+            [['url'], 'string', 'max' => 255],
+            [['status'], 'string', 'max' => 1],
+            [['id'], 'unique'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -42,10 +44,9 @@ class OrderModel extends \backend\models\BaseModel
     {
         return [
             'id' => 'ID',
-            'order_number' => '订单号',
-            'aid' => '活动id',
-            'uid' => '用户id',
-            'is_pay' => '是否支付',
+            'url' => '图片路径',
+            'created_at' => '上传时间',
+            'status' => '状态',
         ];
     }
 
@@ -69,7 +70,7 @@ class OrderModel extends \backend\models\BaseModel
         'id' => array(
                         'name' => 'id',
                         'allowNull' => false,
-//                         'autoIncrement' => true,
+//                         'autoIncrement' => false,
 //                         'comment' => '',
 //                         'dbType' => "int(11)",
                         'defaultValue' => '',
@@ -89,22 +90,22 @@ class OrderModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'order_number' => array(
-                        'name' => 'order_number',
+		'url' => array(
+                        'name' => 'url',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '订单号',
-//                         'dbType' => "varchar(35)",
+//                         'comment' => '图片路径',
+//                         'dbType' => "varchar(255)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '35',
+                        'precision' => '255',
                         'scale' => '',
-                        'size' => '35',
+                        'size' => '255',
                         'type' => 'string',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('order_number'),
+                        'label'=>$this->getAttributeLabel('url'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
@@ -112,59 +113,36 @@ class OrderModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'aid' => array(
-                        'name' => 'aid',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '活动id',
-//                         'dbType' => "int(11)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'integer',
-                        'precision' => '11',
-                        'scale' => '',
-                        'size' => '11',
-                        'type' => 'integer',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('aid'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'uid' => array(
-                        'name' => 'uid',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '用户id',
-//                         'dbType' => "int(11)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'integer',
-                        'precision' => '11',
-                        'scale' => '',
-                        'size' => '11',
-                        'type' => 'integer',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('uid'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'is_pay' => array(
-                        'name' => 'is_pay',
+		'created_at' => array(
+                        'name' => 'created_at',
                         'allowNull' => true,
 //                         'autoIncrement' => false,
-//                         'comment' => '是否支付',
+//                         'comment' => '上传时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('created_at'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'status' => array(
+                        'name' => 'status',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '状态',
 //                         'dbType' => "tinyint(1)",
-                        'defaultValue' => '0',
+                        'defaultValue' => '1',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'integer',
@@ -173,7 +151,7 @@ class OrderModel extends \backend\models\BaseModel
                         'size' => '1',
                         'type' => 'tinyint',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('is_pay'),
+                        'label'=>$this->getAttributeLabel('status'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

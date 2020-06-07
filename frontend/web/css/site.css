@@ -89,3 +89,81 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+.am-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #efefef;
+    text-align: center;
+    height: 54px;
+    overflow: hidden;
+    z-index: 98;
+    border-top: 1px solid #ddd;
+}
+
+.am-menu-column {
+    width: 25%;
+    float: left;
+    font-size:16px;
+    margin-top:15px;
+}
+
+/*new footer*/
+/*因为都是用的字体图标可能显示不出来，但是字体颜色会有变化*/
+.index i:before {
+    content: "\e602";
+    color: #999;
+}
+.explore i:before {
+    content: "\e607";
+    color: #999;
+}
+.life i:before {
+    content: "\e600";
+    color: #999;
+}
+.my i:before {
+    content: "\e605";
+    color: #999;
+}
+.index-active i:after {
+    content: "\e603";
+    color: #32B5E5;
+}
+.explore-active i:after {
+    content: "\e608";
+    color: #32B5E5;
+}
+.life-active i:after {
+    content: "\e601";
+    color: #32B5E5;
+}
+.my-active i:after {
+    content: "\e606";
+    color: #32B5E5;
+}
+
+
+.index a span,
+.explore a span,
+.life a span,
+.my a span {
+    display: block;
+    color: #999;
+}
+
+.index-active a span,
+.explore-active a span,
+.life-active a span,
+.my-active a span {
+    display: block;
+    color: #32b4e5;
+}
+
+body {
+    padding-top: 15px;
+}
+.container {
+    margin-bottom:55px;
+}

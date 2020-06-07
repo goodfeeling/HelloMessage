@@ -10,6 +10,8 @@ use Yii;
  * @property integer $aid
  * @property integer $uid
  * @property integer $is_join
+ * @property string $join_time
+ * @property string $create_time
  */
 class ActivityUserModel extends \backend\models\BaseModel
 {
@@ -29,6 +31,7 @@ class ActivityUserModel extends \backend\models\BaseModel
         return [
             [['aid', 'uid'], 'required'],
             [['aid', 'uid'], 'integer'],
+            [['join_time', 'create_time'], 'safe'],
             [['is_join'], 'string', 'max' => 1]
         ];
     }
@@ -43,6 +46,8 @@ class ActivityUserModel extends \backend\models\BaseModel
             'aid' => '活动列表id',
             'uid' => '用户列表id',
             'is_join' => '状态',
+            'join_time' => '参加时间',
+            'create_time' => '报名时间',
         ];
     }
 
@@ -148,6 +153,52 @@ class ActivityUserModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('is_join'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'join_time' => array(
+                        'name' => 'join_time',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '参加时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('join_time'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'create_time' => array(
+                        'name' => 'create_time',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '报名时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('create_time'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

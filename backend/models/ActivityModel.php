@@ -13,7 +13,7 @@ use Yii;
  * @property string $money
  * @property resource $describe
  * @property string $theme
- * @property string $number_people
+ * @property string $join_number
  */
 class ActivityModel extends \backend\models\BaseModel
 {
@@ -35,7 +35,7 @@ class ActivityModel extends \backend\models\BaseModel
             [['addtime', 'endtime'], 'safe'],
             [['describe'], 'string'],
             [['name'], 'string', 'max' => 30],
-            [['money', 'number_people'], 'string', 'max' => 10],
+            [['money', 'join_number'], 'string', 'max' => 10],
             [['theme'], 'string', 'max' => 50]
         ];
     }
@@ -53,7 +53,7 @@ class ActivityModel extends \backend\models\BaseModel
             'money' => '需要金额',
             'describe' => '描述',
             'theme' => '主题',
-            'number_people' => '参加人数',
+            'join_number' => '参加人数',
         ];
     }
 
@@ -235,8 +235,8 @@ class ActivityModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'number_people' => array(
-                        'name' => 'number_people',
+		'join_number' => array(
+                        'name' => 'join_number',
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '参加人数',
@@ -250,7 +250,7 @@ class ActivityModel extends \backend\models\BaseModel
                         'size' => '10',
                         'type' => 'string',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('number_people'),
+                        'label'=>$this->getAttributeLabel('join_number'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

@@ -176,7 +176,7 @@ $modelLabel = new \backend\models\OrderModel();
           <div id="is_pay_div" class="form-group">
               <label for="is_pay" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("is_pay")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="is_pay" name="OrderModel[is_pay]" placeholder="必填" />
+                  <input type="text" class="form-control" id="is_pay" name="OrderModel[is_pay]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
