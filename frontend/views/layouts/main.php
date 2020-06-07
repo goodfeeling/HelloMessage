@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -34,22 +35,22 @@ AppAsset::register($this);
 
 <footer class="am-menu am-cf">
     <div class="am-menu-column index" id="index">
-        <a href="{:url('aim/lists')}">
+        <a href="<?php echo Url::home() ?>">
             <span>首页</span>
         </a>
     </div>
     <div class="am-menu-column explore" id="explore">
-        <a href="https://open.weixin.qq.com/connect/oauth2/authorize">
+        <a href="<?php echo Url::to(['apply/view']) ?>">
             <span>申请</span>
         </a>
     </div>
     <div class="am-menu-column life" id="life">
-        <a href="{:url('aim/lists')}">
+        <a href="<?php echo Url::to(['divcover']) ?>">
             <span>发现</span>
         </a>
     </div>
     <div class="am-menu-column my" id="my">
-        <a href="https://open.weixin.qq.com/connect/oauth2/authorize">
+        <a href="<?php echo Url::to(['my']) ?>">
             <span>我的</span>
         </a>
     </div>

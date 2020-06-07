@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = '首页';
+$this->title = '我的信息';
 ?>
 <div class="site-index">
     <div class="body-content">

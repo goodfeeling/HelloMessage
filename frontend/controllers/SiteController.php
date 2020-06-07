@@ -71,5 +71,35 @@ class SiteController extends BaseController
         return $this->render('index');
     }
 
+    /**
+     * Displays apply.
+     *
+     * @return mixed
+     */
+    public function actionsApply()
+    {
+        return $this->render('apply');
+    }
+
+    /**
+     * Displays apply.
+     *
+     * @return mixed
+     */
+    public function actionsMy()
+    {
+        return $this->render('my');
+    }
+
+
+    /**
+     * Displays apply.
+     *
+     * @return mixed
+     */
+    public function actionsDiscover()
+    {
+        return $this->render('discover');
+    }
 
 }

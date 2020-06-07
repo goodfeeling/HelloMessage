@@ -4,7 +4,8 @@
 namespace frontend\controllers;
 
 
-class DefaultController
+class DefaultController extends BaseController
 {
+    
 
 }

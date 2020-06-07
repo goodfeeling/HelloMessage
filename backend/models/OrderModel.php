@@ -11,6 +11,7 @@ use Yii;
  * @property integer $aid
  * @property integer $uid
  * @property integer $is_pay
+ * @property integer $money
  */
 class OrderModel extends \backend\models\BaseModel
 {
@@ -28,10 +29,11 @@ class OrderModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['order_number', 'aid', 'uid'], 'required'],
+            [['order_number', 'aid', 'uid', 'money'], 'required'],
             [['aid', 'uid'], 'integer'],
             [['order_number'], 'string', 'max' => 35],
-            [['is_pay'], 'string', 'max' => 1]
+            [['is_pay'], 'string', 'max' => 1],
+            [['money'], 'string', 'max' => 8]
         ];
     }
 
@@ -46,6 +48,7 @@ class OrderModel extends \backend\models\BaseModel
             'aid' => '活动id',
             'uid' => '用户id',
             'is_pay' => '是否支付',
+            'money' => '支付金额',
         ];
     }
 
@@ -174,6 +177,29 @@ class OrderModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('is_pay'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'money' => array(
+                        'name' => 'money',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '支付金额',
+//                         'dbType' => "tinyint(8)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '8',
+                        'scale' => '',
+                        'size' => '8',
+                        'type' => 'tinyint',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('money'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
