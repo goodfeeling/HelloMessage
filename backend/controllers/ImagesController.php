@@ -68,10 +68,12 @@ class ImagesController extends BaseController
         ->offset($pagination->offset)
         ->limit($pagination->limit)
         ->all();
+        $upload_model = new UploadForm();
         return $this->render('index', [
             'models'=>$models,
             'pages'=>$pagination,
             'query'=>$querys,
+            'upload_model'=>$upload_model
         ]);
     }
 
@@ -97,34 +99,20 @@ class ImagesController extends BaseController
      */
     public function actionCreate()
     {
-       $model = new UploadForm();
-
+        $upload_model = new UploadForm();
         if (Yii::$app->request->isPost) {
-            $model->imageFile = UploadedFile::getInstance($model, 'url');
-            if ($model->upload()) {
+            $upload_model->imageFile = UploadedFile::getInstance($upload_model, 'imageFile');
+            if ($upload_model->upload()) {
                 // 文件上传成功
-                return;
+                return $this->redirect('index.php?r=images/index');
+            }else{
+                $msg = array('errno'=>2, 'data'=>$upload_model->getErrors());
+                return $this->asJson($msg);
             }
+        } else {
+            $msg = array('errno'=>2, 'msg'=>'数据出错');
+            return $this->asJson($msg);
         }
-exit;
-       if ($model->load(Yii::$app->request->post())) {
-
-             if (empty($model->status) == true){
-                 $model->status = 1;
-             }
-
-           if($model->validate() == true && $model->save()){
-               $msg = array('errno'=>0, 'msg'=>'保存成功');
-               return $this->asJson($msg);
-           }
-           else{
-               $msg = array('errno'=>2, 'data'=>$model->getErrors());
-               return $this->asJson($msg);
-           }
-       } else {
-           $msg = array('errno'=>2, 'msg'=>'数据出错');
-           return $this->asJson($msg);
-       }
     }
 
     /**

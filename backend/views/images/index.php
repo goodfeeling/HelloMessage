@@ -12,6 +12,13 @@ $modelLabel = new \backend\models\ImagesModel();
 
 <?php $this->beginBlock('header');  ?>
 <!-- <head></head>中代码块 -->
+<style>
+    .td-c>img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
 <?php $this->endBlock(); ?>
 
 <!-- Main content -->
@@ -62,7 +69,7 @@ $modelLabel = new \backend\models\ImagesModel();
               $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : '';
 		      echo '<th><input id="data_table_check" type="checkbox"></th>';
               echo '<th onclick="orderby(\'id\', \'desc\')" '.CommonFun::sortClass($orderby, 'id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('id').'</th>';
-              echo '<th onclick="orderby(\'url\', \'desc\')" '.CommonFun::sortClass($orderby, 'url').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('url').'</th>';
+              echo '<th onclick="orderby(\'url\', \'desc\')" '.CommonFun::sortClass($orderby, 'url').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.'图片'.'</th>';
               echo '<th onclick="orderby(\'created_at\', \'desc\')" '.CommonFun::sortClass($orderby, 'created_at').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('created_at').'</th>';
               echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
          
@@ -78,12 +85,11 @@ $modelLabel = new \backend\models\ImagesModel();
                 echo '<tr id="rowid_' . $model->id . '">';
                 echo '  <td><label><input type="checkbox" value="' . $model->id . '"></label></td>';
                 echo '  <td>' . $model->id . '</td>';
-                echo '  <td>' . $model->url . '</td>';
+                echo '  <td class="td-c"><img  src="' . Url::base() . $model->url . '" alt="123"></td>';
                 echo '  <td>' . $model->created_at . '</td>';
                 echo '  <td>' . $model->status . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
-                echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
                 echo '      <a id="delete_btn" onclick="deleteAction(' . $model->id . ')" class="btn btn-danger btn-sm" href="#"> <i class="glyphicon glyphicon-trash icon-white"></i>删除</a>';
                 echo '  </td>';
                 echo '</tr>';
@@ -143,25 +149,25 @@ $modelLabel = new \backend\models\ImagesModel();
 				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
-                <?php $form = ActiveForm::begin(["id" => "images-form", "class"=>"form-horizontal", "action"=>Url::toRoute("images/save")]); ?>                      
-                 
-          <input type="hidden" class="form-control" id="id" name="id" />
+                <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data'],"action"=>Url::toRoute("images/create")]) ?>
 
-          <div id="url_div" class="form-group">
-              <label for="url" class="col-sm-2 control-label">上传文件</label>
-              <div class="col-sm-10">
-                  <input type="file" class="form-control" id="url" name="ImagesModel[url]" placeholder="" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
+                 <input type="hidden" class="form-control" id="id" name="id" />
 
-			<?php ActiveForm::end(); ?>          
+                  <div id="url_div" class="form-group">
+                      <label for="url" class="col-sm-2 control-label">上传文件</label>
+                      <div class="col-sm-10">
+                          <?= $form->field($upload_model, 'imageFile')->fileInput() ?>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
+
                 </div>
-			<div class="modal-footer">
-				<a href="#" class="btn btn-default" data-dismiss="modal">关闭</a> <a
-					id="edit_dialog_ok" href="#" class="btn btn-primary">确定</a>
-			</div>
-		</div>
+                <div class="modal-footer">
+                    <button>Submit</button>
+                </div>
+            <?php ActiveForm::end(); ?>
+
+        </div>
 	</div>
 </div>
 <?php $this->beginBlock('footer');  ?>
@@ -195,34 +201,32 @@ function orderby(field, op){
 	}
 
  function initEditSystemModule(data, type){
-	if(type == 'create'){
-    	        $("#id").val("");
+	if (type == 'create') {
+        $("#id").val("");
         $("#url").val("");
         $("#created_at").val("");
         $("#status").val("");
-	
+	} else {
+        $("#id").val(data.id);
+        $("#url").val(data.url);
+        $("#created_at").val(data.created_at);
+        $("#status").val(data.status);
 	}
-	else{
-    	        $("#id").val(data.id)
-        $("#url").val(data.url)
-        $("#created_at").val(data.created_at)
-        $("#status").val(data.status)
-	}
-	if(type == "view"){
-      $("#id").attr({readonly:true,disabled:true});
-      $("#url").attr({readonly:true,disabled:true});
-      $("#created_at").attr({readonly:true,disabled:true});
-      $("#status").attr({readonly:true,disabled:true});
-	$('#edit_dialog_ok').addClass('hidden');
-	}
-	else{
-      $("#id").attr({readonly:false,disabled:false});
-      $("#url").attr({readonly:false,disabled:false});
-      $("#created_at").attr({readonly:false,disabled:false});
-      $("#status").attr({readonly:false,disabled:false});
-		$('#edit_dialog_ok').removeClass('hidden');
-		}
-		$('#edit_dialog').modal('show');
+
+	if (type == "view") {
+          $("#id").attr({readonly:true,disabled:true});
+          $("#url").attr({readonly:true,disabled:true});
+          $("#created_at").attr({readonly:true,disabled:true});
+          $("#status").attr({readonly:true,disabled:true});
+          $('#edit_dialog_ok').addClass('hidden');
+	} else {
+          $("#id").attr({readonly:false,disabled:false});
+          $("#url").attr({readonly:false,disabled:false});
+          $("#created_at").attr({readonly:false,disabled:false});
+          $("#status").attr({readonly:false,disabled:false});
+          $('#edit_dialog_ok').removeClass('hidden');
+    }
+     $('#edit_dialog').modal('show');
 }
 
 function initModel(id, type, fun){

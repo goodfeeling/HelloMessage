@@ -2,6 +2,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "{{%admin_images}}".
@@ -13,6 +14,7 @@ use Yii;
  */
 class ImagesModel extends \backend\models\BaseModel
 {
+
     /**
      * @inheritdoc
      */
@@ -27,13 +29,10 @@ class ImagesModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['id', 'url'], 'required'],
-            [['id'], 'integer'],
+            [['url'], 'required'],
             [['created_at'], 'safe'],
             [['url'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 1],
-            [['id'], 'unique'],
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -49,7 +48,6 @@ class ImagesModel extends \backend\models\BaseModel
             'status' => '状态',
         ];
     }
-
   /**
      * 返回数据库字段信息，仅在生成CRUD时使用，如不需要生成CRUD，请注释或删除该getTableColumnInfo()代码
      * COLUMN_COMMENT可用key如下:
