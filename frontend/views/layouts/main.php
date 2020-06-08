@@ -40,12 +40,12 @@ AppAsset::register($this);
         </a>
     </div>
     <div class="am-menu-column explore" id="explore">
-        <a href="<?php echo Url::to(['apply/view']) ?>">
+        <a href="<?php echo Url::to(['apply']) ?>">
             <span>申请</span>
         </a>
     </div>
     <div class="am-menu-column life" id="life">
-        <a href="<?php echo Url::to(['divcover']) ?>">
+        <a href="<?php echo Url::to(['discover']) ?>">
             <span>发现</span>
         </a>
     </div>

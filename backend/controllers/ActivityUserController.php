@@ -94,7 +94,6 @@ class ActivityUserController extends BaseController
         $model = new ActivityUserModel();
         if ($model->load(Yii::$app->request->post())) {
         
-        
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
                 return $this->asJson($msg);
@@ -120,8 +119,6 @@ class ActivityUserController extends BaseController
         $id = Yii::$app->request->post('id');
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
-        
-        
         
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');

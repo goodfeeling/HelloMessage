@@ -144,7 +144,7 @@ $modelLabel = new \backend\models\ActivityUserModel();
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
+				<h3>设置</h3>
 			</div>
 			<div class="modal-body">
                 <?php $form = ActiveForm::begin(["id" => "activity-user-form", "class"=>"form-horizontal", "action"=>Url::toRoute("activity-user/save")]); ?>                      
@@ -178,7 +178,7 @@ $modelLabel = new \backend\models\ActivityUserModel();
           <div id="join_time_div" class="form-group">
               <label for="join_time" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("join_time")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="join_time" name="ActivityUserModel[join_time]" placeholder="" />
+                  <input type="datetime-local" class="form-control" id="join_time" name="ActivityUserModel[join_time]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -186,7 +186,7 @@ $modelLabel = new \backend\models\ActivityUserModel();
           <div id="create_time_div" class="form-group">
               <label for="create_time" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("create_time")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="create_time" name="ActivityUserModel[create_time]" placeholder="" />
+                  <input type="datetime-local" class="form-control" id="create_time" name="ActivityUserModel[create_time]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
