@@ -62,7 +62,7 @@ AppAsset::register($this);
 <?php $this->endPage() ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<script src="<?=Url::base()?>/js/apply.js"></script>
 
 <script type="text/javascript">
     window.onload = function(){
@@ -83,9 +83,5 @@ AppAsset::register($this);
         } else if(str.search('my') != -1){
             $('#my>a').removeClass('btn-default').addClass('btn-primary')
         } 
-
-        $('#index>a').mouseover(function(e){
-            $(e).removeClass('btn-default').addClass('btn-primary')
-        })
     }
 </script>

@@ -15,10 +15,10 @@ $this->title = '发现';
 
 <div class="site-index">
     <div class="page-header">
-    <h1>活动地点 <small>请看地图标记点</small></h1>
+    <h4>活动地点 <small>请看地图标记点</small></h4>
     </div>
     <!--百度地图容器-->
-  <div style="width:300px;height:440px;border:#ccc solid 1px;" id="dituContent"></div>
+  <div style="width:330px;height:300px;border:#ccc solid 1px;" id="dituContent"></div>
 </div>
 
 <script type="text/javascript">
