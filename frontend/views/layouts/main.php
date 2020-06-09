@@ -35,22 +35,22 @@ AppAsset::register($this);
 
 <footer class="am-menu am-cf">
     <div class="am-menu-column index" id="index">
-        <a href="<?php echo Url::home() ?>">
+        <a class="glyphicon glyphicon-home" href="<?php echo Url::home() ?>">
             <span>首页</span>
         </a>
     </div>
     <div class="am-menu-column explore" id="explore">
-        <a href="<?php echo Url::to(['apply']) ?>">
+        <a class="glyphicon glyphicon-comment" href="<?php echo Url::to(['apply']) ?>">
             <span>申请</span>
         </a>
     </div>
     <div class="am-menu-column life" id="life">
-        <a href="<?php echo Url::to(['discover']) ?>">
+        <a class="glyphicon glyphicon-map-marker" href="<?php echo Url::to(['discover']) ?>">
             <span>发现</span>
         </a>
     </div>
     <div class="am-menu-column my" id="my">
-        <a href="<?php echo Url::to(['my']) ?>">
+        <a class="glyphicon glyphicon-user" href="<?php echo Url::to(['my']) ?>">
             <span>我的</span>
         </a>
     </div>
@@ -60,8 +60,7 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script>
-
-</script>
+<script src="<?=Url::base()?>/js/main_new.js"></script>

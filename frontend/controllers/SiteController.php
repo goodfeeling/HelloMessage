@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\ActivityModel;
 use Yii;
 use common\models\LoginForm;
 use yii\base\InvalidParamException;
@@ -68,7 +69,14 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = ActivityModel::find();
+        $model = $query
+            ->orderBy("addtime DESC")
+            ->limit(1)
+            ->all();
+        return $this->render('index',[
+            'model'=>$model[0]
+        ]);
     }
 
     /**
@@ -102,4 +110,56 @@ class SiteController extends BaseController
         return $this->render('discover');
     }
 
+
+    /**
+     * Displays discover.
+     *
+     * @return mixed
+     */
+    public function actionMyPhone()
+    {
+        return $this->render('my-phone');
+    }
+
+
+    /**
+     * Displays discover.
+     *
+     * @return mixed
+     */
+    public function actionMyDetail()
+    {
+        return $this->render('my-detail');
+    }
+
+
+    /**
+     * Displays discover.
+     *
+     * @return mixed
+     */
+    public function actionMyActivity()
+    {
+        return $this->render('my-activity');
+    }
+
+        /**
+     * Displays discover.
+     *
+     * @return mixed
+     */
+    public function actionHelpCenter()
+    {
+        return $this->render('help-center');
+    }
+
+        /**
+     * Displays discover.
+     *
+     * @return mixed
+     */
+    public function actionMySetting()
+    {
+        return $this->render('my-setting');
+    }
 }

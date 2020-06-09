@@ -5,10 +5,5 @@ use yii\helpers\Url;
 $this->title = '首页';
 ?>
 <div class="site-index">
-    <div class="body-content">
-        <div class="row">
-
-        </div>
-
-    </div>
+    <?php echo $model->describe;  ?>
 </div>

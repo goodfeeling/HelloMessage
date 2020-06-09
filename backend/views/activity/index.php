@@ -86,7 +86,7 @@ $modelLabel = new \backend\models\ActivityModel();
                 echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td>' . $model->endtime . '</td>';
                 echo '  <td>' . $model->money . '</td>';
-                echo '  <td>' . $model->describe . '</td>';
+                echo '  <td>' . '....' . '</td>';
                 echo '  <td>' . $model->theme . '</td>';
                 echo '  <td>' . $model->join_number . '</td>';
                 echo '  <td class="center">';
@@ -144,7 +144,7 @@ $modelLabel = new \backend\models\ActivityModel();
 
 <div class="modal fade" id="edit_dialog" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
@@ -190,7 +190,7 @@ $modelLabel = new \backend\models\ActivityModel();
 
           <div id="describe_div" class="form-group">
               <label for="describe" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("describe")?></label>
-              <div class="col-sm-10">
+              <div class="col-sm-10" id='describe-insert'>
                  <textarea id="describe" name="ActivityModel[describe]" placeholder="">
                  </textarea>
               </div>
@@ -264,6 +264,9 @@ $modelLabel = new \backend\models\ActivityModel();
         }
 
      function initEditSystemModule(data, type){
+        $('#describe')
+              .wysihtml5(option);
+
         if(type == 'create'){
             $("#id").val("");
             $("#name").val("");
@@ -275,16 +278,12 @@ $modelLabel = new \backend\models\ActivityModel();
             $("#join_number").val("");
         }
         else{
+            
             $("#id").val(data.id)
             $("#name").val(data.name)
             $("#addtime").val(data.addtime.split(' ').join("T"))
             $("#endtime").val(data.endtime.split(' ').join("T"))
             $("#money").val(data.money)
-            if (!is_exit) {
-                $('#describe').wysihtml5(option);
-                is_exit = true;
-            }
-            // document.getElementById("describe").innerHTML();
             $("#describe").val(data.describe);
             $("#theme").val(data.theme)
             $("#join_number").val(data.join_number)
@@ -440,6 +439,10 @@ $modelLabel = new \backend\models\ActivityModel();
             }
         });
     });
+
+    $('.close').on('click', function (e) {
+      $('#describe-insert').html('<textarea id="describe" name="ActivityModel[describe]" placeholder=""></textarea>');
+    })
     </script>
 
     <?php $this->endBlock(); ?>
