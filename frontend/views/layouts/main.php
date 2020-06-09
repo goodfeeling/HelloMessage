@@ -35,23 +35,23 @@ AppAsset::register($this);
 
 <footer class="am-menu am-cf">
     <div class="am-menu-column index" id="index">
-        <a class="glyphicon glyphicon-home" href="<?php echo Url::home() ?>">
-            <span>首页</span>
+        <a class="glyphicon glyphicon-home btn btn-primary" href="<?php echo Url::home() ?>">
+            <!-- <span>首页</span> -->
         </a>
     </div>
     <div class="am-menu-column explore" id="explore">
-        <a class="glyphicon glyphicon-comment" href="<?php echo Url::to(['apply']) ?>">
-            <span>申请</span>
+        <a class="glyphicon glyphicon-comment btn btn-default" href="<?php echo Url::to(['apply']) ?>">
+            <!-- <span>申请</span> -->
         </a>
     </div>
     <div class="am-menu-column life" id="life">
-        <a class="glyphicon glyphicon-map-marker" href="<?php echo Url::to(['discover']) ?>">
-            <span>发现</span>
+        <a class="glyphicon glyphicon-map-marker btn btn-default" href="<?php echo Url::to(['discover']) ?>">
+            <!-- <span>发现</span> -->
         </a>
     </div>
     <div class="am-menu-column my" id="my">
-        <a class="glyphicon glyphicon-user" href="<?php echo Url::to(['my']) ?>">
-            <span>我的</span>
+        <a class="glyphicon glyphicon-user btn btn-default" href="<?php echo Url::to(['my']) ?>">
+            <!-- <span>我的</span> -->
         </a>
     </div>
 </footer>
@@ -63,4 +63,11 @@ AppAsset::register($this);
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="<?=Url::base()?>/js/main_new.js"></script>
+
+<script type="text/javascript">
+    window.onload = function(){
+        $('#index>a').mouseover(function(e){
+            $(e).remove()
+        })
+    }
+</script>

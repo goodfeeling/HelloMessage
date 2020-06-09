@@ -161,8 +161,16 @@ $this->title = '活动申请';
         <label for="mate_require">择偶要求</label>
         <textarea class="form-control" id="mate_require" placeholder="择偶要求"></textarea>
     </div>
+    
+<!-- has-success -->
+    <div  class="checkbox has-error">
+      <label>
+        <input type="checkbox"> 我保证以上都是真实信息
+      </label>
+    </div>
 
-      <button type="submit" class="btn btn-default" id="submit">提交</button>
+      <button type="submit" disabled="disabled" class="btn btn-default" id="submit">提交</button>
+
     </div>
 </div>
 
