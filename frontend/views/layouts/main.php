@@ -35,7 +35,7 @@ AppAsset::register($this);
 
 <footer class="am-menu am-cf">
     <div class="am-menu-column index" id="index">
-        <a class="glyphicon glyphicon-home btn btn-primary" href="<?php echo Url::home() ?>">
+        <a class="glyphicon glyphicon-home btn btn-default" href="<?php echo Url::home() ?>">
             <!-- <span>首页</span> -->
         </a>
     </div>
@@ -66,8 +66,26 @@ AppAsset::register($this);
 
 <script type="text/javascript">
     window.onload = function(){
+        (function ($) {
+                $.getUrlParam = function (name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) return unescape(r[2]); return null;
+                }
+            })(jQuery);
+        var str = $.getUrlParam('r');
+        if (str.search('apply') != -1){
+            $('#apply>a').addClass('btn-primary')
+        } else if(str.search('discover') != -1){
+            $('#discover>a').removeClass('btn-default').addClass('btn-primary')
+        } else if(str.search('my') != -1){
+            $('#my>a').removeClass('btn-default').addClass('btn-primary')
+        } else {
+            $('#index>a').removeClass('btn-default').addClass('btn-primary')
+        }
+
         $('#index>a').mouseover(function(e){
-            $(e).remove()
+            $(e).removeClass('btn-default').addClass('btn-primary')
         })
     }
 </script>
