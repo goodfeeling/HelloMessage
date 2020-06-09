@@ -48,8 +48,8 @@ class ActivityModel extends \backend\models\BaseModel
         return [
             'id' => 'ID',
             'name' => '活动名称',
-            'addtime' => '创建时间',
-            'endtime' => '结束时间',
+            'addtime' => '报名时间',
+            'endtime' => '截止时间',
             'money' => '需要金额',
             'describe' => '描述',
             'theme' => '主题',

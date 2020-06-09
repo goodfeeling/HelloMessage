@@ -11,6 +11,7 @@ $modelLabel = new \backend\models\ActivityModel();
 ?>
 
 <?php $this->beginBlock('header');  ?>
+<script src="https://cdn.tiny.cloud/1/x9i7718c9m4ocnvp9aiwnq947y9wv3bmn5x8a9lpjm17sxbk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <!-- <head></head>中代码块 -->
 <?php $this->endBlock(); ?>
 
@@ -227,15 +228,15 @@ $modelLabel = new \backend\models\ActivityModel();
 <!-- <body></body>后代码块 -->
  <script>
      var is_exit = false;
-     var option = {
-         "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
-         "emphasis": true, //Italics, bold, etc. Default true
-         "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-         "html": true, //Button which allows you to edit the generated HTML. Default false
-         "link": true, //Button to insert a link. Default true
-         "image": true, //Button to insert an image. Default true,
-         "color": true, //Button to change color of font
-     }
+     // var option = {
+     //     "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+     //     "emphasis": true, //Italics, bold, etc. Default true
+     //     "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+     //     "html": true, //Button which allows you to edit the generated HTML. Default false
+     //     "link": true, //Button to insert a link. Default true
+     //     "image": true, //Button to insert an image. Default true,
+     //     "color": true, //Button to change color of font
+     // }
     function orderby(field, op){
          var url = window.location.search;
          var optemp = field + " desc";
@@ -264,9 +265,12 @@ $modelLabel = new \backend\models\ActivityModel();
         }
 
      function initEditSystemModule(data, type){
-        $('#describe')
-              .wysihtml5(option);
-
+        // $('#describe')
+        //       .wysihtml5(option);
+        
+        tinymce.init({
+          selector: '#describe'
+        });
         if(type == 'create'){
             $("#id").val("");
             $("#name").val("");
@@ -440,9 +444,9 @@ $modelLabel = new \backend\models\ActivityModel();
         });
     });
 
-    $('.close').on('click', function (e) {
-      $('#describe-insert').html('<textarea id="describe" name="ActivityModel[describe]" placeholder=""></textarea>');
-    })
+    // $('.close').on('click', function (e) {
+    //   $('#describe-insert').html('<textarea id="describe" name="ActivityModel[describe]" placeholder=""></textarea>');
+    // })
     </script>
 
     <?php $this->endBlock(); ?>

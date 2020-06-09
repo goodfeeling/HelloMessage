@@ -6,6 +6,11 @@ use yii\helpers\Url;
 
 $this->title = '活动申请';
 ?>
+<style type="text/css">
+      #submit {
+        width: 100%;
+    }
+</style>
 <div class="site-index">
 
     <div class="normal" hidden>
@@ -157,15 +162,7 @@ $this->title = '活动申请';
         <textarea class="form-control" id="mate_require" placeholder="择偶要求"></textarea>
     </div>
 
-<!--     <div class="form-group">
-        <div class="checkbox">
-            <label>
-              <input type="checkbox" id="checkbox" value="false"> 同意相关协议
-            </label>
-          </div>
-    </div> -->
-
-    <button type="submit" class="btn btn-default" id="submit">提交</button>
+      <button type="submit" class="btn btn-default" id="submit">提交</button>
     </div>
 </div>
 
@@ -191,11 +188,6 @@ $this->title = '活动申请';
 <script type="text/javascript">
   window.onload= function()
   {
-    // $('#checkbox').click(function(e){
-    //   // $(e).val( !($(e).val()) );
-    //   console.log(e);
-    // })
-
         $('#submit').click(function(e){
         var occupation = $("#occupation option:selected").text();
       var income = $("#income option:selected").text();
