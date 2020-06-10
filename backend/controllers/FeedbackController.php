@@ -4,26 +4,26 @@ namespace backend\controllers;
 
 use Yii;
 use yii\data\Pagination;
-use backend\models\UserDetailModel;
+use backend\models\FeedbackModel;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserDetailController implements the CRUD actions for UserDetailModel model.
+ * FeedbackController implements the CRUD actions for FeedbackModel model.
  */
-class UserDetailController extends BaseController
+class FeedbackController extends BaseController
 {
 	public $layout = "lte_main";
 
     /**
-     * Lists all UserDetailModel models.
+     * Lists all FeedbackModel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = UserDetailModel::find();
+        $query = FeedbackModel::find();
          $querys = Yii::$app->request->get('query');
         if(empty($querys)== false && count($querys) > 0){
             $condition = "";
@@ -70,7 +70,7 @@ class UserDetailController extends BaseController
     }
 
     /**
-     * Displays a single UserDetailModel model.
+     * Displays a single FeedbackModel model.
      * @param integer $id
      * @return mixed
      */
@@ -85,13 +85,13 @@ class UserDetailController extends BaseController
     }
 
     /**
-     * Creates a new UserDetailModel model.
+     * Creates a new FeedbackModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new UserDetailModel();
+        $model = new FeedbackModel();
         if ($model->load(Yii::$app->request->post())) {
         
         
@@ -110,7 +110,7 @@ class UserDetailController extends BaseController
     }
 
     /**
-     * Updates an existing UserDetailModel model.
+     * Updates an existing FeedbackModel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -139,7 +139,7 @@ class UserDetailController extends BaseController
     }
 
     /**
-     * Deletes an existing UserDetailModel model.
+     * Deletes an existing FeedbackModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -147,7 +147,7 @@ class UserDetailController extends BaseController
     public function actionDelete(array $ids)
     {
         if(count($ids) > 0){
-            $c = UserDetailModel::deleteAll(['in', 'id', $ids]);
+            $c = FeedbackModel::deleteAll(['in', 'id', $ids]);
             return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
         }
         else{
@@ -159,15 +159,15 @@ class UserDetailController extends BaseController
 	 
 
     /**
-     * Finds the UserDetailModel model based on its primary key value.
+     * Finds the FeedbackModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return UserDetailModel the loaded model
+     * @return FeedbackModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserDetailModel::findOne($id)) !== null) {
+        if (($model = FeedbackModel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
