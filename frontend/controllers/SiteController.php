@@ -80,13 +80,17 @@ class SiteController extends BaseController
     }
 
     /**
-     * Displays discover.
+     * Displays post.
      *
      * @return mixed
      */
-    public function actionDiscover()
+    public function actionPost()
     {
-        return $this->render('discover');
+        return $this->render('post');
     }
 
+    public function actionError()
+    {
+        return $this->render('error');
+    }
 }

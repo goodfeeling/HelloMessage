@@ -85,7 +85,7 @@ AppAsset::register($this);
         </a>
     </div>
     <div class="item" id="discover">
-        <a href="<?php echo Url::to(['discover']) ?>">
+        <a href="<?php echo Url::to(['discover/index']) ?>">
             <p>
                 <i class="icon ion-ios-eye"></i>
                 <span>发现</span>
@@ -125,75 +125,33 @@ AppAsset::register($this);
                 <li>
                     <a href="social-home.html">
                         <i class="icon ion-ios-people"></i>
-                        Social
+                        我的动态
                     </a>
                 </li>
                 <li>
                     <a href="social-chat.html">
                         <i class="icon ion-ios-chatboxes"></i>
-                        Chat
+                        我的活动
                     </a>
                 </li>
+<!--                <li>-->
+<!--                    <a href="pages.html">-->
+<!--                        <i class="icon ion-ios-apps"></i>-->
+<!--                        我的收藏-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li>
-                    <a href="pages.html">
-                        <i class="icon ion-ios-apps"></i>
-                        Pages
-                    </a>
-                </li>
-                <li>
-                    <a href="components.html">
-                        <i class="icon ion-ios-analytics"></i>
-                        Components
-                    </a>
+                    <a href="<?php echo Url::to(['feedback/index']) ?>">
+                        <i class="icon ion-ios-analytics"></i>意见反馈</a>
                 </li>
                 <li>
                     <a href="blog-home.html">
-                        <i class="icon ion-ios-book"></i>
-                        Magazine - Blog
-                    </a>
+                        <i class="icon ion-ios-book"></i>导航</a>
                 </li>
-                <li>
-                    <a href="page-login.html">
-                        <i class="icon ion-ios-lock"></i>
-                        Login
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sidebarGroup">
-            <ul class="sidebarMenu">
-                <li class="title">Online</li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar2.jpg" alt="avatar" class="avatar">
-                        Guiying K.
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
-                        Kita Chihoko
-                        <span class="badge badge-primary">2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar4.jpg" alt="avatar" class="avatar">
-                        Leonetta Lloyd
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar5.jpg" alt="avatar" class="avatar">
-                        Lizzie Rose
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar6.jpg" alt="avatar" class="avatar">
-                        Kari Granleese
-                    </a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="--><?php //echo Url::to(['login/index']) ?><!--">-->
+<!--                        <i class="icon ion-ios-lock"></i>登录</a>-->
+<!--                </li>-->
             </ul>
         </div>
 

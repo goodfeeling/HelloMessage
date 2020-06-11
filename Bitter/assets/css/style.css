@@ -7701,7 +7701,7 @@ a {
   align-items: center;
   justify-content: center; }
   .appBottomMenu .item {
-    width: 33%;
+    width: 20%;
     text-align: center;
     height: 56px;
     display: flex;
@@ -7840,7 +7840,7 @@ body.sidebarActive {
         font-size: 26px;
         position: absolute;
         left: 20px;
-        top: 1px; }
+        top: 10px; }
       .sidebarMenu > li > a .avatar {
         width: 26px;
         height: 26px;
