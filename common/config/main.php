@@ -11,9 +11,9 @@ return [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;port=8889;dbname=wx_admin',
-            'username' => 'root',
-            'password' => 'root',
+            'dsn' => 'mysql:host=localhost;port=3306;dbname=http',
+            'username' => 'http',
+            'password' => 'Lw4WtmfFn2GxLbXD',
             'charset' => 'utf8',
         ],
         'mailer' => [
