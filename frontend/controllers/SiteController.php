@@ -80,86 +80,17 @@ class SiteController extends BaseController
     }
 
     /**
-     * Displays apply.
+     * Displays post.
      *
      * @return mixed
      */
-    public function actionApply()
+    public function actionPost()
     {
-        return $this->render('apply');
+        return $this->render('post');
     }
 
-    /**
-     * Displays my.
-     *
-     * @return mixed
-     */
-    public function actionMy()
+    public function actionError()
     {
-        return $this->render('my');
-    }
-
-
-    /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionDiscover()
-    {
-        return $this->render('discover');
-    }
-
-
-    /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionMyPhone()
-    {
-        return $this->render('my-phone');
-    }
-
-
-    /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionMyDetail()
-    {
-        return $this->render('my-detail');
-    }
-
-
-    /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionMyActivity()
-    {
-        return $this->render('my-activity');
-    }
-
-        /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionHelpCenter()
-    {
-        return $this->render('help-center');
-    }
-
-        /**
-     * Displays discover.
-     *
-     * @return mixed
-     */
-    public function actionMySetting()
-    {
-        return $this->render('my-setting');
+        return $this->render('error');
     }
 }

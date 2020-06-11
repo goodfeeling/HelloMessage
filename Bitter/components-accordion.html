@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bitter Mobile Template</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Bitter Mobile Template">
+    <meta name="keywords" content="bootstrap, mobile template, bootstrap 4, mobile, html, responsive" />
+</head>
+
+<body>
+
+    <!-- Page loading -->
+    <div class="loading">
+        <div class="spinner-grow"></div>
+    </div>
+    <!-- * Page loading -->
+
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="javascript:;" class="icon goBack">
+                <i class="icon ion-ios-arrow-back"></i>
+            </a>
+        </div>
+        <div class="pageTitle">Accordions</div>
+        <div class="right">
+            <label for="searchInput" class="mb-0 icon toggleSearchbox">
+                <i class="icon ion-ios-search"></i>
+            </label>
+        </div>
+    </div>
+    <!-- searchBox -->
+    <div class="searchBox">
+        <form>
+            <span class="inputIcon">
+                <i class="icon ion-ios-search"></i>
+            </span>
+            <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+            <a href="javascript:;" class="toggleSearchbox closeButton">
+                <i class="icon ion-ios-close-circle"></i>
+            </a>
+        </form>
+    </div>
+    <!-- * searchBox -->
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="appContent">
+
+
+            <div class="card mt-2 mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Basic Collapse</h5>
+                    <p>Click the buttons below to show and hide another element</p>
+                    <p>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Show / Hide
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                            sapiente
+                            ea proident.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Accordion</h5>
+                    <p>Click the buttons below to show and hide another element</p>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        About
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Comments
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Brunch 3 wolf moon tempor, suntaliqua put a bird on it squid single-origin
+                                    coffee
+                                    nulla assumenda shoreditch et.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Details
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card mb-1">
+                <div class="card-body">
+                    <h5 class="card-title">Accordion Styles</h5>
+                    <p>Add <code>.styled</code> and use all the button class to make accordion more colorful.</p>
+
+                    <div class="accordion styled" id="accordionExample2">
+                        <div class="card">
+                            <div class="card-header" id="headingOne2">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                                        <i class="icon ion-ios-boat"></i>
+                                        Ship
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2"
+                                data-parent="#accordionExample2">
+                                <div class="card-body">
+                                    Craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo2">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-danger collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                        <i class="icon ion-ios-car"></i>
+                                        Car
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2"
+                                data-parent="#accordionExample2">
+                                <div class="card-body">
+                                    Brunch 3 wolf moon tempor, suntaliqua put a bird on it squid single-origin
+                                    coffee
+                                    nulla assumenda shoreditch et.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree2">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-success collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree2" aria-expanded="false"
+                                        aria-controls="collapseThree2">
+                                        <i class="icon ion-ios-airplane"></i>
+                                        Plane
+                                        <i class="arrow icon ion-ios-arrow-down"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2"
+                                data-parent="#accordionExample2">
+                                <div class="card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <!-- app Footer -->
+        <footer class="appFooter">
+            <div class="heading">Copyright © Bitter 2019. All Rights Reserved.</div>
+            <p>
+                Modern, simple and elegant design for mobile devices. Based on Bootstrap.
+            </p>
+            <!-- facebook -->
+            <a href="#" class="btn btn-facebook btn-icon mr-1">
+                <i class="icon ion-logo-facebook"></i>
+            </a>
+            <!-- twitter -->
+            <a href="#" class="btn btn-twitter btn-icon mr-1">
+                <i class="icon ion-logo-twitter"></i>
+            </a>
+            <!-- instagram -->
+            <a href="#" class="btn btn-instagram btn-icon mr-1">
+                <i class="icon ion-logo-instagram"></i>
+            </a>
+            <!-- linkedin -->
+            <a href="#" class="btn btn-linkedin btn-icon mr-1">
+                <i class="icon ion-logo-linkedin"></i>
+            </a>
+            <!-- whatsapp -->
+            <a href="#" class="btn btn-whatsapp btn-icon mr-1">
+                <i class="icon ion-logo-whatsapp"></i>
+            </a>
+        </footer>
+        <!-- * app Footer -->
+
+    </div>
+    <!-- appCapsule -->
+
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <div class="item">
+            <a href="index.html">
+                <p>
+                    <i class="icon ion-ios-water"></i>
+                    <span>Home</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="pages.html">
+                <p>
+                    <i class="icon ion-ios-apps"></i>
+                    <span>Pages</span>
+                </p>
+            </a>
+        </div>
+        <div class="item active">
+            <a href="components.html">
+                <p>
+                    <i class="icon ion-ios-analytics"></i>
+                    <span>Components</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="search.html">
+                <p>
+                    <i class="icon ion-ios-search"></i>
+                    <span>Search</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="javascript:;" class="icon toggleSidebar">
+                <p>
+                    <i class="icon ion-ios-menu"></i>
+                    <span>Menu</span>
+                </p>
+            </a>
+        </div>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- Sidebar Menu -->
+    <div class="sidebarWrapper">
+        <div class="overlay toggleSidebar"></div>
+        <nav class="sidebar">
+            <div class="profilebox">
+                <img src="assets/img/sample/avatar.jpg" alt="avatar" class="avatar">
+                <h2 class="title">Gaspar Antunes</h2>
+                <h5 class="lead">
+                    <i class="icon ion-ios-pin mr-1"></i>
+                    Chicago
+                </h5>
+                <div class="button">
+                    <a href="#">
+                        <i class="icon ion-ios-settings"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="sidebarGroup">
+                <ul class="sidebarMenu">
+                    <li>
+                        <a href="social-home.html">
+                            <i class="icon ion-ios-people"></i>
+                            Social
+                        </a>
+                    </li>
+                    <li>
+                        <a href="social-chat.html">
+                            <i class="icon ion-ios-chatboxes"></i>
+                            Chat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages.html">
+                            <i class="icon ion-ios-apps"></i>
+                            Pages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components.html">
+                            <i class="icon ion-ios-analytics"></i>
+                            Components
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog-home.html">
+                            <i class="icon ion-ios-book"></i>
+                            Magazine - Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="page-login.html">
+                            <i class="icon ion-ios-lock"></i>
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebarGroup">
+                <ul class="sidebarMenu">
+                    <li class="title">Online</li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/img/sample/avatar2.jpg" alt="avatar" class="avatar">
+                            Guiying K.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/img/sample/avatar3.jpg" alt="avatar" class="avatar">
+                            Kita Chihoko
+                            <span class="badge badge-primary">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/img/sample/avatar4.jpg" alt="avatar" class="avatar">
+                            Leonetta Lloyd
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/img/sample/avatar5.jpg" alt="avatar" class="avatar">
+                            Lizzie Rose
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/img/sample/avatar6.jpg" alt="avatar" class="avatar">
+                            Kari Granleese
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <!-- * Sidebar Menu -->
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="assets/js/lib/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap-->
+    <script src="assets/js/lib/popper.min.js"></script>
+    <script src="assets/js/lib/bootstrap.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="assets/js/plugins/owl.carousel.min.js"></script>
+    <!-- Main Js File -->
+    <script src="assets/js/app.js"></script>
+
+
+</body>
+
+</html>

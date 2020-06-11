@@ -9,19 +9,24 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
+<div class="appContent">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="splashBlock">
+        <div class="splashTitle text-primary">
+            404
+        </div>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+        <div class="sectionTitle text-center">
+            <div class="title">
+                <h1>
+                    Page not found!
+                </h1>
+            </div>
+            <div class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+        </div>
     </div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>
+
