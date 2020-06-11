@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS0v5_NC0k9P9mVfbNrsIEC2a0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS3v5_NC0k9P9ldb6RMkKsq06VE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS6v5_NC0k9P9H2TbRhsqMA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS3v5_NC0k9P9kFbqRMkKsq06VE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS3v5_NC0k9P9lNaKRMkKsq06VE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS3v5_NC0k9P9lRa6RMkKsq06VE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/heebo/v7/NGS3v5_NC0k9P9l1aqRMkKsq06VE.ttf) format('truetype');
+}

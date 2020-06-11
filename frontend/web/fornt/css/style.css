@@ -5,8 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 最新最全最好的Bootstrap模板：http://www.bootstrapmb.com
  */
-@import url("https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css");
-@import url("https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900&display=swap");
+@import url("ionicons.min.css");
+@import url("swap.css");
 :root {
   --blue:#007bff;
   --indigo:#6610f2;
