@@ -7701,7 +7701,7 @@ a {
   align-items: center;
   justify-content: center; }
   .appBottomMenu .item {
-    width: 33%;
+    width: 50%;
     text-align: center;
     height: 56px;
     display: flex;

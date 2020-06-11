@@ -84,14 +84,14 @@ AppAsset::register($this);
             </p>
         </a>
     </div>
-    <div class="item" id="discover">
-        <a href="<?php echo Url::to(['discover/index']) ?>">
+    <!-- <div class="item" id="discover">
+        <a href="<?php //echo Url::to(['discover/index']) ?>">
             <p>
                 <i class="icon ion-ios-eye"></i>
                 <span>发现</span>
             </p>
         </a>
-    </div>
+    </div> -->
     <div class="item" id="sidebar">
         <a href="javascript:;" class="icon toggleSidebar">
             <p>
@@ -122,24 +122,24 @@ AppAsset::register($this);
         </div>
         <div class="sidebarGroup">
             <ul class="sidebarMenu">
-                <li>
+                <!-- <li>
                     <a href="social-home.html">
                         <i class="icon ion-ios-people"></i>
                         我的动态
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="social-chat.html">
                         <i class="icon ion-ios-chatboxes"></i>
                         我的活动
                     </a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="pages.html">-->
-<!--                        <i class="icon ion-ios-apps"></i>-->
-<!--                        我的收藏-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!-- <li>
+                    <a href="pages.html">
+                        <i class="icon ion-ios-apps"></i>
+                        我的收藏
+                    </a>
+                </li> -->
                 <li>
                     <a href="<?php echo Url::to(['feedback/index']) ?>">
                         <i class="icon ion-ios-analytics"></i>意见反馈</a>
@@ -148,10 +148,10 @@ AppAsset::register($this);
                     <a href="blog-home.html">
                         <i class="icon ion-ios-book"></i>导航</a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="--><?php //echo Url::to(['login/index']) ?><!--">-->
-<!--                        <i class="icon ion-ios-lock"></i>登录</a>-->
-<!--                </li>-->
+                 <li>
+                   <a href="<?php echo Url::to(['login/index']) ?>">
+                    <i class="icon ion-ios-lock"></i>登录</a>
+                </li>
             </ul>
         </div>
 

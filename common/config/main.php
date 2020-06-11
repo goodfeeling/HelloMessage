@@ -13,7 +13,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;port=8889;dbname=wx_admin',
             'username' => 'root',
-            'password' => 'root',
+            'password' => '123456',
             'charset' => 'utf8',
         ],
         'mailer' => [

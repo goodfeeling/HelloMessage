@@ -122,7 +122,7 @@ $this->title = '首页';
 
 
     <!-- Post Carousel -->
-    <div class="sectionTitle mb-2">
+    <!-- <div class="sectionTitle mb-2">
         <div class="text-muted">NEWS</div>
         <div class="title">
             <h1>Today</h1>
@@ -161,15 +161,15 @@ $this->title = '首页';
                 <h2 class="title">What is the best gift to buy for your husband?</h2>
             </a>
         </div>
-    </div>
+    </div> -->
     <!-- * Post Carousel -->
 
 
-    <div class="divider mt-4 mb-2"></div>
+    <!-- <div class="divider mt-4 mb-2"></div> -->
 
 
     <!-- Button Carousel -->
-    <div class="buttonCarousel owl-carousel">
+    <!-- <div class="buttonCarousel owl-carousel">
         <div class="item">
             <a href="#">
                 <div class="imgWrapper">
@@ -226,12 +226,12 @@ $this->title = '首页';
                 <strong>Pencil</strong>
             </a>
         </div>
-    </div>
+    </div> -->
     <!-- Button Carousel -->
 
-    <div class="divider mt-2 mb-4"></div>
+    <!-- <div class="divider mt-2 mb-4"></div> -->
 
-    <div class="sectionTitle mb-2">
+    <!-- <div class="sectionTitle mb-2">
         <div class="text-muted">Overview</div>
         <div class="title">
             <h1>Products</h1>
@@ -240,10 +240,10 @@ $this->title = '首页';
         <div class="lead">
             Bitter is using modern design style. Simple and elegant design lines.
         </div>
-    </div>
+    </div> -->
 
     <!-- item list -->
-    <div class="itemList">
+    <!-- <div class="itemList">
         <div class="item">
             <div class="image">
                 <img src="fornt/img/sample/photo14.jpg" alt="image">
@@ -271,7 +271,7 @@ $this->title = '首页';
                 <div class="text-muted">Just what you need for perfect hybrid app design.</div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- * item list -->
 
     <div class="divider mt-4 mb-4"></div>
