@@ -80,13 +80,13 @@ class SiteController extends BaseController
     }
 
     /**
-     * Displays my.
+     * Displays discover.
      *
      * @return mixed
      */
-    public function actionSearch()
+    public function actionDiscover()
     {
-        return $this->render('search');
+        return $this->render('discover');
     }
 
 }

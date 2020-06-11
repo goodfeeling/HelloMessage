@@ -76,43 +76,27 @@ AppAsset::register($this);
 
 <!-- App Bottom Menu -->
 <div class="appBottomMenu">
-    <div class="item active">
+    <div class="item" id="home">
         <a href="<?php echo Url::home() ?>">
             <p>
-                <i class="icon ion-ios-water"></i>
-                <span>Home</span>
+                <i class="icon ion-ios-home"></i>
+                <span>首页</span>
             </p>
         </a>
     </div>
-    <div class="item">
-        <a href="pages.html">
+    <div class="item" id="discover">
+        <a href="<?php echo Url::to(['discover']) ?>">
             <p>
-                <i class="icon ion-ios-apps"></i>
-                <span>Pages</span>
+                <i class="icon ion-ios-eye"></i>
+                <span>发现</span>
             </p>
         </a>
     </div>
-    <div class="item">
-        <a href="components.html">
-            <p>
-                <i class="icon ion-ios-analytics"></i>
-                <span>Components</span>
-            </p>
-        </a>
-    </div>
-    <div class="item">
-        <a href="<?php echo Url::to(['search']) ?>">
-            <p>
-                <i class="icon ion-ios-search"></i>
-                <span>Search</span>
-            </p>
-        </a>
-    </div>
-    <div class="item">
+    <div class="item" id="sidebar">
         <a href="javascript:;" class="icon toggleSidebar">
             <p>
                 <i class="icon ion-ios-menu"></i>
-                <span>Menu</span>
+                <span>我的</span>
             </p>
         </a>
     </div>
