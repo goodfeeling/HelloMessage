@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\helpers\Url;
+$pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
 
 AppAsset::register($this);
 ?>
@@ -23,6 +24,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="fornt/css/style.css">
+    <link rel="stylesheet" href="css/site.css">
     <?php $this->head() ?>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="description" content="Bitter Mobile Template">
@@ -44,9 +46,9 @@ AppAsset::register($this);
             <i class="icon ion-ios-menu"></i>
         </a>
     </div>
-<!--    <div class="pageTitle">-->
-<!--        <img src="fornt/img/logo.png" alt="Bitter" class="image">-->
-<!--    </div>-->
+    <div class="pageTitle">
+        <?= $this->title ?>
+    </div>
     <div class="right">
         <label for="searchInput" class="mb-0 icon toggleSearchbox">
             <i class="icon ion-ios-search"></i>
@@ -74,45 +76,16 @@ AppAsset::register($this);
 </div>
 <!-- * appCapsule -->
 
-<!-- App Bottom Menu -->
-<div class="appBottomMenu">
-    <div class="item" id="home">
-        <a href="<?php echo Url::home() ?>">
-            <p>
-                <i class="icon ion-ios-home"></i>
-                <span>首页</span>
-            </p>
-        </a>
-    </div>
-    <!-- <div class="item" id="discover">
-        <a href="<?php //echo Url::to(['discover/index']) ?>">
-            <p>
-                <i class="icon ion-ios-eye"></i>
-                <span>发现</span>
-            </p>
-        </a>
-    </div> -->
-    <div class="item" id="sidebar">
-        <a href="javascript:;" class="icon toggleSidebar">
-            <p>
-                <i class="icon ion-ios-menu"></i>
-                <span>我的</span>
-            </p>
-        </a>
-    </div>
-</div>
-<!-- * App Bottom Menu -->
-
 <!-- Sidebar Menu -->
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
             <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-            <h2 class="title">Gaspar Antunes</h2>
+            <h2 class="title">小明</h2>
             <h5 class="lead">
                 <i class="icon ion-ios-pin mr-1"></i>
-                Chicago
+                广州
             </h5>
             <div class="button">
                 <a href="#">
@@ -122,24 +95,24 @@ AppAsset::register($this);
         </div>
         <div class="sidebarGroup">
             <ul class="sidebarMenu">
-                <!-- <li>
+                <li hidden>
                     <a href="social-home.html">
                         <i class="icon ion-ios-people"></i>
                         我的动态
                     </a>
-                </li> -->
+                </li>
                 <li>
                     <a href="social-chat.html">
                         <i class="icon ion-ios-chatboxes"></i>
                         我的活动
                     </a>
                 </li>
-                <!-- <li>
+                <li hidden>
                     <a href="pages.html">
                         <i class="icon ion-ios-apps"></i>
-                        我的收藏
+                        我的关注
                     </a>
-                </li> -->
+                </li>
                 <li>
                     <a href="<?php echo Url::to(['feedback/index']) ?>">
                         <i class="icon ion-ios-analytics"></i>意见反馈</a>

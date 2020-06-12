@@ -6,200 +6,203 @@ use yii\helpers\Url;
 $this->title = '发现';
 ?>
 
-<div class="appContent">
+<div id="appCapsule">
+    <div class="appContent">
 
-    <!-- Button Carousel -->
-    <div class="buttonCarousel owl-carousel mt-2 mb-2">
-        <div class="item active">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar.jpg" alt="image">
-                </div>
-                <strong>Diego</strong>
-            </a>
-        </div>
-        <div class="item active">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar2.jpg" alt="image">
-                </div>
-                <strong>Yogarasa</strong>
-            </a>
-        </div>
-        <div class="item active">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar3.jpg" alt="image">
-                </div>
-                <strong>Edward</strong>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar4.jpg" alt="image">
-                </div>
-                <strong>Amelia</strong>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar5.jpg" alt="image">
-                </div>
-                <strong>Thomas</strong>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar6.jpg" alt="image">
-                </div>
-                <strong>Dominik</strong>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="imgWrapper">
-                    <img src="fornt/img/sample/avatar7.jpg" alt="image">
-                </div>
-                <strong>Charles</strong>
-            </a>
-        </div>
-    </div>
-    <!-- Button Carousel -->
-
-
-    <!-- post -->
-    <div class="photoPost">
-        <header>
-            <div class="user">
-                <a href="<?php echo Url::to(['post']) ?>">
-                    <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
-                    <strong>Thomas Durrad</strong>
+        <!-- Button Carousel -->
+        <div class="buttonCarousel owl-carousel mt-2 mb-2">
+            <div class="item active">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar.jpg" alt="image">
+                    </div>
+                    <strong>Diego</strong>
                 </a>
             </div>
-            <div class="right">
-                <div class="lead">5 mins ago</div>
-            </div>
-        </header>
-        <div class="image">
-            <a href="social-post.html">
-                <!--                <img src="fornt/img/sample/photo8.jpg" alt="photo" class="img-fluid">-->
-                <h5>123123</h5>
-            </a>
-        </div>
-        <footer class="row">
-            <div class="col-8">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>52</button>
-                <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>3</button>
-            </div>
-            <div class="col-4 text-right">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
-                <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
-            </div>
-        </footer>
-    </div>
-    <!-- post -->
-
-    <div class="divider mt-2 mb-2"></div>
-
-    <!-- post -->
-    <div class="photoPost">
-        <header>
-            <div class="user">
-                <a href="<?php echo Url::to(['post']) ?>">
-                    <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-                    <strong>Carlota Pellewever</strong>
+            <div class="item active">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar2.jpg" alt="image">
+                    </div>
+                    <strong>Yogarasa</strong>
                 </a>
             </div>
-            <div class="right">
-                <div class="lead">22 mins ago</div>
-            </div>
-        </header>
-        <div class="image">
-            <a href="social-post.html">
-                <img src="fornt/img/sample/photo10.jpg" alt="photo" class="img-fluid">
-            </a>
-        </div>
-        <footer class="row">
-            <div class="col-8">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>1.2k</button>
-                <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>521</button>
-            </div>
-            <div class="col-4 text-right">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
-                <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
-            </div>
-        </footer>
-    </div>
-    <!-- post -->
-
-    <div class="divider mt-2 mb-2"></div>
-
-    <!-- post -->
-    <div class="photoPost">
-        <header>
-            <div class="user">
-                <a href="<?php echo Url::to(['post']) ?>">
-                    <img src="fornt/img/sample/avatar4.jpg" alt="avatar" class="avatar">
-                    <strong>Dusia Monteiro</strong>
+            <div class="item active">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar3.jpg" alt="image">
+                    </div>
+                    <strong>Edward</strong>
                 </a>
             </div>
-            <div class="right">
-                <div class="lead">3 days ago</div>
-            </div>
-        </header>
-        <div class="image">
-            <a href="social-post.html">
-                <img src="fornt/img/sample/photo13.jpg" alt="photo" class="img-fluid">
-            </a>
-        </div>
-        <footer class="row">
-            <div class="col-8">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>2</button>
-                <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>7</button>
-            </div>
-            <div class="col-4 text-right">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
-                <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
-            </div>
-        </footer>
-    </div>
-    <!-- post -->
-
-    <div class="divider mt-2 mb-2"></div>
-
-    <!-- post -->
-    <div class="photoPost">
-        <header>
-            <div class="user">
-                <a href="<?php echo Url::to(['post']) ?>">
-                    <img src="fornt/img/sample/avatar6.jpg" alt="avatar" class="avatar">
-                    <strong>Diego Esteve</strong>
+            <div class="item">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar4.jpg" alt="image">
+                    </div>
+                    <strong>Amelia</strong>
                 </a>
             </div>
-            <div class="right">
-                <div class="lead">5 days ago</div>
+            <div class="item">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar5.jpg" alt="image">
+                    </div>
+                    <strong>Thomas</strong>
+                </a>
             </div>
-        </header>
-        <div class="image">
-            <a href="social-post.html">
-                <img src="fornt/img/sample/photo14.jpg" alt="photo" class="img-fluid">
-            </a>
+            <div class="item">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar6.jpg" alt="image">
+                    </div>
+                    <strong>Dominik</strong>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <div class="imgWrapper">
+                        <img src="fornt/img/sample/avatar7.jpg" alt="image">
+                    </div>
+                    <strong>Charles</strong>
+                </a>
+            </div>
         </div>
-        <footer class="row">
-            <div class="col-8">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>35</button>
-                <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>210</button>
+        <!-- Button Carousel -->
+
+
+        <!-- post -->
+        <div class="photoPost">
+            <header>
+                <div class="user">
+                    <a href="<?php echo Url::to(['post']) ?>">
+                        <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
+                        <strong>Thomas Durrad</strong>
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="lead">5 mins ago</div>
+                </div>
+            </header>
+            <div class="image">
+                <a href="social-post.html">
+                    <!--                <img src="fornt/img/sample/photo8.jpg" alt="photo" class="img-fluid">-->
+                    <h5>123123</h5>
+                </a>
             </div>
-            <div class="col-4 text-right">
-                <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
-                <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
+            <footer class="row">
+                <div class="col-8">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>52</button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>3</button>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
+                </div>
+            </footer>
+        </div>
+        <!-- post -->
+
+        <div class="divider mt-2 mb-2"></div>
+
+        <!-- post -->
+        <div class="photoPost">
+            <header>
+                <div class="user">
+                    <a href="<?php echo Url::to(['post']) ?>">
+                        <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
+                        <strong>Carlota Pellewever</strong>
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="lead">22 mins ago</div>
+                </div>
+            </header>
+            <div class="image">
+                <a href="social-post.html">
+                    <img src="fornt/img/sample/photo10.jpg" alt="photo" class="img-fluid">
+                </a>
             </div>
-        </footer>
+            <footer class="row">
+                <div class="col-8">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>1.2k</button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>521</button>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
+                </div>
+            </footer>
+        </div>
+        <!-- post -->
+
+        <div class="divider mt-2 mb-2"></div>
+
+        <!-- post -->
+        <div class="photoPost">
+            <header>
+                <div class="user">
+                    <a href="<?php echo Url::to(['post']) ?>">
+                        <img src="fornt/img/sample/avatar4.jpg" alt="avatar" class="avatar">
+                        <strong>Dusia Monteiro</strong>
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="lead">3 days ago</div>
+                </div>
+            </header>
+            <div class="image">
+                <a href="social-post.html">
+                    <img src="fornt/img/sample/photo13.jpg" alt="photo" class="img-fluid">
+                </a>
+            </div>
+            <footer class="row">
+                <div class="col-8">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>2</button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>7</button>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
+                </div>
+            </footer>
+        </div>
+        <!-- post -->
+
+        <div class="divider mt-2 mb-2"></div>
+
+        <!-- post -->
+        <div class="photoPost">
+            <header>
+                <div class="user">
+                    <a href="<?php echo Url::to(['post']) ?>">
+                        <img src="fornt/img/sample/avatar6.jpg" alt="avatar" class="avatar">
+                        <strong>Diego Esteve</strong>
+                    </a>
+                </div>
+                <div class="right">
+                    <div class="lead">5 days ago</div>
+                </div>
+            </header>
+            <div class="image">
+                <a href="social-post.html">
+                    <img src="fornt/img/sample/photo14.jpg" alt="photo" class="img-fluid">
+                </a>
+            </div>
+            <footer class="row">
+                <div class="col-8">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-heart text-danger"></i>35</button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-text text-primary"></i>210</button>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-sm mr-2"><i class="icon ion-ios-bookmark text-secondary"></i></button>
+                    <button class="btn btn-sm"><i class="icon ion-ios-share-alt text-secondary"></i></button>
+                </div>
+            </footer>
+        </div>
+        <!-- post -->
+
+
     </div>
-    <!-- post -->
-
-
 </div>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

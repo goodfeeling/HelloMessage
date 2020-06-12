@@ -75,7 +75,7 @@ $this->title = '动态详情';
             <textarea class="form-control" rows="4" placeholder="Write a comment..."></textarea>
         </div>
         <button type="button" class="btn btn-primary btn-large btn-block">
-            SEND
+            提交
         </button>
     </form>
     <!-- * form -->

@@ -7,7 +7,6 @@ $this->title = '文章页面';
 ?>
 
 <div class="appContent">
-
     <!-- title -->
     <h1 class="title-lg mt-2 mb-2">
         The World's Largest Pillow Fight is Also a Festival
@@ -63,7 +62,7 @@ $this->title = '文章页面';
             Aenean lorem odio, mollis sed consequat et, pellentesque id purus. Nunc sagittis malesuada urna,
             ultricies lacinia nisi varius vitae. Aliquam sit amet egestas sapien, nec mollis quam.
         </p>
-
+        <a href="<?php echo Url::to(['activity/apply']) ?>" class="btn btn-primary btn-block mb-1">活动资格申请</a>
     </div>
     <!-- * post body -->
 
@@ -81,7 +80,7 @@ $this->title = '文章页面';
     <div class="row mt-2">
         <div class="col-6">
             <a href="javascript:;" class="btn btn-primary btn-block">
-                <i class="icon ion-md-share"></i> Share
+                <i class="icon ion-md-share"></i> 分享
             </a>
         </div>
         <div class="col-6">
@@ -97,7 +96,7 @@ $this->title = '文章页面';
     <!-- related posts -->
     <div class="sectionTitle mb-2">
         <div class="title">
-            <h1>Related Posts</h1>
+            <h1>最近的活动</h1>
         </div>
     </div>
     <div class="postCarousel owl-carousel">
@@ -139,7 +138,7 @@ $this->title = '文章页面';
     <!-- comments -->
     <div class="sectionTitle mb-2">
         <div class="title">
-            <h1>Comments <small>(2)</small></h1>
+            <h1>评论 <small>(2)</small></h1>
         </div>
     </div>
 
@@ -182,7 +181,7 @@ $this->title = '文章页面';
             <textarea class="form-control" rows="4" placeholder="Write a comment..."></textarea>
         </div>
         <button type="button" class="btn btn-primary btn-large btn-block">
-            SEND
+            提交
         </button>
     </form>
     <!-- * form -->
@@ -196,25 +195,25 @@ $this->title = '文章页面';
     <p>
         Modern, simple and elegant design style for cordova, phonegap, webview or pwa apps.
     </p>
-    <!-- facebook -->
-    <a href="#" class="btn btn-facebook btn-icon mr-1">
-        <i class="icon ion-logo-facebook"></i>
+    <!-- 微信朋友 -->
+    <a href="#" class="mr-1">
+        <img src="images/wechat.png" alt="123">
     </a>
-    <!-- twitter -->
-    <a href="#" class="btn btn-twitter btn-icon mr-1">
-        <i class="icon ion-logo-twitter"></i>
+    <!-- 微信朋友圈 -->
+    <a href="#" class="mr-1">
+        <img src="images/pengyouquan.png" alt="123">
     </a>
-    <!-- instagram -->
-    <a href="#" class="btn btn-instagram btn-icon mr-1">
-        <i class="icon ion-logo-instagram"></i>
+    <!-- qq空间 -->
+    <a href="#" class="mr-1">
+        <img src="images/qq_room.png" alt="123">
     </a>
-    <!-- linkedin -->
-    <a href="#" class="btn btn-linkedin btn-icon mr-1">
-        <i class="icon ion-logo-linkedin"></i>
+    <!-- qq好友 -->
+    <a href="#" class="mr-1">
+        <img src="images/qq.png" alt="123">
     </a>
-    <!-- whatsapp -->
-    <a href="#" class="btn btn-whatsapp btn-icon mr-1">
-        <i class="icon ion-logo-whatsapp"></i>
+    <!-- 微博 -->
+    <a href="#" class="mr-1">
+        <img src="images/weibo.png" alt="123">
     </a>
 </footer>
 <!-- * app Footer -->

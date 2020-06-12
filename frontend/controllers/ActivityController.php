@@ -3,13 +3,11 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use yii\web\IdentityInterface;
-use yii\web\Cookie;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
-class LoginController extends BaseController
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+
+class ActivityController extends BaseController
 {
     /**
      * @inheritdoc
@@ -58,18 +56,10 @@ class LoginController extends BaseController
         ];
     }
 
-    public function actionIndex()
+    public function actionApply()
     {
-        return $this->render('index');
+        return $this->render('apply');
     }
 
-    public function actionRegister()
-    {
-        return $this->render('register');
-    }
 
-    public function actionForgotPassword()
-    {
-        return $this->render('forgot-password');
-    }
 }
