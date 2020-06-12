@@ -33,3 +33,4 @@ phpunit.phar
 sonar-project.properties
 backend/runtime/
 /vendor/
+/common/config/main.php
