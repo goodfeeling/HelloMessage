@@ -1,25 +1,27 @@
 <?php
+
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 
 $this->title = '登录页面';
 ?>
 <!-- App Header -->
-<!-- App Header -->
 <div class="appHeader">
-        <div class="left">
-            <a href="javascript:;" class="icon goBack">
-                <i class="icon ion-ios-arrow-back"></i>
-            </a>
-        </div>
-        <div class="pageTitle">
-            <?= $this->title ?>
-        </div>
-        <div class="right">
-            <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
-        </div>
+    <div class="left">
+        <a href="javascript:;" class="icon goBack">
+            <i class="icon ion-ios-arrow-back"></i>
+        </a>
     </div>
+    <div class="pageTitle">
+        <?= $this->title ?>
+    </div>
+    <div class="right">
+        <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
+    </div>
+</div>
 <!-- * App Header -->
 <div id="appCapsule">
     <div class="appContent">
@@ -37,6 +39,34 @@ $this->title = '登录页面';
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password">
             </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码">
+                    <div class="input-group-addon"><?php echo Captcha::widget(
+                                                        [
+                                                            'name' => 'captchaimg',
+                                                            'captchaAction' => 'login/captcha',
+                                                            'imageOptions' => [
+                                                                'id' => 'captchaimg',
+                                                                'title' => '换一个',
+                                                                'alt' => '换一个',
+                                                                'style' => 'width:100px;height:40px'
+                                                            ],
+                                                            'template' => '{image}'
+                                                        ]
+                                                    ); ?></div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Transfer cash</button>
             <div class="form-group row mt-3 mb-3">
                 <div class="col-6">
                     <div class="custom-control custom-checkbox">

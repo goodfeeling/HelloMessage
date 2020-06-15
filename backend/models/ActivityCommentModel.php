@@ -8,10 +8,11 @@ use Yii;
  *
  * @property integer $id
  * @property integer $aid
- * @property integer $uid
  * @property string $content
  * @property string $addtime
  * @property integer $status
+ * @property string $title
+ * @property string $email
  */
 class ActivityCommentModel extends \backend\models\BaseModel
 {
@@ -29,11 +30,13 @@ class ActivityCommentModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['aid', 'uid', 'content', 'addtime', 'status'], 'required'],
-            [['aid', 'uid'], 'integer'],
+            [['aid', 'content', 'addtime', 'status', 'title', 'email'], 'required'],
+            [['aid'], 'integer'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000],
-            [['status'], 'string', 'max' => 1]
+            [['status'], 'string', 'max' => 1],
+            [['title'], 'string', 'max' => 255],
+            [['email'], 'string', 'max' => 100]
         ];
     }
 
@@ -45,10 +48,11 @@ class ActivityCommentModel extends \backend\models\BaseModel
         return [
             'id' => 'ID',
             'aid' => '活动id',
-            'uid' => '用户id',
             'content' => '内容',
             'addtime' => '添加时间',
             'status' => '审核状态',
+            'title' => '标题',
+            'email' => '邮箱',
         ];
     }
 
@@ -108,29 +112,6 @@ class ActivityCommentModel extends \backend\models\BaseModel
                         'type' => 'integer',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('aid'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'uid' => array(
-                        'name' => 'uid',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '用户id',
-//                         'dbType' => "int(11)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'integer',
-                        'precision' => '11',
-                        'scale' => '',
-                        'size' => '11',
-                        'type' => 'integer',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('uid'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
@@ -200,6 +181,52 @@ class ActivityCommentModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('status'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'title' => array(
+                        'name' => 'title',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '标题',
+//                         'dbType' => "varchar(255)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '255',
+                        'scale' => '',
+                        'size' => '255',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('title'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'email' => array(
+                        'name' => 'email',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '邮箱',
+//                         'dbType' => "varchar(100)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '100',
+                        'scale' => '',
+                        'size' => '100',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('email'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

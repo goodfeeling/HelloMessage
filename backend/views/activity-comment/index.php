@@ -63,10 +63,11 @@ $modelLabel = new \backend\models\ActivityCommentModel();
 		      echo '<th><input id="data_table_check" type="checkbox"></th>';
               echo '<th onclick="orderby(\'id\', \'desc\')" '.CommonFun::sortClass($orderby, 'id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('id').'</th>';
               echo '<th onclick="orderby(\'aid\', \'desc\')" '.CommonFun::sortClass($orderby, 'aid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('aid').'</th>';
-              echo '<th onclick="orderby(\'uid\', \'desc\')" '.CommonFun::sortClass($orderby, 'uid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('uid').'</th>';
               echo '<th onclick="orderby(\'content\', \'desc\')" '.CommonFun::sortClass($orderby, 'content').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('content').'</th>';
               echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
               echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
+              echo '<th onclick="orderby(\'title\', \'desc\')" '.CommonFun::sortClass($orderby, 'title').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('title').'</th>';
+              echo '<th onclick="orderby(\'email\', \'desc\')" '.CommonFun::sortClass($orderby, 'email').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('email').'</th>';
          
 			?>
 	
@@ -81,10 +82,11 @@ $modelLabel = new \backend\models\ActivityCommentModel();
                 echo '  <td><label><input type="checkbox" value="' . $model->id . '"></label></td>';
                 echo '  <td>' . $model->id . '</td>';
                 echo '  <td>' . $model->aid . '</td>';
-                echo '  <td>' . $model->uid . '</td>';
                 echo '  <td>' . $model->content . '</td>';
                 echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td>' . $model->status . '</td>';
+                echo '  <td>' . $model->title . '</td>';
+                echo '  <td>' . $model->email . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -159,14 +161,6 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               <div class="clearfix"></div>
           </div>
 
-          <div id="uid_div" class="form-group">
-              <label for="uid" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("uid")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="uid" name="ActivityCommentModel[uid]" placeholder="必填" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
           <div id="content_div" class="form-group">
               <label for="content" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("content")?></label>
               <div class="col-sm-10">
@@ -187,6 +181,22 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               <label for="status" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("status")?></label>
               <div class="col-sm-10">
                   <input type="text" class="form-control" id="status" name="ActivityCommentModel[status]" placeholder="必填" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="title_div" class="form-group">
+              <label for="title" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("title")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="title" name="ActivityCommentModel[title]" placeholder="必填" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="email_div" class="form-group">
+              <label for="email" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("email")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="email" name="ActivityCommentModel[email]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -235,36 +245,40 @@ function orderby(field, op){
 	if(type == 'create'){
     	        $("#id").val("");
         $("#aid").val("");
-        $("#uid").val("");
         $("#content").val("");
         $("#addtime").val("");
         $("#status").val("");
+        $("#title").val("");
+        $("#email").val("");
 	
 	}
 	else{
     	        $("#id").val(data.id)
         $("#aid").val(data.aid)
-        $("#uid").val(data.uid)
         $("#content").val(data.content)
         $("#addtime").val(data.addtime)
         $("#status").val(data.status)
+        $("#title").val(data.title)
+        $("#email").val(data.email)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
       $("#aid").attr({readonly:true,disabled:true});
-      $("#uid").attr({readonly:true,disabled:true});
       $("#content").attr({readonly:true,disabled:true});
       $("#addtime").attr({readonly:true,disabled:true});
       $("#status").attr({readonly:true,disabled:true});
+      $("#title").attr({readonly:true,disabled:true});
+      $("#email").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
       $("#id").attr({readonly:false,disabled:false});
       $("#aid").attr({readonly:false,disabled:false});
-      $("#uid").attr({readonly:false,disabled:false});
       $("#content").attr({readonly:false,disabled:false});
       $("#addtime").attr({readonly:false,disabled:false});
       $("#status").attr({readonly:false,disabled:false});
+      $("#title").attr({readonly:false,disabled:false});
+      $("#email").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');
