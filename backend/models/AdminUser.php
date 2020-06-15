@@ -18,6 +18,12 @@ use backend\models\AdminUserRole;
  * @property string $create_date
  * @property string $update_user
  * @property string $update_date
+ * @property integer $type
+ * @property string $access_token
+ * @property string $wechat_platform_open_id
+ * @property string $nickname
+ * @property string $avatar_url
+ * @property integer $bind_phone
  *
  * @property AdminUserRole[] $adminUserRoles
  * @property SystemUserRole[] $systemUserRoles

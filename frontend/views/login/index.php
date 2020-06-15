@@ -5,6 +5,22 @@ use yii\helpers\Url;
 
 $this->title = '登录页面';
 ?>
+<!-- App Header -->
+<!-- App Header -->
+<div class="appHeader">
+        <div class="left">
+            <a href="javascript:;" class="icon goBack">
+                <i class="icon ion-ios-arrow-back"></i>
+            </a>
+        </div>
+        <div class="pageTitle">
+            <?= $this->title ?>
+        </div>
+        <div class="right">
+            <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
+        </div>
+    </div>
+<!-- * App Header -->
 <div id="appCapsule">
     <div class="appContent">
         <div class="sectionTitle text-center mt-3">

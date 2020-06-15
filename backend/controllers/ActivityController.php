@@ -5,7 +5,6 @@ namespace backend\controllers;
 use Yii;
 use yii\data\Pagination;
 use backend\models\ActivityModel;
-use backend\models\ActivityUserModel;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -94,6 +93,11 @@ class ActivityController extends BaseController
     {
         $model = new ActivityModel();
         if ($model->load(Yii::$app->request->post())) {
+        
+              if(empty($model->status) == true){
+                  $model->status = 1;
+              }
+        
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
                 return $this->asJson($msg);
@@ -120,6 +124,9 @@ class ActivityController extends BaseController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
         
+             if(empty($model->status) == true){
+                 $model->status = 1;
+             }
         
         
             if($model->validate() == true && $model->save()){

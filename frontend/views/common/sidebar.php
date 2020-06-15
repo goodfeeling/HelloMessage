@@ -2,15 +2,14 @@
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = '首页';
 ?>
 
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
-        <div class="profilebox">
-            <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-            <h2 class="title">小明</h2>
+        <div class="profilebox" id="login_btn">
+            <img src="images/未登录头象.png" alt="avatar" class="avatar">
+            <h2 class="title">点击头像登录</h2>
             <h5 class="lead">
                 <i class="icon ion-ios-pin mr-1"></i>
                 广州
@@ -30,7 +29,7 @@ $this->title = '首页';
                     </a>
                 </li>
                 <li>
-                    <a href="social-chat.html">
+                    <a href="<?php echo Url::to(['activity/my-category']) ?>">
                         <i class="icon ion-ios-chatboxes"></i>
                         我的活动
                     </a>
@@ -59,3 +58,11 @@ $this->title = '首页';
     </nav>
 </div>
 
+<script>
+    
+    window.onload = function(){
+        $('#login_btn').on('click',function(e){
+
+        })
+    }
+</script>

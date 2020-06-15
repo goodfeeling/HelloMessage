@@ -6,6 +6,10 @@ use yii\helpers\Url;
 $this->title = '动态详情';
 ?>
 
+<!-- App Header -->
+<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<!-- * App Header -->
+
 <div class="appContent">
 
     <!-- post -->

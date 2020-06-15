@@ -1,13 +1,16 @@
 <?php
-
-
 namespace frontend\controllers;
 
-
-use yii\filters\AccessControl;
+use backend\models\ActivityModel;
+use Yii;
+use common\models\LoginForm;
+use yii\base\InvalidParamException;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
-class ActivityController extends BaseController
+class PayController extends BaseController
 {
     /**
      * @inheritdoc
@@ -57,17 +60,24 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 活动申请.
+     * Displays homepage.
      *
      * @return mixed
      */
-    public function actionApply()
+    public function actionIndex()
     {
-        return $this->render('apply');
+        $query = ActivityModel::find();
+        $model = $query
+            ->orderBy("addtime DESC")
+            ->limit(1)
+            ->all();
+        return $this->render('index',[
+            'model'=>$model[0]
+        ]);
     }
 
     /**
-     * Displays 活动详情.
+     * Displays post.
      *
      * @return mixed
      */
@@ -75,26 +85,9 @@ class ActivityController extends BaseController
     {
         return $this->render('post');
     }
-    
-    /**
-     * Displays 活动分类.
-     *
-     * @return mixed
-     */
-    public function actionCategory()
+
+    public function actionError()
     {
-        return $this->render('category');
+        return $this->render('error');
     }
-
-    /**
-     * Displays 活动分类.
-     *
-     * @return mixed
-     */
-    public function actionMyCategory()
-    {
-        return $this->render('my-category');
-    }
-
-
 }

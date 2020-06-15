@@ -5,7 +5,9 @@ use yii\helpers\Url;
 
 $this->title = '发现';
 ?>
-
+<!-- App Header -->
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
+<!-- * App Header -->
 <div id="appCapsule">
     <div class="appContent">
 

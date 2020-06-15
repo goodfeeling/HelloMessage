@@ -89,12 +89,6 @@ class SiteController extends BaseController
             }
         }
     }
-
-    public function actionTest()
-    {
-
-          
-    }
     
     public function actionLogout()
     {

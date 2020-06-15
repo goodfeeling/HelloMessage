@@ -1,37 +1,60 @@
 <?php
+
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
-$this->title = '反馈';
+$this->title = '注册账号';
 ?>
-
-<div class="appContent pb-0">
-
-    <img src="fornt/img/sample/draw-2.png" alt="img" class="img-fluid mt-3 mb-3">
-
-    <div class="sectionTitle text-center">
-        <div class="title">
-            <h1>Join Us Now!</h1>
+<!-- App Header -->
+<div class="appHeader">
+        <div class="left">
+            <a href="javascript:;" class="icon goBack">
+                <i class="icon ion-ios-arrow-back"></i>
+            </a>
         </div>
-        <div class="lead mb-3">Sign up to join</div>
+        <div class="pageTitle">
+            <?= $this->title ?>
+        </div>
+        <div class="right">
+        </div>
     </div>
+<div id="appCapsule">
+    <div class="appContent pb-0">
+        <img src="fornt/img/sample/draw-2.png" alt="img" class="img-fluid mt-3 mb-3">
 
-    <form action="index.html">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name">
+        <div class="sectionTitle text-center">
+            <div class="title">
+                <h1>立即加入我们吧！</h1>
+            </div>
+            <div class="lead mb-3">填写以下信息注册</div>
         </div>
-        <div class="form-group">
-            <input type="email" class="form-control" placeholder="E-mail">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password">
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                Sign up
-            </button>
-        </div>
-    </form>
 
+        <form action="index.html">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="邮箱地址">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="昵称">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="登录密码">
+            </div>
+            <div class="form-group">
+                <input type="password1" class="form-control" placeholder="重新输入密码">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                   提交
+                </button>
+            </div>
+        </form>
+
+    </div>
 </div>
+
+<script>
+    window.onload = function(){
+
+    }
+</script>

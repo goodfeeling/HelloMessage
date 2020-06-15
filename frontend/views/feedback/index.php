@@ -5,6 +5,10 @@ use yii\helpers\Url;
 
 $this->title = '反馈';
 ?>
+<!-- App Header -->
+<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<!-- * App Header -->
+
 <div id="appCapsule">
     <div class="appContent">
 
