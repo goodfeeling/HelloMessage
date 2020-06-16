@@ -1,5 +1,7 @@
 <?php
+
 use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 
 ?>
@@ -7,7 +9,7 @@ use yii\helpers\Url;
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
-        <div class="profilebox" id="login_btn">
+        <div class="profilebox">
             <img src="images/未登录头象.png" alt="avatar" class="avatar">
             <h2 class="title">点击头像登录</h2>
             <h5 class="lead">
@@ -45,24 +47,26 @@ use yii\helpers\Url;
                         <i class="icon ion-ios-analytics"></i>意见反馈</a>
                 </li>
                 <li>
-                    <a href="blog-home.html">
+                    <a href="<?php echo Url::to(['site/guidance']) ?>">
                         <i class="icon ion-ios-book"></i>导航</a>
                 </li>
-                <li>
-                    <a href="<?php echo Url::to(['login/index']) ?>">
-                        <i class="icon ion-ios-lock"></i>登录</a>
-                </li>
+                <!--                <li>-->
+                <!--                    <a href="--><?php //echo Url::to(['login/index']) ?><!--">-->
+                <!--                        <i class="icon ion-ios-lock"></i>登录</a>-->
+                <!--                </li>-->
             </ul>
         </div>
-
+        <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
     </nav>
 </div>
 
 <script>
-    
-    window.onload = function(){
-        $('#login_btn').on('click',function(e){
-
+    var is_login = 0;
+    window.onload = function () {
+        $('.avatar').on('click', function (e) {
+            if (is_login == 0) {
+                window.location.href = "<?php echo Url::toRoute(['login/index'], true) ?>";
+            }
         })
     }
 </script>

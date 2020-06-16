@@ -99,16 +99,9 @@ $this->title = '活动列表';
             <!-- * post list -->
 
             <div class="mt-2 mb-2">
-                <a href="javascript:;" class="btn btn-primary btn-lg btn-block">Load More</a>
+                <a href="javascript:;" class="btn btn-primary btn-lg btn-block">更多</a>
             </div>
-
-
         </div>
-
-        <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
-
-
     </div>
     <!-- * appCapsule -->
-
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

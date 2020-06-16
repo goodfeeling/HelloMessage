@@ -4,6 +4,7 @@ use yii\widgets\LinkPager;
 use yii\bootstrap\ActiveForm;
 use common\utils\CommonFun;
 use yii\helpers\Url;
+use \backend\services\ActivityModelService;
 
 use backend\models\ActivityModel;
 
@@ -73,7 +74,8 @@ $modelLabel = new \backend\models\ActivityModel();
                                             echo '<th onclick="orderby(\'keyword\', \'desc\')" ' . CommonFun::sortClass($orderby, 'keyword') . ' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >' . $modelLabel->getAttributeLabel('keyword') . '</th>';
                                             echo '<th onclick="orderby(\'author_id\', \'desc\')" ' . CommonFun::sortClass($orderby, 'author_id') . ' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >' . $modelLabel->getAttributeLabel('author_id') . '</th>';
                                             echo '<th onclick="orderby(\'pic_url_id\', \'desc\')" '.CommonFun::sortClass($orderby, 'pic_url_id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('pic_url_id').'</th>';
-         
+                                            echo '<th onclick="orderby(\'views\', \'desc\')" '.CommonFun::sortClass($orderby, 'views').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('views').'</th>';
+
                                             ?>
 
                                             <th tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending">操作</th>
@@ -97,6 +99,7 @@ $modelLabel = new \backend\models\ActivityModel();
                                             echo '  <td>' . $model->keyword . '</td>';
                                             echo '  <td>' . $model->author_id . '</td>';
                                             echo '  <td>' . $model->pic_url_id . '</td>';
+                                            echo '  <td>' . $model->views . '</td>';
                                             echo '  <td class="center">';
                                             echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                                             echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -229,6 +232,21 @@ $modelLabel = new \backend\models\ActivityModel();
                     <div class="clearfix"></div>
                 </div>
 
+                <div id="status_div" class="form-group">
+                    <label for="status" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("status")?></label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="ActivityModel[status]" id="status">
+                            <?php
+                            foreach(ActivityModelService::$STATUS_CODE as $key=>$value){
+                                echo "<option value=\"{$key}\">{$value}</option>";
+                            }
+                            ?>
+
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
                 <div id="keyword_div" class="form-group">
                     <label for="keyword" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("keyword") ?></label>
                     <div class="col-sm-10">
@@ -252,6 +270,13 @@ $modelLabel = new \backend\models\ActivityModel();
               </div>
               <div class="clearfix"></div>
           </div>
+                <div id="views_div" class="form-group">
+                    <label for="views" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("views") ?></label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="views" name="ActivityModel[views]" placeholder="" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
 
 
                 <?php ActiveForm::end(); ?>
@@ -320,6 +345,7 @@ $modelLabel = new \backend\models\ActivityModel();
             $("#keyword").val("");
             $("#author_id").val("");
             $("#pic_url_id").val("");
+            $("#views").val("");
         } else {
 
             $("#id").val(data.id)
@@ -334,6 +360,7 @@ $modelLabel = new \backend\models\ActivityModel();
             $("#keyword").val(data.keyword)
             $("#author_id").val(data.author_id)
             $("#pic_url_id").val(data.pic_url_id)
+            $("#views").val(data.views)
         }
         if (type == "view") {
             $("#id").attr({
@@ -381,7 +408,9 @@ $modelLabel = new \backend\models\ActivityModel();
                 disabled: true
             });
             $("#pic_url_id").attr({readonly:true,disabled:true});
+            $("#views").attr({readonly:true,disabled:true});
             $('#edit_dialog_ok').addClass('hidden');
+
         } else {
             $("#id").attr({
                 readonly: false,
@@ -428,6 +457,7 @@ $modelLabel = new \backend\models\ActivityModel();
                 disabled: false
             });
             $("#pic_url_id").attr({readonly:false,disabled:false});
+            $("#views").attr({readonly:false,disabled:false});
             $('#edit_dialog_ok').removeClass('hidden');
         }
         $('#edit_dialog').modal('show');

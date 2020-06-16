@@ -33,40 +33,31 @@ $this->title = '登录页面';
         </div>
 
         <form action="index.html">
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail">
+            <div class="form-group mt-3 mb-3">
+                <input type="email" class="form-control" placeholder="邮箱地址">
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password">
+            <div class="form-group mt-3 mb-3">
+                <input type="password" class="form-control" placeholder="密码">
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码">
-                    <div class="input-group-addon"><?php echo Captcha::widget(
-                                                        [
+            <div class="form-group mt-3 mb-3">
+                <div style="position: relative">
+                    <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码" style="width: 150px">
+                    <div style="height: 33px;width: 80px;float: right;cursor: pointer; position: absolute;right: 26px;top: 1px"><?php echo Captcha::widget(
+    [
                                                             'name' => 'captchaimg',
                                                             'captchaAction' => 'login/captcha',
                                                             'imageOptions' => [
                                                                 'id' => 'captchaimg',
                                                                 'title' => '换一个',
                                                                 'alt' => '换一个',
-                                                                'style' => 'width:100px;height:40px'
+                                                                'style' => ''
                                                             ],
                                                             'template' => '{image}'
                                                         ]
-                                                    ); ?></div>
+); ?></div>
                 </div>
 
             </div>
-            <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-                    <div class="input-group-addon">.00</div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Transfer cash</button>
             <div class="form-group row mt-3 mb-3">
                 <div class="col-6">
                     <div class="custom-control custom-checkbox">
@@ -96,7 +87,7 @@ $this->title = '登录页面';
             <!--        </div>-->
             <div class="col-12 wechat-login">
                 <a href="">
-                    <img src="images/icon_button3_1.png" alt="123">
+                    <img src="images/icon48_wx_button.png" alt="123">
                 </a>
             </div>
         </div>

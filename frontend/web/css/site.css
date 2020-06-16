@@ -1,10 +1,10 @@
 .appFooter img {
-    width: 32px;
-    height: 32px
+    width: 20px;
+    height: 20px
 }
 
 .wechat-login>a>img {
-    margin: 0 55px;
-    width: 230px;
-    height: 45px;
+    margin: 0 80px;
+    width: 170px;
+    height: 35px;
 }

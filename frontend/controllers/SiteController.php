@@ -89,6 +89,16 @@ class SiteController extends BaseController
         return $this->render('post');
     }
 
+    /**
+     * Displays guidance.
+     *
+     * @return mixed
+     */
+    public function actionGuidance()
+    {
+        return $this->render('guidance');
+    }
+
     public function actionError()
     {
         return $this->render('error');

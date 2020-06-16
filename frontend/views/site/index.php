@@ -19,7 +19,7 @@ $this->title = '首页';
                             <div class="header row">
                                 <div class="col-8">TRAVEL</div>
                                 <div class="col-4 text-right">
-                                    <i class="icon ion-ios-heart"></i> 523
+                                    <i class="icon ion-ios-eye"></i> 523
                                 </div>
                             </div>
                             <div class="content">
@@ -197,6 +197,5 @@ $this->title = '首页';
             </div>
 
         </div>
-        <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
     </div>
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

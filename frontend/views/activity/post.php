@@ -189,8 +189,5 @@ $this->title = '文章页面';
             </button>
         </form>
         <!-- * form -->
-
-
     </div>
-    <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
 </div>

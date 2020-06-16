@@ -18,6 +18,7 @@ use Yii;
  * @property string $keyword
  * @property integer $author_id
  * @property integer $pic_url_id
+ * @property integer $views
  */
 class ActivityModel extends \backend\models\BaseModel
 {
@@ -38,7 +39,7 @@ class ActivityModel extends \backend\models\BaseModel
             [['name', 'addtime', 'endtime'], 'required'],
             [['addtime', 'endtime'], 'safe'],
             [['describe'], 'string'],
-            [['join_number', 'status', 'author_id'], 'integer'],
+            [['join_number', 'status', 'author_id','views'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['money'], 'string', 'max' => 10],
             [['theme'], 'string', 'max' => 50],
@@ -65,6 +66,7 @@ class ActivityModel extends \backend\models\BaseModel
             'keyword' => '关键词',
             'author_id' => '作者id',
             'pic_url_id' => '大图id',
+            'views' => '浏览量',
         ];
     }
 
@@ -361,6 +363,29 @@ class ActivityModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
+            'views' => array(
+                'name' => 'views',
+                'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '浏览量',
+//                         'dbType' => "int(10)",
+                'defaultValue' => '',
+                'enumValues' => null,
+                'isPrimaryKey' => false,
+                'phpType' => 'integer',
+                'precision' => '10',
+                'scale' => '',
+                'size' => '10',
+                'type' => 'integer',
+                'unsigned' => false,
+                'label'=>$this->getAttributeLabel('views'),
+                'inputType' => 'text',
+                'isEdit' => true,
+                'isSearch' => false,
+                'isDisplay' => true,
+                'isSort' => true,
+//                         'udc'=>'',
+            ),
 		        );
         
     }

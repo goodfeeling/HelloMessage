@@ -8,53 +8,73 @@ $this->title = '注册账号';
 ?>
 <!-- App Header -->
 <div class="appHeader">
-        <div class="left">
-            <a href="javascript:;" class="icon goBack">
-                <i class="icon ion-ios-arrow-back"></i>
-            </a>
-        </div>
-        <div class="pageTitle">
-            <?= $this->title ?>
-        </div>
-        <div class="right">
-        </div>
+    <div class="left">
+        <a href="javascript:;" class="icon goBack">
+            <i class="icon ion-ios-arrow-back"></i>
+        </a>
     </div>
+    <div class="pageTitle">
+        <?= $this->title ?>
+    </div>
+    <div class="right">
+    </div>
+</div>
 <div id="appCapsule">
     <div class="appContent pb-0">
         <img src="fornt/img/sample/draw-2.png" alt="img" class="img-fluid mt-3 mb-3">
 
         <div class="sectionTitle text-center">
             <div class="title">
-                <h1>立即加入我们吧！</h1>
+                <h1>欢迎注册账号</h1>
             </div>
             <div class="lead mb-3">填写以下信息注册</div>
         </div>
 
-        <form action="index.html">
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="邮箱地址">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="昵称">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="登录密码">
-            </div>
-            <div class="form-group">
-                <input type="password1" class="form-control" placeholder="重新输入密码">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                   提交
-                </button>
-            </div>
-        </form>
+        <div class="form-group">
+            <input type="email" class="form-control email" placeholder="邮箱地址">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control nickname" placeholder="昵称">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control password" placeholder="登录密码">
+        </div>
+        <div class="form-group">
+            <input type="password1" class="form-control password1" placeholder="重新输入密码">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit1">
+            提交
+        </button>
 
     </div>
 </div>
 
 <script>
-    window.onload = function(){
-
+    window.onload = function () {
+        $('#submit1').on('click',function(e){
+            console.log(111);
+            var email = $('.email').val();
+            var nickname = $('.nickname').val();
+            var password = $('.password').val();
+            var password1 = $('.password1').val();
+            if (password == password1) {
+                var data = {
+                    'email': email,
+                    'nickname': nickname,
+                    'password': password,
+                };
+                $.ajax({
+                    url: 'index.php?r=site/apply',
+                    type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
+                    dataType: 'json',
+                    data: data,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            } else {
+                alert('两次密码输入不正确')
+            }
+        })
     }
 </script>

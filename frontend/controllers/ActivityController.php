@@ -96,5 +96,15 @@ class ActivityController extends BaseController
         return $this->render('my-category');
     }
 
+    /**
+     * Displays 支付报名费.
+     *
+     * @return mixed
+     */
+    public function actionUsePay()
+    {
+        return $this->render('use-pay');
+    }
+
 
 }
