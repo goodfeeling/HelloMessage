@@ -30,6 +30,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'session' => [
+            'class' => 'yii\web\CacheSession',
+            // 'cache' => 'mycache',
+        ],
     ],
     'params' => $params,
 ];

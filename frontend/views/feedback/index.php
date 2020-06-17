@@ -21,16 +21,16 @@ $this->title = '反馈';
 
         <form class="mb-2">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="标题">
+                <input type="text" id="title" class="form-control" placeholder="标题">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="邮箱">
+                <input type="email" id="email" class="form-control" placeholder="邮箱">
             </div>
             <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="内容"></textarea>
+                <textarea class="form-control" id="content" rows="3" placeholder="内容"></textarea>
             </div>
             <div>
-                <button type="button" class="btn btn-primary btn-lg btn-block">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">
                     <i class="icon ion-ios-send"></i>
                     提交
                 </button>
@@ -93,7 +93,25 @@ $this->title = '反馈';
                 <!-- * listview -->
             </div>
         </div>
-
-
     </div>
 </div>
+
+<script>
+    $('#submit').click(function(e) {
+        var data = {
+            'title': $('#title').val(),
+            'email': $('#email').val(),
+            'content': $('#content').val(),
+        };
+        $.ajax({
+            url: 'index.php?r=site/apply',
+            type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    });
+
+</script>

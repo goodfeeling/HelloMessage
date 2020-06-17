@@ -1,5 +1,7 @@
 <?php
+
 use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 $this->title = '我的活动';
 ?>
@@ -7,103 +9,30 @@ $this->title = '我的活动';
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
 <!-- * App Header -->
+<!-- App Capsule -->
+<div id="appCapsule">
 
-    <!-- App Capsule -->
-    <div id="appCapsule">
+    <div class="appContent">
 
-        <div class="appContent">
-            <!-- post list -->
-            <div class="row mt-2">
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo11.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Juxon praises Peri’s resilience after testing week</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo8.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Top 10 Travel Bloggers You Should Follow</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo3.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Is Orange Juice the Enemy of the Disease?</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo4.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Check the Best Selling Furniture of This Year</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo12.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">The World's Largest Pillow Fight is Also a Festival</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo13.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Best of Skyscrapers in the World</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo14.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Is Orange Juice the Enemy of the Disease?</h2>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="blog-post.html" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo2.jpg" alt="image" class="image">
-                        </div>
-                        <h2 class="title">Check the Best Selling Furniture of This Year</h2>
-                    </a>
-                </div>
-                <!-- * item -->
+        <div class="card mb-3 mt-2">
+            <div class="card-header">
+                Card Header
             </div>
-            <!-- * post list -->
-
-            <div class="mt-2 mb-2">
-                <a href="javascript:;" class="btn btn-primary btn-lg btn-block">Load More</a>
+            <div class="card-body">
+                <h5 class="card-title">Card with Footer</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
-
-
+            <div class="card-footer">
+                <span class="badge badge-primary iconed mr-1 mb-1">
+                        <i class="icon ion-ios-checkmark"></i>
+                        已报名
+                    </span>
+                <span class="badge badge-success iconed mr-1 mb-1">
+                        <i class="icon ion-ios-close"></i>
+                        未签到
+                    </span>
+            </div>
         </div>
-
     </div>
-    <!-- * appCapsule -->
-
+</div>

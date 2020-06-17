@@ -20,7 +20,7 @@ $this->title = '注册账号';
     </div>
 </div>
 <div id="appCapsule">
-    <div class="appContent pb-0">
+    <div class="appContent">
         <img src="fornt/img/sample/draw-2.png" alt="img" class="img-fluid mt-3 mb-3">
 
         <div class="sectionTitle text-center">
@@ -40,7 +40,7 @@ $this->title = '注册账号';
             <input type="password" class="form-control password" placeholder="登录密码">
         </div>
         <div class="form-group">
-            <input type="password1" class="form-control password1" placeholder="重新输入密码">
+            <input type="password" class="form-control password1" placeholder="确认密码">
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit1">
             提交
@@ -52,7 +52,6 @@ $this->title = '注册账号';
 <script>
     window.onload = function () {
         $('#submit1').on('click',function(e){
-            console.log(111);
             var email = $('.email').val();
             var nickname = $('.nickname').val();
             var password = $('.password').val();
@@ -75,6 +74,11 @@ $this->title = '注册账号';
             } else {
                 alert('两次密码输入不正确')
             }
-        })
+        });
+        $('.password1').on('change',function(e){
+            var password = $('.password').val();
+            var password1 = $('.password1').val();
+
+        });
     }
 </script>

@@ -23,18 +23,24 @@ $this->title = '活动申请';
 
         <div class="form-group">
             <label for="gender">性别</label>
-            <select class="form-control" id="gender">
-                <option>请选择...</option>
-                <option>男生</option>
-                <option>女生</option>
-            </select>
+            <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-primary active">
+                    <input type="radio" name="options" id="option1" checked>
+                    <i class="icon ion-ios-male"></i>
+                    男性
+                </label>
+                <label class="btn btn-outline-primary">
+                    <input type="radio" name="options" id="option2">
+                    <i class="icon ion-ios-female"></i>
+                    女性
+                </label>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="height">身高</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="height" placeholder="身高">
-                <div class="input-group-addon">CM</div>
+                <input type="number" class="form-control" id="height" placeholder="身高">
             </div>
         </div>
 
@@ -46,7 +52,6 @@ $this->title = '活动申请';
         <div class="form-group">
             <label for="mobile">联系方式</label>
             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">+86</span>
                 <input type="number" class="form-control" id="mobile" placeholder="联系方式">
             </div>
             <p class="help-block">请正确填写联系方式.</p>
@@ -124,11 +129,11 @@ $this->title = '活动申请';
         </div>
         <div class="form-group">
             <label for="hobby">爱好</label>
-            <textarea class="form-control" id="hobby" placeholder="爱好"></textarea>
+            <textarea rows="3"  class="form-control" id="hobby" placeholder="爱好"></textarea>
         </div>
         <div class="form-group">
             <label for="mate_require">择偶要求</label>
-            <textarea class="form-control" id="mate_require" placeholder="择偶要求"></textarea>
+            <textarea rows="3"  class="form-control" id="mate_require" placeholder="择偶要求"></textarea>
         </div>
         <!-- has-success -->
         <div class="checkbox has-error">
@@ -137,15 +142,13 @@ $this->title = '活动申请';
             </label>
         </div>
 
-        <button type="submit" class="btn btn-default" id="submit">提交</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
     </div>
 </div>
 
 <script type="text/javascript">
     window.onload = () => {
         $('#submit').click(function(e) {
-            console.log(111);
-
             var occupation = $("#occupation option:selected").text();
             var income = $("#income option:selected").text();
             var cars_and_houses = $("#cars_and_houses option:selected").text();

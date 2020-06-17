@@ -19,7 +19,7 @@ $this->title = '登录页面';
         <?= $this->title ?>
     </div>
     <div class="right">
-        <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
+        <a href="<?php echo Url::to(['login/register']) ?>" class="link" hidden>注册</a>
     </div>
 </div>
 <!-- * App Header -->
@@ -32,7 +32,7 @@ $this->title = '登录页面';
             <div class="lead mb-2">继续登录操作</div>
         </div>
 
-        <form action="index.html">
+        <form action="index.html" hidden>
             <div class="form-group mt-3 mb-3">
                 <input type="email" class="form-control" placeholder="邮箱地址">
             </div>
@@ -75,17 +75,12 @@ $this->title = '登录页面';
                 </button>
             </div>
         </form>
-        <div class="divider mt-3 mb-3"></div>
 
-        <div class="text-muted text-center mb-2">或者其它登录方式</div>
-        <div class="row">
-            <!--        <div class="col-6">-->
-            <!--            <button type="button" class="btn btn-facebook btn-block">-->
-            <!--                <i class="icon ion-logo-facebook"></i>-->
-            <!--                Facebook-->
-            <!--            </button>-->
-            <!--        </div>-->
-            <div class="col-12 wechat-login">
+        <div class="divider mt-3 mb-3" hidden></div>
+
+        <div class="row other-login">
+            <div class="text-muted mb-2" hidden>或者其它登录方式</div>
+            <div class="col-6 wechat-login">
                 <a href="">
                     <img src="images/icon48_wx_button.png" alt="123">
                 </a>

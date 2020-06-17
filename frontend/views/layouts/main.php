@@ -25,7 +25,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="fornt/css/style.css">
     <link rel="stylesheet" href="css/site.css">
-    <?php $this->head() ?>
+<!--    --><?php //$this->head() ?>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="description" content="Bitter Mobile Template">
     <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />

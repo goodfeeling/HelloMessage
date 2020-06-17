@@ -17,7 +17,7 @@ use yii\helpers\Url;
                 广州
             </h5>
             <div class="button">
-                <a href="#">
+                <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
                 </a>
             </div>

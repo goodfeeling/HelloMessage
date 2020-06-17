@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
-$this->title = '文章页面';
+$this->title = '活动详情';
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
