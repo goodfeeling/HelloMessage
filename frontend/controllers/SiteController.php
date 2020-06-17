@@ -10,19 +10,6 @@ use frontend\behaviors\LoginBehavior;
 class SiteController extends BaseController
 {
     /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-//            'login' => [
-//                'class' => LoginBehavior::className(),
-//            ],
-        ];
-    }
-
-
-    /**
      * Displays homepage.
      *
      * @return mixed

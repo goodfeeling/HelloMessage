@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
+
 $this->title = '我的活动';
 ?>
 
@@ -25,13 +26,13 @@ $this->title = '我的活动';
             </div>
             <div class="card-footer">
                 <span class="badge badge-primary iconed mr-1 mb-1">
-                        <i class="icon ion-ios-checkmark"></i>
-                        已报名
-                    </span>
+                    <i class="icon ion-ios-checkmark"></i>
+                    未付费
+                </span>
                 <span class="badge badge-success iconed mr-1 mb-1">
-                        <i class="icon ion-ios-close"></i>
-                        未签到
-                    </span>
+                    <i class="icon ion-ios-close"></i>
+                    未签到
+                </span>
             </div>
         </div>
     </div>
