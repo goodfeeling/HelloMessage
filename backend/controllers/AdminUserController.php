@@ -5,7 +5,10 @@ namespace backend\controllers;
 use Yii;
 use yii\data\Pagination;
 use backend\models\AdminUser;
+use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
  * AdminUserController implements the CRUD actions for AdminUser model.
@@ -22,7 +25,7 @@ class AdminUserController extends BaseController
     {
         $query = AdminUser::find();
          $querys = Yii::$app->request->get('query');
-         if(empty($querys)== false && count($querys) > 0){
+        if(empty($querys)== false && count($querys) > 0){
             $condition = "";
             $parame = array();
             foreach($querys as $key=>$value){
@@ -41,13 +44,20 @@ class AdminUserController extends BaseController
                 $query = $query->where($condition, $parame);
             }
         }
-        //$models = $query->orderBy('display_order')
+
         $pagination = new Pagination([
             'totalCount' =>$query->count(), 
             'pageSize' => '10', 
             'pageParam'=>'page', 
             'pageSizeParam'=>'per-page']
         );
+        
+        $orderby = Yii::$app->request->get('orderby', '');
+        if(empty($orderby) == false){
+            $query = $query->orderBy($orderby);
+        }
+        
+        
         $models = $query
         ->offset($pagination->offset)
         ->limit($pagination->limit)
@@ -66,10 +76,11 @@ class AdminUserController extends BaseController
      */
     public function actionView($id)
     {
-        //$id = Yii::$app->request->post('id');
         $model = $this->findModel($id);
-        $model->password = '';
-        return $this->asJson($model->getAttributes());
+        $data = $model->getAttributes();
+        
+        
+        return $this->asJson($data);
 
     }
 
@@ -82,22 +93,17 @@ class AdminUserController extends BaseController
     {
         $model = new AdminUser();
         if ($model->load(Yii::$app->request->post())) {
-            $model2 = AdminUser::findOne(array('uname'=>$model->uname));
-            if(empty($model2) == true){
-                $msg = array('errno'=>2, 'data'=>array('uname'=>'用户不存在'));
-                return $this->asJson($msg);
-            }
-            if(empty($model->is_online) == true){
-                $model->is_online = 'n';
-            }
-            if(empty($model->status) == true){
-              $model->status = 10;
-            }
-            $model->password = Yii::$app->security->generatePasswordHash($model->password);
-            $model->create_user = Yii::$app->user->identity->uname;
-            $model->create_date = date('Y-m-d H:i:s');
-            $model->update_user = Yii::$app->user->identity->uname;
-            $model->update_date = date('Y-m-d H:i:s');            
+        
+              if(empty($model->is_online) == true){
+                  $model->is_online = 'n';
+              }
+              if(empty($model->status) == true){
+                  $model->status = 10;
+              }
+              $model->create_user = Yii::$app->user->identity->uname;
+              $model->create_date = date('Y-m-d H:i:s');
+              $model->update_user = Yii::$app->user->identity->uname;
+              $model->update_date = date('Y-m-d H:i:s');        
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
                 return $this->asJson($msg);
@@ -122,12 +128,16 @@ class AdminUserController extends BaseController
     {
         $id = Yii::$app->request->post('id');
         $model = $this->findModel($id);
-        $adminUser = Yii::$app->request->post('AdminUser');
-        if (empty($adminUser) == false) {
-            //$model->is_online = 'n';
-            $model->status = $adminUser['status'];
-            $model->update_user = Yii::$app->user->identity->uname;
-            $model->update_date = date('Y-m-d H:i:s');        
+        if ($model->load(Yii::$app->request->post())) {
+        
+             if(empty($model->is_online) == true){
+                 $model->is_online = 'n';
+             }
+             if(empty($model->status) == true){
+                 $model->status = 10;
+             }
+              $model->update_user = Yii::$app->user->identity->uname;
+              $model->update_date = date('Y-m-d H:i:s');        
         
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
@@ -159,9 +169,10 @@ class AdminUserController extends BaseController
         else{
             return $this->asJson(array('errno'=>2, 'msg'=>''));
         }
-    
-  
     }
+
+	
+	 
 
     /**
      * Finds the AdminUser model based on its primary key value.

@@ -68,6 +68,7 @@ $modelLabel = new \backend\models\WechatConfigModel();
               echo '<th onclick="orderby(\'key\', \'desc\')" '.CommonFun::sortClass($orderby, 'key').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('key').'</th>';
               echo '<th onclick="orderby(\'cert_pem\', \'desc\')" '.CommonFun::sortClass($orderby, 'cert_pem').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('cert_pem').'</th>';
               echo '<th onclick="orderby(\'key_pem\', \'desc\')" '.CommonFun::sortClass($orderby, 'key_pem').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('key_pem').'</th>';
+              echo '<th onclick="orderby(\'encodingaeskey\', \'desc\')" '.CommonFun::sortClass($orderby, 'encodingaeskey').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('encodingaeskey').'</th>';
          
 			?>
 	
@@ -87,6 +88,7 @@ $modelLabel = new \backend\models\WechatConfigModel();
                 echo '  <td>' . $model->key . '</td>';
                 echo '  <td>' . $model->cert_pem . '</td>';
                 echo '  <td>' . $model->key_pem . '</td>';
+                echo '  <td>' . $model->encodingaeskey . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -200,6 +202,14 @@ $modelLabel = new \backend\models\WechatConfigModel();
               </div>
               <div class="clearfix"></div>
           </div>
+
+          <div id="encodingaeskey_div" class="form-group">
+              <label for="encodingaeskey" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("encodingaeskey")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="encodingaeskey" name="WechatConfigModel[encodingaeskey]" placeholder="必填" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
                     
 
 			<?php ActiveForm::end(); ?>          
@@ -250,6 +260,7 @@ function orderby(field, op){
         $("#key").val("");
         $("#cert_pem").val("");
         $("#key_pem").val("");
+        $("#encodingaeskey").val("");
 	
 	}
 	else{
@@ -260,6 +271,7 @@ function orderby(field, op){
         $("#key").val(data.key)
         $("#cert_pem").val(data.cert_pem)
         $("#key_pem").val(data.key_pem)
+        $("#encodingaeskey").val(data.encodingaeskey)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -269,6 +281,7 @@ function orderby(field, op){
       $("#key").attr({readonly:true,disabled:true});
       $("#cert_pem").attr({readonly:true,disabled:true});
       $("#key_pem").attr({readonly:true,disabled:true});
+      $("#encodingaeskey").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -279,6 +292,7 @@ function orderby(field, op){
       $("#key").attr({readonly:false,disabled:false});
       $("#cert_pem").attr({readonly:false,disabled:false});
       $("#key_pem").attr({readonly:false,disabled:false});
+      $("#encodingaeskey").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');

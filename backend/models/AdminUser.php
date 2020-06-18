@@ -2,9 +2,9 @@
 namespace backend\models;
 
 use Yii;
-use backend\models\AdminUserRole;
+
 /**
- * This is the model class for table "admin_user".
+ * This is the model class for table "{{%admin_user}}".
  *
  * @property string $id
  * @property string $uname
@@ -23,19 +23,18 @@ use backend\models\AdminUserRole;
  * @property string $wechat_platform_open_id
  * @property string $nickname
  * @property string $avatar_url
- * @property integer $bind_phone
+ * @property string $bind_phone
  *
  * @property AdminUserRole[] $adminUserRoles
- * @property SystemUserRole[] $systemUserRoles
  */
-class AdminUser extends BackendUser
+class AdminUser  extends BackendUser
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'admin_user';
+        return '{{%admin_user}}';
     }
 
     /**
@@ -44,14 +43,18 @@ class AdminUser extends BackendUser
     public function rules()
     {
         return [
-            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date'], 'required'],
-            [['status'], 'integer'],
+            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url', 'bind_phone'], 'required'],
+            [['status', 'type'], 'integer'],
             [['create_date', 'update_date'], 'safe'],
             [['uname', 'domain_account', 'create_user'], 'string', 'max' => 100],
             [['password'], 'string', 'max' => 200],
             [['auth_key', 'last_ip'], 'string', 'max' => 50],
             [['is_online'], 'string', 'max' => 1],
-            [['update_user'], 'string', 'max' => 101]
+            [['update_user'], 'string', 'max' => 101],
+            [['access_token', 'nickname'], 'string', 'max' => 255],
+            [['wechat_platform_open_id'], 'string', 'max' => 64],
+            [['avatar_url'], 'string', 'max' => 2048],
+            [['bind_phone'], 'string', 'max' => 11]
         ];
     }
 
@@ -73,10 +76,16 @@ class AdminUser extends BackendUser
             'create_date' => '创建时间',
             'update_user' => '更新人',
             'update_date' => '更新时间',
+            'type' => '用户类型',
+            'access_token' => '登陆凭证',
+            'wechat_platform_open_id' => '微信公众号openid',
+            'nickname' => '昵称',
+            'avatar_url' => '微信头像',
+            'bind_phone' => '绑定手机',
         ];
     }
 
-    /**
+     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAdminUserRoles()
@@ -96,7 +105,7 @@ class AdminUser extends BackendUser
      * 返回数据库字段信息，仅在生成CRUD时使用，如不需要生成CRUD，请注释或删除该getTableColumnInfo()代码
      * COLUMN_COMMENT可用key如下:
      * label - 显示的label
-     * inputType 控件类型, 包含text,select,checkbox,radio,file,password,hidden
+     * inputType 控件类型, 暂时只支持text,hidden  // select,checkbox,radio,file,password,
      * isEdit   是否允许编辑，如果允许编辑将在添加和修改时输入
      * isSearch 是否允许搜索
      * isDisplay 是否在列表中显示
@@ -378,6 +387,144 @@ class AdminUser extends BackendUser
                         'type' => 'datetime',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('update_date'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'type' => array(
+                        'name' => 'type',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '用户类型',
+//                         'dbType' => "smallint(1)",
+                        'defaultValue' => '0',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '1',
+                        'scale' => '',
+                        'size' => '1',
+                        'type' => 'smallint',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('type'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'access_token' => array(
+                        'name' => 'access_token',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '登陆凭证',
+//                         'dbType' => "varchar(255)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '255',
+                        'scale' => '',
+                        'size' => '255',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('access_token'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'wechat_platform_open_id' => array(
+                        'name' => 'wechat_platform_open_id',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '微信公众号openid',
+//                         'dbType' => "varchar(64)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '64',
+                        'scale' => '',
+                        'size' => '64',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('wechat_platform_open_id'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'nickname' => array(
+                        'name' => 'nickname',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '昵称',
+//                         'dbType' => "varchar(255)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '255',
+                        'scale' => '',
+                        'size' => '255',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('nickname'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'avatar_url' => array(
+                        'name' => 'avatar_url',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '微信头像',
+//                         'dbType' => "varchar(2048)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '2048',
+                        'scale' => '',
+                        'size' => '2048',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('avatar_url'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'bind_phone' => array(
+                        'name' => 'bind_phone',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '绑定手机',
+//                         'dbType' => "varchar(11)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '11',
+                        'scale' => '',
+                        'size' => '11',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('bind_phone'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

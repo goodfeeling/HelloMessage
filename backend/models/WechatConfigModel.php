@@ -13,6 +13,7 @@ use Yii;
  * @property string $key
  * @property string $cert_pem
  * @property string $key_pem
+ * @property string $encodingaeskey
  */
 class WechatConfigModel extends \backend\models\BaseModel
 {
@@ -30,10 +31,10 @@ class WechatConfigModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['app_id', 'app_secret', 'mch_id', 'key', 'cert_pem', 'key_pem'], 'required'],
+            [['app_id', 'app_secret', 'mch_id', 'key', 'cert_pem', 'key_pem', 'encodingaeskey'], 'required'],
             [['app_id', 'app_secret', 'key'], 'string', 'max' => 100],
             [['mch_id'], 'string', 'max' => 30],
-            [['cert_pem', 'key_pem'], 'string', 'max' => 255]
+            [['cert_pem', 'key_pem', 'encodingaeskey'], 'string', 'max' => 255]
         ];
     }
 
@@ -50,6 +51,7 @@ class WechatConfigModel extends \backend\models\BaseModel
             'key' => 'Api密钥',
             'cert_pem' => 'apiclient_cert.pem',
             'key_pem' => 'apiclient_key.pem',
+            'encodingaeskey' => '安全加密密钥',
         ];
     }
 
@@ -224,6 +226,29 @@ class WechatConfigModel extends \backend\models\BaseModel
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('key_pem'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'encodingaeskey' => array(
+                        'name' => 'encodingaeskey',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '安全加密密钥',
+//                         'dbType' => "varchar(255)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '255',
+                        'scale' => '',
+                        'size' => '255',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('encodingaeskey'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
