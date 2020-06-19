@@ -28,7 +28,7 @@ use backend\models\AdminUserRole;
  * @property AdminUserRole[] $adminUserRoles
  * @property SystemUserRole[] $systemUserRoles
  */
-class AdminUser extends BackendUser
+class AdminUserC extends BackendUser
 {
     /**
      * @inheritdoc

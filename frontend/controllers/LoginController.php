@@ -12,10 +12,14 @@ class LoginController extends Controller
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        if ($request->isPost) {
-            
-        } else {
-            return $this->render('index');
+        if ( $request->isGet && $request->get('state') == 'now_jump_index' ) {
+            $form = new LoginForm();
+            $form->code = $request->get('code');
+            if ($form->wxLogin()){
+                return $this->render('site/index');
+            } else {
+                return $this->render('index');
+            }
         }
     }
 
