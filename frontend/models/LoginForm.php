@@ -41,7 +41,7 @@ class LoginForm extends BaseModel
             // 实例接口
             $wechat = new \WeChat\Oauth($config);
             // 获取openid和access_token
-            var_dump($_GET['code']);exit();
+            $_GET['code'] = $this->code;
             $result = $wechat->getOauthAccessToken();
             if ($result['errcode'] == 40029) {
                 return [
