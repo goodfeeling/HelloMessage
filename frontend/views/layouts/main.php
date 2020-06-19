@@ -31,6 +31,8 @@ AppAsset::register($this);
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="description" content="Bitter Mobile Template">
     <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
+    <!-- Jquery -->
+    <script src="fornt/js/lib/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -72,8 +74,7 @@ AppAsset::register($this);
     </div>
 
     <!-- ///////////// Js Files ////////////////////  -->
-    <!-- Jquery -->
-    <script src="fornt/js/lib/jquery-3.4.1.min.js"></script>
+
     <!-- Bootstrap-->
     <script src="fornt/js/lib/popper.min.js"></script>
     <script src="fornt/js/lib/bootstrap.min.js"></script>

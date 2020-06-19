@@ -7,6 +7,7 @@ use yii\captcha\Captcha;
 /* @var $this yii\web\View */
 
 $this->title = '登录页面';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <div class="appHeader">
@@ -42,19 +43,19 @@ $this->title = '登录页面';
             <div class="form-group mt-3 mb-3">
                 <div style="position: relative">
                     <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码" style="width: 150px">
-                    <div style="height: 33px;width: 80px;float: right;cursor: pointer; position: absolute;right: 26px;top: 1px"><?php echo Captcha::widget(
-    [
-                                                            'name' => 'captchaimg',
-                                                            'captchaAction' => 'login/captcha',
-                                                            'imageOptions' => [
-                                                                'id' => 'captchaimg',
-                                                                'title' => '换一个',
-                                                                'alt' => '换一个',
-                                                                'style' => ''
-                                                            ],
-                                                            'template' => '{image}'
-                                                        ]
-); ?></div>
+<!--                    <div style="height: 33px;width: 80px;float: right;cursor: pointer; position: absolute;right: 26px;top: 1px">--><?php //echo Captcha::widget(
+//    [
+//                                                            'name' => 'captchaimg',
+//                                                            'captchaAction' => 'login/captcha',
+//                                                            'imageOptions' => [
+//                                                                'id' => 'captchaimg',
+//                                                                'title' => '换一个',
+//                                                                'alt' => '换一个',
+//                                                                'style' => ''
+//                                                            ],
+//                                                            'template' => '{image}'
+//                                                        ]
+//); ?><!--</div>-->
                 </div>
 
             </div>
@@ -81,10 +82,23 @@ $this->title = '登录页面';
         <div class="row other-login">
             <div class="text-muted mb-2" hidden>或者其它登录方式</div>
             <div class="col-6 wechat-login">
-                <a href="">
-                    <img src="images/icon48_wx_button.png" alt="123">
+                <a>
+                    <img src="images/icon48_wx_button.png" id="wechat-contr" alt="123">
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).on('click', '#wechat-contr', function () {
+        $.ajax({
+            url: "<?=$urlManager->createUrl(['login/jump-login-page'])?>",
+            type: "GET",
+            dataType:'json',
+            success: function(res){
+                window.location = res['data']
+            }
+        })
+    })
+</script>
