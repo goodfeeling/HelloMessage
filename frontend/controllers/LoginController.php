@@ -3,13 +3,8 @@
 
 namespace frontend\controllers;
 
+use frontend\models\LoginForm;
 use Yii;
-use yii\web\IdentityInterface;
-use yii\web\Cookie;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use backend\models\AdminUser;
-use common\utils\CommonFun;
 use yii\base\Controller;
 
 class LoginController extends Controller
@@ -26,7 +21,10 @@ class LoginController extends Controller
 
     public function actionJumpLoginPage()
     {
-        
+        $login_model = new LoginForm();
+        $res = $login_model->jumpLogin();
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $res;
     }
 
     public function actionRegister()

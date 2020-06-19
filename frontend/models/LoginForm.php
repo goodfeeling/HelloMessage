@@ -1,9 +1,10 @@
 <?php
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
+use yii\helpers\Url;
 
-class LoginForm extends \backend\models\BaseModel
+class LoginForm extends BaseModel
 {
     public $code;
     public $encrypted_data;
@@ -38,19 +39,20 @@ class LoginForm extends \backend\models\BaseModel
     {
         try {
             $config = $this->getWxConfig('simple');
-            // 实例接口
             $wechat = new \WeChat\Oauth($config);
             // 执行操作
-            $redirect_url = '';
-            $state = '';
-            $scope = '';
-            $result = $wechat->getOauthRedirect($redirect_url, $state, $scope);
-            return $result;
+            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 123);
+            return [
+                'msg' => '获取成功',
+                'status' => 0,
+                'data' => $result
+            ];
         } catch (Exception $e){
-        
-            // 异常处理
-            echo  $e->getMessage();
-            
+           return  [
+               'msg' => '$e->getMessage()',
+               'status' => 1,
+               'data' => null
+           ];
         }
     }
 }
