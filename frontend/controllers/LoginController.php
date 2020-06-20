@@ -16,9 +16,9 @@ class LoginController extends Controller
         if ( $request->isGet && $request->get('state')=='now_jump_index' ) {
             $form = new LoginForm();
             $form->code = $request->get('code');
-            if ( !$form->wxLogin() ){
-                $object = new \yii\web\Response();
-                $object->redirect(Url::toRoute('site/index', true));
+            $res = $form->wxLogin();
+            if ( !$res['statue'] ){
+                return $this->render('@app/views/site/index');
             }
         }
         return $this->render('index');

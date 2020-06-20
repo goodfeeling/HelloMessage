@@ -102,6 +102,7 @@ class LoginForm extends BaseModel
                 $checkData->city = $userInfo['city'];
                 $res = $checkData->save();
             }
+            
             if ( $res ) {
                 $session = Yii::$app->session;
                 // 存入Sessions
@@ -113,7 +114,8 @@ class LoginForm extends BaseModel
                 $cookies = Yii::$app->response->cookies;
                 // 在要发送的响应中添加一个新的 cookie
                 $cookies->add(new \yii\web\Cookie([
-                    'access_token' => $result['access_token']
+                    'name' => 'access_token',
+                    'value' => $result['access_token']
                 ]));
 
                 return [
@@ -131,7 +133,7 @@ class LoginForm extends BaseModel
 
         } catch (\yii\base\Exception $e){
             return  [
-                'msg' => '登录失败请联系管理员',
+                'msg' => $e->getMessage(),
                 'status' => 1,
                 'data' => null
             ];
