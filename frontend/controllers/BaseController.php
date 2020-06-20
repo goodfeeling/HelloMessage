@@ -19,7 +19,11 @@ class BaseController extends Controller
     public function beforeAction($action)
     {
         $session = \Yii::$app->session;
-        $userData = AdminUser::findOne(['access_token'=>$session['access_token']['value']]);
+        if (!($access_token = $session['access_token']['value'])) {
+            $cookies = \Yii::$app->request->cookies;
+            $access_token =$cookies->get('access_token');
+        }
+        $userData = AdminUser::findOne(['access_token' => $access_token]);
         $this->userData = $userData;
         return true;
     }
