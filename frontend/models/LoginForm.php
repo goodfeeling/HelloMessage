@@ -49,23 +49,22 @@ class LoginForm extends BaseModel
                     'data' => null
                 ];
             }
+            
             // 检查AccessToken
             $checkToken = $wechat->checkOauthAccessToken($result['access_token'], $result['openid']);
-            if( !($checkToken['errcode'] == 0) ) {
+            
+            if( !($checkToken['errcode'] == 0 )) {
                 // 刷新token
                 $result = $wechat->getOauthRefreshToken($result['refresh_token']);
-            } else {
-                return [
-                    'msg' => $checkToken['errmsg'],
-                    'status' => $checkToken['errcode'],
-                    'data' => null
-                ];
-            }
+            } 
+           
             // 存数据库
             $userModel = new AdminUser();
             $checkData = $userModel::findOne(['wechat_platform_open_id'=>$result['openid']]);
+            
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
+            var_dump($userInfo);exit;
             if ($userInfo['errcode'] == 40003) {
                 return [
                     'msg' => $userInfo['errmsg'],
@@ -73,27 +72,29 @@ class LoginForm extends BaseModel
                     'data' => null
                 ];
             }
+             
             if (empty($checkData)) {
                 $userModel->uname = $result['openid'];
                 $userModel->password = \Yii::$app->security->generatePasswordHash(\Yii::$app->security->generateRandomString(), 5);;
                 $userModel->last_ip = \Yii::$app->request->userIP;
                 $userModel->status = 10;
                 $userModel->create_user = 'front';
-                $userModel->create_date = date('y-m-d h:i:s');
+                $userModel->create_date = date('yyyy-mm-dd h:i:s');
                 $userModel->update_user = 'front';
-                $userModel->update_date = date('y-m-d h:i:s');
+                $userModel->update_date = date('yyyy-mm-dd-dd h:i:s');
                 $userModel->type = 2;
                 $userModel->access_token = $result['access_token'];
                 $userModel->wechat_platform_open_id = $result['openid'];
                 $userModel->nickname = $userInfo['nickname'];
-                $userModel->avatar_url = $userInfo['avatar_url'];
+                $userModel->avatar_url = $userInfo['headimgurl'];
                 $userModel->bind_phone = $userInfo['bind_phone'];
             } else {
                 $userModel->wechat_platform_open_id = $result['openid'];
                 $userModel->nickname = $userInfo['nickname'];
-                $userModel->avatar_url = $userInfo['avatar_url'];
+                $userModel->avatar_url = $userInfo['headimgurl'];
             }
-            $userModel->save();
+            
+            var_dump($userModel);exit;
             $session = Yii::$app->session;
             // 存入Sessions
             $session->set('accessToken',$result['access_token']);
@@ -128,7 +129,7 @@ class LoginForm extends BaseModel
             $config = $this->getWxConfig('simple');
             $wechat = new \WeChat\Oauth($config);
             // 执行操作
-            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index');
+            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index','snsapi_userinfo');
             return [
                 'msg' => '获取成功',
                 'status' => 0,

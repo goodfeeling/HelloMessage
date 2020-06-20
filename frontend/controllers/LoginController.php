@@ -6,17 +6,21 @@ namespace frontend\controllers;
 use frontend\models\LoginForm;
 use Yii;
 use yii\base\Controller;
+use yii\helpers\Url;
 
 class LoginController extends Controller
 {
     public function actionIndex()
     {
+        
         $request = Yii::$app->request;
-        if ( $request->isGet ) {
+        if ( $request->isGet && $request->get('state')=='now_jump_index' ) {
             $form = new LoginForm();
             $form->code = $request->get('code');
+            
             if ($form->wxLogin()){
-                return $this->render('site/index');
+                $object = new \yii\web\Response();
+                $object->redirect(Url::toRoute('site/index', true));
             }
         }
         return $this->render('index');
