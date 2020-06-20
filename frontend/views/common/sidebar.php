@@ -9,14 +9,8 @@ use yii\helpers\Url;
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= $userInfo->avatar_url ?>" alt="avatar" class="avatar">
-            <h2 class="title"><?= $userInfo->nickname ?></h2>
-<!--            <h5 class="lead">-->
-<!--                <i class="icon ion-ios-pin mr-1"></i>-->
-<!--                --><?//= $userInfo->city ?>
-<!--            </h5>-->
-
-
+            <img src="<?= isset($userInfo->avatar_url ) ? $userInfo->avatar_url : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= isset($userInfo->nickname) ? $userInfo->nickname :'请点击头像进行登录' ?></h2>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
