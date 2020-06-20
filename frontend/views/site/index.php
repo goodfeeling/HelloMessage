@@ -200,6 +200,6 @@ $this->title = '首页';
         </div>
     </div>
             <!-- Sidebar Menu -->
-    <?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php',['userInfo'=>$userInfo]); ?>
+    <?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php',['userInfo'=>$userInfo,'is_login'=>empty($userInfo) ? '0':'1']]); ?>
     <!-- * Sidebar Menu -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>
