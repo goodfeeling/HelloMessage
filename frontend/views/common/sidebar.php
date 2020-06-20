@@ -62,7 +62,7 @@ use yii\helpers\Url;
 </div>
 
 <script>
-    var is_login = <?= empty($userInfo) ?>;
+    var is_login = <?php echo empty($userInfo) ?>;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
             if (is_login) {
