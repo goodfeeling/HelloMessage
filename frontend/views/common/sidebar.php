@@ -11,10 +11,10 @@ use yii\helpers\Url;
         <div class="profilebox">
             <img src="<?= $userInfo->avatar_url ?>" alt="avatar" class="avatar">
             <h2 class="title"><?= $userInfo->nickname ?></h2>
-            <h5 class="lead">
-                <i class="icon ion-ios-pin mr-1"></i>
-                <?= $userInfo->city ?>
-            </h5>
+<!--            <h5 class="lead">-->
+<!--                <i class="icon ion-ios-pin mr-1"></i>-->
+<!--                --><?//= $userInfo->city ?>
+<!--            </h5>-->
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
@@ -60,11 +60,13 @@ use yii\helpers\Url;
 </div>
 
 <script>
-    var is_login = 0;
+    var is_login = <?= empty($userInfo) ?>;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
-            if (is_login == 0) {
+            if (is_login) {
                 window.location.href = "<?php echo Url::toRoute(['login/index'], true) ?>";
+            } else {
+                window.location.href = "<?php echo Url::toRoute(['site/setting'], true) ?>";
             }
         })
     }
