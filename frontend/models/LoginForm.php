@@ -93,7 +93,7 @@ class LoginForm extends BaseModel
                 $userModel->avatar_url = $userInfo['headimgurl'];
                 $userModel->city = $userInfo['city'];
             }
-            if ($userModel->validate()) {
+            if (!$userModel->validate()) {
                 return [
                     'msg' => serialize($userModel->getErrors()),
                     'status' => 1,
