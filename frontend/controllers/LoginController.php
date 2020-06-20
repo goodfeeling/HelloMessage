@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\AdminUser;
 use frontend\models\LoginForm;
 use Yii;
 use yii\base\Controller;
@@ -18,7 +19,13 @@ class LoginController extends Controller
             $form->code = $request->get('code');
             $res = $form->wxLogin();
             if ( !$res['statue'] ){
-                return $this->render('@app/views/site/index');
+                $session = \Yii::$app->session;
+                if (!($access_token = $session['access_token']['value'])) {
+                    $cookies = \Yii::$app->request->cookies;
+                    $access_token =$cookies->get('access_token');
+                }
+                $userData = AdminUser::findOne(['access_token' => $access_token]);
+                return $this->render('@app/views/site/index',['userInfo'=>$userData]);
             }
         }
         return $this->render('index');
