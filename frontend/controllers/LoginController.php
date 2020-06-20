@@ -12,13 +12,11 @@ class LoginController extends Controller
 {
     public function actionIndex()
     {
-        
         $request = Yii::$app->request;
         if ( $request->isGet && $request->get('state')=='now_jump_index' ) {
             $form = new LoginForm();
             $form->code = $request->get('code');
-            
-            if ($form->wxLogin()){
+            if ( !$form->wxLogin() ){
                 $object = new \yii\web\Response();
                 $object->redirect(Url::toRoute('site/index', true));
             }

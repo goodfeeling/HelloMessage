@@ -61,10 +61,8 @@ class LoginForm extends BaseModel
             // 存数据库
             $userModel = new AdminUser();
             $checkData = $userModel::findOne(['wechat_platform_open_id'=>$result['openid']]);
-            
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
-            var_dump($userInfo);exit;
             if ($userInfo['errcode'] == 40003) {
                 return [
                     'msg' => $userInfo['errmsg'],
@@ -88,27 +86,37 @@ class LoginForm extends BaseModel
                 $userModel->nickname = $userInfo['nickname'];
                 $userModel->avatar_url = $userInfo['headimgurl'];
                 $userModel->bind_phone = $userInfo['bind_phone'];
+                $userModel->city = $userInfo['city'];
             } else {
                 $userModel->wechat_platform_open_id = $result['openid'];
                 $userModel->nickname = $userInfo['nickname'];
                 $userModel->avatar_url = $userInfo['headimgurl'];
+                $userModel->city = $userInfo['city'];
             }
-            
-            var_dump($userModel);exit;
-            $session = Yii::$app->session;
-            // 存入Sessions
-            $session->set('accessToken',$result['access_token']);
-            // 设置cookie
-            $cookies = Yii::$app->response->cookies;
-            // 在要发送的响应中添加一个新的 cookie
-            $cookies->add(new \yii\web\Cookie([
-                'accessToken' => $result['access_token']
-            ]));
-            return [
-                'msg'=>'登录成功',
-                'statue'=>0,
-                'data'=>null
-            ];
+
+            if ( $userModel->save() ) {
+                $session = Yii::$app->session;
+                // 存入Sessions
+                $session->set('accessToken',$result['access_token']);
+                // 设置cookie
+                $cookies = Yii::$app->response->cookies;
+                // 在要发送的响应中添加一个新的 cookie
+                $cookies->add(new \yii\web\Cookie([
+                    'accessToken' => $result['access_token']
+                ]));
+                return [
+                    'msg'=>'登录成功',
+                    'statue'=>0,
+                    'data'=>null
+                ];
+            } else {
+                return [
+                    'msg'=>'登录失败',
+                    'statue'=>1,
+                    'data'=>null
+                ];
+            }
+
         } catch (\yii\base\Exception $e){
             return  [
                 'msg' => '$e->getMessage()',

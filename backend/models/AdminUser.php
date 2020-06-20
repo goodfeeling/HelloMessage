@@ -24,10 +24,11 @@ use Yii;
  * @property string $nickname
  * @property string $avatar_url
  * @property string $bind_phone
+ * @property string $city
  *
  * @property AdminUserRole[] $adminUserRoles
  */
-class AdminUser  extends BackendUser
+class AdminUser extends BackendUser
 {
     /**
      * @inheritdoc
@@ -54,7 +55,8 @@ class AdminUser  extends BackendUser
             [['access_token', 'nickname'], 'string', 'max' => 255],
             [['wechat_platform_open_id'], 'string', 'max' => 64],
             [['avatar_url'], 'string', 'max' => 2048],
-            [['bind_phone'], 'string', 'max' => 11]
+            [['bind_phone'], 'string', 'max' => 11],
+            [['city'], 'string', 'max' => 20]
         ];
     }
 
@@ -82,10 +84,11 @@ class AdminUser  extends BackendUser
             'nickname' => '昵称',
             'avatar_url' => '微信头像',
             'bind_phone' => '绑定手机',
+            'city' => '城市',
         ];
     }
 
-     /**
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getAdminUserRoles()
@@ -525,6 +528,29 @@ class AdminUser  extends BackendUser
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('bind_phone'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'city' => array(
+                        'name' => 'city',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '城市',
+//                         'dbType' => "varchar(20)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '20',
+                        'scale' => '',
+                        'size' => '20',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('city'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
