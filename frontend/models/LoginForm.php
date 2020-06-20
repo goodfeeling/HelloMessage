@@ -103,12 +103,15 @@ class LoginForm extends BaseModel
             if ( $userModel->save() ) {
                 $session = Yii::$app->session;
                 // 存入Sessions
-                $session->set('accessToken',$result['access_token']);
+                $session['access_token'] = [
+                    'value'=>$result['access_token'],
+                    'lifetime'=>7200,
+                ];
                 // 设置cookie
                 $cookies = Yii::$app->response->cookies;
                 // 在要发送的响应中添加一个新的 cookie
                 $cookies->add(new \yii\web\Cookie([
-                    'accessToken' => $result['access_token']
+                    'access_token' => $result['access_token']
                 ]));
                 return [
                     'msg'=>'登录成功',

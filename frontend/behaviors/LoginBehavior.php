@@ -19,8 +19,11 @@ class LoginBehavior extends ActionFilter
     {
         $object = new \yii\web\Response();
         $cookies = \Yii::$app->request->cookies;
-        if (($cookie = $cookies->get('language')) !== null) {
-            $access_token = $cookie->value;
+        $session = \Yii::$app->session;
+        if (($cookie = $cookies->get('access_token')) !== null) {
+            if ($session['access_token']['value'] == $cookie ) {
+                $access_token = $cookie->value;
+            }
         }
          if (!$access_token) {
              $object->redirect(Url::toRoute('login/index', true));
