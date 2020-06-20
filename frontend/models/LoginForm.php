@@ -87,20 +87,22 @@ class LoginForm extends BaseModel
                 $userModel->avatar_url = $userInfo['headimgurl'];
                 $userModel->bind_phone = $userInfo['bind_phone'];
                 $userModel->city = $userInfo['city'];
+                $res = $userModel->save();
+                if (!$userModel->validate()) {
+                    return [
+                        'msg' => serialize($userModel->getErrors()),
+                        'status' => 1,
+                        'data' => null
+                    ];
+                }
             } else {
-                $userModel->wechat_platform_open_id = $result['openid'];
-                $userModel->nickname = $userInfo['nickname'];
-                $userModel->avatar_url = $userInfo['headimgurl'];
-                $userModel->city = $userInfo['city'];
+                $checkData->wechat_platform_open_id = $result['openid'];
+                $checkData->nickname = $userInfo['nickname'];
+                $checkData->avatar_url = $userInfo['headimgurl'];
+                $checkData->city = $userInfo['city'];
+                $res = $checkData->save();
             }
-            if (!$userModel->validate()) {
-                return [
-                    'msg' => serialize($userModel->getErrors()),
-                    'status' => 1,
-                    'data' => null
-                ];
-            }
-            if ( $userModel->save() ) {
+            if ( $res ) {
                 $session = Yii::$app->session;
                 // 存入Sessions
                 $session['access_token'] = [
@@ -113,6 +115,7 @@ class LoginForm extends BaseModel
                 $cookies->add(new \yii\web\Cookie([
                     'access_token' => $result['access_token']
                 ]));
+
                 return [
                     'msg'=>'登录成功',
                     'statue'=>0,
@@ -120,7 +123,7 @@ class LoginForm extends BaseModel
                 ];
             } else {
                 return [
-                    'msg'=> serialize($userModel->getErrors()),
+                    'msg'=> '登录失败请联系管理员',
                     'statue'=>1,
                     'data'=>null
                 ];
@@ -128,7 +131,7 @@ class LoginForm extends BaseModel
 
         } catch (\yii\base\Exception $e){
             return  [
-                'msg' => '$e->getMessage()',
+                'msg' => '登录失败请联系管理员',
                 'status' => 1,
                 'data' => null
             ];
