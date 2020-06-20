@@ -93,7 +93,13 @@ class LoginForm extends BaseModel
                 $userModel->avatar_url = $userInfo['headimgurl'];
                 $userModel->city = $userInfo['city'];
             }
-
+            if ($userModel->validate()) {
+                return [
+                    'msg' => serialize($userModel->getErrors()),
+                    'status' => 1,
+                    'data' => null
+                ];
+            }
             if ( $userModel->save() ) {
                 $session = Yii::$app->session;
                 // 存入Sessions
@@ -111,7 +117,7 @@ class LoginForm extends BaseModel
                 ];
             } else {
                 return [
-                    'msg'=>'登录失败',
+                    'msg'=> serialize($userModel->getErrors()),
                     'statue'=>1,
                     'data'=>null
                 ];

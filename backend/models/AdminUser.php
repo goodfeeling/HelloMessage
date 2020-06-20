@@ -44,17 +44,16 @@ class AdminUser extends BackendUser
     public function rules()
     {
         return [
-            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url', 'bind_phone'], 'required'],
+            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url'], 'required'],
             [['status', 'type'], 'integer'],
             [['create_date', 'update_date'], 'safe'],
             [['uname', 'domain_account', 'create_user'], 'string', 'max' => 100],
-            [['password'], 'string', 'max' => 200],
+            [['password', 'avatar_url'], 'string', 'max' => 200],
             [['auth_key', 'last_ip'], 'string', 'max' => 50],
             [['is_online'], 'string', 'max' => 1],
             [['update_user'], 'string', 'max' => 101],
             [['access_token', 'nickname'], 'string', 'max' => 255],
             [['wechat_platform_open_id'], 'string', 'max' => 64],
-            [['avatar_url'], 'string', 'max' => 2048],
             [['bind_phone'], 'string', 'max' => 11],
             [['city'], 'string', 'max' => 20]
         ];
@@ -494,14 +493,14 @@ class AdminUser extends BackendUser
                         'allowNull' => false,
 //                         'autoIncrement' => false,
 //                         'comment' => '微信头像',
-//                         'dbType' => "varchar(2048)",
+//                         'dbType' => "varchar(200)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '2048',
+                        'precision' => '200',
                         'scale' => '',
-                        'size' => '2048',
+                        'size' => '200',
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('avatar_url'),
@@ -514,7 +513,7 @@ class AdminUser extends BackendUser
                     ),
 		'bind_phone' => array(
                         'name' => 'bind_phone',
-                        'allowNull' => false,
+                        'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '绑定手机',
 //                         'dbType' => "varchar(11)",
