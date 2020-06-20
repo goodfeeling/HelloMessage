@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use backend\models\ActivityModel;
+use backend\models\AdminUser;
 use Yii;
 use frontend\behaviors\LoginBehavior;
 /**
@@ -31,7 +32,8 @@ class SiteController extends BaseController
             ->limit(1)
             ->all();
         return $this->render('index',[
-            'model'=>$model[0]
+            'model'=>$model[0],
+            'userInfo'=>$this->userData
         ]);
     }
 

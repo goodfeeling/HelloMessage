@@ -10,11 +10,11 @@ use yii\helpers\Url;
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="images/未登录头象.png" alt="avatar" class="avatar">
-            <h2 class="title">点击头像登录</h2>
+            <img src="<?= $userData->avatar_url ?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= $userData->nickname ?></h2>
             <h5 class="lead">
                 <i class="icon ion-ios-pin mr-1"></i>
-                广州
+                <?= $userData->city ?>
             </h5>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
