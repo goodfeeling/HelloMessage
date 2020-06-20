@@ -3,18 +3,17 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-
 ?>
 
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= $userData->avatar_url ?>" alt="avatar" class="avatar">
-            <h2 class="title"><?= $userData->nickname ?></h2>
+            <img src="<?= $userInfo->avatar_url ?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= $userInfo->nickname ?></h2>
             <h5 class="lead">
                 <i class="icon ion-ios-pin mr-1"></i>
-                <?= $userData->city ?>
+                <?= $userInfo->city ?>
             </h5>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">

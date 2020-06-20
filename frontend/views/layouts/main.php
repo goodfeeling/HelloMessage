@@ -48,10 +48,6 @@ AppAsset::register($this);
     <?= $content ?>
     <!-- * appCapsule -->
 
-    <!-- Sidebar Menu -->
-    <?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php'); ?>
-    <!-- * Sidebar Menu -->
-
     <!-- Small modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" hidden>
     </button>

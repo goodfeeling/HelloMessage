@@ -96,6 +96,7 @@ class LoginForm extends BaseModel
                     ];
                 }
             } else {
+                $checkData->access_token = $result['access_token'];
                 $checkData->wechat_platform_open_id = $result['openid'];
                 $checkData->nickname = $userInfo['nickname'];
                 $checkData->avatar_url = $userInfo['headimgurl'];
