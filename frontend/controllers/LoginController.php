@@ -7,6 +7,7 @@ use backend\models\AdminUser;
 use frontend\models\LoginForm;
 use Yii;
 use yii\base\Controller;
+use frontend\models\ActivityForm;
 use yii\helpers\Url;
 
 class LoginController extends Controller
@@ -25,7 +26,10 @@ class LoginController extends Controller
                     $access_token =$cookies->get('access_token');
                 }
                 $userData = AdminUser::findOne(['access_token' => $access_token]);
-                return $this->render('@app/views/site/index',['userInfo'=>$userData]);
+                $form = new ActivityForm();
+                $res = $form->getActivityData();
+                return $this->render('@app/views/site/index',['userInfo'=>$userData,'model'=>$res['model'],
+                'recomment'=>$res['recomment'],]);
             }
         }
         return $this->render('index');

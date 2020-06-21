@@ -40,7 +40,7 @@ class SiteController extends BaseController
 
     /**
      * Displays post.
-     *
+     *`
      * @return mixed
      */
     public function actionPost()
