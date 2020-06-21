@@ -3,7 +3,6 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '首页';
-
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
