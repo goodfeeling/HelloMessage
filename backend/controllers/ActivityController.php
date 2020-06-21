@@ -97,6 +97,9 @@ class ActivityController extends BaseController
               if(empty($model->status) == true){
                   $model->status = 1;
               }
+              if(empty($model->sort) == true){
+                  $model->sort = 1;
+              }
         
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
@@ -126,6 +129,9 @@ class ActivityController extends BaseController
         
              if(empty($model->status) == true){
                  $model->status = 1;
+             }
+             if(empty($model->sort) == true){
+                 $model->sort = 1;
              }
         
         

@@ -19,6 +19,7 @@ use Yii;
  * @property integer $author_id
  * @property integer $pic_url_id
  * @property integer $views
+ * @property integer $sort
  */
 class ActivityModel extends \backend\models\BaseModel
 {
@@ -39,12 +40,13 @@ class ActivityModel extends \backend\models\BaseModel
             [['name', 'addtime', 'endtime'], 'required'],
             [['addtime', 'endtime'], 'safe'],
             [['describe'], 'string'],
-            [['join_number', 'status', 'author_id','views'], 'integer'],
+            [['join_number', 'status', 'author_id', 'views'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['money'], 'string', 'max' => 10],
             [['theme'], 'string', 'max' => 50],
             [['keyword'], 'string', 'max' => 100],
-            [['pic_url_id'], 'string', 'max' => 1]
+            [['pic_url_id'], 'string', 'max' => 1],
+            [['sort'], 'string', 'max' => 5]
         ];
     }
 
@@ -67,6 +69,7 @@ class ActivityModel extends \backend\models\BaseModel
             'author_id' => '作者id',
             'pic_url_id' => '大图id',
             'views' => '浏览量',
+            'sort' => '排序',
         ];
     }
 
@@ -363,29 +366,52 @@ class ActivityModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-            'views' => array(
-                'name' => 'views',
-                'allowNull' => true,
+		'views' => array(
+                        'name' => 'views',
+                        'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '浏览量',
 //                         'dbType' => "int(10)",
-                'defaultValue' => '',
-                'enumValues' => null,
-                'isPrimaryKey' => false,
-                'phpType' => 'integer',
-                'precision' => '10',
-                'scale' => '',
-                'size' => '10',
-                'type' => 'integer',
-                'unsigned' => false,
-                'label'=>$this->getAttributeLabel('views'),
-                'inputType' => 'text',
-                'isEdit' => true,
-                'isSearch' => false,
-                'isDisplay' => true,
-                'isSort' => true,
+                        'defaultValue' => '0',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '10',
+                        'scale' => '',
+                        'size' => '10',
+                        'type' => 'integer',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('views'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
 //                         'udc'=>'',
-            ),
+                    ),
+		'sort' => array(
+                        'name' => 'sort',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '排序',
+//                         'dbType' => "tinyint(5)",
+                        'defaultValue' => '1',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '5',
+                        'scale' => '',
+                        'size' => '5',
+                        'type' => 'tinyint',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('sort'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
 		        );
         
     }
