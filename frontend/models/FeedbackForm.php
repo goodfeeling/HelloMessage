@@ -3,7 +3,7 @@ namespace backend\models;
 
 use Yii;
 
-class FeedbackForm extends \backend\models\BaseModel
+class FeedbackForm extends extends BaseModel
 {
     /**
      * @inheritdoc

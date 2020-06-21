@@ -12,26 +12,27 @@ $this->title = '首页';
         <div class="appContent">
             <!-- Card Overlay Carousel -->
             <div class="cardOverlayCarousel owl-carousel mt-2 mb-4">
+                <?php foreach ($recomment as $key=>$value) : ?>
                 <!-- item -->
                 <div class="item">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="card card-overlay text-white">
-                        <img src="fornt/img/sample/photo8.jpg" class="card-img img-fluid" alt="image">
+                    <a href="<?php echo Url::to(['activity/post','id' => $value['id']]) ?>" class="card card-overlay text-white">
+                        <img src="<?= $value['img_url'] ?>" class="card-img img-fluid" alt="image">
                         <div class="card-img-overlay">
                             <div class="header row">
-                                <div class="col-8">TRAVEL</div>
+                                <div class="col-8"><?= $value['keyword'] ?></div>
                                 <div class="col-4 text-right">
-                                    <i class="icon ion-ios-eye"></i> 523
+                                    <i class="icon ion-ios-eye"></i> <?= $value['views'] ?>
                                 </div>
                             </div>
                             <div class="content">
-                                <h1>Top 10 Travel Bloggers You Should Already Be Following</h1>
+                                <h1><?= $value['name'] ?></h1>
                                 <footer>
                                     <div class="author">
-                                        <img src="fornt/img/sample/avatar3.jpg" alt="avatar">
-                                        Marti Valencia
+                                        <img src="<?= $value['avatar_url'] ?>" alt="avatar">
+                                        <?= $value['nickname'] ?>
                                     </div>
                                     <div class="date">
-                                        5 hours ago
+                                        <?= $value['addtime'] ?>
                                     </div>
                                 </footer>
                             </div>
@@ -39,87 +40,7 @@ $this->title = '首页';
                     </a>
                 </div>
                 <!-- * item -->
-                <!-- item -->
-                <div class="item">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="card card-overlay text-white">
-                        <img src="fornt/img/sample/photo5.jpg" class="card-img img-fluid" alt="image">
-                        <div class="card-img-overlay">
-                            <div class="header row">
-                                <div class="col-8">EVENTS</div>
-                                <div class="col-4 text-right">
-                                    <i class="icon ion-ios-heart"></i> 12K
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h1>The World's Largest Pillow Fight is Also a Festival</h1>
-                                <footer>
-                                    <div class="author">
-                                        <img src="fornt/img/sample/avatar.jpg" alt="avatar">
-                                        Sofie Fulloway
-                                    </div>
-                                    <div class="date">
-                                        2 hours ago
-                                    </div>
-                                </footer>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="item">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="card card-overlay text-white">
-                        <img src="fornt/img/sample/photo11.jpg" class="card-img img-fluid" alt="image">
-                        <div class="card-img-overlay">
-                            <div class="header row">
-                                <div class="col-8">SPORTS</div>
-                                <div class="col-4 text-right">
-                                    <i class="icon ion-ios-heart"></i> 12K
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h1>Jon Julio praises Peri’s resilience after testing week</h1>
-                                <footer>
-                                    <div class="author">
-                                        <img src="fornt/img/sample/avatar5.jpg" alt="avatar">
-                                        Jackie Pearson
-                                    </div>
-                                    <div class="date">
-                                        2 hours ago
-                                    </div>
-                                </footer>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="item">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="card card-overlay text-white">
-                        <img src="fornt/img/sample/photo10.jpg" class="card-img img-fluid" alt="image">
-                        <div class="card-img-overlay">
-                            <div class="header row">
-                                <div class="col-8">WORLD</div>
-                                <div class="col-4 text-right">
-                                    <i class="icon ion-ios-heart"></i> 12K
-                                </div>
-                            </div>
-                            <div class="content">
-                                <h1>Best of Skyscrapers in the World</h1>
-                                <footer>
-                                    <div class="author">
-                                        <img src="fornt/img/sample/avatar6.jpg" alt="avatar">
-                                        Vincent Hunt
-                                    </div>
-                                    <div class="date">
-                                        2 hours ago
-                                    </div>
-                                </footer>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- * item -->
+                <?php endforeach ?>
             </div>
             <!-- * Card Overlay Carousel -->
 
@@ -135,66 +56,23 @@ $this->title = '首页';
 
             <!-- post list -->
             <div class="row">
+            <?php foreach ($model as $key=>$value) : ?>
                 <!-- item -->
                 <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="postItem">
+                    <a href="<?php echo Url::to(['activity/post','id' => $value['id']]) ?>" class="postItem">
                         <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo11.jpg" alt="image" class="image">
-                            <div class="badge badge-warning">SPORT</div>
+                            <img src="<?= $value['img_url'] ?>" alt="image" class="image">
+                            <div class="badge badge-warning"><?= $value['keyword'] ?></div>
                         </div>
-                        <h2 class="title">Juxon praises Peri’s resilience after testing week</h2>
+                        <h2 class="title"><?= $value['name'] ?></h2>
                         <footer>
-                            <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-                            25 Sep 2019
+                            <img src="<?= $value['img_url'] ?>" alt="avatar" class="avatar">
+                            <?= $value['addtime'] ?>
                         </footer>
                     </a>
                 </div>
                 <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo8.jpg" alt="image" class="image">
-                            <div class="badge badge-success">TRAVEL</div>
-                        </div>
-                        <h2 class="title">Top 10 Travel Bloggers You Should Follow</h2>
-                        <footer>
-                            <img src="fornt/img/sample/avatar2.jpg" alt="avatar" class="avatar">
-                            21 Sep 2019
-                        </footer>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo3.jpg" alt="image" class="image">
-                            <div class="badge badge-danger">FOODS</div>
-                        </div>
-                        <h2 class="title">Is Orange Juice the Enemy of the Disease?</h2>
-                        <footer>
-                            <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-                            15 Sep 2019
-                        </footer>
-                    </a>
-                </div>
-                <!-- * item -->
-                <!-- item -->
-                <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post']) ?>" class="postItem">
-                        <div class="imageWrapper">
-                            <img src="fornt/img/sample/photo4.jpg" alt="image" class="image">
-                            <div class="badge badge-info">HEALTH</div>
-                        </div>
-                        <h2 class="title">Check the Best Selling Furniture of This Year</h2>
-                        <footer>
-                            <img src="fornt/img/sample/avatar.jpg" alt="avatar" class="avatar">
-                            12 Sep 2019
-                        </footer>
-                    </a>
-                </div>
-                <!-- * item -->
+                <?php endforeach ?>
             </div>
 
         </div>

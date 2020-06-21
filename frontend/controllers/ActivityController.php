@@ -3,56 +3,20 @@
 
 namespace frontend\controllers;
 
-
+use frontend\models\ActivityForm;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use frontend\behaviors\LoginBehavior;
+use Yii;
 
 class ActivityController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+            'login' => [
+                'class'=> LoginBehavior::className()
+            ]
         ];
     }
 
@@ -73,7 +37,13 @@ class ActivityController extends BaseController
      */
     public function actionPost()
     {
-        return $this->render('post');
+        $request = Yii::$app->request;
+        $form = new ActivityForm();
+        $form->id = $request->get('id');
+        $res = $form->getData();
+        return $this->render('post',[
+            'data'=>$res
+            ]);
     }
     
     /**
