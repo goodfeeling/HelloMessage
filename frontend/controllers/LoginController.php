@@ -18,18 +18,24 @@ class LoginController extends Controller
         if ( $request->isGet && $request->get('state')=='now_jump_index' ) {
             $form = new LoginForm();
             $form->code = $request->get('code');
-            $res = $form->wxLogin();
+            try{
+                $res = $form->wxLogin();
+            } catch(\WeChat\Exceptions\InvalidResponseException $e) {
+                return $this->render('index');
+            }
+
             if ( !$res['statue'] ){
                 $session = \Yii::$app->session;
                 if (!($access_token = $session['access_token']['value'])) {
                     $cookies = \Yii::$app->request->cookies;
                     $access_token =$cookies->get('access_token');
                 }
+
                 $userData = AdminUser::findOne(['access_token' => $access_token]);
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
-                return $this->render('@app/views/site/index',['userInfo'=>$userData,'model'=>$res['model'],
-                'recomment'=>$res['recomment'],]);
+
+                return $this->render('@app/views/site/index',['userInfo'=>$userData,'model'=>$res['model'],'recomment'=>$res['recomment'],]);
             }
         }
         return $this->render('index');
