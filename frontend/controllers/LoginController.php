@@ -20,23 +20,36 @@ class LoginController extends Controller
             $form->code = $request->get('code');
             try{
                 $res = $form->wxLogin();
-            } catch(\WeChat\Exceptions\InvalidResponseException $e) {
-                return $this->render('index');
-            }
 
-            if ( !$res['statue'] ){
+                if ( !$res['statue'] ){
+                    
+                    $session = \Yii::$app->session;
+                    if (!($access_token = $session['access_token']['value'])) {
+                        $cookies = \Yii::$app->request->cookies;
+                        $access_token =$cookies->get('access_token');
+                    }
+    
+                    $userData = AdminUser::findOne(['access_token' => $access_token]);
+                    $form = new ActivityForm();
+                    $res = $form->getActivityData();
+    
+                    return $this->render('@app/views/site/index',['userInfo'=>$userData,'model'=>$res['model'],'recomment'=>$res['recomment'],]);
+                }
+            } catch(\WeChat\Exceptions\InvalidResponseException $e) {
+
                 $session = \Yii::$app->session;
                 if (!($access_token = $session['access_token']['value'])) {
                     $cookies = \Yii::$app->request->cookies;
                     $access_token =$cookies->get('access_token');
                 }
-
                 $userData = AdminUser::findOne(['access_token' => $access_token]);
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
 
                 return $this->render('@app/views/site/index',['userInfo'=>$userData,'model'=>$res['model'],'recomment'=>$res['recomment'],]);
             }
+
+           
         }
         return $this->render('index');
     }
