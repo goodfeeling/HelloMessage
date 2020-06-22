@@ -26,9 +26,8 @@ class ActivityLikesUserModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['id', 'uid', 'aid'], 'required'],
-            [['id', 'uid', 'aid'], 'integer'],
-            [['id'], 'unique']
+            [['uid', 'aid'], 'required'],
+            [['uid', 'aid'], 'integer']
         ];
     }
 
@@ -64,7 +63,7 @@ class ActivityLikesUserModel extends \backend\models\BaseModel
         'id' => array(
                         'name' => 'id',
                         'allowNull' => false,
-//                         'autoIncrement' => false,
+//                         'autoIncrement' => true,
 //                         'comment' => '',
 //                         'dbType' => "int(11)",
                         'defaultValue' => '',
