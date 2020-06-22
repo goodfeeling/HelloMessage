@@ -90,6 +90,14 @@ class ActivityForm extends BaseModel
     }
 
     public function LikeIncrease($uid){
+        $checkData = ActivityLikesUserModel::findOne(['uid'=>$uid,'aid'=>$this->id]);
+        if ($checkData) {
+            return [
+                'msg'=>'您已经点过赞啦！',
+                'statue'=>1,
+                'data'=>null,
+            ];
+        }
         $model = new ActivityLikesUserModel();
         $model->aid = $this->id;
         $model->uid = $uid;
