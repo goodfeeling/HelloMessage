@@ -39,16 +39,6 @@ class SiteController extends BaseController
     }
 
     /**
-     * Displays post.
-     *`
-     * @return mixed
-     */
-    public function actionPost()
-    {
-        return $this->render('post');
-    }
-
-    /**
      * Displays guidance.
      *
      * @return mixed

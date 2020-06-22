@@ -33,7 +33,7 @@ return [
         'session' => [
             'class' => 'yii\web\CacheSession',
             // 'cache' => 'mycache',
-        ],
+        ]
     ],
     'params' => $params,
 ];

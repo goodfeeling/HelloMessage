@@ -13,6 +13,8 @@ use yii\web\Controller;
 class BaseController extends Controller
 {
     public $userData;
+
+    public $access_token;
     /**
      * @inheritdoc
      */
@@ -21,9 +23,9 @@ class BaseController extends Controller
         $session = \Yii::$app->session;
         if (!($access_token = $session['access_token']['value'])) {
             $cookies = \Yii::$app->request->cookies;
-            $access_token =$cookies->get('access_token');
+            $this->access_token =$cookies->get('access_token');
         }
-        $userData = AdminUser::findOne(['access_token' => $access_token]);
+        $userData = AdminUser::findOne(['access_token' => $this->access_token]);
         $this->userData = $userData;
         return true;
     }

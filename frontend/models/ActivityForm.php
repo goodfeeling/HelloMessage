@@ -7,7 +7,6 @@ use backend\models\ActivityLikesUserModel;
 use backend\models\ActivityModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
-use common\models\User;
 
 class ActivityForm extends BaseModel
 {
@@ -56,6 +55,7 @@ class ActivityForm extends BaseModel
            $img = ImagesModel::findOne(['id'=>$val['pic_url_id']]);
            $val['img_url'] = Yii::$app->request->hostInfo.Yii::getAlias('@back').$img['url'];
        }
+
        $model = $query
            ->orderBy("addtime DESC")
            ->select('id,author_id,name,views,keyword,addtime,pic_url_id')
@@ -80,4 +80,32 @@ class ActivityForm extends BaseModel
            'recomment'=>$recomment
         ];
     }
+
+    public function postIncrease(){
+       return ActivityModel::updateAllCounters([
+           'views'=>1
+        ],[
+            'id'=>$this->id
+            ]);
+    }
+
+    public function LikeIncrease($uid){
+        $model = new ActivityLikesUserModel();
+        $model->aid = $this->id;
+        $model->uid = $uid;
+        $model->validate();
+        if ($model->save()) {
+            return [
+                'msg'=>'点赞成功',
+                'statue'=>0,
+                'data'=>null,
+            ];
+        } else {
+            return [
+                'msg'=>'点赞失败',
+                'statue'=>1,
+                'data'=>null,
+            ];
+        }
+     }
 }

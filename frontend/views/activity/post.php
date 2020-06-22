@@ -5,6 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '活动详情';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -13,7 +14,7 @@ $this->title = '活动详情';
     <div class="appContent">
         <!-- title -->
         <h1 class="title-lg mt-2 mb-2">
-        <?= $data['name'] ?>
+            <?= $data['name'] ?>
         </h1>
         <!-- * title -->
 
@@ -31,8 +32,10 @@ $this->title = '活动详情';
 
         <!-- post body -->
         <div class="postBody">
+            <div>
+                <?= $data['describe'] ?>
+            </div>
 
-            <?= $data['describe'] ?>
             <a href="<?php echo Url::to(['activity/apply']) ?>" class="btn btn-primary btn-block mb-1">活动资格申请</a>
         </div>
         <!-- * post body -->
@@ -55,9 +58,10 @@ $this->title = '活动详情';
                 </a>
             </div>
             <div class="col-6">
-                <a href="javascript:;" class="btn btn-danger btn-block">
-                    <i class="icon ion-ios-heart"></i> <?= $data['likes'] ?>
+                <a href="javascript:;" class="btn btn-danger btn-block" id="likes">
+                    <i class="icon ion-ios-heart"></i><?= $data['likes'] ?>
                 </a>
+
             </div>
         </div>
         <!-- * post buttons -->
@@ -104,7 +108,7 @@ $this->title = '活动详情';
         </div> -->
         <!-- * related posts -->
 
-        <div class="divider mt-4 mb-4"></div>
+        <!-- <div class="divider mt-4 mb-4"></div> -->
 
         <!-- comments -->
         <div class="sectionTitle mb-2">
@@ -142,4 +146,25 @@ $this->title = '活动详情';
         </form>
         <!-- * form -->
     </div>
+
 </div>
+
+<script>
+    
+    $('#likes').on('click', function(e) {
+        $.ajax({
+            url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
+            type: "POST",
+            dataType: 'json',
+            data:{
+                id: <?= Yii::$app->request->getQueryParam('id') ?>
+            },
+            success: function(res) {
+                if (res['status'] == 1) {
+                    $('.weui-dialog__bd').val = res['msg'];
+                    $('#myDialog').fadeIn(200);
+                }
+            }
+        })
+    });
+</script>

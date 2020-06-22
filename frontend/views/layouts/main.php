@@ -26,6 +26,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="fornt/css/style.css">
     <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/weui.min.css" />
     <!--    --><?php //$this->head() 
                 ?>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
@@ -68,7 +69,17 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-
+    <!--BEGIN dialog2-->
+    <div class="js_dialog" id="myDialog" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">不知名的错误</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">关闭</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog2-->
     <!-- ///////////// Js Files ////////////////////  -->
 
     <!-- Bootstrap-->
@@ -78,6 +89,9 @@ AppAsset::register($this);
     <script src="fornt/js/plugins/owl.carousel.min.js"></script>
     <!-- Main Js File -->
     <script src="fornt/js/app.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <?php $this->endBody() ?>
 </body>

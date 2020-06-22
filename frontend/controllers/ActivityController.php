@@ -41,6 +41,7 @@ class ActivityController extends BaseController
         $form = new ActivityForm();
         $form->id = $request->get('id');
         $res = $form->getData();
+        $form->postIncrease();
         return $this->render('post',[
             'data'=>$res
             ]);
@@ -76,5 +77,16 @@ class ActivityController extends BaseController
         return $this->render('use-pay');
     }
 
-
+    /**
+     * Displays 收藏递增.
+     *
+     * @return mixed
+     */
+    public function actionLikesIncrease(){
+        $request = Yii::$app->request;
+        $form = new ActivityForm();
+        $form->id = $request->post('id');
+        $res = $form->LikeIncrease($this->userData['id']);
+        return $this->asJson($res);
+    }
 }
