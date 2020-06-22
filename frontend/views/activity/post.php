@@ -150,13 +150,16 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
+    $('#dialogs').on('click', '.weui-dialog__btn', function() {
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
     
     $('#likes').on('click', function(e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
             type: "POST",
             dataType: 'json',
-            data:{
+            data: {
                 id: <?= Yii::$app->request->getQueryParam('id') ?>
             },
             success: function(res) {
