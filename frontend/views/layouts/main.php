@@ -44,6 +44,18 @@ AppAsset::register($this);
         <div class="spinner-grow text-info"></div>
     </div>
     <!-- * Page loading -->
+    
+    <!--BEGIN dialog2-->
+    <div class="js_dialog" id="myDialog" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">不知名的错误</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">关闭</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog2-->
 
     <!-- App Capsule -->
     <?= $content ?>
@@ -69,19 +81,13 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-    <!--BEGIN dialog2-->
-    <div class="js_dialog" id="myDialog" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog">
-            <div class="weui-dialog__bd">不知名的错误</div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">关闭</a>
-            </div>
-        </div>
-    </div>
-    <!--END dialog2-->
+    
     <!-- ///////////// Js Files ////////////////////  -->
-
+    <script>
+         $('.weui-dialog__btn').on('click', function() {
+            $('.js_dialog').fadeOut(200);
+        });
+    </script>
     <!-- Bootstrap-->
     <script src="fornt/js/lib/popper.min.js"></script>
     <script src="fornt/js/lib/bootstrap.min.js"></script>

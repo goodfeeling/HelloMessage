@@ -150,9 +150,6 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
-    $('.weui-dialog__btn').on('click', function() {
-        $(this).parents('.js_dialog').fadeOut(200);
-    });
     
     $('#likes').on('click', function(e) {
         $.ajax({
