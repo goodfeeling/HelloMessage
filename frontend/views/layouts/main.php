@@ -49,7 +49,7 @@ AppAsset::register($this);
     <div class="js_dialog" id="myDialog" style="display: none;">
         <div class="weui-mask"></div>
         <div class="weui-dialog">
-            <div class="weui-dialog__bd">不知名的错误</div>
+            <div class="weui-dialog__bd" id="return_msg">不知名的错误</div>
             <div class="weui-dialog__ft">
                 <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">关闭</a>
             </div>

@@ -160,7 +160,7 @@ $urlManager = Yii::$app->urlManager;
             },
             success: function(res) {
                 if (res['state'] == 1) {
-                    $('.weui-dialog__bd').html = res['msg'];
+                    $('#return_msg').text(res['msg']);
                     $('#myDialog').fadeIn(200);
                 }
             }
