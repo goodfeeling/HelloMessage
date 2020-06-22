@@ -65,7 +65,7 @@ $this->title = '首页';
                         </div>
                         <h2 class="title"><?= $value['name'] ?></h2>
                         <footer>
-                            <img src="<?= $value['img_url'] ?>" alt="avatar" class="avatar">
+                            <img src="<?= $value['avatar_url'] ?>" alt="avatar" class="avatar">
                             <?= $value['addtime'] ?>
                         </footer>
                     </a>
