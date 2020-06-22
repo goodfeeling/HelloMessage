@@ -106,6 +106,6 @@ class ActivityForm extends BaseModel
                 'statue'=>1,
                 'data'=>null,
             ];
-        }
+        }`
      }
 }
