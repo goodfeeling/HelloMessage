@@ -149,8 +149,7 @@ $urlManager = Yii::$app->urlManager;
 
 </div>
 
-<script>
-    
+<script>    
     $('#likes').on('click', function(e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
