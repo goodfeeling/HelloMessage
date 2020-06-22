@@ -160,7 +160,7 @@ $urlManager = Yii::$app->urlManager;
                 id: <?= Yii::$app->request->getQueryParam('id') ?>
             },
             success: function(res) {
-                if (res['status'] == 1) {
+                if (res['state'] == 1) {
                     $('.weui-dialog__bd').html = res['msg'];
                     $('#myDialog').fadeIn(200);
                 }

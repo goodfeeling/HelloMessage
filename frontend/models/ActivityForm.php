@@ -94,7 +94,7 @@ class ActivityForm extends BaseModel
         if ($checkData) {
             return [
                 'msg'=>'您已经点过赞啦！',
-                'statue'=>1,
+                'state'=>1,
                 'data'=>null,
             ];
         }
@@ -105,7 +105,7 @@ class ActivityForm extends BaseModel
         if ( !$model->validate() ) {
             return [
                 'msg'=>'数据格式有误',
-                'statue'=>1,
+                'state'=>1,
                 'data'=>null,
             ];
         }
@@ -113,13 +113,13 @@ class ActivityForm extends BaseModel
         if ($model->save()) {
             return [
                 'msg'=>'点赞成功',
-                'statue'=>0,
+                'state'=>0,
                 'data'=>null,
             ];
         } else {
             return [
                 'msg'=>'点赞失败',
-                'statue'=>1,
+                'state'=>1,
                 'data'=>null,
             ];
         }
