@@ -15,7 +15,7 @@ class ActivityController extends BaseController
     {
         return [
             'login' => [
-                'class'=> LoginBehavior::className()
+                'class' => LoginBehavior::className()
             ]
         ];
     }
@@ -42,11 +42,11 @@ class ActivityController extends BaseController
         $form->id = $request->get('id');
         $res = $form->getData();
         $form->postIncrease();
-        return $this->render('post',[
-            'data'=>$res
-            ]);
+        return $this->render('post', [
+            'data' => $res
+        ]);
     }
-    
+
     /**
      * Displays 活动分类.
      *
@@ -82,7 +82,8 @@ class ActivityController extends BaseController
      *
      * @return mixed
      */
-    public function actionLikesIncrease(){
+    public function actionLikesIncrease()
+    {
         $request = Yii::$app->request;
         $form = new ActivityForm();
         $form->id = $request->post('id');

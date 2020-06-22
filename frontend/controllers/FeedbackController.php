@@ -1,63 +1,23 @@
 <?php
 
-
 namespace frontend\controllers;
 
+use frontend\models\FeedbackForm;
+use Yii;
+use yii\base\Controller;
 
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-
-class FeedbackController extends BaseController
+class FeedbackController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
-
     public function actionIndex()
     {
-        return $this->render('index');
+        $request = Yii::$app->request;
+        if ($request->isPost){
+            $form = new FeedbackForm();
+            $form->attributes = $request->post();
+            $res = $form->save();
+            return $this->asJson($res);
+        } else {
+            return $this->render('index');
+        }
     }
 }

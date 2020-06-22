@@ -44,7 +44,7 @@ AppAsset::register($this);
         <div class="spinner-grow text-info"></div>
     </div>
     <!-- * Page loading -->
-    
+
     <!--BEGIN dialog2-->
     <div class="js_dialog" id="myDialog" style="display: none;">
         <div class="weui-mask"></div>
@@ -81,10 +81,10 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-    
+
     <!-- ///////////// Js Files ////////////////////  -->
     <script>
-         $('.weui-dialog__btn').on('click', function() {
+        $('.weui-dialog__btn').on('click', function() {
             $('.js_dialog').fadeOut(200);
         });
     </script>
