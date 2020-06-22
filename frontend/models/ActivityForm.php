@@ -112,7 +112,7 @@ class ActivityForm extends BaseModel
 
         if ($model->save()) {
             $count = ActivityLikesUserModel::find()
-                ->where(['aid'=> $this->id]);
+                ->where(['aid'=> $this->id])->count();
             return [
                 'msg'=>'点赞成功',
                 'state'=>0,
