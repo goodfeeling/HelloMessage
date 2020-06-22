@@ -94,7 +94,7 @@ class ActivityForm extends BaseModel
         $model->aid = $this->id;
         $model->uid = $uid;
 
-        if ($model->validate()) {
+        if ( !$model->validate() ) {
             return [
                 'msg'=>'数据格式有误',
                 'statue'=>1,
