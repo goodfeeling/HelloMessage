@@ -93,7 +93,15 @@ class ActivityForm extends BaseModel
         $model = new ActivityLikesUserModel();
         $model->aid = $this->id;
         $model->uid = $uid;
-        $model->validate();
+
+        if ($model->validate()) {
+            return [
+                'msg'=>'数据格式有误',
+                'statue'=>1,
+                'data'=>null,
+            ];
+        }
+
         if ($model->save()) {
             return [
                 'msg'=>'点赞成功',
