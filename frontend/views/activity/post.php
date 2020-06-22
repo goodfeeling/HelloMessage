@@ -162,6 +162,8 @@ $urlManager = Yii::$app->urlManager;
                 if (res['state'] == 1) {
                     $('#return_msg').text(res['msg']);
                     $('#myDialog').fadeIn(200);
+                } else {
+                    $(e).text('<i class="icon ion-ios-heart"></i> '+res['data'])
                 }
             }
         })
