@@ -53,7 +53,7 @@ class ActivityForm extends BaseModel
            $val['nickname'] = $author['nickname'];
            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
            $img = ImagesModel::findOne(['id'=>$val['pic_url_id']]);
-           $val['img_url'] = Yii::$app->request->hostInfo.Yii::getAlias('@back').$img['url'];
+           $val['img_url'] = Yii::getAlias('@back').$img['url'];
        }
 
        $model = $query
@@ -73,7 +73,7 @@ class ActivityForm extends BaseModel
            $val['nickname'] = $author['nickname'];
            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
            $img = ImagesModel::findOne(['id'=>$val['pic_url_id']]);
-           $val['img_url'] = Yii::$app->request->hostInfo.Yii::getAlias('@back').$img['url'];
+           $val['img_url'] = Yii::getAlias('@back').$img['url'];
        }
        return [
            'model'=>$model,
