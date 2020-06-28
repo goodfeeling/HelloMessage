@@ -9,6 +9,13 @@ $modelLabel = new \backend\models\AdminUser();
 ?>
 
 <?php $this->beginBlock('header');  ?>
+<style>
+    .td-c>img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+</style>
 <!-- <head></head>中代码块 -->
 <?php $this->endBlock(); ?>
 
@@ -81,7 +88,7 @@ $modelLabel = new \backend\models\AdminUser();
                 echo '<tr id="rowid_' . $model->id . '">';
                 echo '  <td><label><input type="checkbox" value="' . $model->id . '"></label></td>';
                 echo '  <td>' . $model->id . '</td>';
-                echo '  <td>' . $model->avatar_url . '</td>';
+                echo '  <td class="td-c"><img  src="' . $model->avatar_url  . '" alt="123"></td>';
                 echo '  <td>' . $model->uname . '</td>';
                 echo '  <td>' . $model->last_ip . '</td>';
                 echo '  <td>' . ($model->is_online == 'n' ? '否' : '是')  . '</td>';
