@@ -11,15 +11,6 @@ use Yii;
 
 class ActivityController extends BaseController
 {
-    public function behaviors()
-    {
-        return [
-            'login' => [
-                'class' => LoginBehavior::className()
-            ]
-        ];
-    }
-
     /**
      * Displays 活动申请.
      *
@@ -78,7 +69,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 收藏递增.
+     * Displays 喜欢递增.
      *
      * @return mixed
      */

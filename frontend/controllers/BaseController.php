@@ -29,12 +29,12 @@ class BaseController extends Controller
     public function beforeAction($action)
     {
         $session = \Yii::$app->session;
-        if (!($this->access_token = $session['access_token']['value'])) {
+        if (!($this->access_token = @$session['access_token']['value'])) {
             $cookies = \Yii::$app->request->cookies;
             $this->access_token = $cookies->get('access_token');
         }
         if ( !($this->access_token) ){
-            return $this->render('@app/views/login/index');
+            return true;
         }
         $userData = AdminUser::findOne([
             'access_token' => $this->access_token

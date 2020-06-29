@@ -15,7 +15,7 @@ class LoginController extends Controller
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        if ( $request->isGet && $request->get('state')=='now_jump_index' ) {
+        if ( $request->isGet && $request->get('state') == 'now_jump_index' ) {
             $form = new LoginForm();
             $form->code = $request->get('code');
 

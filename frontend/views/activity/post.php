@@ -149,7 +149,7 @@ $urlManager = Yii::$app->urlManager;
 
 </div>
 
-<script>    
+<script>
     $('#likes').on('click', function(e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
@@ -160,10 +160,12 @@ $urlManager = Yii::$app->urlManager;
             },
             success: function(res) {
                 if (res['state'] == 1) {
-                    $('#return_msg').text(res['msg']);
-                    $('#myDialog').fadeIn(200);
-                } else {
-                    $(e).text('<i class="icon ion-ios-heart"></i> '+res['data'])
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("去登陆");
+                    $('.wx-main-btn').on('click',function(e){
+                        window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                    });
+                    $('#simpleDialog').fadeIn(200);
                 }
             }
         })

@@ -82,6 +82,13 @@ class ActivityForm extends BaseModel
     }
 
     public function postIncrease(){
+        if ( !$this->id ) {
+            return [
+                'msg'   =>  '您未登录！',
+                'state' =>  1000,
+                'data'  =>  null,
+            ];
+        }
        return ActivityModel::updateAllCounters([
            'views'=>1
         ],[
@@ -104,9 +111,9 @@ class ActivityForm extends BaseModel
 
         if ( !$model->validate() ) {
             return [
-                'msg'=>'数据格式有误',
-                'state'=>1,
-                'data'=>null,
+                'msg'   =>  '您需要登陆！',
+                'state' =>  1,
+                'data'  =>  null,
             ];
         }
 
@@ -114,15 +121,15 @@ class ActivityForm extends BaseModel
             $count = ActivityLikesUserModel::find()
                 ->where(['aid'=> $this->id])->count();
             return [
-                'msg'=>'点赞成功',
-                'state'=>0,
-                'data'=>$count,
+                'msg'   =>  '点赞成功！',
+                'state' =>  0,
+                'data'  =>  $count,
             ];
         } else {
             return [
-                'msg'=>'点赞失败',
-                'state'=>1,
-                'data'=>null,
+                'msg'   =>  '点赞失败！',
+                'state' =>  1,
+                'data'  =>  null,
             ];
         }
      }
