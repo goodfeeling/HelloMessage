@@ -159,9 +159,17 @@ $urlManager = Yii::$app->urlManager;
                 id: <?= Yii::$app->request->getQueryParam('id') ?>
             },
             success: function(res) {
-                if (res['state'] == 1) {
+                if (res['state'] == 100) {
                     $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').show();
                     $('.wx-main-btn').text("去登陆");
+                    $('.wx-main-btn').on('click',function(e){
+                        window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                    });
+                    $('#simpleDialog').fadeIn(200);
+                } else if (res['state'] == 1) {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').hide();
                     $('.wx-main-btn').on('click',function(e){
                         window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                     });
