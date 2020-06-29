@@ -112,7 +112,7 @@ class ActivityForm extends BaseModel
         if ( !$model->validate() ) {
             return [
                 'msg'   =>  '您需要登陆！',
-                'state' =>  1,
+                'state' =>  100,
                 'data'  =>  null,
             ];
         }
