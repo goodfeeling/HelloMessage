@@ -5,6 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '活动申请';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -136,18 +137,34 @@ $this->title = '活动申请';
             <textarea rows="3"  class="form-control" id="mate_require" placeholder="择偶要求"></textarea>
         </div>
         <!-- has-success -->
-        <div class="checkbox has-error">
-            <label>
-                <input type="checkbox"> 我保证以上都是真实信息
+        <div class="checkbox">
+            <label class="text-success" >
+                <input id="check" type="checkbox"> 我保证以上都是真实信息
             </label>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
+        <button type="button" disabled class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
     </div>
 </div>
 
 <script type="text/javascript">
     window.onload = () => {
+
+
+        var state = true;
+        $('#check').click(function (e) {
+            if (state == true) {
+                $(this).parent().removeClass('text-success').addClass('text-primary');
+                $('#submit').attr("disabled",!state);
+                state = false
+            } else {
+                $(this).parent().removeClass('text-primary').addClass('text-success');
+                $('#submit').attr("disabled",!state);
+                state = true
+            }
+        });
+
+
         $('#submit').click(function(e) {
             var occupation = $("#occupation option:selected").text();
             var income = $("#income option:selected").text();
@@ -173,12 +190,13 @@ $this->title = '活动申请';
                 'mate_require': $('#mate_require').val(),
             };
             $.ajax({
-                url: 'index.php?r=site/apply',
+                url: "<?= $urlManager->createUrl(['activity/apply1']) ?>",
                 type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    console.log(data);
+                    $('.wx-bd').text(data['msg']);
+                    $('#simpleDialog').fadeIn(300);
                 }
             });
         });

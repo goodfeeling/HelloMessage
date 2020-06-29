@@ -18,6 +18,13 @@ class ActivityController extends BaseController
      */
     public function actionApply()
     {
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $form = new ActivityForm();
+            $form->attributes = $request->post();
+            $res = $form->saveData();
+            return $this->asJson($res);
+        }
         return $this->render('apply');
     }
 

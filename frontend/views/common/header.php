@@ -14,7 +14,7 @@ use yii\helpers\Url;
     </div>
     <div class="right">
         <label for="searchInput" class="mb-0 icon toggleSearchbox">
-            <i class="icon ion-ios-search"></i>
+<!--            <i class="icon ion-ios-search"></i>-->
         </label>
     </div>
 </div>
