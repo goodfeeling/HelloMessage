@@ -77,9 +77,9 @@ class LoginForm extends BaseModel
                 $userModel->last_ip = \Yii::$app->request->userIP;
                 $userModel->status = 10;
                 $userModel->create_user = 'front';
-                $userModel->create_date = date('yyyy-mm-dd h:i:s');
+                $userModel->create_date = date('yy-m-d H:i:s');
                 $userModel->update_user = 'front';
-                $userModel->update_date = date('yyyy-mm-dd-dd h:i:s');
+                $userModel->update_date = date('yy-m-d H:i:s');
                 $userModel->type = 2;
                 $userModel->access_token = $result['access_token'];
                 $userModel->wechat_platform_open_id = $result['openid'];

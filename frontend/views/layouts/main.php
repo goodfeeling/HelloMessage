@@ -68,7 +68,7 @@ AppAsset::register($this);
             </div>
             <div class="weui-dialog__ft">
                 <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_default">关闭</a>
-                <a class="weui-dialog__btn weui-dialog__btn_primary wx-main-btn">主操作</a>
+                <a class="weui-dialog__btn weui-dialog__btn_primary wx-main-btn">确定</a>
             </div>
         </div>
     </div>

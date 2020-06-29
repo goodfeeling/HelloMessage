@@ -23,6 +23,7 @@ class BaseController extends Controller
 
     // 用户的token
     public $access_token;
+
     /**
      * @inheritdoc
      */

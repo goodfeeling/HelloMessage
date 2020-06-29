@@ -4,6 +4,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '反馈';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -104,12 +105,18 @@ $this->title = '反馈';
             'content': $('#content').val(),
         };
         $.ajax({
-            url: 'index.php?r=site/apply',
+            url: "<?= $urlManager->createUrl(['feedback/index']) ?>",
             type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
             dataType: 'json',
             data: data,
             success: function(data) {
-                console.log(data);
+                $('.wx-bd').text(data['msg']);
+                $('#simpleDialog').fadeIn(300);
+                if (data['state'] == 0 ) {
+                    $('.weui-dialog__ft').on('click',function(e){
+                        window.location.href = "<?= Url::toRoute('feedback/index', true) ?>";
+                    });
+                }
             }
         });
     });

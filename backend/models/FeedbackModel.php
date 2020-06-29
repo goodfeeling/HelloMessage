@@ -4,14 +4,14 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_feedback}}".
+ * This is the model class for table "admin_feedback".
  *
  * @property integer $id
  * @property string $title
  * @property string $content
+ * @property string $email
  * @property string $addtime
  * @property integer $type
- * @property string $email
  */
 class FeedbackModel extends \backend\models\BaseModel
 {
@@ -20,7 +20,7 @@ class FeedbackModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_feedback}}';
+        return 'admin_feedback';
     }
 
     /**
@@ -29,14 +29,11 @@ class FeedbackModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['id', 'title', 'content', 'email'], 'required'],
-            [['id'], 'integer'],
+            [['title', 'content', 'email'], 'required'],
             [['addtime'], 'safe'],
-            [['title'], 'string', 'max' => 100],
+            [['title', 'email'], 'string', 'max' => 100],
             [['content'], 'string', 'max' => 500],
-            [['type'], 'string', 'max' => 1],
-            [['email'], 'string', 'max' => 50],
-            [['id'], 'unique']
+            [['type'], 'string', 'max' => 1]
         ];
     }
 
@@ -49,9 +46,9 @@ class FeedbackModel extends \backend\models\BaseModel
             'id' => 'ID',
             'title' => '标题',
             'content' => '内容',
+            'email' => '邮箱',
             'addtime' => '提交时间',
             'type' => '反馈类型',
-            'email' => '邮箱地址',
         ];
     }
 
@@ -75,7 +72,7 @@ class FeedbackModel extends \backend\models\BaseModel
         'id' => array(
                         'name' => 'id',
                         'allowNull' => false,
-//                         'autoIncrement' => false,
+//                         'autoIncrement' => true,
 //                         'comment' => '',
 //                         'dbType' => "int(11)",
                         'defaultValue' => '',
@@ -141,6 +138,29 @@ class FeedbackModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
+		'email' => array(
+                        'name' => 'email',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '邮箱',
+//                         'dbType' => "varchar(100)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '100',
+                        'scale' => '',
+                        'size' => '100',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('email'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
 		'addtime' => array(
                         'name' => 'addtime',
                         'allowNull' => true,
@@ -180,29 +200,6 @@ class FeedbackModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('type'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'email' => array(
-                        'name' => 'email',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '邮箱地址',
-//                         'dbType' => "varchar(50)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '50',
-                        'scale' => '',
-                        'size' => '50',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('email'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

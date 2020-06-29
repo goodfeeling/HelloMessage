@@ -4,7 +4,7 @@ namespace frontend\models;
 use backend\models\FeedbackModel;
 use Yii;
 
-class FeedbackForm extends BaseModel
+class AdminFeedback extends BaseModel
 {
     public $title;
     public $content;
@@ -16,10 +16,10 @@ class FeedbackForm extends BaseModel
     public function rules()
     {
         return [
-            [['title', 'content','email'], 'required'],
-            [['title'], 'string', 'max' => 100],
-            [['content'], 'string', 'max' => 500],
-            ['email', 'email'],
+            [['title', 'content','email'], 'required', 'message' => '请输入完整的内容！'],
+            [['title'], 'string', 'max' => 100, 'message' => '标题最大为100个字符！'],
+            [['content'], 'string', 'max' => 500, 'message' => '内容最大为500个字符！'],
+            ['email', 'email', 'message' => '请输入正确的邮箱！'],
         ];
     }
 
@@ -38,20 +38,22 @@ class FeedbackForm extends BaseModel
         ];
     }
 
-    public function save()
+    public function saveData()
     {
-        if ($this->validate()){
+        if ( !$this->validate() ){
             return [
-                'msg'=>'提交数据有误',
+                'msg'=>current($this->getErrors())[0],
                 'state'=>1,
                 'data'=>null
             ];
         }
-
         $model = new FeedbackModel();
-        $model->attributes = $this->attributes;
-        $model->addtime = date('yyyy-mm-dd h:i:s');
-        $model->type = 1;
+        $model->title = $this->title;
+        $model->content = $this->content;
+        $model->email = $this->email;
+        $model->addtime =  date('Y-m-d H:i:s');
+        $model->type = '1';
+
         if ($model->save()) {
             return  [
                 'msg'=>'提交成功',
@@ -65,7 +67,5 @@ class FeedbackForm extends BaseModel
                 'data'=>null
             ];
         }
-
     }
-
 }

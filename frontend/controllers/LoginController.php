@@ -6,9 +6,8 @@ namespace frontend\controllers;
 use backend\models\AdminUser;
 use frontend\models\LoginForm;
 use Yii;
-use yii\base\Controller;
+use yii\web\Controller;
 use frontend\models\ActivityForm;
-use yii\helpers\Url;
 
 class LoginController extends Controller
 {
