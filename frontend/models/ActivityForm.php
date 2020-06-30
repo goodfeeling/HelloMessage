@@ -172,7 +172,6 @@ class ActivityForm extends BaseModel
                 ])->exists();
             $value['is_join'] = $isJoin;
         }
-        var_dump($userActivity);exit;
         return $userActivity;
     }
 
