@@ -30,14 +30,14 @@ class AdminUserDetail extends BaseModel
     public function rules()
     {
         return [
-            [['uid', 'income', 'height', 'mobile'], 'integer', 'message' => '手机号码、身高、收入必须是纯整型！'],
+            [['uid'], 'required'],
+            [['uid', 'height', 'mobile'], 'integer', 'message' => '请输入正确的我手机号码、身高'],
             [['birthday'], 'safe'],
-            [['name', 'character'], 'string', 'max' => 10, 'message' => '请输入的正确的内容！'],
-            [['occupation'], 'string', 'max' => 20, 'message' => '请输入正确的职业！'],
+            [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10, 'message' => '请输入的正确的内容！'],
+            [['occupation'], 'string', 'max' => 20],
             [['cars_and_houses', 'marital_status', 'gender'], 'string', 'max' => 1],
-            [['education'], 'string', 'max' => 2, 'message' => '请输入正确的学历！'],
-            [['native_place'], 'string', 'max' => 10, 'message' => '请输入正确的籍贯如：广东省广州市！'],
-            [['hobby'], 'string', 'max' => 200, 'message' => '爱好只能在255字符以内！'],
+            [['education'], 'string', 'max' => 2],
+            [['hobby'], 'string', 'max' => 200,'message' => '爱好只能在200字符以内！'],
             [['mate_require'], 'string', 'max' => 500, 'message' => '择偶只能在1000个字符内！']
         ];
     }

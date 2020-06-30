@@ -33,8 +33,8 @@ class ActivityController extends BaseController
 
         $request = Yii::$app->request;
         if ($request->isPost) {
-
             $form = new AdminUserDetail();
+            $form->uid = $this->userData['id'];
             $form->attributes = $request->post();
             $res = $form->saveData();
             return $this->asJson($res);
