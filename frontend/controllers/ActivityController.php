@@ -56,18 +56,18 @@ class ActivityController extends BaseController
                 ->where(['uid'=>$this->userData['id']])
                 ->exists();
             if ($CheckUserExist) {
-                return [
+                $res =  [
                     'msg' => '您已经填写过了，需要修改请到个人中心！',
                     'state' => 302,
                     'data' => null,
                 ];
+            } else {
+                $res =  [
+                    'msg' => 'no error',
+                    'state' => 0,
+                    'data' => null,
+                ];
             }
-
-            $res =  [
-                'msg' => 'no error',
-                'state' => 0,
-                'data' => null,
-            ];
         }
         return $this->asJson($res);
     }
