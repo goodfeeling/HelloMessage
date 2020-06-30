@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -44,7 +45,7 @@ $urlManager = Yii::$app->urlManager;
 
 
 <script>
-    $('#applyBtn').on('click',function(e){
+    $('#applyBtn').on('click', function (e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/user-pay']) ?>",
             type: "POST",
@@ -52,11 +53,11 @@ $urlManager = Yii::$app->urlManager;
             data: {
                 id: <?= Yii::$app->request->getQueryParam('id') ?>
             },
-            success: function(res) {
-                if(!res['state']) {
+            success: function (res) {
+                if (!res['state']) {
                     $('.wx-bd').text(res['msg']);
                     $('.wx-main-btn').text("确定");
-                    $('.wx-main-btn').on('click',function(e){
+                    $('.wx-main-btn').on('click', function (e) {
                         window.location.href = "<?= Url::toRoute('site/index', true) ?>";
                     });
                     $('#simpleDialog').fadeIn(200);
@@ -65,7 +66,7 @@ $urlManager = Yii::$app->urlManager;
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
                 }
+            }
         })
-    })
     });
 </script>
