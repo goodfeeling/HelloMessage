@@ -4,10 +4,13 @@
 namespace frontend\models;
 
 
+use backend\models\ActivityUserModel;
 use backend\models\UserDetailModel;
 
 class AdminUserDetail extends BaseModel
 {
+    public $aid;
+
     public $uid;
     public $income;
     public $height;
@@ -76,6 +79,14 @@ class AdminUserDetail extends BaseModel
         $model->update_time = date('yy-m-d H:i:s');
         $model->addtime = date('yy-m-d H:i:s');
         if ($model->save()) {
+            $UserActivity = new ActivityUserModel();
+            $UserActivity->uid = $this->uid;
+            $UserActivity->aid = $this->aid;
+            $UserActivity->join_time = null;
+            $UserActivity->create_time = date("yy-m-d H:i:s");
+            $UserActivity->is_join = 0;
+            $UserActivity->save();
+
             return  [
                 'msg'=>'提交成功',
                 'state'=>0,

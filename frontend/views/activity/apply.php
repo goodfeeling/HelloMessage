@@ -188,7 +188,7 @@ $urlManager = Yii::$app->urlManager;
                 'mate_require': $('#mate_require').val(),
             };
             $.ajax({
-                url: "<?= $urlManager->createUrl(['activity/apply']) ?>",
+                url: "<?= $urlManager->createUrl(['activity/apply']) ?>"+ "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
                 type: 'post',
                 dataType: 'json',
                 data: data,

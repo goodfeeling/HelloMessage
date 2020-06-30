@@ -35,6 +35,7 @@ class ActivityController extends BaseController
             $form = new AdminUserDetail();
             $form->uid = $this->userData['id'];
             $form->attributes = $request->post();
+            $form->aid = $request->get('id');
             $res = $form->saveData();
             return $this->asJson($res);
         }
