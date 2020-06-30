@@ -48,6 +48,7 @@ class AdminOrder extends BaseModel
                 'data'=>null
             ];
         } else {
+            var_dump($model->getErrors());exit;
             return  [
                 'msg'=>'提交失败',
                 'state'=>1,
