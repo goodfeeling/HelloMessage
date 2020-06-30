@@ -84,14 +84,14 @@ class AdminUserDetail extends BaseModel
             $UserActivity->aid = $this->aid;
             $UserActivity->join_time = null;
             $UserActivity->create_time = date("yy-m-d H:i:s");
-            $UserActivity->is_join = 0;
-            $UserActivity->save();
-            var_dump($UserActivity->getErrors());exit;
-            return  [
-                'msg'=>'提交成功',
-                'state'=>0,
-                'data'=>null
-            ];
+            $UserActivity->is_join = '0';
+            if ($UserActivity->save()) {
+                return  [
+                    'msg'=>'成功',
+                    'state'=>0,
+                    'data'=>null
+                ];
+            }
         } else {
             return  [
                 'msg'=>current($model->getErrors())[0],
