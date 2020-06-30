@@ -166,6 +166,10 @@ $urlManager = Yii::$app->urlManager;
                         window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                     });
                     $('#simpleDialog').fadeIn(200);
+                } else if(res['state'] == 302){
+                    $('.wx-bd').text(data['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
                 } else {
                     window.location.href = "<?= Url::toRoute('activity/apply', true) ?>";
                 }
