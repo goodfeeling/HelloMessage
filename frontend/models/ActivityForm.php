@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use backend\models\ActivityUserModel;
 use backend\models\OrderModel;
+use backend\models\UserDetailModel;
 use Yii;
 use backend\models\ActivityLikesUserModel;
 use backend\models\ActivityModel;
@@ -173,5 +174,51 @@ class ActivityForm extends BaseModel
         }
 
         return $userActivity;
+    }
+
+    public function saveVerify()
+    {
+        $CheckUserExist = UserDetailModel::find()
+            ->where([
+                'uid'=>$this->uid
+            ])
+            ->exists();
+        if ($CheckUserExist) {
+            $UserActivity = new ActivityUserModel();
+            $UserActivity->uid = $this->uid;
+            $UserActivity->aid = $this->id;
+            $UserActivity->join_time = null;
+            $UserActivity->create_time = date("yy-m-d H:i:s");
+            $UserActivity->is_join = '0';
+            $UserActivity->save();
+
+            $isPay = OrderModel::find()
+                ->where([
+                    'aid'=>$this->id,
+                    'uid'=>$this->uid,
+                    'is_pay'=>1
+                ])->exists();
+
+            if (!$isPay) {
+                return  [
+                    'msg' => '还没有支付金额！',
+                    'state' => 303,
+                    'data' => null,
+                ];
+            } else {
+                return  [
+                    'msg' => '您已经填写过了，需要修改请到个人中心！',
+                    'state' => 302,
+                    'data' => null,
+                ];
+            }
+
+        } else {
+            return  [
+                'msg' => 'no error',
+                'state' => 0,
+                'data' => null,
+            ];
+        }
     }
 }

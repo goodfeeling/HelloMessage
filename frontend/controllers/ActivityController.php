@@ -51,41 +51,10 @@ class ActivityController extends BaseController
                 'data' => null,
             ];
         }else {
-            $CheckUserExist = UserDetailModel::find()
-                ->where([
-                    'uid'=>$this->userData['id']
-                    ])
-                ->exists();
-            if ($CheckUserExist) {
-
-                $isPay = OrderModel::find()
-                    ->where([
-                        'aid'=>Yii::$app->request->get('id'),
-                        'uid'=>$this->userData['id'],
-                        'is_pay'=>1
-                    ])->exists();
-
-                if (!$isPay) {
-                    $res =  [
-                        'msg' => '还没有支付金额！',
-                        'state' => 303,
-                        'data' => null,
-                    ];
-                } else {
-                    $res =  [
-                        'msg' => '您已经填写过了，需要修改请到个人中心！',
-                        'state' => 302,
-                        'data' => null,
-                    ];
-                }
-
-            } else {
-                $res =  [
-                    'msg' => 'no error',
-                    'state' => 0,
-                    'data' => null,
-                ];
-            }
+            $form = new ActivityForm();
+            $form->id = Yii::$app->request->get('id');
+            $form->uid = $this->userData['id'];
+            $res = $form->saveVerify();
         }
         return $this->asJson($res);
     }
