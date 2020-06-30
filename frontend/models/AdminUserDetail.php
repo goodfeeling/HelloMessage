@@ -86,7 +86,7 @@ class AdminUserDetail extends BaseModel
             $UserActivity->create_time = date("yy-m-d H:i:s");
             $UserActivity->is_join = 0;
             $UserActivity->save();
-
+            var_dump($UserActivity->getErrors());exit;
             return  [
                 'msg'=>'提交成功',
                 'state'=>0,
