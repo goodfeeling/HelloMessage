@@ -66,5 +66,6 @@ $urlManager = Yii::$app->urlManager;
                     $('#simpleDialog').fadeIn(200);
                 }
         })
+    })
     });
 </script>
