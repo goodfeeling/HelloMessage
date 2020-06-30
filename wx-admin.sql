@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/06/2020 15:39:12
+ Date: 30/06/2020 15:48:56
 */
 
 SET NAMES utf8mb4;
@@ -2966,6 +2966,8 @@ CREATE TABLE `admin_user_detail` (
   `gender` tinyint(1) DEFAULT NULL COMMENT '性别',
   `height` int(3) DEFAULT NULL COMMENT '身高',
   `mobile` int(11) DEFAULT NULL COMMENT '联系方式',
+  `addtime` datetime DEFAULT NULL COMMENT '添加时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户详细信息表';
 
