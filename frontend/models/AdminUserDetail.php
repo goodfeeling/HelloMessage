@@ -69,7 +69,7 @@ class AdminUserDetail extends BaseModel
         if ($CheckUserExist) {
             return [
                 'msg' => '您已经填写过了！',
-                'state' => 302,
+                'state' => 303,
                 'data' => null,
             ];
         }

@@ -53,8 +53,7 @@ class ActivityController extends BaseController
         }else {
             $CheckUserExist = UserDetailModel::find()
                 ->where([
-                    'uid'=>$this->userData['id'],
-                    'aid'=>Yii::$app->request->get('id')
+                    'uid'=>$this->userData['id']
                     ])
                 ->exists();
             if ($CheckUserExist) {
@@ -66,7 +65,7 @@ class ActivityController extends BaseController
                         'is_pay'=>1
                     ])->exists();
 
-                if ($isPay) {
+                if (!$isPay) {
                     $res =  [
                         'msg' => '还没有支付金额！',
                         'state' => 303,
