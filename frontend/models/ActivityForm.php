@@ -146,6 +146,7 @@ class ActivityForm extends BaseModel
             ->orderBy('create_time DESC')
             ->asArray()
             ->all();
+        var_dump($userActivity);exit;
         foreach ($userActivity as $key=>&$value) {
             // 这个用户参加的所有活动
             $activity = ActivityModel::find()
