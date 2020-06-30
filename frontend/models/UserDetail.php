@@ -6,7 +6,7 @@ namespace frontend\models;
 
 use backend\models\UserDetailModel;
 
-class UserDetailForm extends BaseModel
+class UserDetail extends BaseModel
 {
     public $uid;
     public $income;
