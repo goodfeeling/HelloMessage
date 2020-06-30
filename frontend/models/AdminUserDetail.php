@@ -44,6 +44,8 @@ class AdminUserDetail extends BaseModel
 
     public function saveData()
     {
+        var_dump($this->attributes);exit;
+
         if ( !$this->validate() ){
             return [
                 'msg'=>current($this->getErrors())[0],
@@ -73,7 +75,6 @@ class AdminUserDetail extends BaseModel
 
         $model = new UserDetailModel();
         $model->attributes = $this->attributes;
-        var_dump($this->attributes);exit;
         if ($model->save()) {
             return  [
                 'msg'=>'提交成功',
