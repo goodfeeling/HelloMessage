@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use backend\models\ActivityModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
+use backend\models\UserDetailModel;
 use frontend\models\ActivityForm;
 use frontend\models\AdminUserDetail;
 use yii\data\Pagination;
@@ -51,6 +52,17 @@ class ActivityController extends BaseController
                 'data' => null,
             ];
         }else {
+            $CheckUserExist = UserDetailModel::find()
+                ->where(['uid'=>$this->userData['id']])
+                ->exists();
+            if ($CheckUserExist) {
+                return [
+                    'msg' => '您已经填写过了，需要修改请到个人中心！',
+                    'state' => 302,
+                    'data' => null,
+                ];
+            }
+
             $res =  [
                 'msg' => 'no error',
                 'state' => 0,
