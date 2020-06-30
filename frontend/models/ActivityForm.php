@@ -184,6 +184,17 @@ class ActivityForm extends BaseModel
             ])
             ->exists();
         if ($CheckUserExist) {
+            $exist = ActivityUserModel::find()
+                ->where(['uid'=>$this->uid,'aid'=>$this->id])
+                ->exists();
+            if ($exist){
+                return  [
+                    'msg' => '还没有支付金额！',
+                    'state' => 303,
+                    'data' => null,
+                ];
+            }
+
             $UserActivity = new ActivityUserModel();
             $UserActivity->uid = $this->uid;
             $UserActivity->aid = $this->id;
