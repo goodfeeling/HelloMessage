@@ -44,8 +44,6 @@ class AdminUserDetail extends BaseModel
 
     public function saveData()
     {
-        var_dump($this->attributes);exit;
-
         if ( !$this->validate() ){
             return [
                 'msg'=>current($this->getErrors())[0],
