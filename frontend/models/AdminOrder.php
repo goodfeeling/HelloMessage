@@ -39,7 +39,7 @@ class AdminOrder extends BaseModel
         $model->attributes = $this->attributes;
         $model->addtime = date('yy-m-d H:i:s');
         $model->order_number = 'A123456456sda';
-        $model->is_pay = '1';
+        $model->is_pay = '0';
 
         if ($model->save()) {
             return  [
