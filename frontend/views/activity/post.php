@@ -167,7 +167,7 @@ $urlManager = Yii::$app->urlManager;
                     });
                     $('#simpleDialog').fadeIn(200);
                 } else if(res['state'] == 302){
-                    $('.wx-bd').text(data['msg']);
+                    $('.wx-bd').text(res['msg']);
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
                 } else {
