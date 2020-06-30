@@ -12,9 +12,9 @@ use Yii;
  * @property string $birthday
  * @property string $occupation
  * @property string $income
- * @property integer $cars_and_houses
- * @property integer $marital_status
- * @property integer $education
+ * @property string $cars_and_houses
+ * @property string $marital_status
+ * @property string $education
  * @property string $native_place
  * @property string $character
  * @property string $hobby
@@ -30,7 +30,7 @@ class UserDetailModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_user_detail}}';
+        return 'admin_user_detail';
     }
 
     /**
@@ -44,10 +44,10 @@ class UserDetailModel extends \backend\models\BaseModel
             [['birthday'], 'safe'],
             [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10],
             [['occupation'], 'string', 'max' => 20],
-            [['cars_and_houses', 'marital_status', 'gender'], 'string', 'max' => 1],
-            [['education'], 'string', 'max' => 2],
+            [['cars_and_houses', 'marital_status', 'education'], 'string', 'max' => 2],
             [['hobby'], 'string', 'max' => 200],
-            [['mate_require'], 'string', 'max' => 500]
+            [['mate_require'], 'string', 'max' => 500],
+            [['gender'], 'string', 'max' => 1]
         ];
     }
 
@@ -236,15 +236,15 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '有无车房',
-//                         'dbType' => "tinyint(1)",
+//                         'dbType' => "varchar(2)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
-                        'phpType' => 'integer',
-                        'precision' => '1',
+                        'phpType' => 'string',
+                        'precision' => '2',
                         'scale' => '',
-                        'size' => '1',
-                        'type' => 'tinyint',
+                        'size' => '2',
+                        'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('cars_and_houses'),
                         'inputType' => 'text',
@@ -259,15 +259,15 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '婚姻状况',
-//                         'dbType' => "tinyint(1)",
+//                         'dbType' => "varchar(2)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
-                        'phpType' => 'integer',
-                        'precision' => '1',
+                        'phpType' => 'string',
+                        'precision' => '2',
                         'scale' => '',
-                        'size' => '1',
-                        'type' => 'tinyint',
+                        'size' => '2',
+                        'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('marital_status'),
                         'inputType' => 'text',
@@ -282,15 +282,15 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '学历',
-//                         'dbType' => "tinyint(2)",
+//                         'dbType' => "varchar(2)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
-                        'phpType' => 'integer',
+                        'phpType' => 'string',
                         'precision' => '2',
                         'scale' => '',
                         'size' => '2',
-                        'type' => 'tinyint',
+                        'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('education'),
                         'inputType' => 'text',
