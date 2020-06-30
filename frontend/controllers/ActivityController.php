@@ -159,6 +159,9 @@ class ActivityController extends BaseController
         $request = Yii::$app->request;
         if ($request->isPost) {
             $form = new AdminOrder();
+            $form->uid = $this->userData['id'];
+            $form->aid = $request->post('id');
+            $form->money = 100;
             $res = $form->sendPay();
             return $this->asJson($res);
         } else {
