@@ -149,7 +149,7 @@ class ActivityForm extends BaseModel
         foreach ($userActivity as $key=>&$value) {
             // 这个用户参加的所有活动
             $activity = ActivityModel::find()
-                ->where(['aid'=>$value['aid']])
+                ->where(['id'=>$value['aid']])
                 ->select('name,addtime,endtime,theme')
                 ->asArray()
                 ->one();
