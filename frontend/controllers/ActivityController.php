@@ -52,7 +52,10 @@ class ActivityController extends BaseController
             ];
         }else {
             $CheckUserExist = UserDetailModel::find()
-                ->where(['uid'=>$this->userData['id']])
+                ->where([
+                    'uid'=>$this->userData['id'],
+                    'aid'=>Yii::$app->request->get('id')
+                    ])
                 ->exists();
             if ($CheckUserExist) {
 
