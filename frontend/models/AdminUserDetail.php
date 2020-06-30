@@ -73,6 +73,7 @@ class AdminUserDetail extends BaseModel
 
         $model = new UserDetailModel();
         $model->attributes = $this->attributes;
+        var_dump($this->attributes);exit;
         if ($model->save()) {
             return  [
                 'msg'=>'提交成功',
