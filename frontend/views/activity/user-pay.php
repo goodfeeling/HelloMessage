@@ -4,6 +4,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '参加成功';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -40,3 +41,30 @@ $this->title = '参加成功';
     </div>
 </div>
 <!-- appCapsule -->
+
+
+<script>
+    $('#applyBtn').on('click',function(e){
+        $.ajax({
+            url: "<?= $urlManager->createUrl(['activity/user-pay']) ?>",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                id: <?= Yii::$app->request->getQueryParam('id') ?>
+            },
+            success: function(res) {
+                if(!res['state']) {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('.wx-main-btn').on('click',function(e){
+                        window.location.href = "<?= Url::toRoute('site/index', true) ?>";
+                    });
+                    $('#simpleDialog').fadeIn(200);
+                } else {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+                }
+        })
+    });
+</script>

@@ -4,16 +4,13 @@
 namespace frontend\controllers;
 
 use backend\models\ActivityModel;
-use backend\models\AdminUser;
 use backend\models\ImagesModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
 use frontend\models\ActivityForm;
+use frontend\models\AdminOrder;
 use frontend\models\AdminUserDetail;
 use yii\data\Pagination;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use frontend\behaviors\LoginBehavior;
 use Yii;
 
 class ActivityController extends BaseController
@@ -159,8 +156,14 @@ class ActivityController extends BaseController
      */
     public function actionUserPay()
     {
-
-        return $this->render('user-pay');
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $form = new AdminOrder();
+            $res = $form->sendPay();
+            return $this->asJson($res);
+        } else {
+            return $this->render('user-pay');
+        }
     }
 
     /**

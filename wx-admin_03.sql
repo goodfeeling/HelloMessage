@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/06/2020 15:57:10
+ Date: 30/06/2020 16:30:59
 */
 
 SET NAMES utf8mb4;
@@ -2601,6 +2601,7 @@ CREATE TABLE `admin_order` (
   `uid` int(11) NOT NULL COMMENT '用户id',
   `is_pay` tinyint(1) DEFAULT '0' COMMENT '是否支付',
   `money` tinyint(8) NOT NULL COMMENT '支付金额',
+  `addtime` datetime DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单表';
 

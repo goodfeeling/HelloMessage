@@ -67,6 +67,7 @@ $modelLabel = new \backend\models\OrderModel();
               echo '<th onclick="orderby(\'uid\', \'desc\')" '.CommonFun::sortClass($orderby, 'uid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('uid').'</th>';
               echo '<th onclick="orderby(\'is_pay\', \'desc\')" '.CommonFun::sortClass($orderby, 'is_pay').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('is_pay').'</th>';
               echo '<th onclick="orderby(\'money\', \'desc\')" '.CommonFun::sortClass($orderby, 'money').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('money').'</th>';
+              echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
          
 			?>
 	
@@ -85,6 +86,7 @@ $modelLabel = new \backend\models\OrderModel();
                 echo '  <td>' . $model->uid . '</td>';
                 echo '  <td>' . $model->is_pay . '</td>';
                 echo '  <td>' . $model->money . '</td>';
+                echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -190,6 +192,14 @@ $modelLabel = new \backend\models\OrderModel();
               </div>
               <div class="clearfix"></div>
           </div>
+
+          <div id="addtime_div" class="form-group">
+              <label for="addtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("addtime")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="addtime" name="OrderModel[addtime]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
                     
 
 			<?php ActiveForm::end(); ?>          
@@ -239,6 +249,7 @@ function orderby(field, op){
         $("#uid").val("");
         $("#is_pay").val("");
         $("#money").val("");
+        $("#addtime").val("");
 	
 	}
 	else{
@@ -248,6 +259,7 @@ function orderby(field, op){
         $("#uid").val(data.uid)
         $("#is_pay").val(data.is_pay)
         $("#money").val(data.money)
+        $("#addtime").val(data.addtime)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -256,6 +268,7 @@ function orderby(field, op){
       $("#uid").attr({readonly:true,disabled:true});
       $("#is_pay").attr({readonly:true,disabled:true});
       $("#money").attr({readonly:true,disabled:true});
+      $("#addtime").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -265,6 +278,7 @@ function orderby(field, op){
       $("#uid").attr({readonly:false,disabled:false});
       $("#is_pay").attr({readonly:false,disabled:false});
       $("#money").attr({readonly:false,disabled:false});
+      $("#addtime").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');

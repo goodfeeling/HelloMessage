@@ -189,12 +189,13 @@ $urlManager = Yii::$app->urlManager;
             };
             $.ajax({
                 url: "<?= $urlManager->createUrl(['activity/apply']) ?>",
-                type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
+                type: 'post',
                 dataType: 'json',
                 data: data,
                 success: function(data) {
                     if(data['state'] == 0) {
-                        window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>";
+                        window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>"
+                            + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
                     } else {
                         $('.wx-bd').text(data['msg']);
                         $('.wx-main-btn').text("确定");

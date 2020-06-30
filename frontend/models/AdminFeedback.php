@@ -23,21 +23,6 @@ class AdminFeedback extends BaseModel
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => '标题小于一百个字符',
-            'content' => '内容小于五百个字符',
-            'addtime' => '提交时间',
-            'type' => '反馈类型',
-            'email' => '邮箱地址',
-        ];
-    }
-
     public function saveData()
     {
         if ( !$this->validate() ){
@@ -47,6 +32,7 @@ class AdminFeedback extends BaseModel
                 'data'=>null
             ];
         }
+
         $model = new FeedbackModel();
         $model->title = $this->title;
         $model->content = $this->content;

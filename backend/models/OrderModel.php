@@ -4,7 +4,7 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_order}}".
+ * This is the model class for table "admin_order".
  *
  * @property integer $id
  * @property string $order_number
@@ -12,6 +12,7 @@ use Yii;
  * @property integer $uid
  * @property integer $is_pay
  * @property integer $money
+ * @property string $addtime
  */
 class OrderModel extends \backend\models\BaseModel
 {
@@ -20,7 +21,7 @@ class OrderModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_order}}';
+        return 'admin_order';
     }
 
     /**
@@ -31,6 +32,7 @@ class OrderModel extends \backend\models\BaseModel
         return [
             [['order_number', 'aid', 'uid', 'money'], 'required'],
             [['aid', 'uid'], 'integer'],
+            [['addtime'], 'safe'],
             [['order_number'], 'string', 'max' => 35],
             [['is_pay'], 'string', 'max' => 1],
             [['money'], 'string', 'max' => 8]
@@ -49,6 +51,7 @@ class OrderModel extends \backend\models\BaseModel
             'uid' => '用户id',
             'is_pay' => '是否支付',
             'money' => '支付金额',
+            'addtime' => '添加时间',
         ];
     }
 
@@ -200,6 +203,29 @@ class OrderModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('money'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'addtime' => array(
+                        'name' => 'addtime',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '添加时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('addtime'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

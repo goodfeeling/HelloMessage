@@ -179,11 +179,13 @@ $urlManager = Yii::$app->urlManager;
 
                 } else if(res['state'] == 303) {
 
-                    window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>";
+                    window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>"
+                        + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
 
                 } else {
 
-                    window.location.href = "<?= Url::toRoute('activity/apply', true) ?>";
+                    window.location.href = "<?= Url::toRoute('activity/apply', true) ?>"
+                        + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
 
                 }
             }
@@ -213,7 +215,7 @@ $urlManager = Yii::$app->urlManager;
                     $('.wx-bd').text(res['msg']);
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
-                    
+
                 }
             }
         })
