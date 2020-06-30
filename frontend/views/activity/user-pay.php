@@ -34,7 +34,7 @@ $urlManager = Yii::$app->urlManager;
                         <button type="button" class="btn btn-secondary btn-block">再想想</button>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="btn btn-primary btn-block">去支付</button>
+                        <button type="button" id="goPay" class="btn btn-primary btn-block">去支付</button>
                     </div>
                 </div>
             </footer>
@@ -45,7 +45,7 @@ $urlManager = Yii::$app->urlManager;
 
 
 <script>
-    $('#applyBtn').on('click', function (e) {
+    $('#goPay').on('click', function (e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/user-pay']) ?>",
             type: "POST",
