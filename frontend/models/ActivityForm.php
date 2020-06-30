@@ -163,7 +163,7 @@ class ActivityForm extends BaseModel
                 ])->exists();
             $value['is_pay'] = $isPay ? '已支付':'未支付';
             // 是否签到
-            $isJoin = ActivityModel::find()
+            $isJoin = ActivityUserModel::find()
                 ->where([
                     'aid'=>$value['aid'],
                     'uid'=>$this->uid,
