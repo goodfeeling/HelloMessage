@@ -200,7 +200,7 @@ $urlManager = Yii::$app->urlManager;
                         // 跳转回活动详情页
                         // 首页
                     } else {
-                        $('.wx-bd').text(res['msg']);
+                        $('.wx-bd').text(data['msg']);
                         $('.wx-main-btn').text("确定");
                         $('#simpleDialog').fadeIn(200);
                     }
