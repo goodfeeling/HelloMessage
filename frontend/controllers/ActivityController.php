@@ -161,7 +161,7 @@ class ActivityController extends BaseController
             $form = new AdminOrder();
             $form->uid = $this->userData['id'];
             $form->aid = $request->post('id');
-            $form->money = 100;
+            $form->money = "10000";
             $res = $form->sendPay();
             return $this->asJson($res);
         } else {
