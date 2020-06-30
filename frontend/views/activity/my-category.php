@@ -5,7 +5,6 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '我的活动';
-var_dump($data);exit;
 ?>
 
 <!-- App Header -->
@@ -49,7 +48,7 @@ var_dump($data);exit;
                         </span>
                     <?php endif; ?>
 
-                    <?php if ($value['is_pay']): ?>
+                    <?php if ($value['is_join']): ?>
                         <span class="badge badge-success iconed mr-1 mb-1">
                             <i class="icon ion-ios-checkmark"></i>
                             已签到
