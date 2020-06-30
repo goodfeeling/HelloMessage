@@ -25,11 +25,11 @@ $this->title = '我的活动';
                 <div class="card-body">
                     <h5 class="card-title"><?= $value['name'] ?></h5>
                     <p class="card-text"><?= $value['theme'] ?></p>
-                    <?php if ($value['is_pay'] == 1): ?>
+                    <?php if ($value['is_pay'] == 0): ?>
                         <button type="button" class="btn btn-primary shadowed mr-1 mb-1">付费</button>
                     <?php endif; ?>
 
-                    <?php if ($value['is_join'] == 1): ?>
+                    <?php if ($value['is_join'] == 0): ?>
                         <button type="button" class="btn btn-secondary shadowed mr-1 mb-1">签到</button>
                     <?php endif; ?>
                 </div>
