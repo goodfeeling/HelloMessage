@@ -28,7 +28,7 @@ class ActivityController extends BaseController
                 'msg' => '您需要登陆！',
                 'state' => 100,
                 'data' => null,
-            ];;
+            ];
         }
 
         $request = Yii::$app->request;
