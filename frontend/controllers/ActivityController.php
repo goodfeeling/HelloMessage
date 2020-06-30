@@ -143,6 +143,7 @@ class ActivityController extends BaseController
 
         } else {
             $form = new ActivityForm();
+            $form->uid = $this->userData['id'];
             $res = $form->getStateData();
             return $this->render('my-category',[
                 'data'=>$res
