@@ -22,6 +22,8 @@ use Yii;
  * @property integer $gender
  * @property integer $height
  * @property integer $mobile
+ * @property string $addtime
+ * @property string $update_time
  */
 class UserDetailModel extends \backend\models\BaseModel
 {
@@ -41,7 +43,7 @@ class UserDetailModel extends \backend\models\BaseModel
         return [
             [['uid'], 'required'],
             [['uid', 'height', 'mobile'], 'integer'],
-            [['birthday'], 'safe'],
+            [['birthday', 'addtime', 'update_time'], 'safe'],
             [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10],
             [['occupation'], 'string', 'max' => 20],
             [['cars_and_houses', 'marital_status', 'education'], 'string', 'max' => 2],
@@ -73,6 +75,8 @@ class UserDetailModel extends \backend\models\BaseModel
             'gender' => '性别',
             'height' => '身高',
             'mobile' => '联系方式',
+            'addtime' => '添加时间',
+            'update_time' => '更新时间',
         ];
     }
 
@@ -454,6 +458,52 @@ class UserDetailModel extends \backend\models\BaseModel
                         'type' => 'integer',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('mobile'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'addtime' => array(
+                        'name' => 'addtime',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '添加时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('addtime'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'update_time' => array(
+                        'name' => 'update_time',
+                        'allowNull' => true,
+//                         'autoIncrement' => false,
+//                         'comment' => '更新时间',
+//                         'dbType' => "datetime",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '',
+                        'scale' => '',
+                        'size' => '',
+                        'type' => 'datetime',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('update_time'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

@@ -73,6 +73,9 @@ class AdminUserDetail extends BaseModel
 
         $model = new UserDetailModel();
         $model->attributes = $this->attributes;
+        $model->update_time = date('yy-m-d H:i:s');
+        $model->addtime = date('yy-m-d H:i:s');
+        var_dump($model->save());exit;
         if ($model->save()) {
             return  [
                 'msg'=>'提交成功',

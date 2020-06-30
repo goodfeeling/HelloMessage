@@ -77,6 +77,8 @@ $modelLabel = new \backend\models\UserDetailModel();
               echo '<th onclick="orderby(\'gender\', \'desc\')" '.CommonFun::sortClass($orderby, 'gender').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('gender').'</th>';
               echo '<th onclick="orderby(\'height\', \'desc\')" '.CommonFun::sortClass($orderby, 'height').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('height').'</th>';
               echo '<th onclick="orderby(\'mobile\', \'desc\')" '.CommonFun::sortClass($orderby, 'mobile').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('mobile').'</th>';
+              echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
+              echo '<th onclick="orderby(\'update_time\', \'desc\')" '.CommonFun::sortClass($orderby, 'update_time').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('update_time').'</th>';
          
 			?>
 	
@@ -105,6 +107,8 @@ $modelLabel = new \backend\models\UserDetailModel();
                 echo '  <td>' . $model->gender . '</td>';
                 echo '  <td>' . $model->height . '</td>';
                 echo '  <td>' . $model->mobile . '</td>';
+                echo '  <td>' . $model->addtime . '</td>';
+                echo '  <td>' . $model->update_time . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -290,6 +294,22 @@ $modelLabel = new \backend\models\UserDetailModel();
               </div>
               <div class="clearfix"></div>
           </div>
+
+          <div id="addtime_div" class="form-group">
+              <label for="addtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("addtime")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="addtime" name="UserDetailModel[addtime]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="update_time_div" class="form-group">
+              <label for="update_time" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("update_time")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="update_time" name="UserDetailModel[update_time]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
                     
 
 			<?php ActiveForm::end(); ?>          
@@ -349,6 +369,8 @@ function orderby(field, op){
         $("#gender").val("");
         $("#height").val("");
         $("#mobile").val("");
+        $("#addtime").val("");
+        $("#update_time").val("");
 	
 	}
 	else{
@@ -368,6 +390,8 @@ function orderby(field, op){
         $("#gender").val(data.gender)
         $("#height").val(data.height)
         $("#mobile").val(data.mobile)
+        $("#addtime").val(data.addtime)
+        $("#update_time").val(data.update_time)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -386,6 +410,8 @@ function orderby(field, op){
       $("#gender").attr({readonly:true,disabled:true});
       $("#height").attr({readonly:true,disabled:true});
       $("#mobile").attr({readonly:true,disabled:true});
+      $("#addtime").attr({readonly:true,disabled:true});
+      $("#update_time").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -405,6 +431,8 @@ function orderby(field, op){
       $("#gender").attr({readonly:false,disabled:false});
       $("#height").attr({readonly:false,disabled:false});
       $("#mobile").attr({readonly:false,disabled:false});
+      $("#addtime").attr({readonly:false,disabled:false});
+      $("#update_time").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');
