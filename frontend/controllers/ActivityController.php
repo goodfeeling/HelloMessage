@@ -57,12 +57,14 @@ class ActivityController extends BaseController
                 ->where(['uid'=>$this->userData['id']])
                 ->exists();
             if ($CheckUserExist) {
+
                 $isPay = OrderModel::find()
                     ->where([
                         'aid'=>Yii::$app->request->get('id'),
-                        'uid'=>$this->uid,
+                        'uid'=>$this->userData['id'],
                         'is_pay'=>1
                     ])->exists();
+
                 if ($isPay) {
                     $res =  [
                         'msg' => '还没有支付金额！',
@@ -76,6 +78,7 @@ class ActivityController extends BaseController
                         'data' => null,
                     ];
                 }
+
             } else {
                 $res =  [
                     'msg' => 'no error',
