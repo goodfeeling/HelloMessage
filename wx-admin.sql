@@ -2532,7 +2532,7 @@ INSERT INTO `admin_menu` VALUES (13, 'comment', '文章评论', 5, '文章评论
 INSERT INTO `admin_menu` VALUES (14, 'maillSetting', '邮箱设置', 6, '邮箱设置', '邮箱设置', 2, '邮箱设置', 'mail-setting/index', 'index', 'backend\\controllers\\MailSettingController', 'n', 'admin', '2020-06-15 17:53:16', 'admin', '2020-06-15 17:53:16');
 INSERT INTO `admin_menu` VALUES (15, 'system_detail', '系统配置', 6, '系统配置', '系统配置', 1, '系统配置', 'system/index', 'index', 'backend\\controllers\\SystemController', 'n', 'admin', '2020-06-16 17:49:22', 'admin', '2020-06-16 17:49:22');
 INSERT INTO `admin_menu` VALUES (20, 'avatar-list', '头像管理', 10, '头像管理', '头像管理', 1, '头像管理', 'user-avatar/index', 'index', 'backend\\controllers\\UserAvatarController', 'n', 'admin', '2020-06-16 18:06:47', 'admin', '2020-06-16 18:08:33');
-INSERT INTO `admin_menu` VALUES (21, 'user-detail', '详细信息', 10, '详细信息', '详细信息', 1, '详细信息', 'user-detail/index', 'index', 'backend\\controllers\\UserDetailController', 'n', 'admin', '2020-06-16 18:08:25', 'admin', '2020-06-16 18:08:25');
+INSERT INTO `admin_menu` VALUES (21, 'user-detail', '详细信息', 10, '详细信息', '详细信息', 1, '详细信息', 'user-detail/index', 'index', 'backend\\controllers\\UserInfoController', 'n', 'admin', '2020-06-16 18:08:25', 'admin', '2020-06-16 18:08:25');
 COMMIT;
 
 -- ----------------------------
