@@ -11,9 +11,7 @@ $this->title = '参加成功';
 
 <!-- App Capsule -->
 <div id="appCapsule">
-
     <div class="appContent">
-
         <div class="splashBlock">
             <div class="splashIcon text-primary mt-3 mb-3">
                 <i class="icon ion-ios-checkmark"></i>
@@ -39,8 +37,6 @@ $this->title = '参加成功';
                 </div>
             </footer>
         </div>
-
     </div>
-
 </div>
 <!-- appCapsule -->

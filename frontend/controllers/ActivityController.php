@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use backend\models\ActivityModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
+use backend\models\OrderModel;
 use backend\models\UserDetailModel;
 use frontend\models\ActivityForm;
 use frontend\models\AdminUserDetail;
@@ -56,11 +57,25 @@ class ActivityController extends BaseController
                 ->where(['uid'=>$this->userData['id']])
                 ->exists();
             if ($CheckUserExist) {
-                $res =  [
-                    'msg' => '您已经填写过了，需要修改请到个人中心！',
-                    'state' => 302,
-                    'data' => null,
-                ];
+                $isPay = OrderModel::find()
+                    ->where([
+                        'aid'=>Yii::$app->request->get('id'),
+                        'uid'=>$this->uid,
+                        'is_pay'=>1
+                    ])->exists();
+                if ($isPay) {
+                    $res =  [
+                        'msg' => '还没有支付金额！',
+                        'state' => 303,
+                        'data' => null,
+                    ];
+                } else {
+                    $res =  [
+                        'msg' => '您已经填写过了，需要修改请到个人中心！',
+                        'state' => 302,
+                        'data' => null,
+                    ];
+                }
             } else {
                 $res =  [
                     'msg' => 'no error',
@@ -139,9 +154,10 @@ class ActivityController extends BaseController
      *
      * @return mixed
      */
-    public function actionUsePay()
+    public function actionUserPay()
     {
-        return $this->render('use-pay');
+
+        return $this->render('user-pay');
     }
 
     /**

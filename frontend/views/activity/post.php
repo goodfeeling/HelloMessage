@@ -158,18 +158,27 @@ $urlManager = Yii::$app->urlManager;
             url: "<?= $urlManager->createUrl(['activity/verify-user']) ?>",
             type: "GET",
             dataType: 'json',
+            data: {
+                id: <?= Yii::$app->request->getQueryParam('id') ?>
+            },
             success: function(res) {
                 if (res['state'] == 100) {
+
                     $('.wx-bd').text(res['msg']);
                     $('.wx-main-btn').text("去登陆");
                     $('.wx-main-btn').on('click',function(e){
                         window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                     });
                     $('#simpleDialog').fadeIn(200);
+
                 } else if(res['state'] == 302){
+
                     $('.wx-bd').text(res['msg']);
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
+
+                } else if(res['state'] == 303) {
+                    window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>";
                 } else {
                     window.location.href = "<?= Url::toRoute('activity/apply', true) ?>";
                 }

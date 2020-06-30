@@ -195,10 +195,6 @@ $urlManager = Yii::$app->urlManager;
                 success: function(data) {
                     if(data['state'] == 0) {
                         window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>";
-                        // 跳转支付界面
-                        // 支付成功页面
-                        // 跳转回活动详情页
-                        // 首页
                     } else {
                         $('.wx-bd').text(data['msg']);
                         $('.wx-main-btn').text("确定");
