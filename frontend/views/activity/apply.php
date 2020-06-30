@@ -149,8 +149,6 @@ $urlManager = Yii::$app->urlManager;
 
 <script type="text/javascript">
     window.onload = () => {
-
-
         var state = true;
         $('#check').click(function (e) {
             if (state == true) {
@@ -190,13 +188,22 @@ $urlManager = Yii::$app->urlManager;
                 'mate_require': $('#mate_require').val(),
             };
             $.ajax({
-                url: "<?= $urlManager->createUrl(['activity/apply1']) ?>",
+                url: "<?= $urlManager->createUrl(['activity/apply']) ?>",
                 type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    $('.wx-bd').text(data['msg']);
-                    $('#simpleDialog').fadeIn(300);
+                    if(data['state'] == 0) {
+                        window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>";
+                        // 跳转支付界面
+                        // 支付成功页面
+                        // 跳转回活动详情页
+                        // 首页
+                    } else {
+                        $('.wx-bd').text(res['msg']);
+                        $('.wx-main-btn').text("确定");
+                        $('#simpleDialog').fadeIn(200);
+                    }
                 }
             });
         });

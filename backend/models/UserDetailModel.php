@@ -4,14 +4,14 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_user_detail}}".
+ * This is the model class for table "admin_user_detail".
  *
  * @property integer $id
  * @property integer $uid
  * @property string $name
  * @property string $birthday
  * @property string $occupation
- * @property integer $income
+ * @property string $income
  * @property integer $cars_and_houses
  * @property integer $marital_status
  * @property integer $education
@@ -30,7 +30,7 @@ class UserDetailModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_user_detail}}';
+        return 'admin_user_detail';
     }
 
     /**
@@ -40,15 +40,14 @@ class UserDetailModel extends \backend\models\BaseModel
     {
         return [
             [['uid'], 'required'],
-            [['uid', 'income', 'height', 'mobile'], 'integer'],
+            [['uid', 'height', 'mobile'], 'integer'],
             [['birthday'], 'safe'],
-            [['name', 'character'], 'string', 'max' => 10],
-            [['occupation'], 'string', 'max' => 50],
+            [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10],
+            [['occupation'], 'string', 'max' => 20],
             [['cars_and_houses', 'marital_status', 'gender'], 'string', 'max' => 1],
             [['education'], 'string', 'max' => 2],
-            [['native_place'], 'string', 'max' => 3],
-            [['hobby'], 'string', 'max' => 255],
-            [['mate_require'], 'string', 'max' => 1000]
+            [['hobby'], 'string', 'max' => 200],
+            [['mate_require'], 'string', 'max' => 500]
         ];
     }
 
@@ -191,14 +190,14 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '职业',
-//                         'dbType' => "varchar(50)",
+//                         'dbType' => "varchar(20)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '50',
+                        'precision' => '20',
                         'scale' => '',
-                        'size' => '50',
+                        'size' => '20',
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('occupation'),
@@ -214,15 +213,15 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '月收入',
-//                         'dbType' => "int(10)",
+//                         'dbType' => "varchar(10)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
-                        'phpType' => 'integer',
+                        'phpType' => 'string',
                         'precision' => '10',
                         'scale' => '',
                         'size' => '10',
-                        'type' => 'integer',
+                        'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('income'),
                         'inputType' => 'text',
@@ -306,14 +305,14 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '籍贯',
-//                         'dbType' => "varchar(3)",
+//                         'dbType' => "varchar(10)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '3',
+                        'precision' => '10',
                         'scale' => '',
-                        'size' => '3',
+                        'size' => '10',
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('native_place'),
@@ -352,14 +351,14 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '爱好',
-//                         'dbType' => "varchar(255)",
+//                         'dbType' => "varchar(200)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '255',
+                        'precision' => '200',
                         'scale' => '',
-                        'size' => '255',
+                        'size' => '200',
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('hobby'),
@@ -375,14 +374,14 @@ class UserDetailModel extends \backend\models\BaseModel
                         'allowNull' => true,
 //                         'autoIncrement' => false,
 //                         'comment' => '择偶要求',
-//                         'dbType' => "varchar(1000)",
+//                         'dbType' => "varchar(500)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
                         'phpType' => 'string',
-                        'precision' => '1000',
+                        'precision' => '500',
                         'scale' => '',
-                        'size' => '1000',
+                        'size' => '500',
                         'type' => 'string',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('mate_require'),

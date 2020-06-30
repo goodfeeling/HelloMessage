@@ -36,7 +36,7 @@ $urlManager = Yii::$app->urlManager;
                 <?= $data['describe'] ?>
             </div>
 
-            <a href="<?php echo Url::to(['activity/apply']) ?>" class="btn btn-primary btn-block mb-1">活动资格申请</a>
+            <a id="applyBtn" class="btn btn-primary btn-block mb-1">活动资格申请</a>
         </div>
         <!-- * post body -->
 
@@ -118,6 +118,7 @@ $urlManager = Yii::$app->urlManager;
         </div>
 
         <div class="comments">
+
             <div class="item">
                 <div class="image">
                     <img src="fornt/img/sample/avatar2.jpg" alt="avatar" class="avatar">
@@ -130,6 +131,7 @@ $urlManager = Yii::$app->urlManager;
                     <footer>25 Sep 2019</footer>
                 </div>
             </div>
+
         </div>
         <!-- * comments -->
 
@@ -138,7 +140,7 @@ $urlManager = Yii::$app->urlManager;
         <!-- form -->
         <form>
             <div class="form-group">
-                <textarea class="form-control" rows="4" placeholder="Write a comment..."></textarea>
+                <textarea class="form-control" rows="4" placeholder="说点什么吧！"></textarea>
             </div>
             <button type="button" class="btn btn-primary btn-large btn-block">
                 提交
@@ -150,6 +152,27 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
+
+    $('#applyBtn').on('click',function(e){
+        $.ajax({
+            url: "<?= $urlManager->createUrl(['activity/verify-user']) ?>",
+            type: "GET",
+            dataType: 'json',
+            success: function(res) {
+                if (res['state'] == 100) {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("去登陆");
+                    $('.wx-main-btn').on('click',function(e){
+                        window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                    });
+                    $('#simpleDialog').fadeIn(200);
+                } else {
+                    window.location.href = "<?= Url::toRoute('activity/apply', true) ?>";
+                }
+            }
+        })
+    });
+
     $('#likes').on('click', function(e) {
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",

@@ -3,7 +3,12 @@
 
 namespace frontend\controllers;
 
+use backend\models\ActivityModel;
+use backend\models\AdminUser;
+use backend\models\ImagesModel;
 use frontend\models\ActivityForm;
+use frontend\models\UserDetailForm;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use frontend\behaviors\LoginBehavior;
@@ -18,14 +23,41 @@ class ActivityController extends BaseController
      */
     public function actionApply()
     {
+        if (empty($this->userData)) {
+            return [
+                'msg' => '您需要登陆！',
+                'state' => 100,
+                'data' => null,
+            ];;
+        }
+
         $request = Yii::$app->request;
         if ($request->isPost) {
-            $form = new ActivityForm();
+
+            $form = new UserDetailForm();
             $form->attributes = $request->post();
             $res = $form->saveData();
             return $this->asJson($res);
         }
         return $this->render('apply');
+    }
+
+    public function actionVerifyUser()
+    {
+        if (empty($this->userData)) {
+            $res =  [
+                'msg' => '您需要登陆！',
+                'state' => 100,
+                'data' => null,
+            ];
+        }else {
+            $res =  [
+                'msg' => 'no error',
+                'state' => 0,
+                'data' => null,
+            ];
+        }
+        return $this->asJson($res);
     }
 
     /**
@@ -52,7 +84,23 @@ class ActivityController extends BaseController
      */
     public function actionCategory()
     {
-        return $this->render('category');
+        $query = ActivityModel::find()->where(['status' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy("addtime DESC")
+            ->select('id,name,pic_url_id')
+            ->asArray()
+            ->all();
+        foreach ($models as $key => &$val) {
+            $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
+            $val['img_url'] = Yii::getAlias('@back') . $img['url'];
+        }
+        return $this->render('category',[
+            'models' => $models,
+            'pages' => $pages,
+        ]);
     }
 
     /**
@@ -62,7 +110,16 @@ class ActivityController extends BaseController
      */
     public function actionMyCategory()
     {
-        return $this->render('my-category');
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+
+        } else {
+            $form = new ActivityForm();
+            $res = $form->getStateData();
+            return $this->render('my-category',[
+                'data'=>$res
+            ]);
+        }
     }
 
     /**
