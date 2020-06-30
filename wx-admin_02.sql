@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/06/2020 15:05:21
+ Date: 30/06/2020 15:57:10
 */
 
 SET NAMES utf8mb4;
@@ -45,7 +45,7 @@ CREATE TABLE `admin_activity` (
 BEGIN;
 INSERT INTO `admin_activity` VALUES (2, 'test', '2020-06-24 14:35:48', '2020-06-05 11:45:00', '100|10', '<blockquote><blockquote><p></p><p></p><p></p><p></p><h1>asdasdads</h1></blockquote></blockquote><p></p>', '12', 1, 1, '联谊', 159, 2, 28, 1);
 INSERT INTO `admin_activity` VALUES (3, 'test2', '2020-06-22 17:37:05', '2020-06-21 03:52:00', '100|10', '<p>123123</p>', '12', 123, 1, '联谊1', 159, 2, 1119, 2);
-INSERT INTO `admin_activity` VALUES (4, 'test3', '2020-06-30 15:00:54', '2020-06-21 22:58:00', '100|10', '<p>asdasdasd</p>', '12', 12, 1, '联谊12', 159, 2, 402, 3);
+INSERT INTO `admin_activity` VALUES (4, 'test3', '2020-06-30 15:14:19', '2020-06-21 22:58:00', '100|10', '<p>asdasdasd</p>', '12', 12, 1, '联谊12', 159, 2, 404, 3);
 INSERT INTO `admin_activity` VALUES (5, 'test4', '2020-06-22 18:32:27', '2020-07-05 22:55:00', '100|10', '<p>asdasdasf</p>', 'dddd', 5, 1, '联谊222', 159, 2, 2225, 2);
 COMMIT;
 
@@ -2956,9 +2956,9 @@ CREATE TABLE `admin_user_detail` (
   `birthday` timestamp NULL DEFAULT NULL COMMENT '生日',
   `occupation` varchar(20) DEFAULT '' COMMENT '职业',
   `income` varchar(10) DEFAULT NULL COMMENT '月收入',
-  `cars_and_houses` tinyint(1) DEFAULT NULL COMMENT '有无车房',
-  `marital_status` tinyint(1) DEFAULT NULL COMMENT '婚姻状况',
-  `education` tinyint(2) DEFAULT NULL COMMENT '学历',
+  `cars_and_houses` varchar(2) DEFAULT NULL COMMENT '有无车房',
+  `marital_status` varchar(2) DEFAULT NULL COMMENT '婚姻状况',
+  `education` varchar(2) DEFAULT NULL COMMENT '学历',
   `native_place` varchar(10) DEFAULT NULL COMMENT '籍贯',
   `character` varchar(10) DEFAULT NULL COMMENT '性格',
   `hobby` varchar(200) DEFAULT NULL COMMENT '爱好',
@@ -2966,6 +2966,8 @@ CREATE TABLE `admin_user_detail` (
   `gender` tinyint(1) DEFAULT NULL COMMENT '性别',
   `height` int(3) DEFAULT NULL COMMENT '身高',
   `mobile` int(11) DEFAULT NULL COMMENT '联系方式',
+  `addtime` datetime DEFAULT NULL COMMENT '添加时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户详细信息表';
 
