@@ -7,7 +7,7 @@ use backend\models\ActivityModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
 use frontend\models\ActivityForm;
-use frontend\models\UserDetail;
+use frontend\models\AdminUserDetail;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -34,7 +34,7 @@ class ActivityController extends BaseController
         $request = Yii::$app->request;
         if ($request->isPost) {
 
-            $form = new UserDetail();
+            $form = new AdminUserDetail();
             $form->attributes = $request->post();
             $res = $form->saveData();
             return $this->asJson($res);
