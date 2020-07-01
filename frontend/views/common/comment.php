@@ -23,7 +23,7 @@ $urlManager = Yii::$app->urlManager;
             </div>
             <div class="content">
                 <strong>{{item.nickname}}</strong>
-                <div style="word-wrap: break-word;max-width: 100px" class="text">
+                <div style="word-wrap: break-word;max-width: 250px" class="text">
                     {{item.content}}
                 </div>
                 <footer>{{item.addtime}}</footer>
