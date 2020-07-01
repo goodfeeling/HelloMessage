@@ -47,7 +47,7 @@ class AdminActivityComments extends BaseModel
             return  [
                 'msg'=>'评论成功',
                 'state'=>0,
-                'data'=>null
+                'data'=>self::getData()
             ];
         } else {
             return  [
