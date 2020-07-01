@@ -22,7 +22,7 @@ $urlManager = Yii::$app->urlManager;
                 <img src="{{item.avatar_url}}" alt="avatar" class="avatar">
             </div>
             <div class="content">
-                <strong>ccc</strong>
+                <strong>{{item.nickname}}</strong>
                 <div class="text">
                     {{item.content}}
                 </div>

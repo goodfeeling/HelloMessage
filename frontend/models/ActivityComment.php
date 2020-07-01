@@ -7,7 +7,7 @@ namespace frontend\models;
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 
-class AdminActivityComments extends BaseModel
+class ActivityComment extends BaseModel
 {
     public $aid;
     public $uid;
@@ -71,9 +71,10 @@ class AdminActivityComments extends BaseModel
                 ->select('avatar_url')
                 ->one();
             $value['avatar_url'] = $author['avatar_url'];
+            $value['nickname'] = $author['nickname'];
             $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
         }
-
+        var_dump($query);exit;
         return [
             'msg'=>'获取成功',
             'state'=>0,

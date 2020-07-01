@@ -7,7 +7,7 @@ use backend\models\ActivityModel;
 use backend\models\ImagesModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
-use frontend\models\AdminActivityComments;
+use frontend\models\ActivityComment;
 use frontend\models\ActivityForm;
 use frontend\models\AdminOrder;
 use frontend\models\AdminUserDetail;
@@ -165,7 +165,7 @@ class ActivityController extends BaseController
     public function actionComment(){
 
         $request = Yii::$app->request;
-        $form = new AdminActivityComments();
+        $form = new ActivityComment();
         $form->aid = $request->get('id');
         if ($request->isPost) {
             if (empty($this->userData)) {
