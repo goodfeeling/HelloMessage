@@ -74,7 +74,6 @@ class ActivityComment extends BaseModel
             $value['nickname'] = $author['nickname'];
             $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
         }
-        var_dump($query);exit;
         return [
             'msg'=>'获取成功',
             'state'=>0,
