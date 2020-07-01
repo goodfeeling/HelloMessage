@@ -64,7 +64,7 @@ class AdminUserDetail extends BaseModel
         }
 
         $CheckUserExist = UserDetailModel::find()
-            ->where(['uid'=>$this->uid,'aid'=>$this->aid])
+            ->where(['uid'=>$this->uid])
             ->exists();
         if ($CheckUserExist) {
             return [
