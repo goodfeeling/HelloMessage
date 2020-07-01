@@ -66,6 +66,7 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               echo '<th onclick="orderby(\'content\', \'desc\')" '.CommonFun::sortClass($orderby, 'content').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('content').'</th>';
               echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
               echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
+              echo '<th onclick="orderby(\'uid\', \'desc\')" '.CommonFun::sortClass($orderby, 'uid').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('uid').'</th>';
          
 			?>
 	
@@ -83,6 +84,7 @@ $modelLabel = new \backend\models\ActivityCommentModel();
                 echo '  <td>' . $model->content . '</td>';
                 echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td>' . $model->status . '</td>';
+                echo '  <td>' . $model->uid . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -180,6 +182,14 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               </div>
               <div class="clearfix"></div>
           </div>
+
+          <div id="uid_div" class="form-group">
+              <label for="uid" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("uid")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="uid" name="ActivityCommentModel[uid]" placeholder="必填" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
                     
 
 			<?php ActiveForm::end(); ?>          
@@ -228,6 +238,7 @@ function orderby(field, op){
         $("#content").val("");
         $("#addtime").val("");
         $("#status").val("");
+        $("#uid").val("");
 	
 	}
 	else{
@@ -236,6 +247,7 @@ function orderby(field, op){
         $("#content").val(data.content)
         $("#addtime").val(data.addtime)
         $("#status").val(data.status)
+        $("#uid").val(data.uid)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -243,6 +255,7 @@ function orderby(field, op){
       $("#content").attr({readonly:true,disabled:true});
       $("#addtime").attr({readonly:true,disabled:true});
       $("#status").attr({readonly:true,disabled:true});
+      $("#uid").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -251,6 +264,7 @@ function orderby(field, op){
       $("#content").attr({readonly:false,disabled:false});
       $("#addtime").attr({readonly:false,disabled:false});
       $("#status").attr({readonly:false,disabled:false});
+      $("#uid").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');

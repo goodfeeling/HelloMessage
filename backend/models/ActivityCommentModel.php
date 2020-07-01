@@ -11,6 +11,7 @@ use Yii;
  * @property string $content
  * @property string $addtime
  * @property integer $status
+ * @property integer $uid
  */
 class ActivityCommentModel extends \backend\models\BaseModel
 {
@@ -28,8 +29,8 @@ class ActivityCommentModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['aid', 'content', 'addtime', 'status'], 'required'],
-            [['aid'], 'integer'],
+            [['aid', 'content', 'addtime', 'status', 'uid'], 'required'],
+            [['aid', 'uid'], 'integer'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000],
             [['status'], 'string', 'max' => 1]
@@ -47,6 +48,7 @@ class ActivityCommentModel extends \backend\models\BaseModel
             'content' => '内容',
             'addtime' => '添加时间',
             'status' => '审核状态',
+            'uid' => '用户id',
         ];
     }
 
@@ -175,6 +177,29 @@ class ActivityCommentModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('status'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'uid' => array(
+                        'name' => 'uid',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '用户id',
+//                         'dbType' => "int(11)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '11',
+                        'scale' => '',
+                        'size' => '11',
+                        'type' => 'integer',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('uid'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
