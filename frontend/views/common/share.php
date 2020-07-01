@@ -44,10 +44,11 @@ $urlManager = Yii::$app->urlManager;
     $('#shareClickEvent').on('click', '.ShareBox', function(e) {
         var chil = $(this).children();
         var type = $(chil[0]).attr('type');
+        console.log(typeof type);
+        console.log(type);
         switch (type) {
-            case 1:
+            case '1':
             case 2:
-                console.log(111);
                 wx.ready(function() { //需在用户可能点击分享按钮前就先调用
                     wx.updateAppMessageShareData({
                         title: 'test', // 分享标题
