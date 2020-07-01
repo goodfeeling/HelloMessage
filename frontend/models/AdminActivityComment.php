@@ -7,7 +7,7 @@ namespace frontend\models;
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 
-class ActivityComment extends BaseModel
+class AdminActivityComment extends BaseModel
 {
     public $aid;
     public $uid;
