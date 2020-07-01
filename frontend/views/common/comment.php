@@ -84,11 +84,11 @@ $urlManager = Yii::$app->urlManager;
                         });
                         $('#simpleDialog').fadeIn(200);
                     }else {
+                        $scope.data = response.data.data;
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("确定");
                         $('#simpleDialog').fadeIn(200);
                     }
-                    // $window.location.reload();
                 }, function errorCallback(response) {
                     $('.wx-bd').text(response.data.msg);
                     $('.wx-main-btn').text("确定");
