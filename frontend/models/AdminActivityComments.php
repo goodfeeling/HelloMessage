@@ -14,6 +14,7 @@ class AdminActivityComments extends BaseModel
     public $content;
     public $addtime;
     public $status;
+
     /**
      * @inheritdoc
      */
@@ -31,11 +32,11 @@ class AdminActivityComments extends BaseModel
 
     public function saveData()
     {
-        if ( !$this->validate() ){
+        if (!$this->validate()) {
             return [
-                'msg'=>current($this->getErrors())[0],
-                'state'=>1,
-                'data'=>null
+                'msg' => current($this->getErrors())[0],
+                'state' => 1,
+                'data' => null
             ];
         }
         $model = new ActivityCommentModel();
@@ -44,16 +45,16 @@ class AdminActivityComments extends BaseModel
         $model->status = '0';
 
         if ($model->save()) {
-            return  [
-                'msg'=>'评论成功',
-                'state'=>0,
-                'data'=>self::getData()
+            return [
+                'msg' => '评论成功',
+                'state' => 0,
+                'data' => self::getData()
             ];
         } else {
-            return  [
-                'msg'=>'评论失败',
-                'state'=>1,
-                'data'=>null
+            return [
+                'msg' => '评论失败',
+                'state' => 1,
+                'data' => null
             ];
         }
     }
@@ -61,11 +62,11 @@ class AdminActivityComments extends BaseModel
     public function getData()
     {
         $query = ActivityCommentModel::find()
-            ->where(['aid'=>$this->aid])
+            ->where(['aid' => $this->aid])
             ->asArray()
             ->all();
         $user_query = AdminUser::find();
-        foreach ($query as $key=>&$value) {
+        foreach ($query as $key => &$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])
                 ->select('avatar_url,nickname')
@@ -74,11 +75,7 @@ class AdminActivityComments extends BaseModel
             $value['nickname'] = $author['nickname'];
             $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
         }
-        return [
-            'msg'=>'获取成功',
-            'state'=>0,
-            'data'=>['list'=>$query,'count'=>count($query)]
-        ];
+        return ['list' => $query, 'count' => count($query)];
     }
 
 }

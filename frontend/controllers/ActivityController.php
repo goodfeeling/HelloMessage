@@ -179,7 +179,11 @@ class ActivityController extends BaseController
             $form->content = $request->post('content');
             $res = $form->saveData();
         } else {
-            $res = $form->getData();
+            $res = [
+                'msg' => '获取成功',
+                'state' => 0,
+                'data' => $form->getData()
+            ];
         }
         return $this->asJson($res);
     }
