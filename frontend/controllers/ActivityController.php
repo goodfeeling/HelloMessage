@@ -177,6 +177,7 @@ class ActivityController extends BaseController
             }
             $form->uid = $this->userData['id'];
             $form->content = $request->post();
+            var_dump($request->post());exit;
             $res = $form->saveData();
         } else {
             $res = $form->getData();
