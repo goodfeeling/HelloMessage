@@ -68,7 +68,7 @@ class AdminActivityComments extends BaseModel
         foreach ($query as $key=>&$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])
-                ->select('avatar_url')
+                ->select('avatar_url,nickname')
                 ->one();
             $value['avatar_url'] = $author['avatar_url'];
             $value['nickname'] = $author['nickname'];
