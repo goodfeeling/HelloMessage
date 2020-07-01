@@ -48,7 +48,7 @@ $urlManager = Yii::$app->urlManager;
         console.log(type);
         switch (type) {
             case '1':
-            case 2:
+            case '2':
                 wx.ready(function() { //需在用户可能点击分享按钮前就先调用
                     wx.updateAppMessageShareData({
                         title: 'test', // 分享标题
@@ -61,8 +61,8 @@ $urlManager = Yii::$app->urlManager;
                     })
                 });
                 break;
-            case 3:
-            case 4:
+            case '3':
+            case '4':
                 wx.ready(function() { //需在用户可能点击分享按钮前就先调用
                     wx.updateTimelineShareData({
                         title: 'test', // 分享标题
