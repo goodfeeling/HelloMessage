@@ -44,13 +44,14 @@ AppAsset::register($this);
         <div class="spinner-grow text-info"></div>
     </div>
     <!-- * Page loading -->
+
     <!--BEGIN dialog3-->
     <div class="js_dialog" id="simpleDialog" style="display: none;">
         <div class="weui-mask"></div>
         <div class="weui-dialog weui-skin_android">
             <div class="weui-dialog__hd"><strong class="weui-dialog__title">提示</strong></div>
             <div class="weui-dialog__bd wx-bd">
-                弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内
+                发生错误了，请联系管理员！
             </div>
             <div class="weui-dialog__ft">
                 <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_default">关闭</a>
@@ -59,6 +60,43 @@ AppAsset::register($this);
         </div>
     </div>
     <!--END dialog3-->
+
+    <!--BEGIN dialog1-->
+    <div class="js_dialog" id="theShare" style="display: none;">
+        <div class="weui-mask"></div>
+        <div id="js_dialog_1" class="weui-half-screen-dialog">
+            <div class="weui-half-screen-dialog__hd">
+                <div class="weui-half-screen-dialog__hd__side">
+                    <button class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></button>
+                </div>
+                <div class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title">分享给大家</strong>
+                </div>
+            </div>
+            <div class="weui-half-screen-dialog__bd">
+                    <a href="#" class="mr-1">
+                        <img src="images/wechat.png" alt="123">
+                    </a>
+                 微信朋友圈
+                    <a href="#" class="mr-1">
+                        <img src="images/pengyouquan.png" alt="123">
+                    </a>
+                 qq空间
+                    <a href="#" class="mr-1">
+                        <img src="images/qq_room.png" alt="123">
+                    </a>
+                 qq好友
+                    <a href="#" class="mr-1">
+                        <img src="images/qq.png" alt="123">
+                    </a>
+                 微博
+                    <a href="#" class="mr-1">
+                        <img src="images/weibo.png" alt="123">
+                    </a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog1-->
 
     <!-- App Capsule -->
     <?= $content ?>

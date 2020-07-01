@@ -50,52 +50,66 @@ $urlManager = Yii::$app->urlManager;
         .controller('comment', function ($scope, $http, $window) {
             // 初始化数据
             $http({
+
                 method: 'GET',
                 url: "<?= $urlManager->createUrl(['activity/comment']) ?>"
                     +"&id=<?= Yii::$app->request->getQueryParam('id') ?>",
+
             }).then(function successCallback(response) {
+
                 $scope.data = response.data.data;
+
             }, function errorCallback(response) {
+
                 $('.wx-bd').text(response.data.msg);
                 $('.wx-main-btn').text("确定");
                 $('#simpleDialog').fadeIn(200);
+
             });
 
 
             $scope.sendData = function () {
-                // 创建一个表单对象
+
                 var form = new FormData();
                 var msg = JSON.stringify($scope.content);
                 form.append('content', msg);
-                // 发送ajax请求
+
                 $http({
+
                     method: 'POST',
                     url: "<?= $urlManager->createUrl(['activity/comment']) ?>"
                         +"&id=<?= Yii::$app->request->getQueryParam('id') ?>",
                     data: form,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
+
                 }).then(function successCallback(response) {
 
                     if (response.data.state == 100) {
+
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("去登陆");
                         $('.wx-main-btn').on('click',function(e){
                             window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                         });
                         $('#simpleDialog').fadeIn(200);
+
                     }else {
+
                         $scope.content = '';
                         $scope.data = response.data.data;
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("确定");
                         $('#simpleDialog').fadeIn(200);
+
                     }
 
                 }, function errorCallback(response) {
+
                     $('.wx-bd').text(response.data.msg);
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
+
                 });
             };
         });
