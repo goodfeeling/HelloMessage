@@ -75,8 +75,8 @@ class ActivityComment extends BaseModel
         }
 
         return [
-            'msg'=>'评论失败',
-            'state'=>1,
+            'msg'=>'获取成功',
+            'state'=>0,
             'data'=>['list'=>$query,'count'=>count($query)]
         ];
     }

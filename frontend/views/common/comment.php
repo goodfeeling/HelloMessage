@@ -66,7 +66,7 @@ $urlManager = Yii::$app->urlManager;
                 // 创建一个表单对象
                 var form = new FormData();
                 var msg = JSON.stringify($scope.content);
-                form.append('msg', msg);
+                form.append('content', msg);
                 // 发送ajax请求
                 $http({
                     method: 'POST',
