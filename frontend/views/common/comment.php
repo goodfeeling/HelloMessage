@@ -76,6 +76,7 @@ $urlManager = Yii::$app->urlManager;
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
                 }).then(function successCallback(response) {
+
                     if (response.data.state == 100) {
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("去登陆");
@@ -84,11 +85,13 @@ $urlManager = Yii::$app->urlManager;
                         });
                         $('#simpleDialog').fadeIn(200);
                     }else {
+                        $scope.content = '';
                         $scope.data = response.data.data;
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("确定");
                         $('#simpleDialog').fadeIn(200);
                     }
+
                 }, function errorCallback(response) {
                     $('.wx-bd').text(response.data.msg);
                     $('.wx-main-btn').text("确定");
