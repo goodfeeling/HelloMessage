@@ -67,32 +67,47 @@ AppAsset::register($this);
         <div id="js_dialog_1" class="weui-half-screen-dialog">
             <div class="weui-half-screen-dialog__hd">
                 <div class="weui-half-screen-dialog__hd__side">
-                    <button class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></button>
+                    <button class="weui-icon-btn close-weui-share">关闭<i class="weui-icon-close-thin"></i></button>
                 </div>
                 <div class="weui-half-screen-dialog__hd__main">
-                    <strong class="weui-half-screen-dialog__title">分享给大家</strong>
+                    <strong class="weui-half-screen-dialog__title">分享至</strong>
                 </div>
             </div>
-            <div class="weui-half-screen-dialog__bd">
-                    <a href="#" class="mr-1">
-                        <img src="images/wechat.png" alt="123">
-                    </a>
-                 微信朋友圈
-                    <a href="#" class="mr-1">
-                        <img src="images/pengyouquan.png" alt="123">
-                    </a>
-                 qq空间
-                    <a href="#" class="mr-1">
-                        <img src="images/qq_room.png" alt="123">
-                    </a>
-                 qq好友
-                    <a href="#" class="mr-1">
-                        <img src="images/qq.png" alt="123">
-                    </a>
-                 微博
-                    <a href="#" class="mr-1">
-                        <img src="images/weibo.png" alt="123">
-                    </a>
+            <div class="weui-half-screen-dialog__bd share-dialog" id="shareClickEvent">
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="placeholder">
+                            <div class="ShareBox">
+                                <img src="images/wechat.png" type="1" alt="微信好友">
+                                <p>微信好友</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="placeholder">
+                            <div class="ShareBox">
+                                <img src="images/pengyouquan.png" type="4"  alt="朋友圈">
+                                <p>朋友圈</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="placeholder">
+                            <div class="ShareBox">
+                                <img src="images/qq_room.png" type="3"  alt="qq空间">
+                                <p>QQ空间</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="placeholder">
+                            <div class="ShareBox">
+                                <img src="images/qq.png" type="2"  alt="QQ好友">
+                                <p>QQ好友</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -102,33 +117,17 @@ AppAsset::register($this);
     <?= $content ?>
     <!-- * appCapsule -->
 
-    <!-- Small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" hidden>
-    </button>
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ///////////// Js Files ////////////////////  -->
+
     <script>
+        $('.close-weui-share').on('click', function() {
+            $('#theShare').fadeOut(200);
+        });
         $('.weui-dialog__btn').on('click', function() {
             $('.js_dialog').fadeOut(200);
         });
     </script>
+
     <!-- Bootstrap-->
     <script src="fornt/js/lib/popper.min.js"></script>
     <script src="fornt/js/lib/bootstrap.min.js"></script>

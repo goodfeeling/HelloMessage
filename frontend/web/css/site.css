@@ -11,3 +11,14 @@
 .other-login {
     margin: 0 0 0 10px;
 }
+#theShare img {
+    max-width: 42px;
+    max-height: 42px;
+    margin: 0 22%;
+}
+
+#theShare p {
+    font-size: 16px;
+    margin: 5px 0 0 0 ;
+    text-align: center;
+}
