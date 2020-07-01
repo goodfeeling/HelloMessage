@@ -11,8 +11,6 @@ use Yii;
  * @property string $content
  * @property string $addtime
  * @property integer $status
- * @property string $title
- * @property string $email
  */
 class ActivityCommentModel extends \backend\models\BaseModel
 {
@@ -30,13 +28,11 @@ class ActivityCommentModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['aid', 'content', 'addtime', 'status', 'title', 'email'], 'required'],
+            [['aid', 'content', 'addtime', 'status'], 'required'],
             [['aid'], 'integer'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000],
-            [['status'], 'string', 'max' => 1],
-            [['title'], 'string', 'max' => 255],
-            [['email'], 'string', 'max' => 100]
+            [['status'], 'string', 'max' => 1]
         ];
     }
 
@@ -51,8 +47,6 @@ class ActivityCommentModel extends \backend\models\BaseModel
             'content' => '内容',
             'addtime' => '添加时间',
             'status' => '审核状态',
-            'title' => '标题',
-            'email' => '邮箱',
         ];
     }
 
@@ -181,52 +175,6 @@ class ActivityCommentModel extends \backend\models\BaseModel
                         'type' => 'tinyint',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('status'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'title' => array(
-                        'name' => 'title',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '标题',
-//                         'dbType' => "varchar(255)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '255',
-                        'scale' => '',
-                        'size' => '255',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('title'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'email' => array(
-                        'name' => 'email',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '邮箱',
-//                         'dbType' => "varchar(100)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '100',
-                        'scale' => '',
-                        'size' => '100',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('email'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

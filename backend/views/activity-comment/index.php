@@ -66,8 +66,6 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               echo '<th onclick="orderby(\'content\', \'desc\')" '.CommonFun::sortClass($orderby, 'content').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('content').'</th>';
               echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
               echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
-              echo '<th onclick="orderby(\'title\', \'desc\')" '.CommonFun::sortClass($orderby, 'title').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('title').'</th>';
-              echo '<th onclick="orderby(\'email\', \'desc\')" '.CommonFun::sortClass($orderby, 'email').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('email').'</th>';
          
 			?>
 	
@@ -85,8 +83,6 @@ $modelLabel = new \backend\models\ActivityCommentModel();
                 echo '  <td>' . $model->content . '</td>';
                 echo '  <td>' . $model->addtime . '</td>';
                 echo '  <td>' . $model->status . '</td>';
-                echo '  <td>' . $model->title . '</td>';
-                echo '  <td>' . $model->email . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -184,22 +180,6 @@ $modelLabel = new \backend\models\ActivityCommentModel();
               </div>
               <div class="clearfix"></div>
           </div>
-
-          <div id="title_div" class="form-group">
-              <label for="title" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("title")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="title" name="ActivityCommentModel[title]" placeholder="必填" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
-          <div id="email_div" class="form-group">
-              <label for="email" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("email")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="email" name="ActivityCommentModel[email]" placeholder="必填" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
                     
 
 			<?php ActiveForm::end(); ?>          
@@ -248,8 +228,6 @@ function orderby(field, op){
         $("#content").val("");
         $("#addtime").val("");
         $("#status").val("");
-        $("#title").val("");
-        $("#email").val("");
 	
 	}
 	else{
@@ -258,8 +236,6 @@ function orderby(field, op){
         $("#content").val(data.content)
         $("#addtime").val(data.addtime)
         $("#status").val(data.status)
-        $("#title").val(data.title)
-        $("#email").val(data.email)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
@@ -267,8 +243,6 @@ function orderby(field, op){
       $("#content").attr({readonly:true,disabled:true});
       $("#addtime").attr({readonly:true,disabled:true});
       $("#status").attr({readonly:true,disabled:true});
-      $("#title").attr({readonly:true,disabled:true});
-      $("#email").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
@@ -277,8 +251,6 @@ function orderby(field, op){
       $("#content").attr({readonly:false,disabled:false});
       $("#addtime").attr({readonly:false,disabled:false});
       $("#status").attr({readonly:false,disabled:false});
-      $("#title").attr({readonly:false,disabled:false});
-      $("#email").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');

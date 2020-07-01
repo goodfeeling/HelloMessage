@@ -7,6 +7,7 @@ use backend\models\ActivityModel;
 use backend\models\ImagesModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
+use frontend\models\ActivityComment;
 use frontend\models\ActivityForm;
 use frontend\models\AdminOrder;
 use frontend\models\AdminUserDetail;
@@ -153,6 +154,33 @@ class ActivityController extends BaseController
         $form = new ActivityForm();
         $form->id = $request->post('id');
         $res = $form->LikeIncrease($this->userData['id']);
+        return $this->asJson($res);
+    }
+
+    /**
+     * Displays 评论列表.
+     *
+     * @return mixed
+     */
+    public function actionComment(){
+
+        $request = Yii::$app->request;
+        $form = new ActivityComment();
+        $form->aid = $request->get('id');
+        if ($request->isPost) {
+            if (empty($this->userData)) {
+                return $this->asJson([
+                    'msg' => '您需要登陆！',
+                    'state' => 100,
+                    'data' => null,
+                ]);
+            }
+            $form->uid = $this->userData['id'];
+            $form->content = $request->post();
+            $res = $form->saveData();
+        } else {
+            $res = $form->getData();
+        }
         return $this->asJson($res);
     }
 }
