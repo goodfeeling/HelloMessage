@@ -4,10 +4,12 @@
 }
 
 .wechat-login > a > img {
-    width: 170px;
-    height: 35px;
+    width: 100%;
+    height: 100%;
 }
 .wechat-login {
+    width: 170px;
+    height: 35px;
     margin: 0 auto;
 }
 
