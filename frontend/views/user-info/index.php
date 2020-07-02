@@ -193,7 +193,7 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
-    $.ready(function () {
+    window.onLoad(function () {
         var val = $("#birthday").attr('valye')
         $("#birthday").val(val.split(' ').join("T"))
     })
