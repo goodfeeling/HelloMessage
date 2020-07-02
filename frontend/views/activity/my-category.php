@@ -76,6 +76,6 @@ $this->title = '我的活动';
         $('.weui-msg-top').show();
     });
     $('#the-msg-back').on('click',function (e) {
-        $(this).hide();
+        $('.weui-msg-top').hide();
     })
 </script>
