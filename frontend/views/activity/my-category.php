@@ -73,7 +73,9 @@ $this->title = '我的活动';
 
     // 生成一个二维码
     $('#signIn').on('click',function (e) {
-        console.log(111)
         $('.weui-msg-top').show();
     });
+    $('#the-msg-back').on('click',function (e) {
+        $(this).hide();
+    })
 </script>

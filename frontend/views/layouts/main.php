@@ -70,7 +70,7 @@ AppAsset::register($this);
             </div>
             <div class="weui-msg__opr-area">
                 <p class="weui-btn-area">
-                    <a href="javascript:history.back();" class="weui-btn weui-btn_primary">推荐操作</a>
+                    <a href="javascript:" id="the-msg-back" class="weui-btn weui-btn_primary">推荐操作</a>
                 </p>
             </div>
             <div class="weui-msg__tips-area">
