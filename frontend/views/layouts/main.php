@@ -65,16 +65,15 @@ AppAsset::register($this);
     <div class="page weui-msg-top" style="display: none">
         <div class="weui-msg">
             <div class="weui-msg__text-area">
-                <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:">文字链接</a></p>
-                <p class="weui-msg__desc-primary">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现</p>
+                <img src="" class="qrcode-siginin-user"  alt="二维码">
             </div>
             <div class="weui-msg__opr-area">
                 <p class="weui-btn-area">
-                    <a href="javascript:" id="the-msg-back" class="weui-btn weui-btn_primary">推荐操作</a>
+                    <a href="javascript:" id="the-msg-back" class="weui-btn weui-btn_primary">返回</a>
                 </p>
             </div>
             <div class="weui-msg__tips-area">
-                <p class="weui-msg__tips">提示详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:">文字链接</a></p>
+                <p class="weui-msg__tips">提示：需要到时间才能签到<a href="javascript:">更多点击</a></p>
             </div>
         </div>
     </div>
