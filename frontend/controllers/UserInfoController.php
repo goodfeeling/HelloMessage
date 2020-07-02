@@ -21,6 +21,7 @@ class UserInfoController extends BaseController
                     'data' => null,
                 ]);
             }
+            $form->attributes = $request->post();
             $res = $form->simpleSaveData();
             return $this->asJson($res);
         }else {
