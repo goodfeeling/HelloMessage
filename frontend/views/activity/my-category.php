@@ -20,7 +20,7 @@ $this->title = '我的活动';
 
                 <div class="card-header">
                     <small>活动时间：</small>
-                    <h6><small><?= $value['addtime'] . '~' . $value['endtime'] ?></small></h6>
+                    <h7><small><?= $value['addtime'] . '~' . $value['endtime'] ?></small></h7>
                 </div>
 
                 <div class="card-body">
