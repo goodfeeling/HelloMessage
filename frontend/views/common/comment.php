@@ -14,6 +14,17 @@ $urlManager = Yii::$app->urlManager;
             <h1>评论 <small>{{data.count}}</small></h1>
         </div>
     </div>
+    <div class="divider mt-3 mb-3"></div>
+
+    <!-- submit -->
+    <div class="form-group">
+        <textarea class="form-control" rows="4" ng-model="content" placeholder="说点什么吧！"></textarea>
+    </div>
+    <button type="button" class="btn btn-primary btn-large btn-block" ng-click="sendData()">
+        提交
+    </button>
+    <!-- * submit -->
+    <div class="divider mt-3 mb-3"></div>
 
     <div class="comments">
 
@@ -33,16 +44,6 @@ $urlManager = Yii::$app->urlManager;
     </div>
     <!-- * comments -->
 
-    <div class="divider mt-3 mb-3"></div>
-
-    <!-- submit -->
-    <div class="form-group">
-        <textarea class="form-control" rows="4" ng-model="content" placeholder="说点什么吧！"></textarea>
-    </div>
-    <button type="button" class="btn btn-primary btn-large btn-block" ng-click="sendData()">
-        提交
-    </button>
-    <!-- * submit -->
 </div>
 
 <script>
