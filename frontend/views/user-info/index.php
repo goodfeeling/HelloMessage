@@ -27,12 +27,12 @@ $urlManager = Yii::$app->urlManager;
             <label for="gender">性别</label>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-outline-primary <?= $data['gender']==1 ? 'active' : '' ?>">
-                    <input type="radio" name="options" value="1" id="option1" checked>
+                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>" id="gender1">
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
                 <label class="btn btn-outline-primary <?= $data['gender']==0 ? 'active' : '' ?>">
-                    <input type="radio" name="options" value="0" id="option2">
+                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>" id="gender2">
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
@@ -193,6 +193,17 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
+
+    $('#gender1').click(function (e) {
+        $(this).val(1);
+        $('#gender2').val(0)
+    })
+
+    $('#gender2').click(function (e) {
+        $(this).val(1);
+        $('#gender1').val(0)
+    })
+
     $('#submit').click(function(e) {
         var occupation = $("#occupation option:selected").text();
         var income = $("#income option:selected").text();
@@ -200,7 +211,7 @@ $urlManager = Yii::$app->urlManager;
         var marital_status = $("#marital_status option:selected").text();
         var education = $("#education option:selected").text();
         var character = $("#character option:selected").text();
-        var gender = $("#gender option:selected").text();
+        var gender = $('#gender1').val() == '1' ? '1' : '0';
         console.log(gender)
         var data = {
             'name': $('#name').val(),
