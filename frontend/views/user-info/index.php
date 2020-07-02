@@ -27,12 +27,12 @@ $urlManager = Yii::$app->urlManager;
             <label for="gender">性别</label>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-outline-primary <?= $data['gender']==1 ? 'active' : '' ?>">
-                    <input type="radio" name="options" id="option1" checked>
+                    <input type="radio" name="options" value="1" id="option1" checked>
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
                 <label class="btn btn-outline-primary <?= $data['gender']==0 ? 'active' : '' ?>">
-                    <input type="radio" name="options" id="option2">
+                    <input type="radio" name="options" value="0" id="option2">
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
@@ -200,7 +200,7 @@ $urlManager = Yii::$app->urlManager;
         var marital_status = $("#marital_status option:selected").text();
         var education = $("#education option:selected").text();
         var character = $("#character option:selected").text();
-        var gender = $("#gender option:selected").text();
+        var gender = $("#gender option:selected").val();
         var data = {
             'name': $('#name').val(),
             'birthday': $('#birthday').val(),

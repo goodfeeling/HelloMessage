@@ -6,7 +6,7 @@ use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 
-$this->title = '登录页面';
+$this->title = '登录';
 $urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
