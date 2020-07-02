@@ -193,18 +193,66 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
-    // 获取参数
-    $.ajax({
-        url: "<?= $urlManager->createUrl(['user-info/index']) ?>",
-        type: "GET",
-        dataType: 'json',
-        data: {
-            url: window.location.href
-        },
-        success: function (res) {
-
-        }
-    })
-
-
+    $('#submit').on('click', function (e) {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: {
+                id: <?= Yii::$app->request->getQueryParam('id') ?>
+            },
+            success: function (res) {
+                if (!res['state']) {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('.wx-main-btn').on('click', function (e) {
+                        window.location.href = "<?= Url::toRoute('site/index', true) ?>";
+                    });
+                    $('#simpleDialog').fadeIn(200);
+                } else {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+                }
+            }
+        })
+    });
+    $('#submit').click(function(e) {
+        var occupation = $("#occupation option:selected").text();
+        var income = $("#income option:selected").text();
+        var cars_and_houses = $("#cars_and_houses option:selected").text();
+        var marital_status = $("#marital_status option:selected").text();
+        var education = $("#education option:selected").text();
+        var character = $("#character option:selected").text();
+        var gender = $("#gender option:selected").text();
+        var data = {
+            'name': $('#name').val(),
+            'birthday': $('#birthday').val(),
+            'native_place': $('#native_place').val(),
+            'occupation': occupation,
+            'income': income,
+            'cars_and_houses': cars_and_houses,
+            'marital_status': marital_status,
+            'education': education,
+            'character': character,
+            'gender': gender,
+            'height': $('#height').val(),
+            'mobile': $('#mobile').val(),
+            'hobby': $('#hobby').val(),
+            'mate_require': $('#mate_require').val(),
+        };
+        $.ajax({
+            url: "<?= $urlManager->createUrl(['user-info/index']) ?>",
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                $('.wx-bd').text(data['msg']);
+                $('.wx-main-btn').text("确定");
+                $('#simpleDialog').fadeIn(200);
+                if(data['state'] == 0) {
+                    location.reload();
+                }
+            }
+        });
+    });
 </script>
