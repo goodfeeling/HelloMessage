@@ -41,7 +41,7 @@ return [
             'thousandSeparator' => ' ',
             'currencyCode' => 'CNY',
             'language'=>'Asia/Shanghai',
-            'defaultTimeZone'=>'CST'
+            'defaultTimeZone'  => 'UTC'
         ],
     ],
     'params' => $params,
