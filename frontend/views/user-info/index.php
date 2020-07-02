@@ -223,7 +223,7 @@ $urlManager = Yii::$app->urlManager;
             dataType: 'json',
             data: data,
             success: function(data) {
-                if (data[state]==0) {
+                if (data['state']==0) {
                     $('.wx-bd').text(data['msg']);
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
