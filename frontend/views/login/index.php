@@ -79,7 +79,7 @@ $urlManager = Yii::$app->urlManager;
 
         <div class="divider mt-3 mb-3" hidden></div>
 
-        <div class="row other-login">
+        <div class=" other-login">
             <div class="text-muted mb-2" hidden>或者其它登录方式</div>
             <div class="col-6 wechat-login">
                 <a>
