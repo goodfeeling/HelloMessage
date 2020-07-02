@@ -72,12 +72,6 @@ $urlManager = Yii::$app->urlManager;
 
                 var form = new FormData();
 
-                if (!$scope.content && $scope.content != 'undefined') {
-                    $('.wx-bd').text('评论内容不能为空！');
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
-                }
-
                 var msg = JSON.stringify($scope.content);
                 form.append('content', msg);
 

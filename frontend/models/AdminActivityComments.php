@@ -39,6 +39,8 @@ class AdminActivityComments extends BaseModel
                 'data' => null
             ];
         }
+
+        var_dump($this);exit;
         $model = new ActivityCommentModel();
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
