@@ -108,10 +108,6 @@ class AdminUserDetail extends BaseModel
             ->where(['uid'=>$this->uid])
             ->asArray()
             ->one();
-        if (isset($res['birthday'])) {
-            $tmp = explode(' ',$res['birthday']);
-            $res['birthday'] = $tmp[0].'T'.$tmp[1];
-        }
         return $res;
     }
 }
