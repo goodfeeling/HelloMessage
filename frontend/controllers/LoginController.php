@@ -14,38 +14,42 @@ class LoginController extends Controller
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        if ( $request->isGet && $request->get('state') == 'now_jump_index' ) {
+        if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form = new LoginForm();
             $form->code = $request->get('code');
 
-            try{
+            try {
                 $res = $form->wxLogin();
-            } catch(\WeChat\Exceptions\InvalidResponseException $e) {
+            } catch (\WeChat\Exceptions\InvalidResponseException $e) {
                 $res['statue'] = 1;
             }
-            
-            if ( !$res['statue'] ){
-                    
+
+            if (!$res['statue']) {
+
                 $session = \Yii::$app->session;
                 if (!($access_token = $session['access_token']['value'])) {
                     $cookies = \Yii::$app->request->cookies;
-                    $access_token =$cookies->get('access_token');
+                    $access_token = $cookies->get('access_token');
                 }
                 $userData = AdminUser::findOne([
                     'access_token' => $access_token
                 ]);
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
-    
-                return $this->render('@app/views/site/index',[
-                    'userInfo'=>$userData,
-                    'model'=>$res['model'],
-                    'recomment'=>$res['recomment']
+
+                return $this->render('@app/views/site/index', [
+                    'userInfo' => $userData,
+                    'model' => $res['model'],
+                    'recomment' => $res['recomment']
                 ]);
             }
-           
+        } else {
+            $session = \Yii::$app->session;
+            if (!($access_token = $session['access_token']['value'])) {
+                return $this->redirect(Yii::$app->request->getReferrer());
+            }
+            return $this->render('index');
         }
-        return $this->render('index');
     }
 
     public function actionJumpLoginPage()
