@@ -123,6 +123,7 @@ class AdminUserDetail extends BaseModel
         $model = UserDetailModel::findOne(['uid'=>$this->uid]);
         $model->attributes = $this->attributes;
         $model->update_time = date('yy-m-d H:i:s');
+        var_dump($this);exit;
         if ($model->save()) {
             return  [
                 'msg'=>'更新成功',
