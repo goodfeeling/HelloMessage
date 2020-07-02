@@ -120,24 +120,13 @@ class AdminUserDetail extends BaseModel
             ];
         }
 
-        $CheckUserExist = UserDetailModel::find()
-            ->where(['uid'=>$this->uid])
-            ->exists();
-        if ($CheckUserExist) {
-            return [
-                'msg' => '您已经填写过了！',
-                'state' => 303,
-                'data' => null,
-            ];
-        }
-
         $model = new UserDetailModel();
         $model->attributes = $this->attributes;
         $model->update_time = date('yy-m-d H:i:s');
         $model->addtime = date('yy-m-d H:i:s');
         if ($model->save()) {
             return  [
-                'msg'=>'成功',
+                'msg'=>'更新成功',
                 'state'=>0,
                 'data'=>null
             ];
