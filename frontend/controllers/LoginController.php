@@ -21,6 +21,7 @@ class LoginController extends BaseController
             try {
                 $res = $form->wxLogin();
             } catch (\WeChat\Exceptions\InvalidResponseException $e) {
+                var_dump(111);exit;
                 $res['state'] = 1001;
             }
 
