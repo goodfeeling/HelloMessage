@@ -201,6 +201,7 @@ $urlManager = Yii::$app->urlManager;
         var education = $("#education option:selected").text();
         var character = $("#character option:selected").text();
         var gender = $("#gender option:selected").val();
+        console.log(gender)
         var data = {
             'name': $('#name').val(),
             'birthday': $('#birthday').val(),
