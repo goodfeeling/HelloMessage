@@ -196,7 +196,7 @@ $urlManager = Yii::$app->urlManager;
 
     $('#gender1').click(function (e) {
         $(this).children().attr('value','1');
-        $('#gender1').children().attr('value','0')
+        $('#gender2').children().attr('value','0')
     })
 
     $('#gender2').click(function (e) {
