@@ -96,7 +96,7 @@ class AdminActivityComments extends BaseModel
             'pagination' => new Pagination()
         ]);
         $user_query = AdminUser::find();
-        foreach ($query as $key => &$value) {
+        foreach ($query['query'] as $key => &$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])
                 ->select('avatar_url,nickname')
