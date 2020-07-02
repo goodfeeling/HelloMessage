@@ -119,11 +119,11 @@ $urlManager = Yii::$app->urlManager;
         <div class="form-group">
             <label for="marital_status">婚姻状况</label>
             <select class="form-control" id="marital_status">
-                <?php if (isset($data['cars_and_houses'])): ?>
+                <?php if (isset($data['marital_status'])): ?>
                     <option>请选择...</option>
-                    <option <?= $data['cars_and_houses'] == '已婚' ? 'selected' :null ?>>已婚</option>
-                    <option <?= $data['cars_and_houses'] == '未婚' ? 'selected' :null ?>>未婚</option>
-                    <option <?= $data['cars_and_houses'] == '单身' ? 'selected' :null ?>>单身</option>
+                    <option <?= $data['marital_status'] == '已婚' ? 'selected' :null ?>>已婚</option>
+                    <option <?= $data['marital_status'] == '未婚' ? 'selected' :null ?>>未婚</option>
+                    <option <?= $data['marital_status'] == '单身' ? 'selected' :null ?>>单身</option>
                 <?php else: ?>
                     <option selected>请选择...</option>
                     <option>已婚</option>
@@ -137,13 +137,13 @@ $urlManager = Yii::$app->urlManager;
         <div class="form-group">
             <label for="education">学历</label>
             <select class="form-control" id="education">
-                <?php if (isset($data['cars_and_houses'])): ?>
+                <?php if (isset($data['education'])): ?>
                     <option>请选择...</option>
-                    <option <?= $data['cars_and_houses'] == '高中' ? 'selected' :null ?>>高中</option>
-                    <option <?= $data['cars_and_houses'] == '大专' ? 'selected' :null ?>>大专</option>
-                    <option <?= $data['cars_and_houses'] == '本科' ? 'selected' :null ?>>本科</option>
-                    <option <?= $data['cars_and_houses'] == '硕士' ? 'selected' :null ?>>硕士</option>
-                    <option <?= $data['cars_and_houses'] == '博士' ? 'selected' :null ?>>博士</option>
+                    <option <?= $data['education'] == '高中' ? 'selected' :null ?>>高中</option>
+                    <option <?= $data['education'] == '大专' ? 'selected' :null ?>>大专</option>
+                    <option <?= $data['education'] == '本科' ? 'selected' :null ?>>本科</option>
+                    <option <?= $data['education'] == '硕士' ? 'selected' :null ?>>硕士</option>
+                    <option <?= $data['education'] == '博士' ? 'selected' :null ?>>博士</option>
                 <?php else: ?>
                     <option selected>请选择...</option>
                     <option>高中</option>
@@ -159,13 +159,13 @@ $urlManager = Yii::$app->urlManager;
         <div class="form-group">
             <label for="character">性格</label>
             <select class="form-control" id="character">
-                <?php if (isset($data['cars_and_houses'])): ?>
+                <?php if (isset($data['character'])): ?>
                     <option>请选择...</option>
-                    <option <?= $data['cars_and_houses'] == '开放' ? 'selected' :null ?>>开放</option>
-                    <option <?= $data['cars_and_houses'] == '完美' ? 'selected' :null ?>>完美</option>
-                    <option <?= $data['cars_and_houses'] == '浪漫' ? 'selected' :null ?>>浪漫</option>
-                    <option <?= $data['cars_and_houses'] == '活跃' ? 'selected' :null ?>>活跃</option>
-                    <option <?= $data['cars_and_houses'] == '智慧' ? 'selected' :null ?>>智慧</option>
+                    <option <?= $data['character'] == '开放' ? 'selected' :null ?>>开放</option>
+                    <option <?= $data['character'] == '完美' ? 'selected' :null ?>>完美</option>
+                    <option <?= $data['character'] == '浪漫' ? 'selected' :null ?>>浪漫</option>
+                    <option <?= $data['character'] == '活跃' ? 'selected' :null ?>>活跃</option>
+                    <option <?= $data['character'] == '智慧' ? 'selected' :null ?>>智慧</option>
                 <?php else: ?>
                     <option selected>请选择...</option>
                     <option>开放</option>
