@@ -12,8 +12,8 @@ class UserInfoController extends BaseController
     {
         $request = \Yii::$app->request;
         $form = new AdminUserDetail();
-//        $form->uid = $this->userData['id'];
-        $form->uid = 159;
+        $form->uid = $this->userData['id'];
+//        $form->uid = 159;
         if($request->isPost) {
             if (empty($this->userData)) {
                 return $this->asJson([
