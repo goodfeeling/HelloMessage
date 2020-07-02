@@ -24,6 +24,7 @@ class UserInfoController extends BaseController
             }
         }else {
             $res = $form->getUserData();
+            var_dump($res);exit;
             return $this->render('index',[
                 'data'=>$res
             ]);
