@@ -7,6 +7,8 @@ namespace frontend\models;
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 use common\utils\CommonFun;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 
 class AdminActivityComments extends BaseModel
 {
@@ -61,7 +63,7 @@ class AdminActivityComments extends BaseModel
         }
     }
 
-    public function getData()
+    public function getData_old()
     {
         $query = ActivityCommentModel::find()
             ->where(['aid' => $this->aid])
@@ -69,6 +71,33 @@ class AdminActivityComments extends BaseModel
             ->asArray()
             ->all();
         $user_query = AdminUser::find();
+        foreach ($query as $key => &$value) {
+            $author = $user_query
+                ->where(['id' => $value['uid']])
+                ->select('avatar_url,nickname')
+                ->one();
+            $value['avatar_url'] = $author['avatar_url'];
+            $value['nickname'] = $author['nickname'];
+//            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
+            $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
+        }
+        return ['list' => $query, 'count' => count($query)];
+    }
+
+    public function getData()
+    {
+        // $query = ActivityCommentModel::find()
+        //     ->where(['aid' => $this->aid])
+        //     ->orderBy('addtime DESC')
+        //     ->asArray()
+        //     ->all();
+        $query = new ActiveDataProvider([
+            'query'=>ActivityCommentModel::find()->where(['aid' => $this->aid])->orderBy('addtime DESC')->asArray()->all(),
+            'pagination' => new Pagination()
+        ]);
+        var_dump( $query);exit;
+        $user_query = AdminUser::find();
+
         foreach ($query as $key => &$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])

@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
+
 $urlManager = Yii::$app->urlManager;
 ?>
 <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
@@ -40,21 +41,32 @@ $urlManager = Yii::$app->urlManager;
                 <footer>{{item.addtime}}</footer>
             </div>
         </div>
-
     </div>
-    <!-- * comments -->
 
+
+    <!-- * comments -->
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+    
 </div>
 
 <script>
     angular.module('cApp', [])
-        .controller('comment', function ($scope, $http) {
+        .controller('comment', function($scope, $http) {
             // 初始化数据
             $http({
 
                 method: 'GET',
-                url: "<?= $urlManager->createUrl(['activity/comment']) ?>"
-                    +"&id=<?= Yii::$app->request->getQueryParam('id') ?>",
+                url: "<?= $urlManager->createUrl(['activity/comment']) ?>" +
+                    "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
 
             }).then(function successCallback(response) {
 
@@ -69,11 +81,11 @@ $urlManager = Yii::$app->urlManager;
             });
 
 
-            $scope.sendData = function () {
+            $scope.sendData = function() {
 
                 var form = new FormData();
 
-                if (!$scope.content || $scope.content == 'undefined'  || $scope.content == 'null') {
+                if (!$scope.content || $scope.content == 'undefined' || $scope.content == 'null') {
                     $('.wx-bd').text('评论内容不能为空！');
                     $('.wx-main-btn').text("确定");
                     $('#simpleDialog').fadeIn(200);
@@ -86,10 +98,12 @@ $urlManager = Yii::$app->urlManager;
                 $http({
 
                     method: 'POST',
-                    url: "<?= $urlManager->createUrl(['activity/comment']) ?>"
-                        +"&id=<?= Yii::$app->request->getQueryParam('id') ?>",
+                    url: "<?= $urlManager->createUrl(['activity/comment']) ?>" +
+                        "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
                     data: form,
-                    headers: { 'Content-Type': undefined },
+                    headers: {
+                        'Content-Type': undefined
+                    },
                     transformRequest: angular.identity
 
                 }).then(function successCallback(response) {
@@ -98,12 +112,12 @@ $urlManager = Yii::$app->urlManager;
 
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("去登陆");
-                        $('.wx-main-btn').on('click',function(e){
+                        $('.wx-main-btn').on('click', function(e) {
                             window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                         });
                         $('#simpleDialog').fadeIn(200);
 
-                    }else {
+                    } else {
                         $scope.data = response.data.data;
                         $scope.content = null;
                     }
