@@ -6,6 +6,7 @@ namespace frontend\models;
 
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
+use common\utils\CommonFun;
 
 class AdminActivityComments extends BaseModel
 {
@@ -75,7 +76,7 @@ class AdminActivityComments extends BaseModel
             $value['avatar_url'] = $author['avatar_url'];
             $value['nickname'] = $author['nickname'];
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
-            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
+            $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
         return ['list' => $query, 'count' => count($query)];
     }
