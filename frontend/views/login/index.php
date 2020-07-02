@@ -83,7 +83,7 @@ $urlManager = Yii::$app->urlManager;
             <div class="text-muted mb-2" hidden>或者其它登录方式</div>
             <div class="col-6 wechat-login">
                 <a>
-                    <img src="images/icon48_wx_button.png" id="wechat-contr" alt="123">
+                    <img src="images/icon48_wx_button.png" id="wechat-contr" alt="微信登陆">
                 </a>
             </div>
         </div>
