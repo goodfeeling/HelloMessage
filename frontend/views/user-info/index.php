@@ -193,29 +193,6 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
-    $('#submit').on('click', function (e) {
-        $.ajax({
-            type: "POST",
-            dataType: 'json',
-            data: {
-                id: <?= Yii::$app->request->getQueryParam('id') ?>
-            },
-            success: function (res) {
-                if (!res['state']) {
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("确定");
-                    $('.wx-main-btn').on('click', function (e) {
-                        window.location.href = "<?= Url::toRoute('site/index', true) ?>";
-                    });
-                    $('#simpleDialog').fadeIn(200);
-                } else {
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
-                }
-            }
-        })
-    });
     $('#submit').click(function(e) {
         var occupation = $("#occupation option:selected").text();
         var income = $("#income option:selected").text();
