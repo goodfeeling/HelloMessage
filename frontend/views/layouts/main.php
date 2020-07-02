@@ -62,62 +62,9 @@ AppAsset::register($this);
     </div>
     <!--END dialog3-->
 
-
     <div id="shareit" style="display: none;">
         <img src="https://oscimg.oschina.net/oscnet/fd2170a448e37826ae9f4d7088f287b8f24.jpg">
     </div>
-
-    <!--BEGIN dialog1-->
-    <div class="js_dialog" id="theShare" style="display: none;">
-        <div class="weui-mask"></div>
-        <div id="js_dialog_1" class="weui-half-screen-dialog">
-            <div class="weui-half-screen-dialog__hd">
-                <div class="weui-half-screen-dialog__hd__side">
-                    <button class="weui-icon-btn close-weui-share">关闭<i class="weui-icon-close-thin"></i></button>
-                </div>
-                <div class="weui-half-screen-dialog__hd__main">
-                    <strong class="weui-half-screen-dialog__title">分享至</strong>
-                </div>
-            </div>
-            <div class="weui-half-screen-dialog__bd share-dialog" id="shareClickEvent">
-                <div class="weui-flex">
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <div class="ShareBox">
-                                <img src="images/wechat.png" type="1" alt="微信好友">
-                                <p>微信好友</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <div class="ShareBox">
-                                <img src="images/pengyouquan.png" type="4" alt="朋友圈">
-                                <p>朋友圈</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <div class="ShareBox">
-                                <img src="images/qq_room.png" type="3" alt="qq空间">
-                                <p>QQ空间</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <div class="ShareBox">
-                                <img src="images/qq.png" type="2" alt="QQ好友">
-                                <p>QQ好友</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--END dialog1-->
 
     <!-- App Capsule -->
     <?= $content ?>
@@ -126,9 +73,6 @@ AppAsset::register($this);
     <!-- ///////////// Js Files ////////////////////  -->
 
     <script>
-        $('.close-weui-share').on('click', function () {
-            $('#theShare').fadeOut(200);
-        });
         $('.weui-dialog__btn').on('click', function () {
             $('.js_dialog').fadeOut(200);
         });

@@ -35,14 +35,8 @@ $urlManager = Yii::$app->urlManager;
        }
     })
 
-    
-    $('.shareBtn').on('click', function(e) {
-        $('#theShare').fadeIn(200);
-    });
-
     //立即分享到微信朋友圈点击事件
     $("#share_btn").on("click", function() {
-        console.log(111)
         $("#shareit").show();
     });
 
@@ -71,10 +65,4 @@ $urlManager = Yii::$app->urlManager;
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
         console.log(res)
     });
-
-    // 分享
-    $('#shareClickEvent').on('click', '.ShareBox', function(e) {
-        var chil = $(this).children();
-        var type = $(chil[0]).attr('type');
-    })
 </script>

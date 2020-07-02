@@ -56,13 +56,14 @@ use yii\helpers\Url;
 </div>
 
 <script>
-    var is_login = <?= $is_login ?>;
+    //var is_login = <?//= $is_login ?>//;
+    var is_login = 1;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
             if (!is_login) {
                 window.location.href = "<?php echo Url::toRoute(['login/index'], true) ?>";
             } else {
-                window.location.href = "<?php echo Url::toRoute(['site/setting'], true) ?>";
+                window.location.href = "<?php echo Url::toRoute(['user-info/index'], true) ?>";
             }
         })
     }

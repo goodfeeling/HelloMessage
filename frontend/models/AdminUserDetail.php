@@ -100,4 +100,19 @@ class AdminUserDetail extends BaseModel
             ];
         }
     }
+
+    public function getUserData()
+    {
+        $query = AdminUserDetail::find();
+        $res = $query
+            ->where(['uid'=>$this->uid])
+            ->asArray()
+            ->one();
+
+        return [
+            'msg'=>'获取成功',
+            'state'=>0,
+            'data'=>$res
+        ];
+    }
 }

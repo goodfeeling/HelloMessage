@@ -47,7 +47,7 @@ $urlManager = Yii::$app->urlManager;
 
 <script>
     angular.module('cApp', [])
-        .controller('comment', function ($scope, $http, $window) {
+        .controller('comment', function ($scope, $http) {
             // 初始化数据
             $http({
 
@@ -71,6 +71,13 @@ $urlManager = Yii::$app->urlManager;
             $scope.sendData = function () {
 
                 var form = new FormData();
+
+                if (!$scope.content) {
+                    $('.wx-bd').text('评论内容不能为空！');
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+                }
+
                 var msg = JSON.stringify($scope.content);
                 form.append('content', msg);
 
@@ -96,7 +103,7 @@ $urlManager = Yii::$app->urlManager;
 
                     }else {
 
-                        $scope.content = '';
+                        $scope.content = null;
                         $scope.data = response.data.data;
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("确定");
