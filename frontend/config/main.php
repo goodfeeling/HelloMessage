@@ -33,7 +33,16 @@ return [
         'session' => [
             'class' => 'yii\web\CacheSession',
             // 'cache' => 'mycache',
-        ]
+        ],
+        'formatter' => [
+            'dateFormat' => 'yyyy-MM-dd',
+            'datetimeFormat' => 'yyyy-MM-dd HH:mm:ss',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'CNY',
+            'language'=>'Asia/Shanghai',
+            'defaultTimeZone'=>'CST'
+        ],
     ],
     'params' => $params,
 ];
