@@ -63,7 +63,7 @@ class AdminActivityComments extends BaseModel
         }
     }
 
-    public function getData_old()
+    public function getData()
     {
         $query = ActivityCommentModel::find()
             ->where(['aid' => $this->aid])
@@ -84,7 +84,7 @@ class AdminActivityComments extends BaseModel
         return ['list' => $query, 'count' => count($query)];
     }
 
-    public function getData()
+    public function getData1()
     {
         // $query = ActivityCommentModel::find()
         //     ->where(['aid' => $this->aid])

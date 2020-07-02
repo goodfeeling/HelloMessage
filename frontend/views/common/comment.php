@@ -45,7 +45,7 @@ $urlManager = Yii::$app->urlManager;
 
 
     <!-- * comments -->
-    <nav class="mt-3">
+    <!-- <nav class="mt-3">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -53,7 +53,7 @@ $urlManager = Yii::$app->urlManager;
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
     
 </div>
