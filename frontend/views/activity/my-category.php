@@ -19,8 +19,8 @@ $this->title = '我的活动';
             <div class="card mb-3 mt-2">
 
                 <div class="card-header">
-                    <p>活动时间：</p>
-                    <small><?= $value['addtime'] . '~' . $value['endtime'] ?></small>
+                    <small>活动时间：
+                        <?= $value['addtime'] . '~' . $value['endtime'] ?></small>
                 </div>
 
                 <div class="card-body">
