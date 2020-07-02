@@ -193,6 +193,10 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
+    $.ready(function () {
+        var val = $("#birthday").attr('valye')
+        $("#birthday").val(val.split(' ').join("T"))
+    })
     // 获取参数
     $.ajax({
         url: "<?= $urlManager->createUrl(['user-info/index']) ?>",
