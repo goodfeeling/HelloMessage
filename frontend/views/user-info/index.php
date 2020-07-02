@@ -27,12 +27,12 @@ $urlManager = Yii::$app->urlManager;
             <label for="gender">性别</label>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-outline-primary <?= $data['gender']==1 ? 'active' : '' ?>" id="gender1">
-                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>">
+                    <input type="radio" name="options" value="<?= $data['gender']== 1 ? '1' : '0' ?>">
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
                 <label class="btn btn-outline-primary <?= $data['gender']==0 ? 'active' : '' ?>" id="gender2">
-                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>">
+                    <input type="radio" name="options" value="<?= $data['gender']== 1 ? '0' : '1' ?>">
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
