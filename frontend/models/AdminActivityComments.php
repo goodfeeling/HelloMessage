@@ -94,11 +94,11 @@ class AdminActivityComments extends BaseModel
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
         $count =  $query->count();
         $query = new ActiveDataProvider([
-            'query'=>$query->orderBy('addtime DESC')->all(),
-            'pagination' => new Pagination([
+            'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
+            'pagination' => [
                 'totalCount' =>$count ,
-                'validatePage' => false,
-                ])
+                    'pageSize' => 30, 
+                ]
         ]);
         $user_query = AdminUser::find();
         foreach ($query->query as $key => &$value) {
