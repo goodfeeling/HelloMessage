@@ -200,7 +200,7 @@ $urlManager = Yii::$app->urlManager;
         var marital_status = $("#marital_status option:selected").text();
         var education = $("#education option:selected").text();
         var character = $("#character option:selected").text();
-        var gender = $("#gender option:selected").val();
+        var gender = $("#gender option:selected").text();
         console.log(gender)
         var data = {
             'name': $('#name').val(),
