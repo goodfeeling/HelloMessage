@@ -5,6 +5,7 @@ namespace frontend\models;
 use backend\models\ActivityUserModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
+use common\utils\CommonFun;
 use Yii;
 use backend\models\ActivityLikesUserModel;
 use backend\models\ActivityModel;
@@ -54,7 +55,7 @@ class ActivityForm extends BaseModel
                 ->one();
             $val['avatar_url'] = $author['avatar_url'];
             $val['nickname'] = $author['nickname'];
-            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
+            $val['addtime'] = CommonFun::get_last_time(strtotime($val['addtime']));
             $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
             $val['img_url'] = Yii::getAlias('@back') . $img['url'];
         }
@@ -73,7 +74,7 @@ class ActivityForm extends BaseModel
                 ->one();
             $val['avatar_url'] = $author['avatar_url'];
             $val['nickname'] = $author['nickname'];
-            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
+            $val['addtime'] = CommonFun::get_last_time(strtotime($val['addtime']));
             $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
             $val['img_url'] = Yii::getAlias('@back') . $img['url'];
         }
