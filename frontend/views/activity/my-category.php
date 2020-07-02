@@ -30,7 +30,7 @@ $this->title = '我的活动';
                     <?php endif; ?>
 
                     <?php if (!$value['is_join']): ?>
-                        <a href="#msg_text_primary"  id="signIn" class="btn btn-secondary shadowed mr-1 mb-1">签到</a>
+                        <a href="#msg_text_primary"  class="signIn" class="btn btn-secondary shadowed mr-1 mb-1">签到</a>
                     <?php endif; ?>
                 </div>
 
@@ -72,7 +72,7 @@ $this->title = '我的活动';
     });
 
     // 生成一个二维码
-    $('#signIn').on('click',function (e) {
+    $('.signIn').on('click',function (e) {
         $('.weui-msg-top').show();
     });
     $('#the-msg-back').on('click',function (e) {
