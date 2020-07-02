@@ -26,13 +26,13 @@ $urlManager = Yii::$app->urlManager;
         <div class="form-group">
             <label for="gender">性别</label>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-outline-primary <?= $data['gender']==1 ? 'active' : '' ?>">
-                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>" id="gender1">
+                <label class="btn btn-outline-primary <?= $data['gender']==1 ? 'active' : '' ?>" id="gender1">
+                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>">
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
-                <label class="btn btn-outline-primary <?= $data['gender']==0 ? 'active' : '' ?>">
-                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>" id="gender2">
+                <label class="btn btn-outline-primary <?= $data['gender']==0 ? 'active' : '' ?>" id="gender2">
+                    <input type="radio" name="options" value="<?= $data['gender']==1 ? '1' : '0' ?>">
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
@@ -195,13 +195,13 @@ $urlManager = Yii::$app->urlManager;
 <script>
 
     $('#gender1').click(function (e) {
-        $(this).attr('value','1');
-        $('#gender2').attr('value','0')
+        $(this).children().attr('value','1');
+        $('#gender2').children().attr('value','0')
     })
 
     $('#gender2').click(function (e) {
-        $(this).attr('value','1');
-        $('#gender1').attr('value','0')
+        $(this).children().attr('value','1');
+        $('#gender1').children().attr('value','0')
     })
 
     $('#submit').click(function(e) {
