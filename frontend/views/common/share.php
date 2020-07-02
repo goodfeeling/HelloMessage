@@ -40,40 +40,30 @@ $urlManager = Yii::$app->urlManager;
         $('#theShare').fadeIn(200);
     });
 
+    wx.ready(function() { //需在用户可能点击分享按钮前就先调用
+        wx.updateAppMessageShareData({
+            title: 'test', // 分享标题
+            desc: 'test', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '', // 分享图标
+            success: function() {
+                // 设置成功
+            }
+        })
+
+        wx.updateTimelineShareData({
+            title: 'test', // 分享标题
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '', // 分享图标
+            success: function() {
+                // 设置成功
+            }
+        })
+    });
+
     // 分享
     $('#shareClickEvent').on('click', '.ShareBox', function(e) {
         var chil = $(this).children();
         var type = $(chil[0]).attr('type');
-        console.log(typeof type);
-        console.log(type);
-        switch (type) {
-            case '1':
-            case '2':
-                wx.ready(function() { //需在用户可能点击分享按钮前就先调用
-                    wx.updateAppMessageShareData({
-                        title: 'test', // 分享标题
-                        desc: 'test', // 分享描述
-                        link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: '', // 分享图标
-                        success: function() {
-                            // 设置成功
-                        }
-                    })
-                });
-                break;
-            case '3':
-            case '4':
-                wx.ready(function() { //需在用户可能点击分享按钮前就先调用
-                    wx.updateTimelineShareData({
-                        title: 'test', // 分享标题
-                        link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: '', // 分享图标
-                        success: function() {
-                            // 设置成功
-                        }
-                    })
-                });
-                break;
-        }
     })
 </script>
