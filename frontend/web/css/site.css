@@ -3,14 +3,16 @@
     height: 20px
 }
 
-.wechat-login>a>img {
+.wechat-login > a > img {
     margin: -4px 53px;
     width: 170px;
     height: 35px;
 }
+
 .other-login {
     margin: 0 0 0 10px;
 }
+
 #theShare img {
     max-width: 42px;
     max-height: 42px;
@@ -19,6 +21,41 @@
 
 #theShare p {
     font-size: 16px;
-    margin: 5px 0 0 0 ;
+    margin: 5px 0 0 0;
     text-align: center;
+}
+
+
+#shareit {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    display: none;
+
+    z-index: 20000;
+}
+
+#shareit img {
+
+    position: fixed;
+
+    right: 18px;
+
+    top: 5px;
+
+    width: 260px;
+
+    height: 180px;
+
+    z-index: 999;
 }

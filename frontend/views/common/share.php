@@ -8,7 +8,7 @@ $urlManager = Yii::$app->urlManager;
 ?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 
-<div class="col-6 shareBtn">
+<div class="col-6" id="share_btn">
     <a href="javascript:;" class="btn btn-primary btn-block">
         <i class="icon ion-md-share"></i> 分享
     </a>
@@ -38,6 +38,12 @@ $urlManager = Yii::$app->urlManager;
     
     $('.shareBtn').on('click', function(e) {
         $('#theShare').fadeIn(200);
+    });
+
+    //立即分享到微信朋友圈点击事件
+    $("#share_btn").on("click", function() {
+        console.log(111)
+        $("#shareit").show();
     });
 
     wx.ready(function() { //需在用户可能点击分享按钮前就先调用

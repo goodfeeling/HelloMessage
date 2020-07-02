@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -16,27 +17,27 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!doctype html>
-<html lang="<?= Yii::$app->language ?>">
+    <!doctype html>
+    <html lang="<?= Yii::$app->language ?>">
 
-<head>
-    <meta charset="<?= Yii::$app->charset ?>" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <link rel="stylesheet" href="fornt/css/style.css">
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/weui.min.css" />
-    <!--    --><?php //$this->head() 
-                ?>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
-    <meta name="description" content="Bitter Mobile Template">
-    <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
-    <!-- Jquery -->
-    <script src="fornt/js/lib/jquery-3.4.1.min.js"></script>
-</head>
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <link rel="stylesheet" href="fornt/css/style.css">
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/weui.min.css"/>
+        <!--    --><?php //$this->head()
+        ?>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+        <meta name="description" content="Bitter Mobile Template">
+        <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive"/>
+        <!-- Jquery -->
+        <script src="fornt/js/lib/jquery-3.4.1.min.js"></script>
+    </head>
 
-<body>
+    <body>
     <?php $this->beginBody() ?>
 
     <!-- Page loading -->
@@ -60,6 +61,11 @@ AppAsset::register($this);
         </div>
     </div>
     <!--END dialog3-->
+
+
+    <div id="shareit" style="display: none;">
+        <img src="https://oscimg.oschina.net/oscnet/fd2170a448e37826ae9f4d7088f287b8f24.jpg">
+    </div>
 
     <!--BEGIN dialog1-->
     <div class="js_dialog" id="theShare" style="display: none;">
@@ -86,7 +92,7 @@ AppAsset::register($this);
                     <div class="weui-flex__item">
                         <div class="placeholder">
                             <div class="ShareBox">
-                                <img src="images/pengyouquan.png" type="4"  alt="朋友圈">
+                                <img src="images/pengyouquan.png" type="4" alt="朋友圈">
                                 <p>朋友圈</p>
                             </div>
                         </div>
@@ -94,7 +100,7 @@ AppAsset::register($this);
                     <div class="weui-flex__item">
                         <div class="placeholder">
                             <div class="ShareBox">
-                                <img src="images/qq_room.png" type="3"  alt="qq空间">
+                                <img src="images/qq_room.png" type="3" alt="qq空间">
                                 <p>QQ空间</p>
                             </div>
                         </div>
@@ -102,7 +108,7 @@ AppAsset::register($this);
                     <div class="weui-flex__item">
                         <div class="placeholder">
                             <div class="ShareBox">
-                                <img src="images/qq.png" type="2"  alt="QQ好友">
+                                <img src="images/qq.png" type="2" alt="QQ好友">
                                 <p>QQ好友</p>
                             </div>
                         </div>
@@ -120,11 +126,15 @@ AppAsset::register($this);
     <!-- ///////////// Js Files ////////////////////  -->
 
     <script>
-        $('.close-weui-share').on('click', function() {
+        $('.close-weui-share').on('click', function () {
             $('#theShare').fadeOut(200);
         });
-        $('.weui-dialog__btn').on('click', function() {
+        $('.weui-dialog__btn').on('click', function () {
             $('.js_dialog').fadeOut(200);
+        });
+
+        $("#shareit").on("click", function () {
+            $("#shareit").hide();
         });
     </script>
 
@@ -140,7 +150,7 @@ AppAsset::register($this);
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <?php $this->endBody() ?>
-</body>
+    </body>
 
-</html>
+    </html>
 <?php $this->endPage() ?>
