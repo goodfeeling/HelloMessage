@@ -34,7 +34,7 @@ class BaseController extends Controller
             $cookies = \Yii::$app->request->cookies;
             $client_token = $cookies->get('access_token');
             if ( !($client_token == $this->access_token)) {
-                return $this->render('@app/views/login/index');
+                return true;
             }
         }
         if ( !($this->access_token) ){

@@ -9,7 +9,7 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\ActivityForm;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     public function actionIndex()
     {
