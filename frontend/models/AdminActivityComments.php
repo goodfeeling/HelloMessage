@@ -94,7 +94,7 @@ class AdminActivityComments extends BaseModel
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
         $count =  $query->count();
         $query = new ActiveDataProvider([
-            'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
+            'query'=>$query->orderBy('addtime DESC')->all(),
             'pagination' => new Pagination([
                 'totalCount' =>$count ,
                 'validatePage' => false,
