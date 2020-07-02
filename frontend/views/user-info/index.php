@@ -20,7 +20,7 @@ $urlManager = Yii::$app->urlManager;
 
         <div class="form-group">
             <label for="birthday">生日</label>
-            <input type="date" class="form-control" value="<?= $data['birthday'] ?? '' ?>" id="birthday" placeholder="生日">
+            <input type="datetime-local" class="form-control" value="<?= $data['birthday'] ?? '' ?>" id="birthday" placeholder="生日">
         </div>
 
         <div class="form-group">
@@ -48,7 +48,7 @@ $urlManager = Yii::$app->urlManager;
 
         <div class="form-group">
             <label for="native_place">籍贯</label>
-            <input type="native_place" class="form-control" value="<?= $data['birthday'] ?? '' ?>" id="native_place" placeholder="籍贯">
+            <input type="native_place" class="form-control" value="<?= $data['native_place'] ?? '' ?>" id="native_place" placeholder="籍贯">
         </div>
 
         <div class="form-group">
