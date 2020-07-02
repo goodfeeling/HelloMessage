@@ -54,7 +54,7 @@ $urlManager = Yii::$app->urlManager;
         <div class="form-group">
             <label for="mobile">联系方式</label>
             <div class="input-group">
-                <input type="number" class="form-control" value="<?= $data['native_place'] ?? '' ?>" id="mobile" placeholder="联系方式">
+                <input type="number" class="form-control" value="<?= $data['mobile'] ?? '' ?>" id="mobile" placeholder="联系方式">
             </div>
             <p class="help-block">请正确填写联系方式.</p>
         </div>
