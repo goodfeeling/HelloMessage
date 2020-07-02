@@ -21,10 +21,10 @@ class LoginController extends BaseController
             try {
                 $res = $form->wxLogin();
             } catch (\WeChat\Exceptions\InvalidResponseException $e) {
-                $res['statue'] = 1;
+                $res['state'] = 1001;
             }
 
-            if (!$res['statue']) {
+            if (!$res['state']) {
 
                 $session = \Yii::$app->session;
                 if (!($access_token = $session['access_token']['value'])) {
@@ -42,11 +42,12 @@ class LoginController extends BaseController
                     'model' => $res['model'],
                     'recomment' => $res['recomment']
                 ]);
+            } else if ($res['state'] == 1001) {
+                return $this->redirect(Yii::$app->request->getReferrer());
             }
-        } else {
-            
-            return $this->render('index');
-        }
+        } 
+        return $this->render('index');
+
     }
 
     public function actionJumpLoginPage()

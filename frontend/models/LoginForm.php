@@ -31,7 +31,7 @@ class LoginForm extends BaseModel
         if (!$this->validate()) {
             return [
                 'msg' => '数据格式不正确',
-                'status' => 1,
+                'state' => 1,
                 'data' => null
             ];
         }
@@ -45,7 +45,7 @@ class LoginForm extends BaseModel
             if ($result['errcode'] == 40029) {
                 return [
                     'msg' => $result['errmsg'],
-                    'status' => $result['errcode'],
+                    'state' => $result['errcode'],
                     'data' => null
                 ];
             }
@@ -66,7 +66,7 @@ class LoginForm extends BaseModel
             if ($userInfo['errcode'] == 40003) {
                 return [
                     'msg' => $userInfo['errmsg'],
-                    'status' => $userInfo['errcode'],
+                    'state' => $userInfo['errcode'],
                     'data' => null
                 ];
             }
@@ -91,7 +91,7 @@ class LoginForm extends BaseModel
                 if (!$userModel->validate()) {
                     return [
                         'msg' => serialize($userModel->getErrors()),
-                        'status' => 1,
+                        'state' => 1,
                         'data' => null
                     ];
                 }
@@ -121,13 +121,13 @@ class LoginForm extends BaseModel
 
                 return [
                     'msg'=>'登录成功',
-                    'statue'=>0,
+                    'state'=>0,
                     'data'=>null
                 ];
             } else {
                 return [
                     'msg'=> '登录失败请联系管理员',
-                    'statue'=>1,
+                    'state'=>1,
                     'data'=>null
                 ];
             }
@@ -135,7 +135,7 @@ class LoginForm extends BaseModel
         } catch (\yii\base\Exception $e){
             return  [
                 'msg' => $e->getMessage(),
-                'status' => 1,
+                'state' => 1,
                 'data' => null
             ];
         }

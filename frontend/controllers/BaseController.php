@@ -32,10 +32,7 @@ class BaseController extends Controller
         $session = \Yii::$app->session;
         if (!($this->access_token = @$session['access_token']['value'])) {
             $cookies = \Yii::$app->request->cookies;
-            $client_token = $cookies->get('access_token');
-            if ( !($client_token == $this->access_token)) {
-                return true;
-            }
+            $this->access_token = $cookies->get('access_token');
         }
         if ( !($this->access_token) ){
             return true;
