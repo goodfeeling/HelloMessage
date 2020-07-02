@@ -109,10 +109,6 @@ class AdminUserDetail extends BaseModel
             ->asArray()
             ->one();
 
-        return [
-            'msg'=>'获取成功',
-            'state'=>0,
-            'data'=>$res
-        ];
+        return $res;
     }
 }
