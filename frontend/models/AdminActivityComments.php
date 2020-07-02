@@ -75,7 +75,7 @@ class AdminActivityComments extends BaseModel
             $value['avatar_url'] = $author['avatar_url'];
             $value['nickname'] = $author['nickname'];
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
-            $value['addtime'] = \Yii::$app->formatter->asRelativeTime();
+            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
         }
         return ['list' => $query, 'count' => count($query)];
     }
