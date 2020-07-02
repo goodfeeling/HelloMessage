@@ -92,10 +92,11 @@ class AdminActivityComments extends BaseModel
         //     ->asArray()
         //     ->all();
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
+        $count =  $query->count();
         $query = new ActiveDataProvider([
             'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
             'pagination' => new Pagination([
-                'totalCount' => $query->count(),
+                'totalCount' =>$count ,
                 'validatePage' => false,
                 ])
         ]);
@@ -110,7 +111,7 @@ class AdminActivityComments extends BaseModel
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
-        return ['list' => $query, 'count' => $query->count()];
+        return ['list' => $query, 'count' => $count];
     }
 
 }
