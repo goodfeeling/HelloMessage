@@ -223,14 +223,20 @@ $urlManager = Yii::$app->urlManager;
             dataType: 'json',
             data: data,
             success: function(data) {
-                $('.wx-bd').text(data['msg']);
-                $('.wx-main-btn').text("确定");
-                $('#simpleDialog').fadeIn(200);
-                $('.wx-main-btn').on('click',function(e){
-                    if(data['state'] == 0) {
-                        location.reload();
-                    }
-                });
+                if (data[state]==0) {
+                    $('.wx-bd').text(data['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+                    $('.wx-main-btn').on('click',function(e){
+                        if(data['state'] == 0) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    $('.wx-bd').text(data['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+                }
             }
         });
     });
