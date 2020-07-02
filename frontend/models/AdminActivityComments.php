@@ -65,6 +65,7 @@ class AdminActivityComments extends BaseModel
     {
         $query = ActivityCommentModel::find()
             ->where(['aid' => $this->aid])
+            ->orderBy('addtime DESC')
             ->asArray()
             ->all();
         $user_query = AdminUser::find();
