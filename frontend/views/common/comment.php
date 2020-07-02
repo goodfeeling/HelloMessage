@@ -103,13 +103,8 @@ $urlManager = Yii::$app->urlManager;
                         $('#simpleDialog').fadeIn(200);
 
                     }else {
-
-                        $scope.content = null;
                         $scope.data = response.data.data;
-                        $('.wx-bd').text(response.data.msg);
-                        $('.wx-main-btn').text("确定");
-                        $('#simpleDialog').fadeIn(200);
-
+                        $scope.content = null;
                     }
 
                 }, function errorCallback(response) {
