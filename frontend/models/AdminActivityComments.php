@@ -95,9 +95,8 @@ class AdminActivityComments extends BaseModel
             'query'=>ActivityCommentModel::find()->where(['aid' => $this->aid])->orderBy('addtime DESC')->asArray()->all(),
             'pagination' => new Pagination()
         ]);
-        var_dump( $query);exit;
+        var_dump($query->_totalCount);exit;
         $user_query = AdminUser::find();
-
         foreach ($query as $key => &$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])
