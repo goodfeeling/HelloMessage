@@ -19,7 +19,7 @@ $this->title = '我的活动';
             <div class="card mb-3 mt-2">
 
                 <div class="card-header">
-                    活动时间：<?= $value['addtime'] . '~' . $value['endtime'] ?>
+                    <p>活动时间：<small><?= $value['addtime'] . '~' . $value['endtime'] ?></small></p>
                 </div>
 
                 <div class="card-body">
@@ -73,6 +73,8 @@ $this->title = '我的活动';
 
     // 生成一个二维码
     $('.signIn').on('click',function (e) {
+
+
         $('.weui-msg-top').show();
     });
     $('#the-msg-back').on('click',function (e) {
