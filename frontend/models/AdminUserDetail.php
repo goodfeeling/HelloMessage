@@ -79,6 +79,7 @@ class AdminUserDetail extends BaseModel
         $model->update_time = date('yy-m-d H:i:s');
         $model->addtime = date('yy-m-d H:i:s');
         if ($model->save()) {
+
             $UserActivity = new ActivityUserModel();
             $UserActivity->uid = $this->uid;
             $UserActivity->aid = $this->aid;
@@ -92,6 +93,54 @@ class AdminUserDetail extends BaseModel
                     'data'=>null
                 ];
             }
+        } else {
+            return  [
+                'msg'=>current($model->getErrors())[0],
+                'state'=>1,
+                'data'=>null
+            ];
+        }
+    }
+
+    public function simpleSaveData()
+    {
+        if ( !$this->validate() ){
+            return [
+                'msg'=>current($this->getErrors())[0],
+                'state'=>1,
+                'data'=>null
+            ];
+        }
+
+        if (!$this->uid) {
+            return [
+                'msg' => '您需要登陆！',
+                'state' => 100,
+                'data' => null,
+            ];
+        }
+
+        $CheckUserExist = UserDetailModel::find()
+            ->where(['uid'=>$this->uid])
+            ->exists();
+        if ($CheckUserExist) {
+            return [
+                'msg' => '您已经填写过了！',
+                'state' => 303,
+                'data' => null,
+            ];
+        }
+
+        $model = new UserDetailModel();
+        $model->attributes = $this->attributes;
+        $model->update_time = date('yy-m-d H:i:s');
+        $model->addtime = date('yy-m-d H:i:s');
+        if ($model->save()) {
+            return  [
+                'msg'=>'成功',
+                'state'=>0,
+                'data'=>null
+            ];
         } else {
             return  [
                 'msg'=>current($model->getErrors())[0],
