@@ -93,7 +93,7 @@ class AdminActivityComments extends BaseModel
         //     ->all();
         $query = new ActiveDataProvider([
             'query'=>ActivityCommentModel::find()->where(['aid' => $this->aid])->orderBy('addtime DESC')->asArray()->all(),
-            'pagination' => new Pagination()
+            'pagination' => new Pagination(['pageSize' => 20])
         ]);
         $user_query = AdminUser::find();
         foreach ($query['query'] as $key => &$value) {
