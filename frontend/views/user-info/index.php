@@ -195,13 +195,13 @@ $urlManager = Yii::$app->urlManager;
 <script>
 
     $('#gender1').click(function (e) {
-        $(this).val(1);
-        $('#gender2').val(0)
+        $(this).attr('value','1');
+        $('#gender2').attr('value','0')
     })
 
     $('#gender2').click(function (e) {
-        $(this).val(1);
-        $('#gender1').val(0)
+        $(this).attr('value','1');
+        $('#gender1').attr('value','0')
     })
 
     $('#submit').click(function(e) {
@@ -211,7 +211,7 @@ $urlManager = Yii::$app->urlManager;
         var marital_status = $("#marital_status option:selected").text();
         var education = $("#education option:selected").text();
         var character = $("#character option:selected").text();
-        var gender = $('#gender1').val() == '1' ? '1' : '0';
+        var gender = $('#gender1').val('value') == '1' ? '1' : '0';
         console.log(gender)
         var data = {
             'name': $('#name').val(),
