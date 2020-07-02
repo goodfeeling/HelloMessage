@@ -44,10 +44,7 @@ class LoginController extends Controller
                 ]);
             }
         } else {
-            $session = \Yii::$app->session;
-            if (!($access_token = $session['access_token']['value'])) {
-                return $this->redirect(Yii::$app->request->getReferrer());
-            }
+            
             return $this->render('index');
         }
     }
