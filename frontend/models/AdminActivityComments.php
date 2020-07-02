@@ -95,7 +95,6 @@ class AdminActivityComments extends BaseModel
         $query = new ActiveDataProvider([
             'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
             'pagination' => new Pagination([
-                'pageSize' => 20,
                 'totalCount' => $query->count(),
                 'validatePage' => false,
                 ])
@@ -111,7 +110,7 @@ class AdminActivityComments extends BaseModel
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
-        return ['list' => $query, 'count' => 0];
+        return ['list' => $query, 'count' => $query->count()];
     }
 
 }
