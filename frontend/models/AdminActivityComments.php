@@ -106,7 +106,7 @@ class AdminActivityComments extends BaseModel
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
-        return ['list' => $query, 'count' => count($query)];
+        return ['list' => $query, 'count' => 0];
     }
 
 }
