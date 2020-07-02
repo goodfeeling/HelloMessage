@@ -226,9 +226,11 @@ $urlManager = Yii::$app->urlManager;
                 $('.wx-bd').text(data['msg']);
                 $('.wx-main-btn').text("确定");
                 $('#simpleDialog').fadeIn(200);
-                if(data['state'] == 0) {
-                    location.reload();
-                }
+                $('.wx-main-btn').on('click',function(e){
+                    if(data['state'] == 0) {
+                        location.reload();
+                    }
+                });
             }
         });
     });
