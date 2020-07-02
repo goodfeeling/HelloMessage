@@ -30,7 +30,7 @@ $this->title = '我的活动';
                     <?php endif; ?>
 
                     <?php if (!$value['is_join']): ?>
-                        <button type="button" id="signIn" class="btn btn-secondary shadowed mr-1 mb-1">签到</button>
+                        <a href="#msg_text_primary"  id="signIn" class="btn btn-secondary shadowed mr-1 mb-1">签到</a>
                     <?php endif; ?>
                 </div>
 
