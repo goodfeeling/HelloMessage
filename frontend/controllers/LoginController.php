@@ -21,30 +21,17 @@ class LoginController extends BaseController
             try {
                 $res = $form->wxLogin();
             } catch (\WeChat\Exceptions\InvalidResponseException $e) {
-                var_dump(111);exit;
                 $res['state'] = 1001;
             }
 
-            if (!$res['state']) {
-
-                $session = \Yii::$app->session;
-                if (!($access_token = $session['access_token']['value'])) {
-                    $cookies = \Yii::$app->request->cookies;
-                    $access_token = $cookies->get('access_token');
-                }
-                $userData = AdminUser::findOne([
-                    'access_token' => $access_token
-                ]);
+             if (!$res['state'] || $res['state'] == 1001) {
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
-
                 return $this->render('@app/views/site/index', [
-                    'userInfo' => $userData,
+                    'userInfo' => $this->userData,
                     'model' => $res['model'],
                     'recomment' => $res['recomment']
                 ]);
-            } else if ($res['state'] == 1001) {
-                return $this->redirect(Yii::$app->request->getReferrer());
             }
         } 
         return $this->render('index');
