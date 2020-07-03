@@ -5,6 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '我的活动';
+$urlManager = Yii::$app->urlManager;
 ?>
 
 <!-- App Header -->
