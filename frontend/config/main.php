@@ -34,6 +34,10 @@ return [
             'class' => 'yii\web\CacheSession',
             // 'cache' => 'mycache',
         ],
+        'qr' => [
+            'class' => '\Da\QrCode\Component\QrCodeComponent',
+            // ... you can configure more properties of the component here
+        ]
     ],
     'params' => $params,
 ];

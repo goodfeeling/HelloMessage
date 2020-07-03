@@ -110,12 +110,18 @@ $urlManager = Yii::$app->urlManager;
             dataType: 'json',
             data: data,
             success: function(data) {
-                $('.wx-bd').text(data['msg']);
-                $('#simpleDialog').fadeIn(300);
-                if (data['state'] == 0 ) {
-                    $('.weui-dialog__ft').on('click',function(e){
-                        window.location.href = "<?= Url::toRoute('feedback/index', true) ?>";
-                    });
+                if (data['state'] == 0) {
+                    $('.wx-bd').text(data['msg']);
+                    $('#simpleDialog').fadeIn(300);
+                    if (data['state'] == 0 ) {
+                        $('.weui-dialog__ft').on('click',function(e){
+                            window.location.href = "<?= Url::toRoute('feedback/index', true) ?>";
+                        });
+                    }
+                } else {
+                    $('.wx-bd').text(res['msg']);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
                 }
             }
         });

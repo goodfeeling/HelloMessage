@@ -45,7 +45,9 @@ $modelLabel = new \backend\models\UserDetailModel();
                   </div>
               <div class="form-group">
               	<a onclick="searchAction()" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>搜索</a>
-           	  </div>
+                  <a class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-save icon-white"></i>导出数据</a>
+
+              </div>
                <?php ActiveForm::end(); ?> 
             </div>
           	</div>

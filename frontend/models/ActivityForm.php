@@ -232,4 +232,16 @@ class ActivityForm extends BaseModel
             ];
         }
     }
+
+    // 生成二维码
+    public function generateQrCode()
+    {
+
+    }
+
+    // 处理二维码
+    public function handleQrCode()
+    {
+
+    }
 }
