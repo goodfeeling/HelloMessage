@@ -9,43 +9,33 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\ActivityForm;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        if ( $request->isGet && $request->get('state') == 'now_jump_index' ) {
+        if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form = new LoginForm();
             $form->code = $request->get('code');
 
-            try{
+            try {
                 $res = $form->wxLogin();
-            } catch(\WeChat\Exceptions\InvalidResponseException $e) {
-                $res['statue'] = 1;
+            } catch (\WeChat\Exceptions\InvalidResponseException $e) {
+                $res['state'] = 1001;
             }
-            
-            if ( !$res['statue'] ){
-                    
-                $session = \Yii::$app->session;
-                if (!($access_token = $session['access_token']['value'])) {
-                    $cookies = \Yii::$app->request->cookies;
-                    $access_token =$cookies->get('access_token');
-                }
-                $userData = AdminUser::findOne([
-                    'access_token' => $access_token
-                ]);
+
+             if (!$res['state'] || $res['state'] == 1001) {
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
-    
-                return $this->render('@app/views/site/index',[
-                    'userInfo'=>$userData,
-                    'model'=>$res['model'],
-                    'recomment'=>$res['recomment']
+                return $this->render('@app/views/site/index', [
+                    'userInfo' => $this->userData,
+                    'model' => $res['model'],
+                    'recomment' => $res['recomment']
                 ]);
             }
-           
-        }
+        } 
         return $this->render('index');
+
     }
 
     public function actionJumpLoginPage()

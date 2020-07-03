@@ -37,3 +37,4 @@ $this->title = '活动列表';
         </div>
     </div>
     <!-- * appCapsule -->
+    

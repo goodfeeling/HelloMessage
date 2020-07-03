@@ -7,6 +7,8 @@ namespace frontend\models;
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 use common\utils\CommonFun;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 
 class AdminActivityComments extends BaseModel
 {
@@ -65,6 +67,7 @@ class AdminActivityComments extends BaseModel
     {
         $query = ActivityCommentModel::find()
             ->where(['aid' => $this->aid])
+            ->orderBy('addtime DESC')
             ->asArray()
             ->all();
         $user_query = AdminUser::find();
@@ -79,6 +82,36 @@ class AdminActivityComments extends BaseModel
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
         return ['list' => $query, 'count' => count($query)];
+    }
+
+    public function getData1()
+    {
+        // $query = ActivityCommentModel::find()
+        //     ->where(['aid' => $this->aid])
+        //     ->orderBy('addtime DESC')
+        //     ->asArray()
+        //     ->all();
+        $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
+        $count =  $query->count();
+        $query = new ActiveDataProvider([
+            'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
+            'pagination' => [
+                'totalCount' =>$count ,
+                    'pageSize' => 30, 
+                ]
+        ]);
+        $user_query = AdminUser::find();
+        foreach ($query->query as $key => &$value) {
+            $author = $user_query
+                ->where(['id' => $value['uid']])
+                ->select('avatar_url,nickname')
+                ->one();
+            $value['avatar_url'] = $author['avatar_url'];
+            $value['nickname'] = $author['nickname'];
+//            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
+            $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
+        }
+        return ['list' => $query, 'count' => $count];
     }
 
 }
