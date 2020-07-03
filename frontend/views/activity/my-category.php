@@ -78,7 +78,7 @@ $this->title = '我的活动';
 
     // 生成一个二维码
     $('.signIn').on('click', function (e) {
-        $('.qrcode-siginin-user').attr('src',<?= Url::to('default/get-qr') ?>);
+        $('.qrcode-siginin-user').attr('src',"<?= $urlManager->createUrl(['default/get-qr']) ?>");
         $('.weui-msg-top').show();
     });
 
