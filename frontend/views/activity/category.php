@@ -1,5 +1,7 @@
 <?php
+
 use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 
 $this->title = '活动列表';
@@ -8,13 +10,13 @@ $this->title = '活动列表';
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
 <!-- * App Header -->
-    <!-- App Capsule -->
-    <div id="appCapsule">
+<!-- App Capsule -->
+<div id="appCapsule">
 
-        <div class="appContent">
-            <!-- post list -->
-            <div class="row mt-2">
-                <?php foreach ($models as $key => $value) : ?>
+    <div class="appContent">
+        <!-- post list -->
+        <div class="row mt-2">
+            <?php foreach ($models as $key => $value) : ?>
                 <!-- item -->
                 <div class="col-6">
                     <a href="<?php echo Url::to(['activity/post', 'id' => $value['id']]) ?>" class="postItem">
@@ -25,16 +27,16 @@ $this->title = '活动列表';
                     </a>
                 </div>
                 <!-- * item -->
-                <?php endforeach ?>
-            </div>
-            <!-- * post list -->
+            <?php endforeach ?>
+        </div>
+        <!-- * post list -->
 
-            <div class="mt-2 mb-2">
-                <?php echo \yii\widgets\LinkPager::widget([
-                    'pagination' => $pages,
-                ]); ?>
-            </div>
+        <div class="mt-2 mb-2">
+            <?php echo \yii\widgets\LinkPager::widget([
+                'pagination' => $pages,
+            ]); ?>
         </div>
     </div>
-    <!-- * appCapsule -->
+</div>
+<!-- * appCapsule -->
     

@@ -17,6 +17,8 @@ class AdminActivityComments extends BaseModel
     public $content;
     public $addtime;
     public $status;
+    public $offset;
+    public $limit;
 
     /**
      * @inheritdoc
@@ -93,15 +95,11 @@ class AdminActivityComments extends BaseModel
         //     ->all();
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
         $count =  $query->count();
-        $query = new ActiveDataProvider([
-            'query'=>$query->orderBy('addtime DESC')->asArray()->all(),
-            'pagination' => [
-                'totalCount' =>$count ,
-                    'pageSize' => 30, 
-                ]
-        ]);
+        $pagination = new Pagination(['totalCount' => $count]);
+        $comments = $query->offset($pagination->offset)
+            ->limit($pagination->limit)->asArray()->all();
         $user_query = AdminUser::find();
-        foreach ($query->query as $key => &$value) {
+        foreach ($comments as $key => &$value) {
             $author = $user_query
                 ->where(['id' => $value['uid']])
                 ->select('avatar_url,nickname')

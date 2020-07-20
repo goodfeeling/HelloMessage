@@ -14,7 +14,7 @@ use yii\helpers\Url;
     </div>
     <div class="right">
         <label for="searchInput" class="mb-0 icon toggleSearchbox">
-<!--            <i class="icon ion-ios-search"></i>-->
+            <i class="icon ion-ios-search"></i>
         </label>
     </div>
 </div>
@@ -24,7 +24,7 @@ use yii\helpers\Url;
             <span class="inputIcon">
                 <i class="icon ion-ios-search"></i>
             </span>
-        <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+        <input type="text" class="form-control" id="searchInput" placeholder="搜索...">
         <a href="javascript:;" class="toggleSearchbox closeButton">
             <i class="icon ion-ios-close-circle"></i>
         </a>

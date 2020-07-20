@@ -14,14 +14,23 @@ use yii\helpers\Url;
             </p>
         </a>
     </div>
-    <div class="item" id="discover" hidden>
+    <div class="item" id="discover">
         <a href="<?php echo Url::to(['discover/index']) ?>">
             <p>
-                <i class="icon ion-ios-eye"></i>
+                <i class="icon ion-ios-aperture"></i>
                 <span>发现</span>
             </p>
         </a>
     </div>
+    <div class="item" id="search">
+        <a href="<?php echo Url::to(['search/index']) ?>">
+            <p>
+                <i class="icon ion-ios-search"></i>
+                <span>搜索</span>
+            </p>
+        </a>
+    </div>
+
     <div class="item" id="sidebar">
         <a href="javascript:;" class="icon toggleSidebar">
             <p>

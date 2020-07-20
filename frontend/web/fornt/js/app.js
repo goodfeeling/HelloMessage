@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////////////////////
 // Loader
 $(document).ready(function () {
@@ -11,21 +10,28 @@ $(document).ready(function () {
         $.getUrlParam = function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]); return null;
+            if (r != null) return unescape(r[2]);
+            return null;
         }
     })(jQuery);
+
     var str = $.getUrlParam('r');
-    if (str == null){
+
+    if (str == null) {
         $('#home').addClass('active')
-    } else if (str.search('discover') != -1){
+    } else if (str.search('discover') != -1) {
         $('#discover').addClass('active')
-    } else if(str.search('sidebar') != -1){
+    } else if (str.search('sidebar') != -1) {
         $('#sidebar').addClass('active')
+    } else if (str.search('search') != -1) {
+        $('#search').addClass('active')
     }
+
+
 });
 ///////////////////////////////////////////////////////////////////////////
 // Go Back
-$(".goBack").click(function(){
+$(".goBack").click(function () {
     window.history.back();
 });
 
@@ -67,24 +73,22 @@ $('.buttonCarousel').owlCarousel({
 
 ///////////////////////////////////////////////////////////////////////////
 // Sidebar 
-$(".toggleSidebar").click(function(){
+$(".toggleSidebar").click(function () {
     $(".sidebarWrapper").fadeToggle(200);
-    if($("body").hasClass("sidebarActive")){
+    if ($("body").hasClass("sidebarActive")) {
         $("body").removeClass("sidebarActive");
-    }
-    else{
+    } else {
         $("body").addClass("sidebarActive");
     }
-    if($(".sidebarWrapper .sidebar").hasClass("is-active")){
+    if ($(".sidebarWrapper .sidebar").hasClass("is-active")) {
         $(".sidebarWrapper .sidebar").removeClass("is-active");
         $(".sidebarWrapper .sidebar").addClass("is-passive");
-    }
-    else{
+    } else {
         $(".sidebarWrapper .sidebar").addClass("is-active");
     }
 });
 
-$(".toggleSearchbox").click(function(){
+$(".toggleSearchbox").click(function () {
     $(".searchBox").fadeToggle(200);
 
 });
