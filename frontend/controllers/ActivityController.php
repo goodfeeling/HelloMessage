@@ -5,8 +5,6 @@ namespace frontend\controllers;
 
 use backend\models\ActivityModel;
 use backend\models\ImagesModel;
-use backend\models\OrderModel;
-use backend\models\UserDetailModel;
 use frontend\models\AdminActivityComments;
 use frontend\models\ActivityForm;
 use frontend\models\AdminOrder;
@@ -23,18 +21,10 @@ class ActivityController extends BaseController
      */
     public function actionApply()
     {
-        if (empty($this->userData)) {
-            return [
-                'msg' => '您需要登陆！',
-                'state' => 100,
-                'data' => null,
-            ];
-        }
-
         $request = Yii::$app->request;
         if ($request->isPost) {
             $form = new AdminUserDetail();
-            $form->uid = $this->userData['id'];
+            $form->uid = Yii::$app->user->id;
             $form->attributes = $request->post();
             $form->aid = $request->get('id');
             $res = $form->saveData();
@@ -45,18 +35,10 @@ class ActivityController extends BaseController
 
     public function actionVerifyUser()
     {
-        if (empty($this->userData)) {
-            $res =  [
-                'msg' => '您需要登陆！',
-                'state' => 100,
-                'data' => null,
-            ];
-        }else {
-            $form = new ActivityForm();
-            $form->id = Yii::$app->request->get('id');
-            $form->uid = $this->userData['id'];
-            $res = $form->saveVerify();
-        }
+        $form = new ActivityForm();
+        $form->id = Yii::$app->request->get('id');
+        $form->uid = Yii::$app->user->id;
+        $res = $form->saveVerify();
         return $this->asJson($res);
     }
 
@@ -97,7 +79,7 @@ class ActivityController extends BaseController
             $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
             $val['img_url'] = Yii::getAlias('@back') . $img['url'];
         }
-        return $this->render('category',[
+        return $this->render('category', [
             'models' => $models,
             'pages' => $pages,
         ]);
@@ -111,14 +93,14 @@ class ActivityController extends BaseController
     public function actionMyCategory()
     {
         $request = Yii::$app->request;
+        $form = new ActivityForm();
+        $form->uid = Yii::$app->user->id;
         if ($request->isPost) {
 
         } else {
-            $form = new ActivityForm();
-            $form->uid = $this->userData['id'];
             $res = $form->getStateData();
-            return $this->render('my-category',[
-                'data'=>$res
+            return $this->render('my-category', [
+                'data' => $res
             ]);
         }
     }
@@ -133,7 +115,7 @@ class ActivityController extends BaseController
         $request = Yii::$app->request;
         if ($request->isPost) {
             $form = new AdminOrder();
-            $form->uid = $this->userData['id'];
+            $form->uid = Yii::$app->user->id;
             $form->aid = $request->post('id');
             $form->money = "10000";
             $res = $form->sendPay();
@@ -153,7 +135,7 @@ class ActivityController extends BaseController
         $request = Yii::$app->request;
         $form = new ActivityForm();
         $form->id = $request->post('id');
-        $res = $form->LikeIncrease($this->userData['id']);
+        $res = $form->LikeIncrease(Yii::$app->user->id);
         return $this->asJson($res);
     }
 
@@ -162,20 +144,13 @@ class ActivityController extends BaseController
      *
      * @return mixed
      */
-    public function actionComment(){
-
+    public function actionComment()
+    {
         $request = Yii::$app->request;
         $form = new AdminActivityComments();
         $form->aid = $request->get('id');
         if ($request->isPost) {
-            if (empty($this->userData)) {
-                return $this->asJson([
-                    'msg' => '您需要登陆！',
-                    'state' => 100,
-                    'data' => null,
-                ]);
-            }
-            $form->uid = $this->userData['id'];
+            $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');
             $res = $form->saveData();
         } else {

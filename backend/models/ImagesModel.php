@@ -20,7 +20,7 @@ class ImagesModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_images}}';
+        return '{{%images}}';
     }
 
     /**

@@ -22,7 +22,7 @@ class WechatConfigModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_wechat_config}}';
+        return '{{%wechat_config}}';
     }
 
     /**

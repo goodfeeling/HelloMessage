@@ -20,7 +20,7 @@ class FeedbackModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return 'admin_feedback';
+        return '{{%feedback}}';
     }
 
     /**

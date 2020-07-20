@@ -21,7 +21,7 @@ class OrderModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return 'admin_order';
+        return '{{%order}}';
     }
 
     /**

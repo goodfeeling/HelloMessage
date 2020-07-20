@@ -28,7 +28,7 @@ class ActivityModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_activity}}';
+        return '{{%activity}}';
     }
 
     /**

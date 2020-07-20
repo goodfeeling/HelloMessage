@@ -32,7 +32,8 @@ class UserDetailModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return 'admin_user_detail';
+        return '{{%user_detail}}';
+
     }
 
     /**

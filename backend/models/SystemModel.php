@@ -20,7 +20,7 @@ class SystemModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_system}}';
+        return '{{%system}}';
     }
 
     /**

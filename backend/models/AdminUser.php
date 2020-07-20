@@ -35,7 +35,7 @@ class AdminUser extends BackendUser
      */
     public static function tableName()
     {
-        return '{{%admin_user}}';
+        return '{{%user}}';
     }
 
     /**

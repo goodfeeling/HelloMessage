@@ -8,6 +8,7 @@ $this->title = '首页';
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
+
 <div id="appCapsule">
     <div class="appContent">
         <!-- Card Overlay Carousel -->
@@ -77,7 +78,9 @@ $this->title = '首页';
 
     </div>
 </div>
+
 <!-- Sidebar Menu -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php', ['userInfo' => $userInfo, 'is_login' => empty($userInfo) ? '0' : '1']); ?>
 <!-- * Sidebar Menu -->
+
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

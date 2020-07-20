@@ -20,7 +20,7 @@ class ActivityUserModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_activity_user}}';
+        return '{{%activity_user}}';
     }
 
     /**

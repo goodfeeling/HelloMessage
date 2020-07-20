@@ -1,9 +1,12 @@
 <?php
+
 namespace frontend\models;
 
 use backend\models\AdminUser;
+use common\models\User;
 use Yii;
 use yii\helpers\Url;
+use yii\web\Cookie;
 
 class LoginForm extends BaseModel
 {
@@ -23,7 +26,7 @@ class LoginForm extends BaseModel
 
     /**
      * 微信公众号登录
-     * 
+     *
      * @inheritdoc
      */
     public function wxLogin()
@@ -49,18 +52,18 @@ class LoginForm extends BaseModel
                     'data' => null
                 ];
             }
-            
+
             // 检查AccessToken
             $checkToken = $wechat->checkOauthAccessToken($result['access_token'], $result['openid']);
-            
-            if( !($checkToken['errcode'] == 0 )) {
+
+            if (!($checkToken['errcode'] == 0)) {
                 // 刷新token
                 $result = $wechat->getOauthRefreshToken($result['refresh_token']);
-            } 
-           
+            }
+
             // 存数据库
-            $userModel = new AdminUser();
-            $checkData = $userModel::findOne(['wechat_platform_open_id'=>$result['openid']]);
+            $userModel = new User();
+            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
             if ($userInfo['errcode'] == 40003) {
@@ -70,7 +73,7 @@ class LoginForm extends BaseModel
                     'data' => null
                 ];
             }
-             
+
             if (empty($checkData)) {
                 $userModel->uname = $result['openid'];
                 $userModel->password = \Yii::$app->security->generatePasswordHash(\Yii::$app->security->generateRandomString(), 5);;
@@ -103,37 +106,20 @@ class LoginForm extends BaseModel
                 $checkData->city = $userInfo['city'];
                 $res = $checkData->save();
             }
-            
-            if ( $res ) {
-                $session = Yii::$app->session;
-                // 存入Sessions
-                $session['access_token'] = [
-                    'value'=>$result['access_token'],
-                    'lifetime'=>7200,
-                ];
-                // 设置cookie
-                $cookies = Yii::$app->response->cookies;
-                // 在要发送的响应中添加一个新的 cookie
-                $cookies->add(new \yii\web\Cookie([
-                    'name' => 'access_token',
-                    'value' => $result['access_token']
-                ]));
 
-                return [
-                    'msg'=>'登录成功',
-                    'state'=>0,
-                    'data'=>null
-                ];
+            if ($res) {
+                $duration = \Yii::$app->user->authtimeout;
+                \Yii::$app->user->login($checkData, $duration);
             } else {
                 return [
-                    'msg'=> '登录失败请联系管理员',
-                    'state'=>1,
-                    'data'=>null
+                    'msg' => '登录失败请联系管理员',
+                    'state' => 1,
+                    'data' => null
                 ];
             }
 
-        } catch (\yii\base\Exception $e){
-            return  [
+        } catch (\yii\base\Exception $e) {
+            return [
                 'msg' => $e->getMessage(),
                 'state' => 1,
                 'data' => null
@@ -143,7 +129,7 @@ class LoginForm extends BaseModel
 
     /**
      * 跳到登录
-     * 
+     *
      * @inheritdoc
      */
     public function jumpLogin()
@@ -152,18 +138,18 @@ class LoginForm extends BaseModel
             $config = $this->getWxConfig('simple');
             $wechat = new \WeChat\Oauth($config);
             // 执行操作
-            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index','snsapi_userinfo');
+            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index', 'snsapi_userinfo');
             return [
                 'msg' => '获取成功',
                 'status' => 0,
                 'data' => $result
             ];
-        } catch (\yii\base\Exception $e){
-           return  [
-               'msg' => '$e->getMessage()',
-               'status' => 1,
-               'data' => null
-           ];
+        } catch (\yii\base\Exception $e) {
+            return [
+                'msg' => '$e->getMessage()',
+                'status' => 1,
+                'data' => null
+            ];
         }
     }
 }

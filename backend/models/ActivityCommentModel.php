@@ -20,7 +20,7 @@ class ActivityCommentModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_activity_comments}}';
+        return '{{%activity_comments}}';
     }
 
     /**

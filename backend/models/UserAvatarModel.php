@@ -18,7 +18,7 @@ class UserAvatarModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_user_avatar}}';
+        return '{{%user_avatar}}';
     }
 
     /**

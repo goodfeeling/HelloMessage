@@ -17,7 +17,7 @@ class ActivityLikesUserModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_activity_likes_user}}';
+        return '{{%activity_likes_user}}';
     }
 
     /**
