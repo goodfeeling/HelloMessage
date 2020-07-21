@@ -207,9 +207,10 @@ class ActivityController extends BaseController
         $form->aid = $request->get('id');
         $form->size = $request->get('size', '10');
         if ($request->isPost) {
-            var_dump(11);exit;
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');
+            var_dump(11);exit;
+
             $res = $form->saveData();
         } else {
             $res = [
