@@ -47,12 +47,7 @@ class ActivityController extends BaseController
                             'comment'],
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['post'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
+                    ]
                 ],
             ],
             'verbs' => [
@@ -63,7 +58,6 @@ class ActivityController extends BaseController
                     'my-category' => ['post'],
                     'user-pay' => ['post'],
                     'likes-increase' => ['post'],
-                    'post' => ['get'],
                 ],
             ],
         ];
@@ -208,7 +202,6 @@ class ActivityController extends BaseController
         $form->size = $request->get('size', '10');
         if ($request->isPost) {
             $form->uid = Yii::$app->user->id;
-            var_dump($form->uid);exit;
             $form->content = $request->post('content');
 
             $res = $form->saveData();
