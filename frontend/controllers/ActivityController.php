@@ -25,7 +25,7 @@ class ActivityController extends BaseController
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => [
-                    'apply',
+                    'post',
                     'verify-user',
                     'my-category',
                     'user-pay',
