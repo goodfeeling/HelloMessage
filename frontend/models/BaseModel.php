@@ -44,7 +44,7 @@ class BaseModel extends \yii\db\ActiveRecord
         }
     }
 
-    public function resultMsg($data, ConstStatus $state, $msg = '')
+    public function resultMsg($data, $state = 0, $msg = '')
     {
         return [
             'msg' => $msg,
