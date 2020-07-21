@@ -38,8 +38,6 @@ class ActivityComments extends BaseModel
     {
 
         if (!$this->validate()) {
-            var_dump(11);exit;
-
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
 
@@ -47,7 +45,7 @@ class ActivityComments extends BaseModel
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
         $model->status = 0;
-
+        var_dump($model);exit;
         if ($model->save()) {
             return $this->resultMsg(self::getData(), ConstStatus::CODE_SUCCESS, '评论成功');
         } else {
