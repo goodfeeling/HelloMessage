@@ -9,6 +9,21 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
+ * User model
+ *
+ * @property integer $id
+ * @property string $uname
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $email
+ * @property string $auth_key
+ * @property integer $status
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property string $password write-only password
+ */
+
+/**
  * This is the model class for table "{{%admin_user}}".
  *
  * @property string $id
@@ -33,6 +48,8 @@ use yii\web\IdentityInterface;
  * @property string $avatar_url
  * @property string $bind_phone
  * @property string $city
+ *
+ * @property AdminUserRole[] $adminUserRoles
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -63,6 +80,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url'], 'required'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             [['create_date', 'update_date'], 'safe'],
@@ -92,6 +110,14 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByOpenId($open_id, $type = null)
+    {
+        return static::findOne(['wechat_platform_open_id' => $open_id, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**

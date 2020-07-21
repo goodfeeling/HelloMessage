@@ -56,7 +56,8 @@ class LoginForm extends BaseModel
 
             // 存数据库
             $userModel = new User();
-            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
+//            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
+            $checkData = User::findIdentityByOpenId($result['openid']);
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
             if ($userInfo['errcode'] == 40003) {
@@ -84,13 +85,13 @@ class LoginForm extends BaseModel
                     return $this->resultMsg(null, ConstStatus::CODE_ERROR,serialize($userModel->getErrors()));
                 }
             } else {
-                $user = AdminUser::findOne(['id'=>$checkData->id]);
-                $user->access_token = $result['access_token'];
-                $user->wechat_platform_open_id = $result['openid'];
-                $user->nickname = $userInfo['nickname'];
-                $user->avatar_url = $userInfo['headimgurl'];
-                $user->city = $userInfo['city'];
-                $res = $user->save();
+//                $user = AdminUser::findOne(['id'=>$checkData->id]);
+                $checkData->access_token = $result['access_token'];
+                $checkData->wechat_platform_open_id = $result['openid'];
+                $checkData->nickname = $userInfo['nickname'];
+                $checkData->avatar_url = $userInfo['headimgurl'];
+                $checkData->city = $userInfo['city'];
+                $res = $checkData->save();
             }
             if ($res) {
                 $duration = \Yii::$app->user->authtimeout;
