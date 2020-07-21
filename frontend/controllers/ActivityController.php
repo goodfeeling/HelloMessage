@@ -58,7 +58,7 @@ class ActivityController extends BaseController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'apply' => ['post'],
+                    'apply' => ['post','get'],
                     'verify-user' => ['post'],
                     'my-category' => ['post'],
                     'user-pay' => ['post'],
