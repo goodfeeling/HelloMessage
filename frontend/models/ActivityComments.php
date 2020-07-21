@@ -37,7 +37,8 @@ class ActivityComments extends BaseModel
     public function saveData()
     {
         if (!$this->validate()) {
-            return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
+            var_dump(current($this->getErrors())[0]);exit;
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, );
         }
 
         $model = new ActivityCommentModel();
