@@ -11,9 +11,64 @@ use frontend\models\Order;
 use frontend\models\UserDetail;
 use yii\data\Pagination;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class ActivityController extends BaseController
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'denyCallback' => function ($rule, $action) {
+                    throw new \Exception('You are not allowed to access this page');
+                },
+                'only' => [
+                    'post',
+                    'apply',
+                    'verify-user',
+                    'my-category',
+                    'user-pay',
+                    'likes-increase',
+                    'comment'
+                ],
+                'rules' => [
+                    [
+                        'actions' => [
+                            'apply',
+                            'verify-user',
+                            'my-category',
+                            'user-pay',
+                            'likes-increase',
+                            'comment'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['post'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'apply' => ['post'],
+                    'verify-user' => ['post'],
+                    'my-category' => ['post'],
+                    'user-pay' => ['post'],
+                    'likes-increase' => ['post'],
+                    'post' => ['get'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Displays 活动申请.
      *
@@ -149,7 +204,7 @@ class ActivityController extends BaseController
         $request = Yii::$app->request;
         $form = new ActivityComments();
         $form->aid = $request->get('id');
-        $form->size = $request->get('size','10');
+        $form->size = $request->get('size', '10');
         if ($request->isPost) {
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');

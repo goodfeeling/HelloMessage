@@ -6,7 +6,6 @@ use yii\helpers\Url;
 
 $this->title = '搜索';
 $urlManager = Yii::$app->urlManager;
-$userInfo = [];
 ?>
 
 <!-- App Header -->
