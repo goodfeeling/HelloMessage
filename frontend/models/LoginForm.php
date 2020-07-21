@@ -84,7 +84,7 @@ class LoginForm extends BaseModel
                     return $this->resultMsg(null, ConstStatus::CODE_ERROR,serialize($userModel->getErrors()));
                 }
             } else {
-                $user = User::findOne(['id'=>$checkData->id]);
+                $user = AdminUser::findOne(['id'=>$checkData->id]);
                 $user->access_token = $result['access_token'];
                 $user->wechat_platform_open_id = $result['openid'];
                 $user->nickname = $userInfo['nickname'];
