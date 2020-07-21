@@ -57,7 +57,7 @@ class SiteController extends BaseController
         return $this->render('index',[
            'model'=>$res['model'],
            'recomment'=>$res['recomment'],
-            'userInfo'=> AdminUser::find()->where(['id'=>Yii::$app->user->id])->asArray()->one()
+            'userInfo'=> 1111
         ]);
     }
 
