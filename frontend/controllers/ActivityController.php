@@ -28,7 +28,6 @@ class ActivityController extends BaseController
                     throw new \Exception('You are not allowed to access this page');
                 },
                 'only' => [
-                    'post',
                     'apply',
                     'verify-user',
                     'my-category',
@@ -39,7 +38,7 @@ class ActivityController extends BaseController
                 'rules' => [
                     [
                         'actions' => [
-                            'apply',
+                            'post',
                             'verify-user',
                             'my-category',
                             'user-pay',
@@ -204,7 +203,6 @@ class ActivityController extends BaseController
         if ($request->isPost) {
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');
-            var_dump($form);exit;
             $res = $form->saveData();
         } else {
             $res = [
