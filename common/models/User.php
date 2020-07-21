@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use backend\models\AdminUserRole;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -8,18 +9,32 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * This is the model class for table "{{%admin_user}}".
  *
- * @property integer $id
- * @property string $username
+ * @property string $id
+ * @property string $uname
+ * @property string $password
  * @property string $password_hash
  * @property string $password_reset_token
- * @property string $email
+ *
  * @property string $auth_key
+ * @property string $last_ip
+ * @property string $is_online
+ * @property string $domain_account
  * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
+ * @property string $create_user
+ * @property string $create_date
+ * @property string $update_user
+ * @property string $update_date
+ * @property integer $type
+ * @property string $access_token
+ * @property string $wechat_platform_open_id
+ * @property string $nickname
+ * @property string $avatar_url
+ * @property string $bind_phone
+ * @property string $city
+ *
+ * @property AdminUserRole[] $adminUserRoles
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -52,6 +67,16 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['create_date', 'update_date'], 'safe'],
+            [['uname', 'domain_account', 'create_user'], 'string', 'max' => 100],
+            [['password', 'avatar_url'], 'string', 'max' => 200],
+            [['auth_key', 'last_ip'], 'string', 'max' => 50],
+            [['is_online'], 'string', 'max' => 1],
+            [['update_user'], 'string', 'max' => 101],
+            [['access_token', 'nickname'], 'string', 'max' => 255],
+            [['wechat_platform_open_id'], 'string', 'max' => 64],
+            [['bind_phone'], 'string', 'max' => 11],
+            [['city'], 'string', 'max' => 20]
         ];
     }
 
@@ -79,7 +104,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['uname' => $username, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
