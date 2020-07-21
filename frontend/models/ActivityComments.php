@@ -25,7 +25,7 @@ class ActivityComments extends BaseModel
     public function rules()
     {
         return [
-            [['aid', 'content'], 'required', 'trim', 'message' => '请输入完整的内容！'],
+            [['aid', 'content'], 'required', 'message' => '请输入完整的内容！'],
             [['aid'], 'integer', 'message' => 'aid error！'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000, 'message' => '评论内容不能为空且最大为1000个字符！'],
