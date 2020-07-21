@@ -84,12 +84,13 @@ class LoginForm extends BaseModel
                     return $this->resultMsg(null, ConstStatus::CODE_ERROR,serialize($userModel->getErrors()));
                 }
             } else {
-                $userModel->access_token = $result['access_token'];
-                $userModel->wechat_platform_open_id = $result['openid'];
-                $userModel->nickname = $userInfo['nickname'];
-                $userModel->avatar_url = $userInfo['headimgurl'];
-                $userModel->city = $userInfo['city'];
-                $res = $userModel->save();
+                $user = User::findOne(['id'=>$checkData->id]);
+                $user->access_token = $result['access_token'];
+                $user->wechat_platform_open_id = $result['openid'];
+                $user->nickname = $userInfo['nickname'];
+                $user->avatar_url = $userInfo['headimgurl'];
+                $user->city = $userInfo['city'];
+                $res = $user->save();
             }
 
             if ($res) {
