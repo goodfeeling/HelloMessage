@@ -128,7 +128,7 @@ $userInfo = [];
 <!-- appCapsule -->
 
     <!-- Sidebar Menu -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php', ['userInfo' => $userInfo, 'is_login' => empty($userInfo) ? '0' : '1']); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php'); ?>
     <!-- * Sidebar Menu -->
 
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

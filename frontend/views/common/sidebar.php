@@ -3,14 +3,15 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
+$isGuest = Yii::$app->user->isGuest;
 ?>
 
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= isset($userInfo->avatar_url ) ? $userInfo->avatar_url : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
-            <h2 class="title"><?= isset($userInfo->nickname) ? $userInfo->nickname :'请点击头像进行登录' ?></h2>
+            <img src="<?= empty($isGuest) ? $userInfo->avatar_url : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= empty($isGuest) ? $userInfo->nickname :'请点击头像进行登录' ?></h2>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>

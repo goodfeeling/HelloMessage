@@ -56,8 +56,7 @@ class SiteController extends BaseController
         $res = $form->getActivityData();
         return $this->render('index',[
            'model'=>$res['model'],
-           'recomment'=>$res['recomment'],
-            'userInfo'=> AdminUser::find()->where(['id'=>Yii::$app->user->id])->one()
+           'recomment'=>$res['recomment']
         ]);
     }
 

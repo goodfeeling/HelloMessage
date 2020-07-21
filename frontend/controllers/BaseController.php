@@ -14,11 +14,16 @@ use yii\web\Controller;
 
 class BaseController extends Controller
 {
+    public $user_info;
     /**
      * @inheritdoc
      */
     public function beforeAction($action)
     {
+        $isGuest = \Yii::$app->user->isGuest;
+        if (!empty($isGuest) && empty($user_info)) {
+            $this->user_info = AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
+        }
         return true;
     }
 }
