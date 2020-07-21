@@ -33,8 +33,6 @@ use yii\web\IdentityInterface;
  * @property string $avatar_url
  * @property string $bind_phone
  * @property string $city
- *
- * @property AdminUserRole[] $adminUserRoles
  */
 class User extends ActiveRecord implements IdentityInterface
 {

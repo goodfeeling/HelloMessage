@@ -92,7 +92,6 @@ class LoginForm extends BaseModel
                 $user->city = $userInfo['city'];
                 $res = $user->save();
             }
-            var_dump($res);exit;
             if ($res) {
                 $duration = \Yii::$app->user->authtimeout;
                 \Yii::$app->user->login($checkData, $duration);
