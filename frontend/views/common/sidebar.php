@@ -4,7 +4,6 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $identity = \Yii::$app->user->identity;
-var_dump($this->params['user_info']);exit;
 ?>
 
 <div class="sidebarWrapper">
