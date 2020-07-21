@@ -38,9 +38,10 @@ class ActivityComments extends BaseModel
     {
 
         if (!$this->validate()) {
+            var_dump($this->getErrors());exit;
+
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
-        var_dump($this->validate());exit;
 
         $model = new ActivityCommentModel();
 
