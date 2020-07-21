@@ -10,8 +10,8 @@ $isGuest = Yii::$app->user->isGuest;
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= empty($isGuest) ? $userInfo->avatar_url : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
-            <h2 class="title"><?= empty($isGuest) ? $userInfo->nickname :'请点击头像进行登录' ?></h2>
+            <img src="<?= empty($isGuest) ? $this->user_infou->avatar_url : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= empty($isGuest) ? $this->user_infou->nickname :'请点击头像进行登录' ?></h2>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
@@ -57,7 +57,7 @@ $isGuest = Yii::$app->user->isGuest;
 </div>
 
 <script>
-    var is_login = <?= $is_login ?>;
+    var is_login = <?= empty($isGuest) ?>;
     // var is_login = 1;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
