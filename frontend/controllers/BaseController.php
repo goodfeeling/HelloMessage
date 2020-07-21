@@ -14,14 +14,13 @@ use yii\web\Controller;
 
 class BaseController extends Controller
 {
-    public $user_info;
     /**
      * @inheritdoc
      */
     public function beforeAction($action)
     {
-        if (\Yii::$app->user->identity && empty($user_info)) {
-            $this->user_info = AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
+        if (\Yii::$app->user->identity) {
+            \Yii::$app->view->params['user_info'] =  AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
         }
         return true;
     }
