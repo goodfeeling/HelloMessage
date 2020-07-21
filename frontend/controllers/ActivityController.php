@@ -45,8 +45,8 @@ class ActivityController extends BaseController
                             'user-pay',
                             'likes-increase',
                             'comment'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'allow' => false,
+                        'roles' => ['?'],
                     ]
                 ],
             ],
