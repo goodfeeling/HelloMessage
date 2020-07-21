@@ -57,7 +57,7 @@ $isGuest = Yii::$app->user->isGuest;
 </div>
 
 <script>
-    var is_login = <?= empty($isGuest) ?>;
+    var is_login = <?= empty($isGuest) ? 0 : 1 ?>;
     // var is_login = 1;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
