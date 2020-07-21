@@ -12,7 +12,7 @@ class Share extends BaseModel
 
     public function getConfig()
     {
-        $config = $this->getWxConfig('simple');
+        $config = $this->getWxConfig();
         $wechat = new \WeChat\Script($config);
         // 执行操作
         $result = $wechat->getJsSign($this->url);

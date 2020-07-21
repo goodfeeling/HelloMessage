@@ -9,36 +9,25 @@ use common\utils\ConstStatus;
 class BaseModel extends \yii\db\ActiveRecord
 {
     // 微信配置
-    public function getWxConfig($type)
+    public function getWxConfig()
     {
         $WeChat_config = WechatConfigModel::find()
+            ->select([
+                'app_id AS appid',
+                'app_secret AS appsecret',
+                'encodingaeskey',
+                'mch_id',
+                'key AS mch_key',
+                'key_pem AS ssl_key',
+                'cert_pem AS ssl_cer'
+            ])
             ->orderBy('id DESC')
-            ->limit(1)
+            ->asArray()
             ->one();
+        $WeChat_config['token'] = 'test';
         if (!empty($WeChat_config)) {
-            if ($type == 'simple') {
-                return [
-                    'token' => 'test',
-                    'appid' => $WeChat_config['app_id'],
-                    'appsecret' => $WeChat_config['app_secret'],
-//                    'encodingaeskey' => $WeChat_config['encodingaeskey'],
-                ];
-            } else {
-                return [
-                    'token' => 'test',
-                    'appid' => $WeChat_config['app_id'],
-                    'appsecret' => $WeChat_config['app_secret'],
-                    'encodingaeskey' => $WeChat_config['encodingaeskey'],
-                    // 配置商户支付参数（可选，在使用支付功能时需要）
-                    'mch_id' => $WeChat_config['mch_id'],
-                    'mch_key' => $WeChat_config['key'],
-                    // 配置商户支付双向证书目录（可选，在使用退款|打款|红包时需要）
-                    'ssl_key' => $WeChat_config['key_pem'],
-                    'ssl_cer' => $WeChat_config['cert_pem'],
-                    // 缓存目录配置（可选，需拥有读写权限）
-                    'cache_path' => '',
-                ];
-            }
+            $WeChat_config['cache_path'] = '';
+           return $WeChat_config;
         } else {
             return null;
         }

@@ -41,7 +41,7 @@ class LoginForm extends BaseModel
         }
 
         try {
-            $config = $this->getWxConfig('simple');
+            $config = $this->getWxConfig();
             // 实例接口
             $wechat = new \WeChat\Oauth($config);
             // 获取openid和access_token
@@ -116,7 +116,7 @@ class LoginForm extends BaseModel
     public function jumpLogin()
     {
         try {
-            $config = $this->getWxConfig('simple');
+            $config = $this->getWxConfig();
             $wechat = new \WeChat\Oauth($config);
             // 执行操作
             $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index', 'snsapi_userinfo');
