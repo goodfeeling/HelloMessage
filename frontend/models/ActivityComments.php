@@ -40,9 +40,9 @@ class ActivityComments extends BaseModel
         if (!$this->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
+        var_dump($this->validate());exit;
 
         $model = new ActivityCommentModel();
-        var_dump($model);exit;
 
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
