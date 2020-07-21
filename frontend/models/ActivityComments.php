@@ -63,6 +63,7 @@ class ActivityComments extends BaseModel
         ]);
         $comments = $query->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy("addtime DESC")
             ->asArray()
             ->all();
         $user_query = AdminUser::find();
