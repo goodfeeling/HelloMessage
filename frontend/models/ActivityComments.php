@@ -45,7 +45,7 @@ class ActivityComments extends BaseModel
 
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
-        $model->status = 0;
+        $model->status = '0';
         if ($model->save()) {
             return $this->resultMsg(self::getData(), ConstStatus::CODE_SUCCESS, '评论成功');
         } else {
