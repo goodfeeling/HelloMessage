@@ -9,21 +9,6 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
- *
- * @property integer $id
- * @property string $uname
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
- * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
- */
-
-/**
  * This is the model class for table "{{%admin_user}}".
  *
  * @property string $id
