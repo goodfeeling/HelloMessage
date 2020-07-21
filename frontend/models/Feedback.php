@@ -2,6 +2,7 @@
 namespace frontend\models;
 
 use backend\models\FeedbackModel;
+use common\utils\ConstStatus;
 use Yii;
 
 class Feedback extends BaseModel
@@ -26,11 +27,7 @@ class Feedback extends BaseModel
     public function saveData()
     {
         if ( !$this->validate() ){
-            return [
-                'msg'=>current($this->getErrors())[0],
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
 
         $model = new FeedbackModel();
@@ -41,17 +38,9 @@ class Feedback extends BaseModel
         $model->type = '1';
 
         if ($model->save()) {
-            return  [
-                'msg'=>'提交成功',
-                'state'=>0,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_SUCCESS, "提交成功");
         } else {
-            return  [
-                'msg'=>'提交失败',
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '提交失败');
         }
     }
 }

@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use backend\models\AdminUser;
 use common\models\User;
+use common\utils\ConstStatus;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Cookie;
@@ -46,11 +47,7 @@ class LoginForm extends BaseModel
             // 获取openid和access_token
             $result = $wechat->getOauthAccessToken();
             if ($result['errcode'] == 40029) {
-                return [
-                    'msg' => $result['errmsg'],
-                    'state' => $result['errcode'],
-                    'data' => null
-                ];
+                return $this->resultMsg(null, $result['errcode'], $result['errmsg']);
             }
 
             // 检查AccessToken
@@ -67,11 +64,7 @@ class LoginForm extends BaseModel
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
             if ($userInfo['errcode'] == 40003) {
-                return [
-                    'msg' => $userInfo['errmsg'],
-                    'state' => $userInfo['errcode'],
-                    'data' => null
-                ];
+                return $this->resultMsg(null, $userInfo['errcode'], $userInfo['errmsg']);
             }
 
             if (empty($checkData)) {
@@ -92,11 +85,7 @@ class LoginForm extends BaseModel
                 $userModel->city = $userInfo['city'];
                 $res = $userModel->save();
                 if (!$userModel->validate()) {
-                    return [
-                        'msg' => serialize($userModel->getErrors()),
-                        'state' => 1,
-                        'data' => null
-                    ];
+                    return $this->resultMsg(null, ConstStatus::CODE_ERROR,serialize($userModel->getErrors()));
                 }
             } else {
                 $checkData->access_token = $result['access_token'];
@@ -111,19 +100,11 @@ class LoginForm extends BaseModel
                 $duration = \Yii::$app->user->authtimeout;
                 \Yii::$app->user->login($checkData, $duration);
             } else {
-                return [
-                    'msg' => '登录失败请联系管理员',
-                    'state' => 1,
-                    'data' => null
-                ];
+                return $this->resultMsg(null, ConstStatus::CODE_ERROR,'登录失败请联系管理员');
             }
 
         } catch (\yii\base\Exception $e) {
-            return [
-                'msg' => $e->getMessage(),
-                'state' => 1,
-                'data' => null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,$e->getMessage());
         }
     }
 
@@ -139,17 +120,9 @@ class LoginForm extends BaseModel
             $wechat = new \WeChat\Oauth($config);
             // 执行操作
             $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index', 'snsapi_userinfo');
-            return [
-                'msg' => '获取成功',
-                'status' => 0,
-                'data' => $result
-            ];
+            return $this->resultMsg($result, ConstStatus::CODE_SUCCESS,'获取成功');
         } catch (\yii\base\Exception $e) {
-            return [
-                'msg' => '$e->getMessage()',
-                'status' => 1,
-                'data' => null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,$e->getMessage());
         }
     }
 }

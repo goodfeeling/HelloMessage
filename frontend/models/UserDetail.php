@@ -6,6 +6,7 @@ namespace frontend\models;
 
 use backend\models\ActivityUserModel;
 use backend\models\UserDetailModel;
+use common\utils\ConstStatus;
 
 class UserDetail extends BaseModel
 {
@@ -48,30 +49,18 @@ class UserDetail extends BaseModel
     public function saveData()
     {
         if ( !$this->validate() ){
-            return [
-                'msg'=>current($this->getErrors())[0],
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,current($this->getErrors())[0]);
         }
 
         if (!$this->uid) {
-            return [
-                'msg' => '您需要登陆！',
-                'state' => 100,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN,'您需要登陆！');
         }
 
         $CheckUserExist = UserDetailModel::find()
             ->where(['uid'=>$this->uid])
             ->exists();
         if ($CheckUserExist) {
-            return [
-                'msg' => '您已经填写过了！',
-                'state' => 303,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_NO_PAY,'您已经填写过了！！');
         }
 
         $model = new UserDetailModel();
@@ -87,54 +76,30 @@ class UserDetail extends BaseModel
             $UserActivity->create_time = date("yy-m-d H:i:s");
             $UserActivity->is_join = '0';
             if ($UserActivity->save()) {
-                return  [
-                    'msg'=>'成功',
-                    'state'=>0,
-                    'data'=>null
-                ];
+                return $this->resultMsg(null, ConstStatus::CODE_SUCCESS,'成功！！');
             }
         } else {
-            return  [
-                'msg'=>current($model->getErrors())[0],
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,current($model->getErrors())[0]);
         }
     }
 
     public function simpleSaveData()
     {
         if ( !$this->validate() ){
-            return [
-                'msg'=>current($this->getErrors())[0],
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,current($this->getErrors())[0]);
         }
 
         if (!$this->uid) {
-            return [
-                'msg' => '您需要登陆！',
-                'state' => 100,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN,'您需要登陆！');
         }
 
         $model = UserDetailModel::findOne(['uid'=>$this->uid]);
         $model->attributes = $this->attributes;
         $model->update_time = date('yy-m-d H:i:s');
         if ($model->save()) {
-            return  [
-                'msg'=>'更新成功',
-                'state'=>0,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_SUCCESS,'更新成功！');
         } else {
-            return  [
-                'msg'=>current($model->getErrors())[0],
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,current($model->getErrors())[0]);
         }
     }
 

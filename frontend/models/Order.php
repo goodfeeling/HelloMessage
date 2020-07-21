@@ -5,6 +5,7 @@ namespace frontend\models;
 
 
 use backend\models\OrderModel;
+use common\utils\ConstStatus;
 
 class Order extends BaseModel
 {
@@ -42,17 +43,9 @@ class Order extends BaseModel
         $model->is_pay = '0';
 
         if ($model->save()) {
-            return  [
-                'msg'=>'提交成功',
-                'state'=>0,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_SUCCESS,'提交成功');
         } else {
-            return  [
-                'msg'=>'提交失败',
-                'state'=>1,
-                'data'=>null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_SUCCESS,'提交失败');
         }
 
     }

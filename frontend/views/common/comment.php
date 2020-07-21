@@ -42,6 +42,7 @@ $urlManager = Yii::$app->urlManager;
             </div>
         </div>
     </div>
+
     <nav class="mt-3">
         <ul class="pagination justify-content-center pagination-lg">
             <li class="page-item" ng-class="{true:'disabled'}[p_current==1]">
@@ -120,7 +121,7 @@ $urlManager = Yii::$app->urlManager;
                 // 初始化数据
                 $http({
                     method: 'GET',
-                    url: "<?= $urlManager->createUrl(['activity/comment']) ?>" + "&page="+page+"&size="+ size+
+                    url: "<?= $urlManager->createUrl(['activity/comment']) ?>" + "&page=" + page + "&size=" + size +
                         "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
                 }).then(function successCallback(response) {
                     $scope.data = response.data.data;
@@ -166,8 +167,7 @@ $urlManager = Yii::$app->urlManager;
 
             //加载某一页
             $scope.load_page = function (page) {
-                _get(page, $scope.p_pernum, function () {
-                });
+                _get(page, $scope.p_pernum, function () {});
             };
 
             //初始化页码

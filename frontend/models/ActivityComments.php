@@ -7,6 +7,7 @@ namespace frontend\models;
 use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 use common\utils\CommonFun;
+use common\utils\ConstStatus;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 
@@ -25,7 +26,7 @@ class ActivityComments extends BaseModel
     public function rules()
     {
         return [
-            [['aid', 'content'], 'required', 'message' => '请输入完整的内容！'],
+            [['aid', 'content'], 'required', 'trim', 'message' => '请输入完整的内容！'],
             [['aid'], 'integer', 'message' => 'aid error！'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000, 'message' => '评论内容不能为空且最大为1000个字符！'],
@@ -37,11 +38,7 @@ class ActivityComments extends BaseModel
     public function saveData()
     {
         if (!$this->validate()) {
-            return [
-                'msg' => current($this->getErrors())[0],
-                'state' => 1,
-                'data' => null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
 
         $model = new ActivityCommentModel();
@@ -50,27 +47,19 @@ class ActivityComments extends BaseModel
         $model->status = '0';
 
         if ($model->save()) {
-            return [
-                'msg' => '评论成功',
-                'state' => 0,
-                'data' => self::getData()
-            ];
+            return $this->resultMsg(self::getData(), ConstStatus::CODE_SUCCESS, '评论成功');
         } else {
-            return [
-                'msg' => '评论失败',
-                'state' => 1,
-                'data' => null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '评论失败');
         }
     }
 
     public function getData()
     {
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
-        $count =  $query->count();
+        $count = $query->count();
         $pagination = new Pagination([
             'totalCount' => $count,
-            'defaultPageSize'=>$this->size,
+            'defaultPageSize' => $this->size,
         ]);
         $comments = $query->offset($pagination->offset)
             ->limit($pagination->limit)

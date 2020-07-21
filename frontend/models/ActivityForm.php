@@ -6,6 +6,7 @@ use backend\models\ActivityUserModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
 use common\utils\CommonFun;
+use common\utils\ConstStatus;
 use Yii;
 use backend\models\ActivityLikesUserModel;
 use backend\models\ActivityModel;
@@ -87,11 +88,7 @@ class ActivityForm extends BaseModel
     public function postIncrease()
     {
         if (!$this->id) {
-            return [
-                'msg' => '您未登录！',
-                'state' => 1000,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN, '您未登录！');
         }
         return ActivityModel::updateAllCounters([
             'views' => 1
@@ -104,38 +101,22 @@ class ActivityForm extends BaseModel
     {
         $checkData = ActivityLikesUserModel::findOne(['uid' => $uid, 'aid' => $this->id]);
         if ($checkData) {
-            return [
-                'msg' => '您已经点过赞啦！',
-                'state' => 1,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '您已经点过赞啦！');
         }
         $model = new ActivityLikesUserModel();
         $model->aid = $this->id;
         $model->uid = $uid;
 
         if (!$model->validate()) {
-            return [
-                'msg' => '您需要登陆！',
-                'state' => 100,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN, '您需要登陆！');
         }
 
         if ($model->save()) {
             $count = ActivityLikesUserModel::find()
                 ->where(['aid' => $this->id])->count();
-            return [
-                'msg' => '点赞成功！',
-                'state' => 0,
-                'data' => $count,
-            ];
+            return $this->resultMsg($count, ConstStatus::CODE_SUCCESS, '点赞成功！');
         } else {
-            return [
-                'msg' => '点赞失败！',
-                'state' => 1,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '点赞失败！');
         }
     }
 
@@ -188,11 +169,7 @@ class ActivityForm extends BaseModel
                 ->where(['uid'=>$this->uid,'aid'=>$this->id])
                 ->exists();
             if ($exist){
-                return  [
-                    'msg' => '还没有支付金额！',
-                    'state' => 303,
-                    'data' => null,
-                ];
+                return $this->resultMsg(null, ConstStatus::CODE_NO_PAY, '还没有支付金额！');
             }
 
             $UserActivity = new ActivityUserModel();
@@ -211,25 +188,13 @@ class ActivityForm extends BaseModel
                 ])->exists();
 
             if (!$isPay) {
-                return  [
-                    'msg' => '还没有支付金额！',
-                    'state' => 303,
-                    'data' => null,
-                ];
+                return $this->resultMsg(null, ConstStatus::CODE_NO_PAY, '还没有支付金额！');
             } else {
-                return  [
-                    'msg' => '您已经填写过了，需要修改请到个人中心！',
-                    'state' => 302,
-                    'data' => null,
-                ];
+                return $this->resultMsg(null, ConstStatus::CODE_GO_TOCENTER, '您已经填写过了，需要修改请到个人中心！');
             }
 
         } else {
-            return  [
-                'msg' => 'no error',
-                'state' => 0,
-                'data' => null,
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_SUCCESS, 'no error！');
         }
     }
 
