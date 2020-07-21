@@ -14,6 +14,8 @@ class LoginForm extends BaseModel
     public $code;
     public $encrypted_data;
     public $iv;
+    private $_user = false;
+    private $open_id;
 
     /**
      * @inheritdoc
@@ -53,12 +55,10 @@ class LoginForm extends BaseModel
                 // 刷新token
                 $result = $wechat->getOauthRefreshToken($result['refresh_token']);
             }
-
+            $this->open_id = $result['openid'];
             // 存数据库
-            $userModel = new User();
-//            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
-            $checkData = User::findIdentityByOpenId($result['openid']);
-            var_dump($checkData);exit;
+            $userModel = new AdminUser();
+            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
             if ($userInfo['errcode'] == 40003) {
@@ -86,7 +86,6 @@ class LoginForm extends BaseModel
                     return $this->resultMsg(null, ConstStatus::CODE_ERROR,serialize($userModel->getErrors()));
                 }
             } else {
-//                $user = AdminUser::findOne(['id'=>$checkData->id]);
                 $checkData->access_token = $result['access_token'];
                 $checkData->wechat_platform_open_id = $result['openid'];
                 $checkData->nickname = $userInfo['nickname'];
@@ -96,7 +95,7 @@ class LoginForm extends BaseModel
             }
             if ($res) {
                 $duration = \Yii::$app->user->authtimeout;
-                \Yii::$app->user->login($checkData, $duration);
+                \Yii::$app->user->login($this->getUser(), $duration);
             } else {
                 return $this->resultMsg(null, ConstStatus::CODE_ERROR,'登录失败请联系管理员');
             }
@@ -122,5 +121,13 @@ class LoginForm extends BaseModel
         } catch (\yii\base\Exception $e) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR,$e->getMessage());
         }
+    }
+
+    public function getUser()
+    {
+        if ($this->_user === false) {
+            $this->_user = User::findIdentityByOpenId($this->open_id);
+        }
+        return $this->_user;
     }
 }
