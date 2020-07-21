@@ -94,8 +94,7 @@ class LoginForm extends BaseModel
                 $res = $checkData->save();
             }
             if ($res) {
-                $duration = \Yii::$app->user->authtimeout;
-                var_dump($duration);exit;
+                $duration = \Yii::$app->user->authTimeout;
                 \Yii::$app->user->login($this->getUser(), $duration);
             } else {
                 return $this->resultMsg(null, ConstStatus::CODE_ERROR,'登录失败请联系管理员');
