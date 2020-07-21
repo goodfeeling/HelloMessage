@@ -54,7 +54,7 @@ class LoginController extends BaseController
                 $form = new ActivityForm();
                 $res = $form->getActivityData();
                 return $this->render('@app/views/site/index', [
-                    'userInfo' => $this->userData,
+                    'userInfo' => Yii::$app->user->id,
                     'model' => $res['model'],
                     'recomment' => $res['recomment']
                 ]);
