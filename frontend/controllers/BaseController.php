@@ -21,7 +21,7 @@ class BaseController extends Controller
     public function beforeAction($action)
     {
         $isGuest = \Yii::$app->user->isGuest;
-        if (!empty($isGuest) && empty($user_info)) {
+        if ($isGuest && empty($user_info)) {
             $this->user_info = AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
         }
         var_dump($this->user_info);exit;
