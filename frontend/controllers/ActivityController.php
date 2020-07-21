@@ -203,11 +203,11 @@ class ActivityController extends BaseController
     {
         $request = Yii::$app->request;
         $form = new ActivityComments();
-        var_dump(11);exit;
 
         $form->aid = $request->get('id');
         $form->size = $request->get('size', '10');
         if ($request->isPost) {
+            var_dump(11);exit;
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');
             $res = $form->saveData();
