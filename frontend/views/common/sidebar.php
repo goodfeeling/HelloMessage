@@ -10,8 +10,8 @@ $identity = \Yii::$app->user->identity;
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
-            <h2 class="title"><?= empty($isGuest) ? $this->params['user_info']['nickname']:'请点击头像进行登录' ?></h2>
+            <img src="<?= !empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png'?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= !empty($isGuest) ? $this->params['user_info']['nickname']:'请点击头像进行登录' ?></h2>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
