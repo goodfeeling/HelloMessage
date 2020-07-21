@@ -53,17 +53,7 @@ class ActivityController extends BaseController
                         'data' => null,
                     ]);
                 }
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'apply' => ['post','get'],
-                    'verify-user' => ['post'],
-                    'my-category' => ['post'],
-                    'user-pay' => ['post'],
-                    'likes-increase' => ['post'],
-                ],
-            ],
+            ]
         ];
     }
 
