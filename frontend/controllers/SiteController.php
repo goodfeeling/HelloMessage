@@ -21,7 +21,7 @@ class SiteController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout','index'],
+                'only' => ['index'],
                 'rules' => [
                     // [
                     //     'actions' => ['logout'],
@@ -30,8 +30,8 @@ class SiteController extends BaseController
                     // ],
                     [
                         'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'allow' => false,
+                        'roles' => ['?'],
                     ],
                 ],
             ],
