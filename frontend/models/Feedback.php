@@ -4,7 +4,7 @@ namespace frontend\models;
 use backend\models\FeedbackModel;
 use Yii;
 
-class AdminFeedback extends BaseModel
+class Feedback extends BaseModel
 {
     public $title;
     public $content;

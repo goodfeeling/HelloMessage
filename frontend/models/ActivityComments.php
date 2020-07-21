@@ -10,15 +10,14 @@ use common\utils\CommonFun;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 
-class AdminActivityComments extends BaseModel
+class ActivityComments extends BaseModel
 {
     public $aid;
     public $uid;
     public $content;
     public $addtime;
     public $status;
-    public $offset;
-    public $limit;
+    public $size;
 
     /**
      * @inheritdoc
@@ -67,37 +66,16 @@ class AdminActivityComments extends BaseModel
 
     public function getData()
     {
-        $query = ActivityCommentModel::find()
-            ->where(['aid' => $this->aid])
-            ->orderBy('addtime DESC')
-            ->asArray()
-            ->all();
-        $user_query = AdminUser::find();
-        foreach ($query as $key => &$value) {
-            $author = $user_query
-                ->where(['id' => $value['uid']])
-                ->select('avatar_url,nickname')
-                ->one();
-            $value['avatar_url'] = $author['avatar_url'];
-            $value['nickname'] = $author['nickname'];
-//            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
-            $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
-        }
-        return ['list' => $query, 'count' => count($query)];
-    }
-
-    public function getData1()
-    {
-        // $query = ActivityCommentModel::find()
-        //     ->where(['aid' => $this->aid])
-        //     ->orderBy('addtime DESC')
-        //     ->asArray()
-        //     ->all();
         $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
         $count =  $query->count();
-        $pagination = new Pagination(['totalCount' => $count]);
+        $pagination = new Pagination([
+            'totalCount' => $count,
+            'defaultPageSize'=>$this->size,
+        ]);
         $comments = $query->offset($pagination->offset)
-            ->limit($pagination->limit)->asArray()->all();
+            ->limit($pagination->limit)
+            ->asArray()
+            ->all();
         $user_query = AdminUser::find();
         foreach ($comments as $key => &$value) {
             $author = $user_query
@@ -109,7 +87,7 @@ class AdminActivityComments extends BaseModel
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
         }
-        return ['list' => $query, 'count' => $count];
+        return ['list' => $comments, 'count' => $count];
     }
 
 }

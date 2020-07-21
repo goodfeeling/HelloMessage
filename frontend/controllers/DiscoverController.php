@@ -4,7 +4,7 @@
 namespace frontend\controllers;
 
 
-use frontend\models\AdminFeedback;
+use frontend\models\Feedback;
 
 class DiscoverController extends BaseController
 {

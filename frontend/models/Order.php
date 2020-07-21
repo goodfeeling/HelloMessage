@@ -6,7 +6,7 @@ namespace frontend\models;
 
 use backend\models\OrderModel;
 
-class AdminOrder extends BaseModel
+class Order extends BaseModel
 {
     public $aid;
     public $uid;

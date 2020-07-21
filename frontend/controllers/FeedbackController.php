@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use frontend\models\AdminFeedback;
+use frontend\models\Feedback;
 use Yii;
 use yii\web\Controller;
 
@@ -12,7 +12,7 @@ class FeedbackController extends Controller
     {
         $request = Yii::$app->request;
         if ($request->isPost){
-            $form = new AdminFeedback();
+            $form = new Feedback();
             $form->attributes = $request->post();
             $res = $form->saveData();
             return $this->asJson($res);

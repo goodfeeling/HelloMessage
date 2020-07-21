@@ -5,10 +5,10 @@ namespace frontend\controllers;
 
 use backend\models\ActivityModel;
 use backend\models\ImagesModel;
-use frontend\models\AdminActivityComments;
+use frontend\models\ActivityComments;
 use frontend\models\ActivityForm;
-use frontend\models\AdminOrder;
-use frontend\models\AdminUserDetail;
+use frontend\models\Order;
+use frontend\models\UserDetail;
 use yii\data\Pagination;
 use Yii;
 
@@ -23,7 +23,7 @@ class ActivityController extends BaseController
     {
         $request = Yii::$app->request;
         if ($request->isPost) {
-            $form = new AdminUserDetail();
+            $form = new UserDetail();
             $form->uid = Yii::$app->user->id;
             $form->attributes = $request->post();
             $form->aid = $request->get('id');
@@ -114,7 +114,7 @@ class ActivityController extends BaseController
     {
         $request = Yii::$app->request;
         if ($request->isPost) {
-            $form = new AdminOrder();
+            $form = new Order();
             $form->uid = Yii::$app->user->id;
             $form->aid = $request->post('id');
             $form->money = "10000";
@@ -147,8 +147,9 @@ class ActivityController extends BaseController
     public function actionComment()
     {
         $request = Yii::$app->request;
-        $form = new AdminActivityComments();
+        $form = new ActivityComments();
         $form->aid = $request->get('id');
+        $form->size = $request->get('size','10');
         if ($request->isPost) {
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');

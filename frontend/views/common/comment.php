@@ -42,52 +42,31 @@ $urlManager = Yii::$app->urlManager;
             </div>
         </div>
     </div>
-
-
-    <!-- * comments -->
-    <!-- <nav class="mt-3">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <nav class="mt-3">
+        <ul class="pagination justify-content-center pagination-lg">
+            <li class="page-item" ng-class="{true:'disabled'}[p_current==1]">
+                <a class="page-link" href="javascript:void(0);" ng-click="p_index()">首页</a>
+            </li>
+            <li class="page-item" ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+                <a class="page-link" href="javascript:void(0);" ng-click="load_page(page)">{{ page }}</a>
+            </li>
+            <li class="page-item" ng-class="{true:'disabled'}[p_current==p_all_page]">
+                <a class="page-link" href="javascript:void(0);" ng-click="p_last()">尾页</a>
+            </li>
         </ul>
-    </nav> -->
-    <ul class="pagination" style="margin: 0px;">
-        <li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="p_index()">首页</a></li>
-        <li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);"
-                                                                                     ng-click="load_page(page)">{{ page
-                }}</a></li>
-        <li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="p_last()">尾页</a>
-        </li>
-    </ul>
-
+    </nav>
 </div>
 
 <script>
     angular.module('cApp', [])
         .controller('comment', function ($scope, $http) {
-
-            // 初始化数据
-            $http({
-
-                method: 'GET',
-                url: "<?= $urlManager->createUrl(['activity/comment']) ?>" +
-                    "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
-
-            }).then(function successCallback(response) {
-
-                $scope.data = response.data.data;
-
-            }, function errorCallback(response) {
-
-                $('.wx-bd').text(response.data.msg);
-                $('.wx-main-btn').text("确定");
-                $('#simpleDialog').fadeIn(200);
-
-            });
-
+            //配置
+            $scope.count = 0;
+            $scope.p_pernum = 10;
+            //变量
+            $scope.p_current = 1;
+            $scope.p_all_page = 0;
+            $scope.pages = [];
 
             $scope.sendData = function () {
                 var form = new FormData();
@@ -136,33 +115,39 @@ $urlManager = Yii::$app->urlManager;
 
                 });
             };
-
-            //配置
-            $scope.count = 0;
-            $scope.p_pernum = 10;
-            //变量
-            $scope.p_current = 1;
-            $scope.p_all_page = 0;
-            $scope.pages = [];
-            //初始化第一页
-            _get($scope.p_current, $scope.p_pernum, function () {
-                alert("我是第一次加载");
-            });
             //获取数据
             var _get = function (page, size, callback) {
-                $http.get("xxx.html?status=0&page=" + page + "&size=" + size).success(function (res) {
-                    if (res && res.status == 1) {
-                        $scope.count = res.count;
-                        $scope.list = res.list;
+                // 初始化数据
+                $http({
+                    method: 'GET',
+                    url: "<?= $urlManager->createUrl(['activity/comment']) ?>" + "&page="+page+"&size="+ size+
+                        "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
+                }).then(function successCallback(response) {
+                    $scope.data = response.data.data;
+                    if (response.data.state == 0) {
+                        $scope.count = $scope.data.count;
+                        $scope.list = $scope.data.list;
                         $scope.p_current = page;
                         $scope.p_all_page = Math.ceil($scope.count / $scope.p_pernum);
                         reloadPno();
                         callback();
                     } else {
-                        alert("加载失败");
+                        $('.wx-bd').text(response.data.msg);
+                        $('.wx-main-btn').text("确定");
+                        $('#simpleDialog').fadeIn(200);
                     }
+                }, function errorCallback(response) {
+                    $('.wx-bd').text(response.data.msg);
+                    $('.wx-main-btn').text("确定");
+                    $('#simpleDialog').fadeIn(200);
+
                 });
             }
+
+            //初始化第一页
+            _get($scope.p_current, $scope.p_pernum, function () {
+                // alert("我是第一次加载");
+            });
 
             //单选按钮选中
             $scope.select = function (id) {

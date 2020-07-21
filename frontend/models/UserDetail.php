@@ -7,7 +7,7 @@ namespace frontend\models;
 use backend\models\ActivityUserModel;
 use backend\models\UserDetailModel;
 
-class AdminUserDetail extends BaseModel
+class UserDetail extends BaseModel
 {
     public $aid;
 
@@ -140,7 +140,7 @@ class AdminUserDetail extends BaseModel
 
     public function getUserData()
     {
-        $query = AdminUserDetail::find();
+        $query = UserDetail::find();
         $res = $query
             ->where(['uid'=>$this->uid])
             ->asArray()

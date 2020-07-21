@@ -4,7 +4,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\AdminUserDetail;
+use frontend\models\UserDetail;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
@@ -53,7 +53,7 @@ class UserInfoController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        $form = new AdminUserDetail();
+        $form = new UserDetail();
         $form->uid = Yii::$app->user->id;
         if($request->isPost) {
             $form->attributes = $request->post();
