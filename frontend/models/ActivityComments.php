@@ -42,10 +42,11 @@ class ActivityComments extends BaseModel
         }
 
         $model = new ActivityCommentModel();
+        var_dump($model);exit;
+
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
         $model->status = 0;
-        var_dump($model);exit;
         if ($model->save()) {
             return $this->resultMsg(self::getData(), ConstStatus::CODE_SUCCESS, '评论成功');
         } else {
