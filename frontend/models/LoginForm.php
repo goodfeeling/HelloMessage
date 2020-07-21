@@ -58,6 +58,7 @@ class LoginForm extends BaseModel
             $userModel = new User();
 //            $checkData = $userModel::findOne(['wechat_platform_open_id' => $result['openid']]);
             $checkData = User::findIdentityByOpenId($result['openid']);
+            var_dump($checkData);exit;
             // 获取用户信息
             $userInfo = $wechat->getUserInfo($result['access_token'], $result['openid'], 'zh_CN');
             if ($userInfo['errcode'] == 40003) {
