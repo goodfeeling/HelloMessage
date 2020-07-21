@@ -4,7 +4,6 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $isGuest = Yii::$app->user->isGuest;
-var_dump($isGuest);exit;
 ?>
 
 <div class="sidebarWrapper">
