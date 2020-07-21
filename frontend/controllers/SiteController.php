@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\AdminUser;
 use common\models\User;
 use Yii;
 use frontend\models\ActivityForm;
@@ -56,7 +57,7 @@ class SiteController extends BaseController
         return $this->render('index',[
            'model'=>$res['model'],
            'recomment'=>$res['recomment'],
-            'userInfo'=> User::findIdentity(Yii::$app->user->id)
+            'userInfo'=> AdminUser::findOne(['id'=>Yii::$app->user->id])
         ]);
     }
 
