@@ -22,7 +22,7 @@ class BaseController extends Controller
         if (\Yii::$app->user->identity) {
             \Yii::$app->view->params['user_info'] =  AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
         }
-        var_dump($this->params['user_info']);exit;
+        var_dump(\Yii::$app->view->params['user_info']);exit;
         return true;
     }
 }
