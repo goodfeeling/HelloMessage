@@ -8,7 +8,6 @@ use backend\models\ActivityCommentModel;
 use backend\models\AdminUser;
 use common\utils\CommonFun;
 use common\utils\ConstStatus;
-use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 
 class ActivityComments extends BaseModel

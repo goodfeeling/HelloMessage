@@ -33,11 +33,7 @@ class LoginForm extends BaseModel
     public function wxLogin()
     {
         if (!$this->validate()) {
-            return [
-                'msg' => '数据格式不正确',
-                'state' => 1,
-                'data' => null
-            ];
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '数据格式不正确');
         }
 
         try {

@@ -18,6 +18,10 @@ class ActivityForm extends BaseModel
     public $id;
     public $uid;
 
+    /**
+     * 获得数据
+     * @return array|\yii\db\ActiveRecord|null
+     */
     public function getData()
     {
         $model = ActivityModel::find();
@@ -39,6 +43,10 @@ class ActivityForm extends BaseModel
         return $res;
     }
 
+    /**
+     * 获得活动数据
+     * @return array
+     */
     public function getActivityData()
     {
         $query = ActivityModel::find();
@@ -85,6 +93,10 @@ class ActivityForm extends BaseModel
         ];
     }
 
+    /**
+     * 增加浏览量
+     * @return array|int
+     */
     public function postIncrease()
     {
         if (!$this->id) {
@@ -97,6 +109,11 @@ class ActivityForm extends BaseModel
         ]);
     }
 
+    /**
+     * 点赞数计算
+     * @param $uid
+     * @return array
+     */
     public function LikeIncrease($uid)
     {
         $checkData = ActivityLikesUserModel::findOne(['uid' => $uid, 'aid' => $this->id]);
@@ -120,12 +137,14 @@ class ActivityForm extends BaseModel
         }
     }
 
+    /**
+     * 状态数据
+     * @return array|\yii\db\ActiveRecord[]
+     */
     public function getStateData()
     {
         $userActivity = ActivityUserModel::find()
-            ->where([
-                'uid'=>$this->uid
-            ])
+            ->where(['uid'=>$this->uid])
             ->orderBy('create_time DESC')
             ->asArray()
             ->all();
@@ -157,12 +176,14 @@ class ActivityForm extends BaseModel
         return $userActivity;
     }
 
+    /**
+     * 支付
+     * @return array
+     */
     public function saveVerify()
     {
         $CheckUserExist = UserDetailModel::find()
-            ->where([
-                'uid'=>$this->uid
-            ])
+            ->where(['uid'=>$this->uid])
             ->exists();
         if ($CheckUserExist) {
             $exist = ActivityUserModel::find()
@@ -198,7 +219,9 @@ class ActivityForm extends BaseModel
         }
     }
 
-    // 生成二维码
+    /**
+     * 生成二维码
+     */
     public function generateQrCode()
     {
 
