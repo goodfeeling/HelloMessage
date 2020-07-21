@@ -24,9 +24,6 @@ class ActivityController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'denyCallback' => function ($rule, $action) {
-                    throw new \Exception('You are not allowed to access this page');
-                },
                 'only' => [
                     'apply',
                     'verify-user',
@@ -49,6 +46,13 @@ class ActivityController extends BaseController
                         'roles' => ['?'],
                     ]
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    return $this->asJson([
+                        'msg' => '您需要登陆!',
+                        'state' => 100,
+                        'data' => null,
+                    ]);
+                }
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
