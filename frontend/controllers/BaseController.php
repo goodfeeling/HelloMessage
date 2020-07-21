@@ -19,8 +19,6 @@ class BaseController extends Controller
      */
     public function beforeAction($action)
     {
-        var_dump(\Yii::$app->user->identity);exit;
-
         if (\Yii::$app->user->identity) {
             \Yii::$app->view->params['user_info'] =  AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
         }
