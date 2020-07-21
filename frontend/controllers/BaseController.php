@@ -24,7 +24,7 @@ class BaseController extends Controller
         if ($isGuest && empty($user_info)) {
             $this->user_info = AdminUser::find()->where(['id'=> \Yii::$app->user->id])->one();
         }
-        var_dump($this->user_info);exit;
+        var_dump(\Yii::$app->user->id);exit;
 
         return true;
     }
