@@ -44,7 +44,8 @@ class ActivityController extends BaseController
                             'my-category',
                             'user-pay',
                             'likes-increase',
-                            'comment'],
+                            'comment'
+                        ],
                         'allow' => false,
                         'roles' => ['?'],
                     ]
@@ -203,7 +204,7 @@ class ActivityController extends BaseController
         if ($request->isPost) {
             $form->uid = Yii::$app->user->id;
             $form->content = $request->post('content');
-
+            var_dump($form);exit;
             $res = $form->saveData();
         } else {
             $res = [
