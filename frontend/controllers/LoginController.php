@@ -51,12 +51,7 @@ class LoginController extends BaseController
                 $res['state'] = 1001;
             }
              if (!$res['state'] || $res['state'] == 1001) {
-                $form = new ActivityForm();
-                $res = $form->getActivityData();
-                return $this->render('@app/views/site/index', [
-                    'model' => $res['model'],
-                    'recomment' => $res['recomment']
-                ]);
+                $this->goHome();
             }
         } 
         return $this->render('index');
@@ -64,10 +59,7 @@ class LoginController extends BaseController
 
     public function actionJumpLoginPage()
     {
-        $login_model = new LoginForm();
-        $res = $login_model->jumpLogin();
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return $res;
+        return $this->asJson((new LoginForm())->jumpLogin());
     }
 
     public function actionRegister()
