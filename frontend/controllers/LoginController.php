@@ -45,12 +45,8 @@ class LoginController extends BaseController
         if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form = new LoginForm();
             $form->code = $request->get('code');
-            try {
-                $res = $form->wxLogin();
-            } catch (\WeChat\Exceptions\InvalidResponseException $e) {
-                $res['state'] = 1001;
-            }
-             if (!$res['state'] || $res['state'] == 1001) {
+            $res = $form->wxLogin();
+            if (!$res['state']) {
                 $this->goHome();
             }
         } 

@@ -38,7 +38,7 @@ class LoginForm extends BaseModel
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, '数据格式不正确');
         }
 
-//        try {
+       try {
             $config = $this->getWxConfig();
             // 实例接口
             $wechat = new \WeChat\Oauth($config);
@@ -100,9 +100,11 @@ class LoginForm extends BaseModel
                 return $this->resultMsg(null, ConstStatus::CODE_ERROR,'登录失败请联系管理员');
             }
 
-//        } catch (\yii\base\Exception $e) {
-//            return $this->resultMsg(null, ConstStatus::CODE_ERROR,$e->getMessage());
-//        }
+       } catch (\yii\base\Exception $e) {
+           return $this->resultMsg(null, ConstStatus::CODE_ERROR, $e->getMessage());
+       }  catch (\WeChat\Exceptions\InvalidResponseException $e) {
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, $e->getMessage());
+        }
     }
 
     /**
