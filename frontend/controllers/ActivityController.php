@@ -24,27 +24,12 @@ class ActivityController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'post',
-                    'verify-user',
-                    'my-category',
-                    'user-pay',
-                    'likes-increase',
-                    'comment'
-                ],
+                'only' => ['post'],
                 'rules' => [
                     [
-                        'actions' => [
-                            'post',
-                            'verify-user',
-                            'my-category',
-                            'user-pay',
-                            'likes-increase',
-                            'comment'
-                        ],
                         'allow' => false,
                         'roles' => ['?'],
-                    ]
+                    ],
                 ],
                 'denyCallback' => function ($rule, $action) {
                     return $this->asJson([
@@ -53,7 +38,14 @@ class ActivityController extends BaseController
                         'data' => null,
                     ]);
                 }
-            ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                    'index' => ['post'],
+                ],
+            ],
         ];
     }
 
@@ -110,8 +102,9 @@ class ActivityController extends BaseController
     public function actionCategory()
     {
         $query = ActivityModel::find()->where(['status' => 1]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages = new Pagination([
+            'totalCount' => (clone $query)->count()
+        ]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->orderBy("addtime DESC")
@@ -191,7 +184,6 @@ class ActivityController extends BaseController
     {
         $request = Yii::$app->request;
         $form = new ActivityComments();
-
         $form->aid = $request->get('id');
         $form->size = $request->get('size', '10');
         if ($request->isPost) {

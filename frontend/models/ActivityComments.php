@@ -55,8 +55,9 @@ class ActivityComments extends BaseModel
 
     public function getData()
     {
-        $query = ActivityCommentModel::find()->where(['aid' => $this->aid]);
-        $count = $query->count();
+        $query = ActivityCommentModel::find()
+            ->where(['aid' => $this->aid]);
+        $count = (clone $query)->count();
         $pagination = new Pagination([
             'totalCount' => $count,
             'defaultPageSize' => $this->size,
@@ -64,8 +65,7 @@ class ActivityComments extends BaseModel
         $comments = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->orderBy("addtime DESC")
-            ->asArray()
-            ->all();
+            ->asArray()->all();
         $user_query = AdminUser::find();
         foreach ($comments as $key => &$value) {
             $author = $user_query

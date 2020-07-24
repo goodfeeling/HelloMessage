@@ -21,25 +21,32 @@ class SiteController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+                'only' => ['logout','index'],
                 'rules' => [
-                    // [
-                    //     'actions' => ['logout'],
-                    //     'allow' => true,
-                    //     'roles' => ['@'],
-                    // ],
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                     [
                         'actions' => ['index'],
                         'allow' => false,
                         'roles' => ['?'],
                     ],
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    return $this->asJson([
+                        'msg' => '您需要登陆!',
+                        'state' => 100,
+                        'data' => null,
+                    ]);
+                }
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    // 'logout' => ['post'],
-                    'index' => ['get'],
+                    'logout' => ['post'],
+                    'index' => ['post'],
                 ],
             ],
         ];
