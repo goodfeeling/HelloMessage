@@ -101,23 +101,12 @@ class ActivityController extends BaseController
      */
     public function actionCategory()
     {
-        $query = ActivityModel::find()->where(['status' => 1]);
-        $pages = new Pagination([
-            'totalCount' => (clone $query)->count()
-        ]);
-        $models = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->orderBy("addtime DESC")
-            ->select('id,name,pic_url_id')
-            ->asArray()
-            ->all();
-        foreach ($models as $key => &$val) {
-            $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
-            $val['img_url'] = Yii::getAlias('@back') . $img['url'];
-        }
+        $form = new ActivityForm();
+        $form->size = Yii::$app->request->get('size', '10');
+        $res = $form->getCategory();
         return $this->render('category', [
-            'models' => $models,
-            'pages' => $pages,
+            'models' => $res['models'],
+            'pages' => $res['pages'],
         ]);
     }
 

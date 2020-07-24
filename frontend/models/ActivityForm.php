@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use backend\models\ActivityCommentModel;
 use backend\models\ActivityUserModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;
@@ -12,11 +13,13 @@ use backend\models\ActivityLikesUserModel;
 use backend\models\ActivityModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
+use yii\data\Pagination;
 
 class ActivityForm extends BaseModel
 {
     public $id;
     public $uid;
+    public $size;
 
     /**
      * 获得数据
@@ -217,6 +220,27 @@ class ActivityForm extends BaseModel
         } else {
             return $this->resultMsg(null, ConstStatus::CODE_SUCCESS, 'no error！');
         }
+    }
+
+    // 获得所有有效的活动分类
+    public function getCategory()
+    {
+        $query = ActivityModel::find()->where(['status' => 1]);
+        $pages = new Pagination([
+            'totalCount' => (clone $query)->count(),
+            'defaultPageSize' => $this->size,
+        ]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy("addtime DESC")
+            ->select('id,name,pic_url_id')
+            ->asArray()
+            ->all();
+        foreach ($models as $key => &$val) {
+            $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
+            $val['img_url'] = Yii::getAlias('@back') . $img['url'];
+        }
+        return ['models' => $models, 'pages' => $pages];
     }
 
     /**
