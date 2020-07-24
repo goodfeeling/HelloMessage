@@ -36,13 +36,10 @@ class ActivityComments extends BaseModel
 
     public function saveData()
     {
-
         if (!$this->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
-
         $model = new ActivityCommentModel();
-
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
         $model->status = '0';

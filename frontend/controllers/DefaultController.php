@@ -17,7 +17,6 @@ class DefaultController extends BaseController
     public function actionGetQr()
     {
         if (\Yii::$app->request->isGet) {
-
             $qr = \Yii::$app->get('qr');
             \Yii::$app->response->format = Response::FORMAT_RAW;
             \Yii::$app->response->headers->add('Content-Type', $qr->getContentType());

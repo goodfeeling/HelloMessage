@@ -95,17 +95,18 @@ $urlManager = Yii::$app->urlManager;
                 }).then(function successCallback(response) {
 
                     if (response.data.state == 100) {
-
                         $('.wx-bd').text(response.data.msg);
                         $('.wx-main-btn').text("去登陆");
                         $('.wx-main-btn').on('click', function (e) {
                             window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                         });
                         $('#simpleDialog').fadeIn(200);
-
                     } else {
                         $scope.data = response.data.data;
                         $scope.content = null;
+                        $('.wx-bd').text(response.data.msg);
+                        $('.wx-main-btn').text("确定");
+                        $('#simpleDialog').fadeIn(200);
                     }
 
                 }, function errorCallback(response) {
