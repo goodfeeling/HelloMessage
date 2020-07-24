@@ -72,17 +72,12 @@ $urlManager = Yii::$app->urlManager;
             $scope.sendData = function () {
                 var form = new FormData();
                 if (!$scope.content || $scope.content == 'undefined' || $scope.content == 'null') {
-                    $('.wx-bd').text('评论内容不能为空！');
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
+                    triggerModalBox('评论内容不能为空！');
                     return false;
                 }
-
                 var msg = JSON.stringify($scope.content);
                 form.append('content', msg);
-
                 $http({
-
                     method: 'POST',
                     url: "<?= $urlManager->createUrl(['activity/comment']) ?>" +
                         "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
@@ -91,30 +86,21 @@ $urlManager = Yii::$app->urlManager;
                         'Content-Type': undefined
                     },
                     transformRequest: angular.identity
-
                 }).then(function successCallback(response) {
-
                     if (response.data.state == 100) {
-                        $('.wx-bd').text(response.data.msg);
-                        $('.wx-main-btn').text("去登陆");
-                        $('.wx-main-btn').on('click', function (e) {
-                            window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                        triggerModalBox(response.data.msg,'去登录',()=>{
+                            $('.wx-main-btn').on('click', function (e) {
+                                window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                            });
                         });
-                        $('#simpleDialog').fadeIn(200);
                     } else {
                         $scope.data = response.data.data;
                         $scope.content = null;
-                        $('.wx-bd').text(response.data.msg);
-                        $('.wx-main-btn').text("确定");
-                        $('#simpleDialog').fadeIn(200);
+                        triggerModalBox(response.data.msg);
                     }
 
                 }, function errorCallback(response) {
-
-                    $('.wx-bd').text(response.data.msg);
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
-
+                    triggerModalBox(response.data.msg);
                 });
             };
             //获取数据
@@ -134,18 +120,12 @@ $urlManager = Yii::$app->urlManager;
                         reloadPno();
                         callback();
                     } else {
-                        $('.wx-bd').text(response.data.msg);
-                        $('.wx-main-btn').text("确定");
-                        $('#simpleDialog').fadeIn(200);
+                        triggerModalBox(response.data.msg);
                     }
                 }, function errorCallback(response) {
-                    $('.wx-bd').text(response.data.msg);
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
-
+                    triggerModalBox(response.data.msg);
                 });
             }
-
             //初始化第一页
             _get($scope.p_current, $scope.p_pernum, function () {
                 // alert("我是第一次加载");
