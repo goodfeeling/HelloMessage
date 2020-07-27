@@ -12,5 +12,12 @@ $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../config/main.php')
 );
 
+/*定义版本号变量*/
+if(file_exists("/data/www/release_version/version_book")){
+	define("RELEASE_VERSION",trim( file_get_contents("/data/www/release_version/version_book") ) );
+}else{
+	define( "RELEASE_VERSION",time() );
+}
+
 $application = new yii\web\Application($config);
 $application->run();

@@ -102,9 +102,6 @@ class ActivityForm extends BaseModel
      */
     public function postIncrease()
     {
-        if (!$this->id) {
-            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN, '您未登录！');
-        }
         return ActivityModel::updateAllCounters([
             'views' => 1
         ], [
@@ -126,10 +123,6 @@ class ActivityForm extends BaseModel
         $model = new ActivityLikesUserModel();
         $model->aid = $this->id;
         $model->uid = $uid;
-
-        if (!$model->validate()) {
-            return $this->resultMsg(null, ConstStatus::CODE_NO_LOGIN, '您需要登陆！');
-        }
 
         if ($model->save()) {
             $count = ActivityLikesUserModel::find()

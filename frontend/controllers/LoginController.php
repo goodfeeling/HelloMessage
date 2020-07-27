@@ -13,32 +13,28 @@ use frontend\models\ActivityForm;
 
 class LoginController extends BaseController
 {
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['index'],
-                'denyCallback' => function($rule, $action){
-                    var_dump("你没有权限访问这个网页");exit;
-                },
                 'rules' => [
                     [
-                        'actions' => ['index'],
-                        'allow' => true,
+                        'allow' => false,
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'index' => ['get'],
-                ],
-            ],
+                'denyCallback' => function ($rule, $action) {
+                   
+                }
+            ]
         ];
     }
-
+    
     public function actionIndex()
     {
         $request = Yii::$app->request;

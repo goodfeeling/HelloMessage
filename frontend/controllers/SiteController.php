@@ -1,8 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use backend\models\AdminUser;
-use common\models\User;
 use Yii;
 use frontend\models\ActivityForm;
 use yii\filters\AccessControl;
@@ -13,45 +11,6 @@ use yii\filters\VerbFilter;
  */
 class SiteController extends BaseController
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout','index'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => false,
-                        'roles' => ['?'],
-                    ],
-                ],
-                'denyCallback' => function ($rule, $action) {
-                    return $this->asJson([
-                        'msg' => '您需要登陆!',
-                        'state' => 100,
-                        'data' => null,
-                    ]);
-                }
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                    'index' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Displays homepage.
      *

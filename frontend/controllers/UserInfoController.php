@@ -16,14 +16,8 @@ class UserInfoController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout','index'],
+                'only' => ['index'],
                 'rules' => [
-                    // 所有用户都能访问
-                     [
-                         'actions' => ['logout'],
-                         'allow' => true,
-                         'roles' => ['?'],
-                     ],
                     // 认证用户才能访问index
                     [
                         'actions' => ['index'],
@@ -32,18 +26,20 @@ class UserInfoController extends BaseController
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
-                    return $this->asJson([
-                        'msg' => '您需要登陆!',
-                        'state' => 100,
-                        'data' => null,
-                    ]);
+                    if (Yii::$app->request->isPost) {
+                        return $this->asJson([
+                            'msg' => '您需要登陆!111',
+                            'state' => 100,
+                            'data' => null,
+                        ]);
+                    }
+                    return $this->render('login/index');
                 }
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    // 'logout' => ['post'],
-                    'index' => ['get'],
+                    'index' => ['get','post'],
                 ],
             ],
 

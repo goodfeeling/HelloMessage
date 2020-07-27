@@ -3,13 +3,10 @@
 
 namespace frontend\controllers;
 
-use backend\models\ActivityModel;
-use backend\models\ImagesModel;
 use frontend\models\ActivityComments;
 use frontend\models\ActivityForm;
 use frontend\models\Order;
 use frontend\models\UserDetail;
-use yii\data\Pagination;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -24,11 +21,17 @@ class ActivityController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['post'],
+                'only' => [
+                    'apply',
+                    'verify-user',
+                    'user-pay',
+                    'likes-increase',
+                ],
                 'rules' => [
                     [
-                        'allow' => false,
-                        'roles' => ['?'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'verbs' => ['POST']
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
@@ -39,13 +42,7 @@ class ActivityController extends BaseController
                     ]);
                 }
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                    'index' => ['post'],
-                ],
-            ],
+           
         ];
     }
 
@@ -68,6 +65,9 @@ class ActivityController extends BaseController
         return $this->render('apply');
     }
 
+    /**
+     * 验证用户
+    */
     public function actionVerifyUser()
     {
         $form = new ActivityForm();
@@ -111,7 +111,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 活动分类.
+     * Displays 我的分类.
      *
      * @return mixed
      */

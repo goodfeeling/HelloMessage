@@ -57,11 +57,9 @@ $identity = \Yii::$app->user->identity;
 </div>
 
 <script>
-    var is_login = <?= empty($identity) ? 0 : 1 ?>;
-    // var is_login = 1;
     window.onload = function () {
         $('.avatar').on('click', function (e) {
-            if (!is_login) {
+            if (!<?= empty($identity) ? 0 : 1 ?>) {
                 window.location.href = "<?php echo Url::toRoute(['login/index'], true) ?>";
             } else {
                 window.location.href = "<?php echo Url::toRoute(['user-info/index'], true) ?>";

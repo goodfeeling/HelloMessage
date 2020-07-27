@@ -5,6 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $urlManager = Yii::$app->urlManager;
+$identity = \Yii::$app->user->identity;
 ?>
 <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
 
@@ -58,9 +59,15 @@ $urlManager = Yii::$app->urlManager;
     </nav>
 </div>
 
-<script>
+<script>    
     angular.module('cApp', [])
         .controller('comment', function ($scope, $http) {
+            var triggerModalBox = function (msg, btn = '确定', callback = () => {}) {
+            $('.wx-bd').text(msg);
+                $('.wx-main-btn').text(btn);
+                callback();
+                $('#simpleDialog').fadeIn(200);
+            };
             //配置
             $scope.count = 0;
             $scope.p_pernum = 10;
@@ -71,7 +78,15 @@ $urlManager = Yii::$app->urlManager;
 
             $scope.sendData = function () {
                 var form = new FormData();
-                if (!$scope.content || $scope.content == 'undefined' || $scope.content == 'null') {
+                if (<?= empty($identity) ?>) {
+                    triggerModalBox('您还没登录！！','去登陆',()=>{
+                            $('.wx-main-btn').on('click', function (e) {
+                                window.location.href = "<?= Url::toRoute('login/index', true) ?>";
+                            })
+                    });
+                    return false;
+                }
+                if (!angular.isDefined($scope.content)) {
                     triggerModalBox('评论内容不能为空！');
                     return false;
                 }
@@ -123,7 +138,7 @@ $urlManager = Yii::$app->urlManager;
                         triggerModalBox(response.data.msg);
                     }
                 }, function errorCallback(response) {
-                    triggerModalBox(response.data.msg);
+                   triggerModalBox(response.data.msg);
                 });
             }
             //初始化第一页
