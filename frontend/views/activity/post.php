@@ -65,12 +65,12 @@ $urlManager = Yii::$app->urlManager;
         <div class="divider mt-2 mb-4"></div>
 
         <!-- related posts -->
-        <!-- <div class="sectionTitle mb-2">
+        <div class="sectionTitle mb-2">
             <div class="title">
                 <h1>最近的活动</h1>
             </div>
-        </div> -->
-        <!-- <div class="postCarousel owl-carousel">
+        </div>
+        <div class="postCarousel owl-carousel">
             <div class="item">
                 <a href="blog-post.html">
                     <img src="fornt/img/sample/photo13.jpg" alt="image" class="image">
@@ -101,9 +101,9 @@ $urlManager = Yii::$app->urlManager;
                     <h2 class="title">What is the best gift to buy for your husband?</h2>
                 </a>
             </div>
-        </div> -->
+        </div>
         <!-- * related posts -->
-
+        <div class="divider mt-2 mb-4"></div>
         <!-- <div class="divider mt-4 mb-4"></div> -->
         <?php echo \Yii::$app->view->renderFile('@app/views/common/comment.php'); ?>
     </div>
@@ -111,8 +111,8 @@ $urlManager = Yii::$app->urlManager;
 </div>
 
 <script>
-
     $('#applyBtn').on('click',function(e){
+        var that = this;
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/verify-user']) ?>",
             type: "GET",
@@ -122,21 +122,13 @@ $urlManager = Yii::$app->urlManager;
             },
             success: function(res) {
                 if (res['state'] == 100) {
-
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("去登陆");
-                    $('.wx-main-btn').on('click',function(e){
+                    $.triggerModalBox(res['msg'],'"去登陆"',function(e){
                         window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                     });
-                    $('#simpleDialog').fadeIn(200);
-
                 }else if(res['state'] == 303) {
-
                     window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>"
                         + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
-
                 } else {
-
                     window.location.href = "<?= Url::toRoute('activity/apply', true) ?>"
                         + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
 
@@ -150,25 +142,14 @@ $urlManager = Yii::$app->urlManager;
             url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
             type: "POST",
             dataType: 'json',
-            data: {
-                id: <?= Yii::$app->request->getQueryParam('id') ?>
-            },
+            data: {id: <?= Yii::$app->request->getQueryParam('id') ?>},
             success: function(res) {
                 if (res['state'] == 100) {
-
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("去登陆");
-                    $('.wx-main-btn').on('click',function(e){
+                    $.triggerModalBox(res['msg'],'"去登陆"',function(e){
                         window.location.href = "<?= Url::toRoute('login/index', true) ?>";
                     });
-                    $('#simpleDialog').fadeIn(200);
-
                 } else if (res['state'] == 1) {
-
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
-
+                    $.triggerModalBox(res['msg']);
                 }
             }
         })

@@ -6,7 +6,7 @@ use frontend\models\Feedback;
 use Yii;
 use yii\web\Controller;
 
-class FeedbackController extends Controller
+class FeedbackController extends BaseController
 {
     public function actionIndex()
     {

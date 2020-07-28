@@ -18,10 +18,10 @@ class DiscoverController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+                'only' => ['index1'],
                 'rules' => [
                     [
-                        'allow' => false,
+                        'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],

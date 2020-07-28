@@ -28,7 +28,7 @@ class UserInfoController extends BaseController
                 'denyCallback' => function ($rule, $action) {
                     if (Yii::$app->request->isPost) {
                         return $this->asJson([
-                            'msg' => '您需要登陆!111',
+                            'msg' => '您需要登陆!',
                             'state' => 100,
                             'data' => null,
                         ]);
@@ -39,7 +39,7 @@ class UserInfoController extends BaseController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'index' => ['get','post'],
+                    'index' => ['get', 'post'],
                 ],
             ],
 
@@ -51,14 +51,14 @@ class UserInfoController extends BaseController
         $request = Yii::$app->request;
         $form = new UserDetail();
         $form->uid = Yii::$app->user->id;
-        if($request->isPost) {
+        if ($request->isPost) {
             $form->attributes = $request->post();
             $res = $form->simpleSaveData();
             return $this->asJson($res);
-        }else {
+        } else {
             $res = $form->getUserData();
-            return $this->render('index',[
-                'data'=>$res
+            return $this->render('index', [
+                'data' => $res
             ]);
         }
     }

@@ -142,7 +142,6 @@ $urlManager = Yii::$app->urlManager;
                 <input id="check" type="checkbox"> 我保证以上都是真实信息
             </label>
         </div>
-
         <button type="button" disabled class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
     </div>
 </div>
@@ -162,44 +161,33 @@ $urlManager = Yii::$app->urlManager;
             }
         });
 
-
         $('#submit').click(function(e) {
-            var occupation = $("#occupation option:selected").text();
-            var income = $("#income option:selected").text();
-            var cars_and_houses = $("#cars_and_houses option:selected").text();
-            var marital_status = $("#marital_status option:selected").text();
-            var education = $("#education option:selected").text();
-            var character = $("#character option:selected").text();
-            var gender = $("#gender option:selected").text();
-            var data = {
-                'name': $('#name').val(),
-                'birthday': $('#birthday').val(),
-                'native_place': $('#native_place').val(),
-                'occupation': occupation,
-                'income': income,
-                'cars_and_houses': cars_and_houses,
-                'marital_status': marital_status,
-                'education': education,
-                'character': character,
-                'gender': gender,
-                'height': $('#height').val(),
-                'mobile': $('#mobile').val(),
-                'hobby': $('#hobby').val(),
-                'mate_require': $('#mate_require').val(),
-            };
             $.ajax({
                 url: "<?= $urlManager->createUrl(['activity/apply']) ?>"+ "&id=<?= Yii::$app->request->getQueryParam('id') ?>",
                 type: 'post',
                 dataType: 'json',
-                data: data,
+                data: {
+                    'name': $('#name').val(),
+                    'birthday': $('#birthday').val(),
+                    'native_place': $('#native_place').val(),
+                    'occupation': $("#occupation option:selected").text(),
+                    'income': $("#income option:selected").text(),
+                    'cars_and_houses': $("#cars_and_houses option:selected").text(),
+                    'marital_status': $("#marital_status option:selected").text(),
+                    'education': $("#education option:selected").text(),
+                    'character': $("#character option:selected").text(),
+                    'gender': $("#gender option:selected").text(),
+                    'height': $('#height').val(),
+                    'mobile': $('#mobile').val(),
+                    'hobby': $('#hobby').val(),
+                    'mate_require': $('#mate_require').val(),
+                },
                 success: function(data) {
                     if(data['state'] == 0) {
                         window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>"
                             + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
                     } else {
-                        $('.wx-bd').text(data['msg']);
-                        $('.wx-main-btn').text("确定");
-                        $('#simpleDialog').fadeIn(200);
+                        $.triggerModalBox(data['msg']);
                     }
                 }
             });

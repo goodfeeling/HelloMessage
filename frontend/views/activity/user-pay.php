@@ -55,16 +55,11 @@ $urlManager = Yii::$app->urlManager;
             },
             success: function (res) {
                 if (!res['state']) {
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("确定");
-                    $('.wx-main-btn').on('click', function (e) {
+                    $.triggerModalBox(res['msg'],'确定',function (e) {
                         window.location.href = "<?= Url::toRoute('site/index', true) ?>";
                     });
-                    $('#simpleDialog').fadeIn(200);
                 } else {
-                    $('.wx-bd').text(res['msg']);
-                    $('.wx-main-btn').text("确定");
-                    $('#simpleDialog').fadeIn(200);
+                    $.triggerModalBox(res['msg']);
                 }
             }
         })

@@ -21,12 +21,7 @@ class ActivityController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'apply',
-                    'verify-user',
-                    'user-pay',
-                    'likes-increase',
-                ],
+                'only' => ['apply', 'verify-user', 'user-pay', 'likes-increase'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -110,25 +105,7 @@ class ActivityController extends BaseController
         ]);
     }
 
-    /**
-     * Displays 我的分类.
-     *
-     * @return mixed
-     */
-    public function actionMyCategory()
-    {
-        $request = Yii::$app->request;
-        $form = new ActivityForm();
-        $form->uid = Yii::$app->user->id;
-        if ($request->isPost) {
 
-        } else {
-            $res = $form->getStateData();
-            return $this->render('my-category', [
-                'data' => $res
-            ]);
-        }
-    }
 
     /**
      * Displays 支付报名费.

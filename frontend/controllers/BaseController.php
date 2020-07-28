@@ -26,22 +26,4 @@ class BaseController extends Controller
                 ])->one();
         }
     }
-    /**
-     * 统一渲染json
-     *
-     * @param [type] $data
-     * @param [type] $msg
-     * @param [type] $state
-     * @return void
-     */
-    public function renderJson($data, $msg, $state)
-    {
-        $res = [
-            'state' => $state,
-            'msg'  => $msg,
-            'data' => $data,
-        ];
-        return $this->asJson($res);
-    }
-    
 }

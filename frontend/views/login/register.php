@@ -72,7 +72,7 @@ $this->title = '注册账号';
                     }
                 });
             } else {
-                alert('两次密码输入不正确')
+                $.triggerModalBox('两次密码输入不正确');
             }
         });
         $('.password1').on('change',function(e){

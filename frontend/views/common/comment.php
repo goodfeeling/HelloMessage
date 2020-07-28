@@ -59,7 +59,7 @@ $identity = \Yii::$app->user->identity;
     </nav>
 </div>
 
-<script>    
+<script>
     angular.module('cApp', [])
         .controller('comment', function ($scope, $http) {
             var triggerModalBox = function (msg, btn = '确定', callback = () => {}) {
