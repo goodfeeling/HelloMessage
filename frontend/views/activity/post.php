@@ -112,7 +112,6 @@ $urlManager = Yii::$app->urlManager;
 
 <script>
     $('#applyBtn').on('click',function(e){
-        var that = this;
         $.ajax({
             url: "<?= $urlManager->createUrl(['activity/verify-user']) ?>",
             type: "GET",

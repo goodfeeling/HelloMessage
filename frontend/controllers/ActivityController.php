@@ -42,7 +42,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 活动申请.
+     * Displays apply.
      *
      * @return mixed
      */
