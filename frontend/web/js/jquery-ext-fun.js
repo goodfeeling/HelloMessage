@@ -10,3 +10,13 @@
         }
     });
 })(jQuery);
+
+// 关闭模态框
+$('.weui-dialog__btn').on('click', function() {
+    $('.js_dialog').fadeOut(200);
+});
+
+// 触发关闭分享图片
+$("#shareit").on("click", function() {
+    $("#shareit").hide();
+});

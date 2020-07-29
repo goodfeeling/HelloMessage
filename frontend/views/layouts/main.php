@@ -5,15 +5,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use common\widgets\Alert;
-use yii\helpers\Url;
 
 $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -25,17 +19,12 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="stylesheet" href="fornt/css/style.css">
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/weui.min.css" />
-    <!--    --><?php //$this->head()
-                ?>
+
+    <?php $this->head() ?>
+
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="description" content="Bitter Mobile Template">
     <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
-    <!-- Jquery -->
-    <script src="fornt/js/lib/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery-ext-fun.js"></script>
 </head>
 
 <body>
@@ -47,59 +36,15 @@ AppAsset::register($this);
     </div>
     <!-- * Page loading -->
 
-    <!--BEGIN dialog3-->
-    <div class="js_dialog" id="simpleDialog" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog weui-skin_android">
-            <div class="weui-dialog__hd"><strong class="weui-dialog__title">提示</strong></div>
-            <div class="weui-dialog__bd wx-bd">
-                发生错误了，请联系管理员！
-            </div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_default">关闭</a>
-                <a class="weui-dialog__btn weui-dialog__btn_primary wx-main-btn">确定</a>
-            </div>
-        </div>
-    </div>
-    <!--END dialog3-->
-
-    <div class="page weui-msg-top" style="display: none">
-        <div class="weui-msg">
-            <div class="weui-msg__text-area">
-                <img src="" class="qrcode-siginin-user" alt="二维码">
-            </div>
-            <div class="weui-msg__opr-area">
-                <p class="weui-btn-area">
-                    <a href="javascript:" id="the-msg-back" class="weui-btn weui-btn_primary">返回</a>
-                </p>
-            </div>
-            <div class="weui-msg__tips-area">
-                <p class="weui-msg__tips">提示：需要到时间才能签到<a href="javascript:">更多点击</a></p>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="shareit" style="display: none;">
-        <img src="https://oscimg.oschina.net/oscnet/fd2170a448e37826ae9f4d7088f287b8f24.jpg">
-    </div>
+    <!--  components  -->
+    <?php echo \Yii::$app->view->renderFile('@app/views/common/components.php'); ?>
+    <!--  components  -->
 
     <!-- App Capsule -->
     <?= $content ?>
     <!-- * appCapsule -->
 
     <!-- ///////////// Js Files ////////////////////  -->
-
-    <script>
-        $('.weui-dialog__btn').on('click', function() {
-            $('.js_dialog').fadeOut(200);
-        });
-
-        $("#shareit").on("click", function() {
-            $("#shareit").hide();
-        });
-    </script>
-
     <!-- Bootstrap-->
     <script src="fornt/js/lib/popper.min.js"></script>
     <script src="fornt/js/lib/bootstrap.min.js"></script>
@@ -110,7 +55,6 @@ AppAsset::register($this);
     <script src="fornt/js/app.js"></script>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <?php $this->endBody() ?>
 </body>
 
