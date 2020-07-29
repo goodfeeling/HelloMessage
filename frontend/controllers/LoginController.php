@@ -3,13 +3,9 @@
 
 namespace frontend\controllers;
 
-use backend\models\AdminUser;
 use frontend\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
-use frontend\models\ActivityForm;
 
 class LoginController extends BaseController
 {
@@ -24,8 +20,8 @@ class LoginController extends BaseController
                 'only' => ['index'],
                 'rules' => [
                     [
-                        'allow' => false,
-                        'roles' => ['@'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {

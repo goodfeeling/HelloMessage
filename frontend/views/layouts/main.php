@@ -3,12 +3,16 @@
 /* @var $this \yii\web\View */
 
 /* @var $content string */
-
+use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
+use frontend\assets\WebAsset;
+
+AppAsset::register($this);
+WebAsset::register($this);
 
 $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
-AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
@@ -44,17 +48,30 @@ AppAsset::register($this);
     <?= $content ?>
     <!-- * appCapsule -->
 
-    <!-- ///////////// Js Files ////////////////////  -->
-    <!-- Bootstrap-->
-    <script src="fornt/js/lib/popper.min.js"></script>
-    <script src="fornt/js/lib/bootstrap.min.js"></script>
-    <!-- Owl Carousel -->
-    <script src="fornt/js/plugins/owl.carousel.min.js"></script>
-    <!-- Main Js File -->
-    <script src="js/zepto.min.js"></script>
-    <script src="fornt/js/app.js"></script>
-    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"></script>
+    <script>
+        // 关闭模态框
+        $('.weui-dialog__btn').on('click', function() {
+            $('.js_dialog').fadeOut(200);
+        });
+
+        // 触发关闭分享图片
+        $("#shareit").on("click", function() {
+            $("#shareit").hide();
+        });
+
+        // 统一生成url
+        BASE_URL = "<?= Url::base() ?>";
+        LOGIN = "<?= Url::toRoute('login/index', true) ?>"
+        APPLY = "<?= Url::toRoute('activity/apply', true) ?>"
+        USER_PAY = "<?= Url::toRoute('activity/user-pay', true) ?>"
+        VERIFY_USER = "<?= Url::toRoute('activity/verify-user', true) ?>"
+        LOGIN_JUMP = "<?= Url::toRoute('login/jump-login-page', true) ?>"
+        USER_INFO = "<?= Url::toRoute('user-info/index', true) ?>"
+        COMMENT = "<?= Url::toRoute('activity/comment', true) ?>"
+        LINKES_INCREASE = "<?= Url::toRoute('activity/likes-increase', true) ?>"
+
+        IDENTITY = <?= \Yii::$app->user->identity ? 0 : 1 ?>
+    </script>
     <?php $this->endBody() ?>
 </body>
 

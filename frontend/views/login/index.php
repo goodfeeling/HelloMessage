@@ -8,6 +8,9 @@ use yii\captcha\Captcha;
 
 $this->title = '登录';
 $urlManager = Yii::$app->urlManager;
+
+\common\services\StaticServices::includeAppJsStatic('@web/js/login/index.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 <!-- App Header -->
 <div class="appHeader">
@@ -87,16 +90,3 @@ $urlManager = Yii::$app->urlManager;
         </div>
     </div>
 </div>
-
-<script>
-    $(document).on('click', '#wechat-contr', function () {
-        $.ajax({
-            url: "<?=$urlManager->createUrl(['login/jump-login-page'])?>",
-            type: "GET",
-            dataType:'json',
-            success: function(res){
-                window.location = res['data']
-            }
-        })
-    })
-</script>

@@ -2,7 +2,6 @@
 
 namespace frontend\models;
 
-use backend\models\ActivityCommentModel;
 use backend\models\ActivityUserModel;
 use backend\models\OrderModel;
 use backend\models\UserDetailModel;

@@ -25,8 +25,8 @@ class BaseModel extends \yii\db\ActiveRecord
             ->asArray()
             ->one();
         $WeChat_config['token'] = 'test';
-        if (!empty($WeChat_config)) {
-            $WeChat_config['cache_path'] = '';
+        $WeChat_config['cache_path'] = '';
+        if ( !empty($WeChat_config) ) {
            return $WeChat_config;
         } else {
             return null;

@@ -6,6 +6,9 @@ use yii\helpers\Url;
 
 $this->title = '活动详情';
 $urlManager = Yii::$app->urlManager;
+
+\common\services\StaticServices::includeAppJsStatic('@web/js/activity/post.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -18,7 +21,6 @@ $urlManager = Yii::$app->urlManager;
             <?= $data['name'] ?>
         </h1>
         <!-- * title -->
-
         <!-- post header -->
         <div class="postHeader mb-2">
             <div>
@@ -107,50 +109,4 @@ $urlManager = Yii::$app->urlManager;
         <!-- <div class="divider mt-4 mb-4"></div> -->
         <?php echo \Yii::$app->view->renderFile('@app/views/common/comment.php'); ?>
     </div>
-
 </div>
-
-<script>
-    $('#applyBtn').on('click',function(e){
-        $.ajax({
-            url: "<?= $urlManager->createUrl(['activity/verify-user']) ?>",
-            type: "GET",
-            dataType: 'json',
-            data: {
-                id: <?= Yii::$app->request->getQueryParam('id') ?>
-            },
-            success: function(res) {
-                if (res['state'] == 100) {
-                    $.triggerModalBox(res['msg'],'"去登陆"',function(e){
-                        window.location.href = "<?= Url::toRoute('login/index', true) ?>";
-                    });
-                }else if(res['state'] == 303) {
-                    window.location.href = "<?= Url::toRoute('activity/user-pay', true) ?>"
-                        + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
-                } else {
-                    window.location.href = "<?= Url::toRoute('activity/apply', true) ?>"
-                        + "&id=<?= Yii::$app->request->getQueryParam('id') ?>";
-
-                }
-            }
-        })
-    });
-
-    $('#likes').on('click', function(e) {
-        $.ajax({
-            url: "<?= $urlManager->createUrl(['activity/likes-increase']) ?>",
-            type: "POST",
-            dataType: 'json',
-            data: {id: <?= Yii::$app->request->getQueryParam('id') ?>},
-            success: function(res) {
-                if (res['state'] == 100) {
-                    $.triggerModalBox(res['msg'],'"去登陆"',function(e){
-                        window.location.href = "<?= Url::toRoute('login/index', true) ?>";
-                    });
-                } else if (res['state'] == 1) {
-                    $.triggerModalBox(res['msg']);
-                }
-            }
-        })
-    });
-</script>

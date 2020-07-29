@@ -4,6 +4,9 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $identity = \Yii::$app->user->identity;
+
+\common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 
 <div class="sidebarWrapper">
@@ -59,7 +62,7 @@ $identity = \Yii::$app->user->identity;
             <ul class="sidebarMenu">
                 <li class="title">Online</li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo Url::to(['chat/my-chat']) ?>">
                         <img src="fornt/img/sample/avatar2.jpg" alt="avatar" class="avatar">
                         Guiying K.
                     </a>
@@ -68,7 +71,7 @@ $identity = \Yii::$app->user->identity;
                     <a href="#">
                         <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
                         Kita Chihoko
-                        <span class="badge badge-primary">2</span>
+                        <span class="badge badge-primary">100</span>
                     </a>
                 </li>
                 <li>
@@ -94,15 +97,3 @@ $identity = \Yii::$app->user->identity;
         <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
     </nav>
 </div>
-
-<script>
-    window.onload = function () {
-        $('.avatar').on('click', function (e) {
-            if (!<?= empty($identity) ? 0 : 1 ?>) {
-                window.location.href = "<?php echo Url::toRoute(['login/index'], true) ?>";
-            } else {
-                window.location.href = "<?php echo Url::toRoute(['user-info/index'], true) ?>";
-            }
-        })
-    }
-</script>

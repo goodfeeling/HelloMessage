@@ -1,11 +1,13 @@
 <?php
-
+use \common\services\StaticServices;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
 $this->title = '我的活动';
 $urlManager = Yii::$app->urlManager;
+StaticServices::includeAppJsStatic('@web/js/my-activity/index.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 
 <!-- App Header -->
@@ -14,7 +16,6 @@ $urlManager = Yii::$app->urlManager;
 
 <!-- App Capsule -->
 <div id="appCapsule">
-
     <div class="appContent">
         <?php foreach ($data as $key => $value) : ?>
             <div class="card mb-3 mt-2">
@@ -70,20 +71,3 @@ $urlManager = Yii::$app->urlManager;
     </div>
 
 </div>
-
-<script>
-    // 微信支付
-    $('#goPayPage').on('click', function (e) {
-
-    });
-
-    // 生成一个二维码
-    $('.signIn').on('click', function (e) {
-        $('.qrcode-siginin-user').attr('src',"<?= $urlManager->createUrl(['default/get-qr']) ?>");
-        $('.weui-msg-top').show();
-    });
-
-    $('#the-msg-back').on('click', function (e) {
-        $('.weui-msg-top').hide();
-    })
-</script>

@@ -1,6 +1,4 @@
 <?php
-
-
 namespace frontend\controllers;
 
 use frontend\models\ActivityComments;
@@ -9,7 +7,6 @@ use frontend\models\Order;
 use frontend\models\UserDetail;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 class ActivityController extends BaseController
 {
@@ -37,7 +34,6 @@ class ActivityController extends BaseController
                     ]);
                 }
             ],
-           
         ];
     }
 
@@ -62,7 +58,7 @@ class ActivityController extends BaseController
 
     /**
      * 验证用户
-    */
+     */
     public function actionVerifyUser()
     {
         $form = new ActivityForm();
@@ -104,7 +100,6 @@ class ActivityController extends BaseController
             'pages' => $res['pages'],
         ]);
     }
-
 
 
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace  app\common\services;
+namespace  common\services;
 
 use yii\helpers\Url;
 
@@ -38,4 +38,9 @@ class UrlService {
 		$path = Url::toRoute(array_merge([ $path ],$params));
 		return $domain_config['blog'].$path;
 	}
+
+    public static function a()
+    {
+        var_dump(11);exit;
+    }
 }

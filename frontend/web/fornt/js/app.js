@@ -5,18 +5,7 @@ $(document).ready(function () {
         $(".loading").fadeToggle(200);
     }, 500); // hide delay when page load
 
-
-    (function ($) {
-        $.getUrlParam = function (name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]);
-            return null;
-        }
-    })(jQuery);
-
     var str = $.getUrlParam('r');
-
     if (str == null) {
         $('#home').addClass('active')
     } else if (str.search('discover') != -1) {
@@ -26,8 +15,6 @@ $(document).ready(function () {
     } else if (str.search('search') != -1) {
         $('#search').addClass('active')
     }
-
-
 });
 ///////////////////////////////////////////////////////////////////////////
 // Go Back

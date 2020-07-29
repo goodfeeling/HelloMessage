@@ -1,5 +1,3 @@
-<?php
-?>
 <!--BEGIN dialog3-->
 <div class="js_dialog" id="simpleDialog" style="display: none;">
     <div class="weui-mask"></div>

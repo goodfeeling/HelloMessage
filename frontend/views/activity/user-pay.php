@@ -1,11 +1,16 @@
 <?php
 
 use yii\helpers\Url;
+use \common\services\StaticServices;
 
 /* @var $this yii\web\View */
 
 $this->title = '参加成功';
 $urlManager = Yii::$app->urlManager;
+
+StaticServices::includeAppJsStatic('@web/js/activity/user-pay.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -42,26 +47,3 @@ $urlManager = Yii::$app->urlManager;
     </div>
 </div>
 <!-- appCapsule -->
-
-
-<script>
-    $('#goPay').on('click', function (e) {
-        $.ajax({
-            url: "<?= $urlManager->createUrl(['activity/user-pay']) ?>",
-            type: "POST",
-            dataType: 'json',
-            data: {
-                id: <?= Yii::$app->request->getQueryParam('id') ?>
-            },
-            success: function (res) {
-                if (!res['state']) {
-                    $.triggerModalBox(res['msg'],'确定',function (e) {
-                        window.location.href = "<?= Url::toRoute('site/index', true) ?>";
-                    });
-                } else {
-                    $.triggerModalBox(res['msg']);
-                }
-            }
-        })
-    });
-</script>

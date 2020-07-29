@@ -11,4 +11,9 @@ class ChatController extends BaseController
         return $this->render('index');
     }
 
+    public function actionMyChat()
+    {
+        return $this->render('my-chat');
+    }
+
 }
