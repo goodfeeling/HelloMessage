@@ -35,13 +35,7 @@ class UserInfoController extends BaseController
                     }
                     return $this->render('login/index');
                 }
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'index' => ['get', 'post'],
-                ],
-            ],
+            ]
 
         ];
     }
