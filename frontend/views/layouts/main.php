@@ -23,9 +23,7 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-
     <?php $this->head() ?>
-
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="description" content="Bitter Mobile Template">
     <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
@@ -69,8 +67,10 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
         USER_INFO = "<?= Url::toRoute('user-info/index', true) ?>"
         COMMENT = "<?= Url::toRoute('activity/comment', true) ?>"
         LINKES_INCREASE = "<?= Url::toRoute('activity/likes-increase', true) ?>"
-
+        SITE_INDEX = "<?= Url::toRoute('site/index', true) ?>"
+        // 验证是否登录
         IDENTITY = <?= \Yii::$app->user->identity ? 0 : 1 ?>
+
     </script>
     <?php $this->endBody() ?>
 </body>

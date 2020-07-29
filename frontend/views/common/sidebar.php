@@ -37,15 +37,9 @@ $identity = \Yii::$app->user->identity;
                     </a>
                 </li>
                 <li>
-                    <a href="pages.html">
-                        <i class="icon ion-ios-apps"></i>
-                        我的关注
-                    </a>
-                </li>
-                <li>
-                    <a href="social-chat.html">
+                    <a href="<?php echo Url::to(['chat/index']) ?>">
                         <i class="icon ion-ios-chatboxes"></i>
-                        聊天
+                        我的好友
                     </a>
                 </li>
                 <li>
@@ -55,6 +49,12 @@ $identity = \Yii::$app->user->identity;
                 <li>
                     <a href="<?php echo Url::to(['site/guidance']) ?>">
                         <i class="icon ion-ios-book"></i>导航</a>
+                </li>
+                <li>
+                    <a href="pages.html">
+                        <i class="icon ion-ios-unlock"></i>
+                        退出登录
+                    </a>
                 </li>
             </ul>
         </div>

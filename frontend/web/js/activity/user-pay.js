@@ -7,7 +7,7 @@ $('#goPay').on('click', function (e) {
         success: function (res) {
             if (!res['state']) {
                 $.triggerModalBox(res['msg'],'确定',function (e) {
-                    window.location.href = "<?= Url::toRoute('site/index', true) ?>";
+                    window.location.href = SITE_INDEX;
                 });
             } else {
                 $.triggerModalBox(res['msg']);

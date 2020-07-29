@@ -11,11 +11,7 @@ angular.module('cApp', [])
         $scope.sendData = function () {
             var form = new FormData();
             if (IDENTITY) {
-                $.triggerModalBox('您还没登录！！', '去登陆', () => {
-                    $('.wx-main-btn').on('click', function (e) {
-                        window.location.href = LOGIN;
-                    })
-                })
+                $.triggerModalBox('您还没登录！！','去登录', LOGIN)
                 return false;
             }
             if (!angular.isDefined($scope.content)) {
@@ -34,11 +30,7 @@ angular.module('cApp', [])
                 transformRequest: angular.identity
             }).then(function successCallback(response) {
                 if (response.data.state == 100) {
-                    $.triggerModalBox('您还没登录！！', '去登陆', () => {
-                        $('.wx-main-btn').on('click', function (e) {
-                            window.location.href = LOGIN;
-                        })
-                    })
+                    $.triggerModalBox('您还没登录！！', '去登陆',LOGIN)
                 } else {
                     $scope.data = response.data.data;
                     $scope.content = null;
