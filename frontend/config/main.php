@@ -32,8 +32,12 @@ return [
             'errorAction' => 'site/error',
         ],
         'session' => [
-            'class' => 'yii\web\CacheSession',
-            // 'cache' => 'mycache',
+            'class' => 'yii\redis\Session',
+            'redis' => [
+                'hostname' => 'localhost',
+                'port' => 6379,
+                'database' => 0,
+            ],
         ],
         'qr' => [
             'class' => '\Da\QrCode\Component\QrCodeComponent',

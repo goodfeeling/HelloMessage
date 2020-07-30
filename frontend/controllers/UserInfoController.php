@@ -10,7 +10,6 @@ use yii\filters\VerbFilter;
 
 class UserInfoController extends BaseController
 {
-
     public function behaviors()
     {
         return [

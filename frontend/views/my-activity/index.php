@@ -1,12 +1,11 @@
 <?php
-use \common\services\StaticServices;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
 $this->title = '我的活动';
 $urlManager = Yii::$app->urlManager;
-StaticServices::includeAppJsStatic('@web/js/my-activity/index.js',
+\common\services\StaticServices::includeAppJsStatic('@web/js/my-activity/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 

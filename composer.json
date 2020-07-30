@@ -22,7 +22,8 @@
         "yiisoft/yii2-gii": "^2.2",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "2amigos/qrcode-library": "~1.1",
-        "2amigos/yii2-qrcode-helper": "*"
+        "2amigos/yii2-qrcode-helper": "*",
+        "yiisoft/yii2-redis": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
