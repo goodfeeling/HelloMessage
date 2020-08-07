@@ -6,8 +6,9 @@ namespace frontend\models;
 
 use yii\base\Model;
 
-class Share extends BaseModel
+class Share extends \yii\db\ActiveRecord
 {
+    use Send;
     public $url;
 
     public function getConfig()

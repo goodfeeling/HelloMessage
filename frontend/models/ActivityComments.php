@@ -10,8 +10,10 @@ use common\utils\CommonFun;
 use common\utils\ConstStatus;
 use yii\data\Pagination;
 
-class ActivityComments extends BaseModel
+class ActivityComments extends \yii\db\ActiveRecord
 {
+    use Send;
+
     public $aid;
     public $uid;
     public $content;

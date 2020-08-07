@@ -3,6 +3,7 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use yii\captcha\Captcha;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
@@ -11,6 +12,18 @@ $urlManager = Yii::$app->urlManager;
 
 \common\services\StaticServices::includeAppJsStatic('@web/js/login/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
+$captcha_config = [
+    'name' => 'captchaimg',
+    'captchaAction' => 'login/captcha',
+    'imageOptions' => [
+        'id' => 'captchaimg',
+        'title' => '换一个',
+        'alt' => '换一个',
+        'style' => ''
+    ],
+    'template' => '{image}'
+];
 ?>
 <!-- App Header -->
 <div class="appHeader">
@@ -23,7 +36,7 @@ $urlManager = Yii::$app->urlManager;
         <?= $this->title ?>
     </div>
     <div class="right">
-        <a href="<?php echo Url::to(['login/register']) ?>" class="link" hidden>注册</a>
+        <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
     </div>
 </div>
 <!-- * App Header -->
@@ -36,49 +49,38 @@ $urlManager = Yii::$app->urlManager;
             <div class="lead mb-2">继续登录操作</div>
         </div>
 
-        <form action="index.html" hidden>
-            <div class="form-group mt-3 mb-3">
-                <input type="email" class="form-control" placeholder="邮箱地址">
-            </div>
-            <div class="form-group mt-3 mb-3">
-                <input type="password" class="form-control" placeholder="密码">
-            </div>
-            <div class="form-group mt-3 mb-3">
-                <div style="position: relative">
-                    <input name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码" style="width: 150px">
-<!--                    <div style="height: 33px;width: 80px;float: right;cursor: pointer; position: absolute;right: 26px;top: 1px">--><?php //echo Captcha::widget(
-//    [
-//                                                            'name' => 'captchaimg',
-//                                                            'captchaAction' => 'login/captcha',
-//                                                            'imageOptions' => [
-//                                                                'id' => 'captchaimg',
-//                                                                'title' => '换一个',
-//                                                                'alt' => '换一个',
-//                                                                'style' => ''
-//                                                            ],
-//                                                            'template' => '{image}'
-//                                                        ]
-//); ?><!--</div>-->
-                </div>
+        <?php $form = ActiveForm::begin([
+            'id' => 'login-form',
+        ]); ?>
+        <div class="form-group mt-3 mb-3">
+            <?= $form->field($model, 'uname')->textInput()->label('用户名') ?>
+        </div>
+        <div class="form-group mt-3 mb-3">
+            <?= $form->field($model, 'password')->passwordInput()->label('密码') ?>
+        </div>
 
+        <div class="form-group mt-3 mb-3">
+            <div style="position: relative">
+                <input name="User[verifyCode]" id="captcha" type="text" class="form-control" placeholder="验证码"
+                       style="width: 150px">
+                <div style="height: 33px;width: 80px;float: right;cursor: pointer; position: absolute;right: 26px;top: 1px"><?php echo Captcha::widget($captcha_config); ?></div>
             </div>
-            <div class="form-group row mt-3 mb-3">
-                <div class="col-6">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="remember" />
-                        <label class="custom-control-label text-muted" for="remember">记住登录状态</label>
-                    </div>
+        </div>
+        <div class="form-group row mt-3 mb-3">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="User[rememberme]" id="remember"/>
+                    <label class="custom-control-label text-muted" for="remember">记住登录状态</label>
                 </div>
-                <div class="col-6 text-right">
-                    <a href="<?php echo Url::to(['forgot-password']) ?>" class="text-muted">忘记密码?</a>
-                </div>
             </div>
-            <div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                    登录
-                </button>
+            <div class="col-6 text-right">
+                <a href="<?php echo Url::to(['forgot-password']) ?>" class="text-muted">忘记密码?</a>
             </div>
-        </form>
+        </div>
+        <div>
+            <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+        </div>
+        <?php ActiveForm::end() ?>
 
         <div class="divider mt-3 mb-3" hidden></div>
 

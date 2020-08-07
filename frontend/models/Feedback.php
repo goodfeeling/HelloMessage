@@ -5,7 +5,7 @@ use backend\models\FeedbackModel;
 use common\utils\ConstStatus;
 use Yii;
 
-class Feedback extends BaseModel
+class Feedback extends \yii\db\ActiveRecord
 {
     public $title;
     public $content;

@@ -7,7 +7,7 @@ namespace frontend\models;
 use backend\models\OrderModel;
 use common\utils\ConstStatus;
 
-class Order extends BaseModel
+class Order extends \yii\db\ActiveRecord
 {
     public $aid;
     public $uid;

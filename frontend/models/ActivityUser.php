@@ -4,8 +4,9 @@
 namespace frontend\models;
 
 
-class ActivityUser extends BaseModel
+class ActivityUser extends \yii\db\ActiveRecord
 {
+    use Send;
 
 
 }

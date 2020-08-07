@@ -8,8 +8,10 @@ use backend\models\ActivityUserModel;
 use backend\models\UserDetailModel;
 use common\utils\ConstStatus;
 
-class UserDetail extends BaseModel
+class UserDetail extends \yii\db\ActiveRecord
 {
+    use Send;
+
     public $aid;
     public $uid;
     public $income;

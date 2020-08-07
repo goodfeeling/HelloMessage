@@ -21,7 +21,7 @@ class MailSettingModel extends \backend\models\BaseModel
      */
     public static function tableName()
     {
-        return '{{%admin_mail_setting}}';
+        return '{{%mail_setting}}';
     }
 
     /**

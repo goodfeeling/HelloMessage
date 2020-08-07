@@ -11,4 +11,6 @@ class ConstStatus
     const CODE_NO_LOGIN = 100;
     const CODE_NO_PAY = 303;
     const CODE_GO_TOCENTER = 302;
+    const CODE_LOGIN_ERROR = 101;
+
 }

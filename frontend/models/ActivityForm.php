@@ -14,8 +14,10 @@ use backend\models\AdminUser;
 use backend\models\ImagesModel;
 use yii\data\Pagination;
 
-class ActivityForm extends BaseModel
+class ActivityForm extends \yii\db\ActiveRecord
 {
+    use Send;
+
     public $id;
     public $uid;
     public $size;
