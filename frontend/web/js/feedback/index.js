@@ -5,23 +5,20 @@ $('#submit').click(function(e) {
         'content': $('#content').val(),
     };
     $.ajax({
-        url: "<?= $urlManager->createUrl(['feedback/index']) ?>",
+        url: FEEDBACK,
         type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
         dataType: 'json',
         data: data,
         success: function(data) {
             if (data['state'] == 0) {
-                $('.wx-bd').text(data['msg']);
-                $('#simpleDialog').fadeIn(300);
+                $.triggerModalBox(data['msg']);
                 if (data['state'] == 0 ) {
                     $('.weui-dialog__ft').on('click',function(e){
-                        window.location.href = "<?= Url::toRoute('feedback/index', true) ?>";
+                        window.location.href = FEEDBACK;
                     });
                 }
             } else {
-                $('.wx-bd').text(res['msg']);
-                $('.wx-main-btn').text("确定");
-                $('#simpleDialog').fadeIn(200);
+                $.triggerModalBox(data['msg']);
             }
         }
     });

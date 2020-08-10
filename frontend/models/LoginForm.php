@@ -28,7 +28,9 @@ class LoginForm extends BaseModel
     {
         return [
             [['code', 'encrypted_data', 'iv'], 'string'],
-            ['verifyCode', 'required','message'=>'请输入验证码'],
+            ['verifyCode', 'required','message'=>'请输入验证码！'],
+            ['password', 'required','message'=>'请输入密码！'],
+            ['uname', 'required','message'=>'请输入用户名！'],
             ['verifyCode', 'captcha','captchaAction'=>'login/captcha'],
             ['rememberme', 'string'],
         ];
@@ -122,7 +124,7 @@ class LoginForm extends BaseModel
         if (!$this->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
-        $checkData = self::findOne(['uname' => $this->uname]);
+        $checkData = User::findOne(['uname' => $this->uname]);
         $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
         if (Yii::$app->getSecurity()->validatePassword($checkData['password'], $hash)) {
             // all good, logging user in

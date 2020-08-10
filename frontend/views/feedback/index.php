@@ -5,6 +5,7 @@ use yii\helpers\Url;
 
 $this->title = '反馈';
 $urlManager = Yii::$app->urlManager;
+$is_discover = 1;
 
 \common\services\StaticServices::includeAppJsStatic('@web/js/feedback/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);

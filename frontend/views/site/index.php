@@ -4,6 +4,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '首页';
+$is_search = 1;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
@@ -49,8 +50,8 @@ $this->title = '首页';
         <div class="sectionTitle mb-2">
             <div class="text-muted">NEWS</div>
             <div class="title">
-                <h1>Today</h1>
-                <a href="blog-category.html">View All</a>
+                <h1>今天</h1>
+                <a href="blog-category.html">查看全部</a>
             </div>
         </div>
 
@@ -158,8 +159,8 @@ $this->title = '首页';
         <div class="sectionTitle mb-2">
             <div class="text-muted">Overview</div>
             <div class="title">
-                <h1>Products</h1>
-                <a href="blog-category.html">View All</a>
+                <h1>产品</h1>
+                <a href="blog-category.html">查看全部</a>
             </div>
             <div class="lead">
                 Bitter is using modern design style. Simple and elegant design lines.

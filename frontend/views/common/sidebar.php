@@ -7,15 +7,23 @@ $identity = \Yii::$app->user->identity;
 
 \common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
+$avatar_url = !empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png';
+$title = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
+$city = !empty($identity) ? $this->params['user_info']['nickname'] : '未知';
 ?>
 
 <div class="sidebarWrapper">
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= !empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png' ?>"
+            <img src="<?= $avatar_url ?>"
                  alt="avatar" class="avatar">
-            <h2 class="title"><?= !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录' ?></h2>
+            <h2 class="title"><?= $title ?></h2>
+            <h5 class="lead">
+                <i class="icon ion-ios-pin mr-1"></i>
+                <?= $city ?>
+            </h5>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
                     <i class="icon ion-ios-settings"></i>
@@ -38,7 +46,7 @@ $identity = \Yii::$app->user->identity;
                 </li>
                 <li>
                     <a href="<?php echo Url::to(['chat/index']) ?>">
-                        <i class="icon ion-ios-chatboxes"></i>
+                        <i class="icon ion-ios-people"></i>
                         我的好友
                     </a>
                 </li>
@@ -51,6 +59,10 @@ $identity = \Yii::$app->user->identity;
                         <i class="icon ion-ios-book"></i>导航</a>
                 </li>
                 <li>
+                    <a href="<?php echo Url::to(['site/faq']) ?>">
+                        <i class="icon ion-ios-navigate"></i>FAQ</a>
+                </li>
+                <li>
                     <a href="pages.html">
                         <i class="icon ion-ios-unlock"></i>
                         退出登录
@@ -60,36 +72,12 @@ $identity = \Yii::$app->user->identity;
         </div>
         <div class="sidebarGroup">
             <ul class="sidebarMenu">
-                <li class="title">Online</li>
-                <li>
-                    <a href="<?php echo Url::to(['chat/my-chat']) ?>">
-                        <img src="fornt/img/sample/avatar2.jpg" alt="avatar" class="avatar">
-                        Guiying K.
-                    </a>
-                </li>
+                <li class="title">消息</li>
                 <li>
                     <a href="#">
                         <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
                         Kita Chihoko
                         <span class="badge badge-primary">100</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar4.jpg" alt="avatar" class="avatar">
-                        Leonetta Lloyd
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar5.jpg" alt="avatar" class="avatar">
-                        Lizzie Rose
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="fornt/img/sample/avatar6.jpg" alt="avatar" class="avatar">
-                        Kari Granleese
                     </a>
                 </li>
             </ul>

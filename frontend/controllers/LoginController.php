@@ -5,6 +5,7 @@ namespace frontend\controllers;
 
 use backend\models\AdminUser;
 use frontend\models\LoginForm;
+use frontend\models\RegisterForm;
 use frontend\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -19,7 +20,7 @@ class LoginController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+                'only' => ['index','register'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -56,6 +57,8 @@ class LoginController extends BaseController
     {
         $request = Yii::$app->request;
         $form = new LoginForm();
+
+        // 微信登录
         if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form->code = $request->get('code');
             $res = $form->wxLogin();
@@ -63,10 +66,10 @@ class LoginController extends BaseController
                 $this->goHome();
             }
         }
+        // 普通登录
         if ($request->isPost) {
-            $form->attributes = $request->post();
+            $form->attributes = $request->post()["User"];
             $res = $form->login();
-
             if (!$res) {
                 return $this->goBack();
             } else {
@@ -83,6 +86,13 @@ class LoginController extends BaseController
 
     public function actionRegister()
     {
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $form = new RegisterForm();
+            $form->attributes = $request->post();
+            $res = $form->save();
+            return $this->asJson($res);
+        }
         return $this->render('register');
     }
 

@@ -78,7 +78,7 @@ $captcha_config = [
             </div>
         </div>
         <div>
-            <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+            <button type="button" class="btn btn-primary btn-lg btn-block submit">登录</button>
         </div>
         <?php ActiveForm::end() ?>
 

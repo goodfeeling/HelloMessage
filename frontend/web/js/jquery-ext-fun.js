@@ -4,9 +4,9 @@
         triggerModalBox: function (msg, btn = '确定', url = '') {
             $('.wx-bd').text(msg);
             $('.wx-main-btn').text(btn);
-            $('.wx-main-btn').on('click', function (e) {
+            url ? $('.wx-main-btn').on('click', function (e) {
                 window.location.href = url;
-            });
+            }) : false;
             $('#simpleDialog').fadeIn(200);
         },
 

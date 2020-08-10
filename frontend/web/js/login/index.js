@@ -8,3 +8,20 @@ $(document).on('click', '#wechat-contr', function () {
         }
     })
 })
+
+$('.submit').on('click', function (e) {
+    var $form = $('#login-form');
+    var data = $form.serialize();
+    $.ajax({
+        url: $form.attr('action'),
+        type: 'POST',
+        data: data,
+        success: function (data) {
+            $.triggerModalBox(data['msg']);
+        },
+        error: function (jqXHR, errMsg) {
+            alert(errMsg);
+        }
+    });
+    return false; // 防止默认提交
+})

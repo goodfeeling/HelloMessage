@@ -1,12 +1,13 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 
 /* @var $content string */
 use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use frontend\assets\WebAsset;
+use yii\web\View;
 
 AppAsset::register($this);
 WebAsset::register($this);
@@ -17,7 +18,6 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
 <?php $this->beginPage() ?>
 <!doctype html>
 <html lang="<?= Yii::$app->language ?>">
-
 <head>
     <meta charset="<?= Yii::$app->charset ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +31,8 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
 
 <body>
     <?php $this->beginBody() ?>
+
+    <?php $this->renderFile('@app/views/blocks/blocks.php') ?>
 
     <!-- Page loading -->
     <div class="loading">

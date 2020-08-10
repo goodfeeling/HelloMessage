@@ -37,13 +37,13 @@ $this->title = '注册账号';
             <input type="email" class="form-control email" placeholder="邮箱地址">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control nickname" placeholder="昵称">
+            <input type="text" class="form-control username" placeholder="昵称">
         </div>
         <div class="form-group">
             <input type="password" class="form-control password" placeholder="登录密码">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control password1" placeholder="确认密码">
+            <input type="password" class="form-control verifyPassword" placeholder="确认密码">
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit1">
             提交

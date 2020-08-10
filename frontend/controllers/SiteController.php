@@ -46,6 +46,11 @@ class SiteController extends BaseController
         return $this->render('setting');
     }
 
+    public function actionFaq()
+    {
+        return $this->render('faq');
+    }
+
     /**
      * Displays error.
      *

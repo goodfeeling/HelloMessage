@@ -5,6 +5,7 @@ use yii\helpers\Url;
 
 $this->title = '我的好友';
 $urlManager = Yii::$app->urlManager;
+$is_chat = 1;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
@@ -14,8 +15,6 @@ $urlManager = Yii::$app->urlManager;
 <div id="appCapsule">
 
     <div class="appContent">
-
-
         <!-- listview -->
         <div class="listView">
             <a href="#" class="listItem">
@@ -126,8 +125,6 @@ $urlManager = Yii::$app->urlManager;
             </a>
         </div>
         <!-- * listview -->
-
     </div>
-
 </div>
 <!-- appCapsule -->

@@ -8,6 +8,7 @@ $urlManager = Yii::$app->urlManager;
 \common\services\StaticServices::includeAppJsStatic('@web/js/user-info/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
+
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
 <!-- * App Header -->

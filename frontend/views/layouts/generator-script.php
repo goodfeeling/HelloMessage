@@ -26,7 +26,9 @@ use yii\helpers\Url;
     COMMENT = "<?= Url::toRoute('activity/comment', true) ?>"
     LINKES_INCREASE = "<?= Url::toRoute('activity/likes-increase', true) ?>"
     SITE_INDEX = "<?= Url::toRoute('site/index', true) ?>"
+    FEEDBACK = "<?= Url::toRoute('feedback/index', true) ?>"
+    QRCODE = "<?= Url::toRoute('default/get-qr', true) ?>"
+    REGISTER = "<?= Url::toRoute('login/register', true) ?>"
     // 验证是否登录
     IDENTITY = <?= \Yii::$app->user->identity ? 0 : 1 ?>
-
 </script>

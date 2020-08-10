@@ -30,7 +30,7 @@ $urlManager = Yii::$app->urlManager;
         <div class="sectionTitle mt-4 mb-0">
             <div class="text-muted">POPULAR</div>
             <div class="title">
-                <h1>Categories</h1>
+                <h1>分类</h1>
             </div>
         </div>
 
@@ -76,7 +76,7 @@ $urlManager = Yii::$app->urlManager;
         <div class="sectionTitle mb-1 mt-4">
             <div class="text-muted">POPULAR</div>
             <div class="title">
-                <h1>Topics</h1>
+                <h1>主题</h1>
             </div>
         </div>
 
