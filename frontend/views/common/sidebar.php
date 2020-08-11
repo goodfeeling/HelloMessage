@@ -11,6 +11,7 @@ $identity = \Yii::$app->user->identity;
 $avatar_url = !empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png';
 $title = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
 $city = !empty($identity) ? $this->params['user_info']['nickname'] : '未知';
+
 ?>
 
 <div class="sidebarWrapper">
@@ -62,8 +63,8 @@ $city = !empty($identity) ? $this->params['user_info']['nickname'] : '未知';
                     <a href="<?php echo Url::to(['site/faq']) ?>">
                         <i class="icon ion-ios-navigate"></i>FAQ</a>
                 </li>
-                <li>
-                    <a href="pages.html">
+                <li <?php echo $identity ? '' : 'hidden' ?>>
+                    <a href="<?php echo Url::to(['login/logout']) ?>">
                         <i class="icon ion-ios-unlock"></i>
                         退出登录
                     </a>
@@ -74,7 +75,7 @@ $city = !empty($identity) ? $this->params['user_info']['nickname'] : '未知';
             <ul class="sidebarMenu">
                 <li class="title">消息</li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo Url::to(['chat/my-chat']) ?>">
                         <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
                         Kita Chihoko
                         <span class="badge badge-primary">100</span>

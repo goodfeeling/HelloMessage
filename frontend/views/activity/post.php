@@ -9,9 +9,11 @@ $urlManager = Yii::$app->urlManager;
 
 \common\services\StaticServices::includeAppJsStatic('@web/js/activity/post.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
+
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
 <div id="appCapsule">

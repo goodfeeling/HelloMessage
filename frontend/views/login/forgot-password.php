@@ -15,7 +15,7 @@ $this->title = '忘记密码';
 
         <div class="sectionTitle text-center">
             <div class="title">
-                <h1>充值您的密码</h1>
+                <h1>填写您的邮箱</h1>
             </div>
             <div class="lead mb-3">输入您的邮箱地址</div>
         </div>
@@ -32,7 +32,7 @@ $this->title = '忘记密码';
         </form>
 
         <div class="mt-3 text-center">
-            没有账号吗? <a href="page-register.html">注册</a>
+            没有账号吗? <a href="<?php echo Url::to(['login/register']) ?>">注册</a>
         </div>
 
     </div>

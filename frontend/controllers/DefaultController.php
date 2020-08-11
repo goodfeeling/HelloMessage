@@ -54,4 +54,10 @@ class DefaultController extends BaseController
                 ->writeString();
         }
     }
+
+    // 图片上传接口
+    public function actionUploadImage()
+    {
+        
+    }
 }

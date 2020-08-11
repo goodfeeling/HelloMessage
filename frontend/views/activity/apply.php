@@ -5,8 +5,10 @@ use \common\services\StaticServices;
 
 $this->title = '活动申请';
 $urlManager = Yii::$app->urlManager;
+
 StaticServices::includeAppJsStatic('@web/js/activity/apply.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>

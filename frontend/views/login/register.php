@@ -10,18 +10,9 @@ $this->title = '注册账号';
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 <!-- App Header -->
-<div class="appHeader">
-    <div class="left">
-        <a href="javascript:;" class="icon goBack">
-            <i class="icon ion-ios-arrow-back"></i>
-        </a>
-    </div>
-    <div class="pageTitle">
-        <?= $this->title ?>
-    </div>
-    <div class="right">
-    </div>
-</div>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
+<!-- * App Header -->
+
 <div id="appCapsule">
     <div class="appContent">
         <img src="fornt/img/sample/draw-2.png" alt="img" class="img-fluid mt-3 mb-3">
@@ -34,17 +25,28 @@ $this->title = '注册账号';
         </div>
 
         <div class="form-group">
+            <label for="exampleInputFile">上传您的头像</label>
+            <input type="file" id="inputFile">
+            <img id="showimg" src="" class="img-circle" style="width: 60px;height: 60px;display: none"/>
+            <p class="help-block">点击按钮即可上传.</p>
+        </div>
+
+        <div class="form-group">
             <input type="email" class="form-control email" placeholder="邮箱地址">
         </div>
+
         <div class="form-group">
             <input type="text" class="form-control username" placeholder="昵称">
         </div>
+
         <div class="form-group">
             <input type="password" class="form-control password" placeholder="登录密码">
         </div>
+
         <div class="form-group">
             <input type="password" class="form-control verifyPassword" placeholder="确认密码">
         </div>
+
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit1">
             提交
         </button>

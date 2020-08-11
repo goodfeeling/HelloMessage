@@ -48,10 +48,12 @@ class AdminUserController extends BaseController
             'pageParam'=>'page', 
             'pageSizeParam'=>'per-page']
         );
+
         $models = $query
         ->offset($pagination->offset)
         ->limit($pagination->limit)
         ->all();
+
         return $this->render('index', [
             'models'=>$models,
             'pages'=>$pagination,

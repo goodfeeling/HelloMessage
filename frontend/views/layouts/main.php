@@ -30,10 +30,8 @@ $pageTitle = '<img src="fornt/img/logo.png" alt="Bitter" class="image">';
 </head>
 
 <body>
+
     <?php $this->beginBody() ?>
-
-    <?php $this->renderFile('@app/views/blocks/blocks.php') ?>
-
     <!-- Page loading -->
     <div class="loading">
         <div class="spinner-grow text-info"></div>

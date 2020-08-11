@@ -100,4 +100,10 @@ class LoginController extends BaseController
     {
         return $this->render('forgot-password');
     }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+        return $this->goHome();
+    }
 }

@@ -1,16 +1,11 @@
 <?php
+
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
-
-$this->title = '详情';
-$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Capsule -->
 <div id="appCapsule">
-
     <div class="appContent">
-
         <!-- post -->
         <div class="photoPost mt-1">
             <header>
@@ -39,7 +34,6 @@ $urlManager = Yii::$app->urlManager;
             </footer>
         </div>
         <!-- post -->
-
         <!-- comments -->
         <div class="comments">
             <div class="item">
@@ -69,9 +63,7 @@ $urlManager = Yii::$app->urlManager;
             </div>
         </div>
         <!-- * comments -->
-
         <div class="divider mt-3 mb-3"></div>
-
         <!-- form -->
         <form>
             <div class="form-group">
@@ -82,8 +74,6 @@ $urlManager = Yii::$app->urlManager;
             </button>
         </form>
         <!-- * form -->
-
     </div>
-
 </div>
 <!-- appCapsule -->

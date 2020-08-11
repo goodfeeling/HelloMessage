@@ -27,8 +27,18 @@ $('#submit1').on('click', function (e) {
         $.triggerModalBox('两次密码输入不正确');
     }
 });
-$('.password1').on('change', function (e) {
-    var password = $('.password').val();
-    var password1 = $('.password1').val();
 
+// 获取上传文件信息
+$('#inputFile').on('change',function () {
+    var file = this.files[0];
+    if(window.FileReader) {
+        var fr = new FileReader();
+        fr.readAsDataURL(file);
+        fr.onload = function(e) {
+            $("#showimg").attr('src',this.result); // 图片可显示出来
+            $("#showimg").show()
+        };
+    } else {
+        $.triggerModalBox('暂不支持FileReader')
+    };
 });

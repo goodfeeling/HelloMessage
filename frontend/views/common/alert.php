@@ -1,7 +1,5 @@
 <?php
-
 use yii\helpers\Url;
-
 ?>
 <script>
     const msg = <?= $msg ?>;
