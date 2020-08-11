@@ -29,6 +29,7 @@ use yii\helpers\Url;
     FEEDBACK = "<?= Url::toRoute('feedback/index', true) ?>"
     QRCODE = "<?= Url::toRoute('default/get-qr', true) ?>"
     REGISTER = "<?= Url::toRoute('login/register', true) ?>"
+    SHARE = "<?= Url::toRoute('share/get-config', true) ?>"
     // 验证是否登录
     IDENTITY = <?= \Yii::$app->user->identity ? 0 : 1 ?>
 </script>

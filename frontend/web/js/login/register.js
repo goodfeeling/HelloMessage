@@ -3,12 +3,13 @@ $('#submit1').on('click', function (e) {
     var username = $('.username').val();
     var password = $('.password').val();
     var verifyPassword = $('.verifyPassword').val();
+
     if (password == verifyPassword) {
         var data = {
             'email': email,
             'username': username,
             'password': password,
-            'verifyPassword':verifyPassword
+            'verifyPassword': verifyPassword
         };
         $.ajax({
             url: REGISTER,
@@ -17,7 +18,7 @@ $('#submit1').on('click', function (e) {
             data: data,
             success: function (data) {
                 if (data['state'] == 201) {
-                    $.triggerModalBox(data['msg'],'确定',LOGIN);
+                    $.triggerModalBox(data['msg'], '确定', LOGIN);
                 } else {
                     $.triggerModalBox(data['msg']);
                 }
@@ -29,13 +30,13 @@ $('#submit1').on('click', function (e) {
 });
 
 // 获取上传文件信息
-$('#inputFile').on('change',function () {
+$('#inputFile').on('change', function () {
     var file = this.files[0];
-    if(window.FileReader) {
+    if (window.FileReader) {
         var fr = new FileReader();
         fr.readAsDataURL(file);
-        fr.onload = function(e) {
-            $("#showimg").attr('src',this.result); // 图片可显示出来
+        fr.onload = function (e) {
+            $("#showimg").attr('src', this.result); // 图片可显示出来
             $("#showimg").show()
         };
     } else {

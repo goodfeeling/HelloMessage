@@ -38,37 +38,37 @@ $urlManager = Yii::$app->urlManager;
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-primary btn-block">
                     <i class="icon ion-ios-paper"></i>
-                    News
+                    热点
                 </a>
             </div>
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-dark btn-block">
                     <i class="icon ion-logo-game-controller-b"></i>
-                    Games
+                    游戏
                 </a>
             </div>
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-danger btn-block">
                     <i class="icon ion-ios-musical-notes"></i>
-                    Music
+                    音乐
                 </a>
             </div>
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-warning btn-block">
                     <i class="icon ion-ios-camera"></i>
-                    Movies
+                    视频
                 </a>
             </div>
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-info btn-block">
                     <i class="icon ion-ios-pulse"></i>
-                    Health
+                    健康
                 </a>
             </div>
             <div class="col-6 mt-2">
                 <a href="#" class="btn btn-success btn-block">
                     <i class="icon ion-ios-bulb"></i>
-                    Social
+                    社交
                 </a>
             </div>
         </div>

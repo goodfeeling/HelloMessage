@@ -3,12 +3,13 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 $controller = Yii::$app->controller->id;
 $action = Yii::$app->controller->action->id;
+$operation = $controller.'/'.$action;
 ?>
 <?php $this->render('@app/views/blocks/blocks.php') ?>
 
 <div class="appHeader">
     <div class="left">
-        <?php if (!in_array($controller,['site','discover','search'])): ?>
+        <?php if (!in_array($operation,['site/index','discover/index','search/index'])): ?>
             <a href="javascript:;" class="icon goBack">
                 <i class="icon ion-ios-arrow-back"></i>
             </a>
@@ -18,9 +19,9 @@ $action = Yii::$app->controller->action->id;
         <?= $this->title ?>
     </div>
     <div class="right">
-        <?php if (isset($this->blocks['search']) && in_array($controller,['site'])): ?>
+        <?php if (isset($this->blocks['search']) && in_array($operation,['site/index'])): ?>
             <?= $this->blocks['search'] ?>
-        <?php elseif(isset($this->blocks['chat']) && $controller == 'chat'): ?>
+        <?php elseif(isset($this->blocks['chat']) && $operation == 'chat/my-chat'): ?>
             <?= $this->blocks['chat'] ?>
         <?php elseif(isset($this->blocks['discover'])  && $controller == 'discover'): ?>
             <?= $this->blocks['discover'] ?>

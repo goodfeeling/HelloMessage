@@ -31,7 +31,7 @@ class LoginForm extends BaseModel
             ['verifyCode', 'required','message'=>'请输入验证码！'],
             ['password', 'required','message'=>'请输入密码！'],
             ['uname', 'required','message'=>'请输入用户名！'],
-            ['verifyCode', 'captcha','captchaAction'=>'login/captcha'],
+            ['verifyCode', 'captcha','captchaAction'=>'login/captcha','message'=>'验证码错误！'],
             ['rememberme', 'string'],
         ];
     }

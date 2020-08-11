@@ -56,13 +56,14 @@ class RegisterForm extends BaseModel
 
         $model = new User();
         $model->uname = $this->username;
-        $model->password = \Yii::$app->security->generatePasswordHash($this->password, 5);
+        $model->password = \Yii::$app->security->generatePasswordHash($this->password);
         $model->status = 0;
         $model->create_user = 'front';
         $model->create_date = date('Y-m-d');
         $model->update_user = 'front';
         $model->update_date = date('Y-m-d');
         $model->type = 2;
+
         if (!$model->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($model->getErrors())[0]);
         }

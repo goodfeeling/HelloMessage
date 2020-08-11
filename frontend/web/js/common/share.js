@@ -1,6 +1,6 @@
 // 获取参数
 $.ajax({
-    url: "<?= $urlManager->createUrl(['share/get-config']) ?>",
+    url: SHARE,
     type: "GET",
     dataType: 'json',
     data: {

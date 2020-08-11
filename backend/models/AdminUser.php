@@ -44,7 +44,7 @@ class AdminUser extends BackendUser
     public function rules()
     {
         return [
-            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url'], 'required'],
+            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date'], 'required'],
             [['status', 'type'], 'integer'],
             [['create_date', 'update_date'], 'safe'],
             [['uname', 'domain_account', 'create_user'], 'string', 'max' => 100],
