@@ -1,10 +1,10 @@
 <?php
 
-$this->title = '活动申请';
+$this->title = '聊天界面';
 
 ?>
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php',['is_chat'=>true]); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
 <!-- App Capsule -->

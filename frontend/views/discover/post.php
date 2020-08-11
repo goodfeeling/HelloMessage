@@ -6,6 +6,10 @@ use yii\helpers\Url;
 $this->title = '详情';
 $urlManager = Yii::$app->urlManager;
 ?>
+<!-- App Header -->
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
+<!-- * App Header -->
+
 <!-- App Capsule -->
 <div id="appCapsule">
 

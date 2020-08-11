@@ -5,10 +5,9 @@ use yii\helpers\Url;
 
 $this->title = '我的好友';
 $urlManager = Yii::$app->urlManager;
-$is_chat = 1;
 ?>
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
 <!-- App Capsule -->

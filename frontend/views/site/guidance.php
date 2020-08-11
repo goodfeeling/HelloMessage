@@ -34,7 +34,7 @@ StaticServices::includeAppJsStatic('@web/js/site/guidance.js',
 </style>
 <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 <!--百度地图容器-->
 <div style="min-height:100vh;display:flex;border:#ccc solid 1px;" id="appCapsule"></div>

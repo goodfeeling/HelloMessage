@@ -10,11 +10,19 @@ $urlManager = Yii::$app->urlManager;
 ?>
 
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
 <div id="appCapsule">
     <div class="appContent">
+
+        <div class="form-group">
+            <label for="exampleInputFile">头像</label>
+            <input type="file" id="inputFile">
+            <img id="showimg" src="" class="img-circle" style="width: 60px;height: 60px;display: none"/>
+            <p class="help-block">点击按钮即可上传.</p>
+        </div>
+
         <div class="form-group">
             <label for="name">真实姓名</label>
             <input type="text" class="form-control" value="<?= $data['name'] ?? '' ?>" id="name" placeholder="真实姓名">

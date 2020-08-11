@@ -4,7 +4,7 @@
 ?>
 
 <!-- App Header -->
-<?php echo \Yii::$app->view->renderFile('@app/views/common/default-header.php'); ?>
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
 <!-- App Capsule -->

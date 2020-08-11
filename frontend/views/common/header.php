@@ -26,8 +26,6 @@ $action = Yii::$app->controller->action->id;
             <?= $this->blocks['discover'] ?>
         <?php elseif(isset($this->blocks['login'])  && $controller == 'login' && $action =='index'): ?>
             <?= $this->blocks['login'] ?>
-        <?php else: ?>
-
         <?php endif; ?>
     </div>
 </div>

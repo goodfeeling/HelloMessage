@@ -34,11 +34,11 @@ angular.module('cApp', [])
                 } else {
                     $scope.data = response.data.data;
                     $scope.content = null;
-                    triggerModalBox(response.data.msg);
+                    $.triggerModalBox(response.data.msg);
                 }
 
             }, function errorCallback(response) {
-                triggerModalBox(response.data.msg);
+                $.triggerModalBox(response.data.msg);
             });
         };
         //获取数据
@@ -57,10 +57,10 @@ angular.module('cApp', [])
                     reloadPno();
                     callback();
                 } else {
-                    triggerModalBox(response.data.msg);
+                    $.triggerModalBox(response.data.msg);
                 }
             }, function errorCallback(response) {
-                triggerModalBox(response.data.msg);
+                $.triggerModalBox(response.data.msg);
             });
         }
         //初始化第一页
