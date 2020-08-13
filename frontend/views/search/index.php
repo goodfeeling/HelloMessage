@@ -26,53 +26,6 @@ $urlManager = Yii::$app->urlManager;
             </form>
         </div>
 
-
-        <div class="sectionTitle mt-4 mb-0">
-            <div class="text-muted">POPULAR</div>
-            <div class="title">
-                <h1>分类</h1>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-primary btn-block">
-                    <i class="icon ion-ios-paper"></i>
-                    热点
-                </a>
-            </div>
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-dark btn-block">
-                    <i class="icon ion-logo-game-controller-b"></i>
-                    游戏
-                </a>
-            </div>
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-danger btn-block">
-                    <i class="icon ion-ios-musical-notes"></i>
-                    音乐
-                </a>
-            </div>
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-warning btn-block">
-                    <i class="icon ion-ios-camera"></i>
-                    视频
-                </a>
-            </div>
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-info btn-block">
-                    <i class="icon ion-ios-pulse"></i>
-                    健康
-                </a>
-            </div>
-            <div class="col-6 mt-2">
-                <a href="#" class="btn btn-success btn-block">
-                    <i class="icon ion-ios-bulb"></i>
-                    社交
-                </a>
-            </div>
-        </div>
-
         <div class="sectionTitle mb-1 mt-4">
             <div class="text-muted">POPULAR</div>
             <div class="title">
@@ -120,6 +73,51 @@ $urlManager = Yii::$app->urlManager;
         </div>
         <!-- * listview -->
 
+        <div class="sectionTitle mt-4 mb-0">
+            <div class="text-muted">POPULAR</div>
+            <div class="title">
+                <h1>热门搜索</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-primary btn-block">
+                    <i class="icon ion-ios-paper"></i>
+                    热点
+                </a>
+            </div>
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-dark btn-block">
+                    <i class="icon ion-logo-game-controller-b"></i>
+                    游戏
+                </a>
+            </div>
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-danger btn-block">
+                    <i class="icon ion-ios-musical-notes"></i>
+                    音乐
+                </a>
+            </div>
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-warning btn-block">
+                    <i class="icon ion-ios-camera"></i>
+                    视频
+                </a>
+            </div>
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-info btn-block">
+                    <i class="icon ion-ios-pulse"></i>
+                    健康
+                </a>
+            </div>
+            <div class="col-6 mt-2">
+                <a href="#" class="btn btn-success btn-block">
+                    <i class="icon ion-ios-bulb"></i>
+                    社交
+                </a>
+            </div>
+        </div>
 
     </div>
 

@@ -37,11 +37,8 @@ $urlManager = Yii::$app->urlManager;
 
         <!-- post body -->
         <div class="postBody">
-            <div>
-                <?= $data['describe'] ?>
-            </div>
-
-            <a id="applyBtn" class="btn btn-primary btn-block mb-1">活动资格申请</a>
+            <?= $data['describe'] ?>
+            <button id="applyBtn" class="btn btn-primary btn-block mb-1">活动资格申请</button>
         </div>
         <!-- * post body -->
 
@@ -59,9 +56,9 @@ $urlManager = Yii::$app->urlManager;
         <div class="row mt-2">
             <?php echo \Yii::$app->view->renderFile('@app/views/common/share.php'); ?>
             <div class="col-6">
-                <a href="javascript:;" class="btn btn-danger btn-block" id="likes">
+                <button class="btn btn-danger btn-block" id="likes">
                     <i class="icon ion-ios-heart"></i><?= $data['likes'] ?>
-                </a>
+                </button>
             </div>
         </div>
         <!-- * post buttons -->
