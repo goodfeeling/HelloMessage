@@ -41,6 +41,7 @@ class ActivityComments extends \yii\db\ActiveRecord
         if (!$this->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
+
         $model = new ActivityCommentModel();
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");

@@ -39,4 +39,9 @@ class SearchController extends BaseController
         return $this->render('index');
     }
 
+    public function actionLists()
+    {
+        return $this->render('lists');
+    }
+
 }

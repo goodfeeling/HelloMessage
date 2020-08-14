@@ -1,32 +1,30 @@
 $('#submit1').on('click', function (e) {
-    var email = $('.email').val();
-    var username = $('.username').val();
     var password = $('.password').val();
     var verifyPassword = $('.verifyPassword').val();
-
-    if (password == verifyPassword) {
-        var data = {
-            'email': email,
-            'username': username,
-            'password': password,
-            'verifyPassword': verifyPassword
-        };
-        $.ajax({
-            url: REGISTER,
-            type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
-            dataType: 'json',
-            data: data,
-            success: function (data) {
-                if (data['state'] == 201) {
-                    $.triggerModalBox(data['msg'], '确定', LOGIN);
-                } else {
-                    $.triggerModalBox(data['msg']);
-                }
-            }
-        });
-    } else {
+    if ( !(password == verifyPassword)) {
         $.triggerModalBox('两次密码输入不正确');
+        return false;
     }
+    var formData = new FormData();
+    formData.append('file',$('inputFile')[0].files[0]);
+    formData.append('email',$('.email').val());
+    formData.append('username',$('.username').val());
+    formData.append('password',password);
+    formData.append('verifyPassword',verifyPassword);
+    $.ajax({
+        url: REGISTER,
+        type: 'post', //请问这里和method 有什么不同，是不是只是名称不一样呢？？
+        dataType: 'json',
+        data: formData,
+        success: function (data) {
+            if (data['state'] == 201) {
+                $.triggerModalBox(data['msg'], '确定', LOGIN);
+            } else {
+                $.triggerModalBox(data['msg']);
+            }
+        }
+    });
+
 });
 
 // 获取上传文件信息
