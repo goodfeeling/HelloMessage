@@ -11,35 +11,51 @@ angular.module('cApp', [])
         $scope.sendData = function () {
             var form = new FormData();
             if (IDENTITY) {
-                $.triggerModalBox('您还没登录！！','去登录', LOGIN)
+                $.triggerModalBox('您还没登录！！','去登录', LOGIN);
                 return false;
             }
             if (!angular.isDefined($scope.content)) {
-                $.triggerModalBox('评论内容不能为空！')
+                $.triggerModalBox('评论内容不能为空！');
                 return false;
             }
             var msg = JSON.stringify($scope.content);
             form.append('content', msg);
-            $http({
-                method: 'POST',
+            $.ajax({
                 url: COMMENT + "&id=" + $.getUrlParam('id'),
+                type: "POST",
+                dataType: 'json',
                 data: form,
-                headers: {
-                    'Content-Type': undefined
-                },
-                transformRequest: angular.identity
-            }).then(function successCallback(response) {
-                if (response.data.state == 100) {
-                    $.triggerModalBox('您还没登录！！', '去登陆',LOGIN)
-                } else {
-                    $scope.data = response.data.data;
-                    $scope.content = null;
-                    $.triggerModalBox(response.data.msg);
+                async: false, //异步
+                processData: false, //很重要，告诉jquery不要对form进行处理
+                contentType: false, //很重要，指定为false才能形成正确的Content-Type
+                success: function(res) {
+                    if (res.data.state == 100) {
+                        $.triggerModalBox('您还没登录！！', '去登陆',LOGIN)
+                    } else {
+                        $scope.data = res.data.data;
+                        $scope.content = null;
+                        $.triggerModalBox(res.data.msg);
+                    }
                 }
-
-            }, function errorCallback(response) {
-                $.triggerModalBox(response.data.msg);
-            });
+            })
+            // $http({
+            //     method: 'POST',
+            //     url: COMMENT + "&id=" + $.getUrlParam('id'),
+            //     data: form,
+            //     headers: {'Content-Type': undefined},
+            //     transformRequest: angular.identity
+            // }).then(function successCallback(response) {
+            //     if (response.data.state == 100) {
+            //         $.triggerModalBox('您还没登录！！', '去登陆',LOGIN)
+            //     } else {
+            //         $scope.data = response.data.data;
+            //         $scope.content = null;
+            //         $.triggerModalBox(response.data.msg);
+            //     }
+            //
+            // }, function errorCallback(response) {
+            //     $.triggerModalBox(response.data.msg);
+            // });
         };
         //获取数据
         var _get = function (page, size, callback) {

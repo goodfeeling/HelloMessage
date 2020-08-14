@@ -9,6 +9,7 @@ $identity = \Yii::$app->user->identity;
 
 \common\services\StaticServices::includeAppJsStatic('@web/js/common/comment.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 <script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
 
@@ -61,3 +62,4 @@ $identity = \Yii::$app->user->identity;
         </ul>
     </nav>
 </div>
+

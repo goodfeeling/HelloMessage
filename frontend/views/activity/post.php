@@ -56,9 +56,9 @@ $urlManager = Yii::$app->urlManager;
         <div class="row mt-2">
             <?php echo \Yii::$app->view->renderFile('@app/views/common/share.php'); ?>
             <div class="col-6">
-                <button class="btn btn-danger btn-block" id="likes">
+                <a href="javascript:" class="btn btn-danger btn-block" id="likes">
                     <i class="icon ion-ios-heart"></i><?= $data['likes'] ?>
-                </button>
+                </a>
             </div>
         </div>
         <!-- * post buttons -->

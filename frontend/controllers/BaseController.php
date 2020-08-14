@@ -17,7 +17,6 @@ class BaseController extends Controller
     public function __construct($id, $module, $config = [])
     {
         parent::__construct($id, $module, $config = []);
-
         if (\Yii::$app->user->identity) {
             \Yii::$app->view->params['user_info'] =
                 AdminUser::find()

@@ -125,11 +125,10 @@ class LoginForm extends BaseModel
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
         $checkData = User::findOne(['uname' => $this->uname]);
-        $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
-        if (Yii::$app->getSecurity()->validatePassword($checkData['password'], $hash)) {
+        if (Yii::$app->getSecurity()->validatePassword($this->password, $checkData['password'])) {
             // all good, logging user in
             $duration = $this->rememberme == "on" ? 3600 * 24 * 30 : \Yii::$app->user->authTimeout;
-            \Yii::$app->user->login($this->getUser(), $duration);
+            \Yii::$app->user->login(\common\models\User::findIdentity($checkData['id']), $duration);
         } else {
             return $this->resultMsg(null, ConstStatus::CODE_LOGIN_ERROR,'账号或密码错误');
         }

@@ -31,7 +31,7 @@ class UploadForm extends Model
             $imageModel->created_at = date("Y-m-d H:i:s");
             $imageModel->save();
             if ($imageModel->save()) {
-                return true;
+                return $url;
             }
         }
         return false;

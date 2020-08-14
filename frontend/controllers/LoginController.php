@@ -9,6 +9,7 @@ use frontend\models\RegisterForm;
 use frontend\models\User;
 use Yii;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 
 class LoginController extends BaseController
 {
@@ -61,16 +62,14 @@ class LoginController extends BaseController
         // 微信登录
         if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form->code = $request->get('code');
-            $res = $form->wxLogin();
-            if (!$res) {
+            if (!$res = $form->wxLogin()) {
                 $this->goHome();
             }
         }
         // 普通登录
         if ($request->isPost) {
             $form->attributes = $request->post()["User"];
-            $res = $form->login();
-            if (!$res) {
+            if (!$res = $form->login()) {
                 return $this->goBack();
             } else {
                 return $this->asJson($res);
@@ -88,10 +87,19 @@ class LoginController extends BaseController
     {
         $request = Yii::$app->request;
         if ($request->isPost) {
-            $form = new RegisterForm();
-            $form->attributes = $request->post();
-            $res = $form->save();
-            return $this->asJson($res);
+            $upload_model = new \common\models\UploadForm();
+            $upload_model->imageFile = UploadedFile::getInstanceByName('imageFile');
+            if ($imageFile = $upload_model->upload()) {
+                $form = new RegisterForm();
+                $form->attributes = $request->post();
+                $form->imageFile = $imageFile;
+                // 文件上传成功
+                return $this->asJson($form->save());
+            }else{
+                $msg = array('errno'=>2, 'data'=>$upload_model->getErrors());
+                return $this->asJson($msg);
+            }
+
         }
         return $this->render('register');
     }
