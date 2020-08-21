@@ -72,7 +72,11 @@ class ActivityComments extends \yii\db\ActiveRecord
                 ->where(['id' => $value['uid']])
                 ->select('avatar_url,nickname')
                 ->one();
-            $value['avatar_url'] = $author['avatar_url'];
+            if (!( strpos($author['avatar_url'],'http') !== false )) {
+                $value['avatar_url'] = \Yii::$app->params['backPage'].$author['avatar_url'];
+            }else {
+                $value['avatar_url'] =$author['avatar_url'];
+            }
             $value['nickname'] = $author['nickname'];
 //            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
             $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));

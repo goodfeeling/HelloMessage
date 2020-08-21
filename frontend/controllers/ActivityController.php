@@ -18,7 +18,7 @@ class ActivityController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['apply', 'verify-user', 'user-pay', 'likes-increase'],
+                'only' => ['apply','likes-increase'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -65,7 +65,7 @@ class ActivityController extends BaseController
         $form->id = Yii::$app->request->get('id');
         $form->uid = Yii::$app->user->id;
         $res = $form->saveVerify();
-        return $this->asJson($res);
+        return $this->redirect($res['state'] == 303 ? ['user-pay'] : ['apply']);
     }
 
     /**

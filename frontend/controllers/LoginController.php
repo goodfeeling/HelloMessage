@@ -27,9 +27,13 @@ class LoginController extends BaseController
                         'allow' => true,
                         'roles' => ['?'],
                     ],
+                    [
+                        'allow'=>false,
+                        'roles'=>['@']
+                    ]
                 ],
                 'denyCallback' => function ($rule, $action) {
-                   
+                   $this->goHome();
                 }
             ]
         ];

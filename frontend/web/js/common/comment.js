@@ -32,9 +32,9 @@ angular.module('cApp', [])
                     if (res.data.state == 100) {
                         $.triggerModalBox('您还没登录！！', '去登陆',LOGIN)
                     } else {
-                        $scope.data = res.data.data;
+                        $scope.data = res.data;
                         $scope.content = null;
-                        $.triggerModalBox(res.data.msg);
+                        $.triggerModalBox(res.msg);
                     }
                 }
             })

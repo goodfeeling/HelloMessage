@@ -8,9 +8,16 @@ $identity = \Yii::$app->user->identity;
 \common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
-$avatar_url = !empty($identity) ? $this->params['user_info']['avatar_url'] : 'images/未登录头象.png';
+if (!empty($identity)) {
+    $avatar_url = $this->params['user_info']['avatar_url'];
+    if ( !(strpos($avatar_url,'http') != false )) {
+        $avatar_url = \Yii::$app->params['backPage'].$avatar_url;
+    }
+} else {
+    $avatar_url = 'images/未登录头象.png';
+}
 $title = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
-$city = !empty($identity) ? $this->params['user_info']['nickname'] : '未知';
+$city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
 
 ?>
 

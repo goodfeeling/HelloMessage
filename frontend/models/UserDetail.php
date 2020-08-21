@@ -86,8 +86,14 @@ class UserDetail extends \yii\db\ActiveRecord
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
         $model = UserDetailModel::findOne(['uid' => $this->uid]);
-        $model->attributes = $this->attributes;
-        $model->update_time = date('yy-m-d H:i:s');
+        if (empty($model)) {
+            $model = new UserDetailModel();
+            $model->attributes = $this->attributes();
+            $model->uid = $this->uid;
+        } else {
+            $model->attributes = $this->attributes;
+            $model->update_time = date('yy-m-d H:i:s');
+        }
         if ($model->save()) {
             return $this->resultMsg(null, ConstStatus::CODE_SUCCESS, '更新成功！');
         } else {
