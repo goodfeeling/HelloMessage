@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 10/08/2020 17:08:53
+ Date: 21/08/2020 17:20:09
 */
 
 SET NAMES utf8mb4;
@@ -43,9 +43,9 @@ CREATE TABLE `admin_activity` (
 -- Records of admin_activity
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_activity` VALUES (2, 'test', '2020-07-02 17:22:37', '2020-06-05 11:45:00', '100|10', '<blockquote><blockquote><p></p><p></p><p></p><p></p><h1>asdasdads</h1></blockquote></blockquote><p></p>', '12', 1, 1, '联谊', 159, 2, 40, 1);
-INSERT INTO `admin_activity` VALUES (3, 'test2', '2020-07-02 13:19:06', '2020-06-21 03:52:00', '100|10', '<p>123123</p>', '12', 123, 1, '联谊1', 159, 2, 1140, 2);
-INSERT INTO `admin_activity` VALUES (4, 'test3', '2020-07-02 17:22:18', '2020-06-21 22:58:00', '100|10', '<p>asdasdasd</p>', '12', 12, 1, '联谊12', 159, 2, 785, 3);
+INSERT INTO `admin_activity` VALUES (2, 'test', '2020-07-02 17:22:37', '2020-06-05 11:45:00', '100|10', '<blockquote><blockquote><p></p><p></p><p></p><p></p><h1>asdasdads</h1></blockquote></blockquote><p></p>', '12', 1, 1, '联谊', 159, 2, 43, 1);
+INSERT INTO `admin_activity` VALUES (3, 'test2', '2020-07-02 13:19:06', '2020-06-21 03:52:00', '100|10', '<p>123123</p>', '12', 123, 1, '联谊1', 159, 2, 1143, 2);
+INSERT INTO `admin_activity` VALUES (4, 'test3', '2020-07-02 17:22:18', '2020-06-21 22:58:00', '100|10', '<p>asdasdasd</p>', '12', 12, 1, '联谊12', 159, 2, 869, 3);
 INSERT INTO `admin_activity` VALUES (5, 'test4', '2020-07-01 23:17:03', '2020-07-05 22:55:00', '100|10', '<p>asdasdasf</p>', 'dddd', 5, 1, '联谊222', 159, 2, 2231, 2);
 COMMIT;
 
@@ -61,7 +61,7 @@ CREATE TABLE `admin_activity_comments` (
   `status` tinyint(1) NOT NULL COMMENT '审核状态',
   `uid` int(11) NOT NULL COMMENT '用户id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='评论表';
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='评论表';
 
 -- ----------------------------
 -- Records of admin_activity_comments
@@ -100,6 +100,24 @@ INSERT INTO `admin_activity_comments` VALUES (30, 4, '\"1111\"', '2020-07-02 22:
 INSERT INTO `admin_activity_comments` VALUES (31, 3, '\"sadads\"', '2020-07-02 22:44:44', 0, 159);
 INSERT INTO `admin_activity_comments` VALUES (32, 2, '\"ddd\"', '2020-07-02 22:45:45', 0, 159);
 INSERT INTO `admin_activity_comments` VALUES (33, 4, '\"测试\"', '2020-07-02 22:59:59', 0, 159);
+INSERT INTO `admin_activity_comments` VALUES (34, 4, '\"asdd\"', '2020-08-14 11:52:52', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (35, 4, '\"asdasd\"', '2020-08-14 11:53:53', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (36, 4, '\"sss\"', '2020-08-21 16:46:46', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (37, 4, '\"dddd\"', '2020-08-21 16:47:47', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (38, 4, '\"sssaaa\"', '2020-08-21 16:48:48', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (39, 4, '\"sss\"', '2020-08-21 16:49:49', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (40, 4, '\"ddd\"', '2020-08-21 16:49:49', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (41, 4, '\"asdasd\"', '2020-08-21 16:50:50', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (42, 4, '\"sss\"', '2020-08-21 16:51:51', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (43, 4, '\"ss\"', '2020-08-21 16:52:52', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (44, 4, '\"dasd\"', '2020-08-21 16:52:52', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (45, 4, '\"ffadsasd\"', '2020-08-21 16:52:52', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (46, 4, '\"vz你好\"', '2020-08-21 16:53:53', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (47, 4, '\"创新政策支持\"', '2020-08-21 16:53:53', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (48, 4, '\"自行车自行车\"', '2020-08-21 16:53:53', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (49, 4, '\"自行车自行车\"', '2020-08-21 16:54:54', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (50, 4, '\"asdasd\"', '2020-08-21 17:19:19', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (51, 4, '\"asdads\"', '2020-08-21 17:19:19', 0, 160);
 COMMIT;
 
 -- ----------------------------
@@ -111,7 +129,7 @@ CREATE TABLE `admin_activity_likes_user` (
   `uid` int(11) NOT NULL COMMENT '用户id',
   `aid` int(11) NOT NULL COMMENT '活动id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户点赞';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户点赞';
 
 -- ----------------------------
 -- Records of admin_activity_likes_user
@@ -121,6 +139,7 @@ INSERT INTO `admin_activity_likes_user` VALUES (1, 159, 4);
 INSERT INTO `admin_activity_likes_user` VALUES (2, 159, 2);
 INSERT INTO `admin_activity_likes_user` VALUES (3, 159, 3);
 INSERT INTO `admin_activity_likes_user` VALUES (4, 159, 5);
+INSERT INTO `admin_activity_likes_user` VALUES (5, 160, 4);
 COMMIT;
 
 -- ----------------------------
@@ -135,7 +154,7 @@ CREATE TABLE `admin_activity_user` (
   `join_time` datetime DEFAULT NULL COMMENT '参加时间',
   `create_time` datetime DEFAULT NULL COMMENT '报名时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='活动人员表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='活动人员表';
 
 -- ----------------------------
 -- Records of admin_activity_user
@@ -143,6 +162,7 @@ CREATE TABLE `admin_activity_user` (
 BEGIN;
 INSERT INTO `admin_activity_user` VALUES (1, 4, 159, 0, NULL, '2020-07-01 17:33:37');
 INSERT INTO `admin_activity_user` VALUES (2, 3, 159, 0, NULL, '2020-07-01 23:18:37');
+INSERT INTO `admin_activity_user` VALUES (3, 4, 160, 0, NULL, '2020-08-21 17:03:46');
 COMMIT;
 
 -- ----------------------------
@@ -201,7 +221,7 @@ CREATE TABLE `admin_images` (
   `created_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '上传时间',
   `status` tinyint(1) DEFAULT '1' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='图片表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='图片表';
 
 -- ----------------------------
 -- Records of admin_images
@@ -209,6 +229,10 @@ CREATE TABLE `admin_images` (
 BEGIN;
 INSERT INTO `admin_images` VALUES (1, '/resource/uploads/80248718158519126317016.jpg', '2020-06-21 22:00:33', 1);
 INSERT INTO `admin_images` VALUES (2, '/resource/uploads/hill-5324149_640.jpg', '2020-06-24 14:08:10', 1);
+INSERT INTO `admin_images` VALUES (3, '/resource/uploads/avatar6.jpg', '2020-08-14 10:50:58', 1);
+INSERT INTO `admin_images` VALUES (4, '/resource/uploads/avatar6.jpg', '2020-08-14 10:52:02', 1);
+INSERT INTO `admin_images` VALUES (5, '/resource/uploads/avatar6.jpg', '2020-08-14 10:52:30', 1);
+INSERT INTO `admin_images` VALUES (6, '/resource/uploads/avatar6.jpg', '2020-08-14 10:52:57', 1);
 COMMIT;
 
 -- ----------------------------
@@ -230,7 +254,7 @@ CREATE TABLE `admin_log` (
   KEY `index_create_date` (`create_date`) USING BTREE,
   KEY `index_create_index` (`create_user`) USING BTREE,
   KEY `index_url` (`url`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2340 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=2448 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统日志表';
 
 -- ----------------------------
 -- Records of admin_log
@@ -2575,6 +2599,114 @@ INSERT INTO `admin_log` VALUES (2336, 'admin-user', 'index', 'admin-user/index',
 INSERT INTO `admin_log` VALUES (2337, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-10 17:01:59');
 INSERT INTO `admin_log` VALUES (2338, 'admin-user', 'delete', 'admin-user/delete', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-10 17:02:02');
 INSERT INTO `admin_log` VALUES (2339, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-10 17:02:02');
+INSERT INTO `admin_log` VALUES (2340, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-11 10:16:25');
+INSERT INTO `admin_log` VALUES (2341, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-11 10:16:28');
+INSERT INTO `admin_log` VALUES (2342, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-11 10:16:29');
+INSERT INTO `admin_log` VALUES (2343, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 10:16:30');
+INSERT INTO `admin_log` VALUES (2344, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-11 10:16:31');
+INSERT INTO `admin_log` VALUES (2345, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 10:16:37');
+INSERT INTO `admin_log` VALUES (2346, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-11 10:16:38');
+INSERT INTO `admin_log` VALUES (2347, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-11 10:16:39');
+INSERT INTO `admin_log` VALUES (2348, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-11 10:16:40');
+INSERT INTO `admin_log` VALUES (2349, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-11 10:16:40');
+INSERT INTO `admin_log` VALUES (2350, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-11 10:16:41');
+INSERT INTO `admin_log` VALUES (2351, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-11 10:16:42');
+INSERT INTO `admin_log` VALUES (2352, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-11 10:16:42');
+INSERT INTO `admin_log` VALUES (2353, 'user-detail', 'index', 'user-detail/index', '用户管理', '详细信息', '查看', '::1', 'admin', '2020-08-11 10:16:44');
+INSERT INTO `admin_log` VALUES (2354, 'user-avatar', 'index', 'user-avatar/index', '用户管理', '头像管理', '查看', '::1', 'admin', '2020-08-11 10:16:45');
+INSERT INTO `admin_log` VALUES (2355, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-11 10:16:47');
+INSERT INTO `admin_log` VALUES (2356, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-11 10:16:47');
+INSERT INTO `admin_log` VALUES (2357, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-11 10:16:48');
+INSERT INTO `admin_log` VALUES (2358, 'order', 'index', 'order/index', '订单管理', '订单列表', '查看', '::1', 'admin', '2020-08-11 10:16:54');
+INSERT INTO `admin_log` VALUES (2359, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 10:16:57');
+INSERT INTO `admin_log` VALUES (2360, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-11 10:16:57');
+INSERT INTO `admin_log` VALUES (2361, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 10:17:00');
+INSERT INTO `admin_log` VALUES (2362, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-11 10:17:01');
+INSERT INTO `admin_log` VALUES (2363, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-11 10:17:04');
+INSERT INTO `admin_log` VALUES (2364, 'admin-role', 'index', 'admin-role/index', '菜单用户权限', '角色管理', '分配权限', '::1', 'admin', '2020-08-11 10:17:05');
+INSERT INTO `admin_log` VALUES (2365, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:08');
+INSERT INTO `admin_log` VALUES (2366, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-11 10:17:11');
+INSERT INTO `admin_log` VALUES (2367, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 10:17:11');
+INSERT INTO `admin_log` VALUES (2368, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-11 10:17:12');
+INSERT INTO `admin_log` VALUES (2369, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-11 10:17:14');
+INSERT INTO `admin_log` VALUES (2370, 'admin-role', 'index', 'admin-role/index', '菜单用户权限', '角色管理', '分配权限', '::1', 'admin', '2020-08-11 10:17:15');
+INSERT INTO `admin_log` VALUES (2371, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:15');
+INSERT INTO `admin_log` VALUES (2372, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-11 10:17:17');
+INSERT INTO `admin_log` VALUES (2373, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-11 10:17:25');
+INSERT INTO `admin_log` VALUES (2374, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-11 10:17:25');
+INSERT INTO `admin_log` VALUES (2375, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:30');
+INSERT INTO `admin_log` VALUES (2376, 'admin-user', 'delete', 'admin-user/delete', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:39');
+INSERT INTO `admin_log` VALUES (2377, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:40');
+INSERT INTO `admin_log` VALUES (2378, 'admin-user', 'delete', 'admin-user/delete', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:50');
+INSERT INTO `admin_log` VALUES (2379, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:17:50');
+INSERT INTO `admin_log` VALUES (2380, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-11 10:18:05');
+INSERT INTO `admin_log` VALUES (2381, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:18:23');
+INSERT INTO `admin_log` VALUES (2382, 'admin-user', 'view', 'admin-user/view', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:18:28');
+INSERT INTO `admin_log` VALUES (2383, 'admin-user', 'delete', 'admin-user/delete', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:19:40');
+INSERT INTO `admin_log` VALUES (2384, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 10:19:40');
+INSERT INTO `admin_log` VALUES (2385, 'admin-user', 'view', 'admin-user/view', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 11:35:06');
+INSERT INTO `admin_log` VALUES (2386, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-11 11:35:12');
+INSERT INTO `admin_log` VALUES (2387, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-11 11:35:13');
+INSERT INTO `admin_log` VALUES (2388, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-11 11:35:14');
+INSERT INTO `admin_log` VALUES (2389, 'admin-role', 'index', 'admin-role/index', '菜单用户权限', '角色管理', '分配权限', '::1', 'admin', '2020-08-11 16:02:41');
+INSERT INTO `admin_log` VALUES (2390, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:02:41');
+INSERT INTO `admin_log` VALUES (2391, 'admin-user', 'view', 'admin-user/view', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:02:46');
+INSERT INTO `admin_log` VALUES (2392, 'admin-user', 'update', 'admin-user/update', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:02:49');
+INSERT INTO `admin_log` VALUES (2393, 'admin-user', 'update', 'admin-user/update', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:02:51');
+INSERT INTO `admin_log` VALUES (2394, 'admin-user', 'update', 'admin-user/update', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:02:57');
+INSERT INTO `admin_log` VALUES (2395, 'admin-user', 'view', 'admin-user/view', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:04:28');
+INSERT INTO `admin_log` VALUES (2396, 'admin-user', 'update', 'admin-user/update', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:04:30');
+INSERT INTO `admin_log` VALUES (2397, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:04:31');
+INSERT INTO `admin_log` VALUES (2398, 'admin-user', 'delete', 'admin-user/delete', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:13:52');
+INSERT INTO `admin_log` VALUES (2399, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:13:52');
+INSERT INTO `admin_log` VALUES (2400, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-11 16:30:41');
+INSERT INTO `admin_log` VALUES (2401, 'user-avatar', 'index', 'user-avatar/index', '用户管理', '头像管理', '查看', '::1', 'admin', '2020-08-13 17:00:26');
+INSERT INTO `admin_log` VALUES (2402, 'user-detail', 'index', 'user-detail/index', '用户管理', '详细信息', '查看', '::1', 'admin', '2020-08-13 17:00:27');
+INSERT INTO `admin_log` VALUES (2403, 'user-avatar', 'index', 'user-avatar/index', '用户管理', '头像管理', '查看', '::1', 'admin', '2020-08-13 17:00:28');
+INSERT INTO `admin_log` VALUES (2404, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-13 17:00:32');
+INSERT INTO `admin_log` VALUES (2405, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-13 17:00:34');
+INSERT INTO `admin_log` VALUES (2406, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-13 17:00:35');
+INSERT INTO `admin_log` VALUES (2407, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-13 17:00:35');
+INSERT INTO `admin_log` VALUES (2408, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:00:39');
+INSERT INTO `admin_log` VALUES (2409, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-13 17:00:39');
+INSERT INTO `admin_log` VALUES (2410, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-13 17:00:40');
+INSERT INTO `admin_log` VALUES (2411, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:00:41');
+INSERT INTO `admin_log` VALUES (2412, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-13 17:00:41');
+INSERT INTO `admin_log` VALUES (2413, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:00:43');
+INSERT INTO `admin_log` VALUES (2414, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-13 17:00:44');
+INSERT INTO `admin_log` VALUES (2415, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:00:45');
+INSERT INTO `admin_log` VALUES (2416, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-13 17:00:50');
+INSERT INTO `admin_log` VALUES (2417, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-13 17:00:54');
+INSERT INTO `admin_log` VALUES (2418, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-13 17:00:55');
+INSERT INTO `admin_log` VALUES (2419, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-13 17:00:57');
+INSERT INTO `admin_log` VALUES (2420, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-13 17:01:02');
+INSERT INTO `admin_log` VALUES (2421, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:01:11');
+INSERT INTO `admin_log` VALUES (2422, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-13 17:01:11');
+INSERT INTO `admin_log` VALUES (2423, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-13 17:01:12');
+INSERT INTO `admin_log` VALUES (2424, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-13 17:01:17');
+INSERT INTO `admin_log` VALUES (2425, 'feedback', 'index', 'feedback/index', '反馈管理', '公众号反馈', '查看', '::1', 'admin', '2020-08-13 17:01:19');
+INSERT INTO `admin_log` VALUES (2426, 'admin-log', 'index', 'admin-log/index', '日志管理', '操作日志', '操作', '::1', 'admin', '2020-08-13 17:01:21');
+INSERT INTO `admin_log` VALUES (2427, 'admin-log', 'view', 'admin-log/view', '日志管理', '操作日志', '操作', '::1', 'admin', '2020-08-13 17:01:25');
+INSERT INTO `admin_log` VALUES (2428, 'feedback', 'index', 'feedback/index', '反馈管理', '公众号反馈', '查看', '::1', 'admin', '2020-08-13 17:01:32');
+INSERT INTO `admin_log` VALUES (2429, 'feedback', 'delete', 'feedback/delete', '反馈管理', '公众号反馈', '查看', '::1', 'admin', '2020-08-13 17:01:40');
+INSERT INTO `admin_log` VALUES (2430, 'admin-log', 'index', 'admin-log/index', '日志管理', '操作日志', '操作', '::1', 'admin', '2020-08-13 17:26:25');
+INSERT INTO `admin_log` VALUES (2431, 'feedback', 'index', 'feedback/index', '反馈管理', '公众号反馈', '查看', '::1', 'admin', '2020-08-13 17:26:27');
+INSERT INTO `admin_log` VALUES (2432, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-13 17:26:28');
+INSERT INTO `admin_log` VALUES (2433, 'order', 'index', 'order/index', '订单管理', '订单列表', '查看', '::1', 'admin', '2020-08-13 17:26:29');
+INSERT INTO `admin_log` VALUES (2434, 'user-avatar', 'index', 'user-avatar/index', '用户管理', '头像管理', '查看', '::1', 'admin', '2020-08-13 17:26:30');
+INSERT INTO `admin_log` VALUES (2435, 'user-detail', 'index', 'user-detail/index', '用户管理', '详细信息', '查看', '::1', 'admin', '2020-08-13 17:26:31');
+INSERT INTO `admin_log` VALUES (2436, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-13 17:26:32');
+INSERT INTO `admin_log` VALUES (2437, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-13 17:26:33');
+INSERT INTO `admin_log` VALUES (2438, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-13 17:26:34');
+INSERT INTO `admin_log` VALUES (2439, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-13 17:26:35');
+INSERT INTO `admin_log` VALUES (2440, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-13 17:26:36');
+INSERT INTO `admin_log` VALUES (2441, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-13 17:26:36');
+INSERT INTO `admin_log` VALUES (2442, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-13 17:26:38');
+INSERT INTO `admin_log` VALUES (2443, 'admin-role', 'index', 'admin-role/index', '菜单用户权限', '角色管理', '分配权限', '::1', 'admin', '2020-08-13 17:26:38');
+INSERT INTO `admin_log` VALUES (2444, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-13 17:26:39');
+INSERT INTO `admin_log` VALUES (2445, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-14 10:53:23');
+INSERT INTO `admin_log` VALUES (2446, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-21 15:12:19');
+INSERT INTO `admin_log` VALUES (2447, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-21 15:12:27');
 COMMIT;
 
 -- ----------------------------
@@ -3044,20 +3176,15 @@ CREATE TABLE `admin_user` (
   `bind_phone` varchar(11) DEFAULT NULL COMMENT '绑定手机',
   `city` varchar(20) DEFAULT NULL COMMENT '城市',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
 -- ----------------------------
 -- Records of admin_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_user` VALUES (156, 'admin', '$2y$13$9O6bKJieocg//oSax9fZOOuljAKarBXknqD8.RyYg60FfNjS7SoqK', NULL, '112.96.66.245', 'n', NULL, 10, 'admin', '2014-07-07 00:05:47', 'admin', '2014-09-03 12:19:12', 0, '', '', '', '', '', NULL);
-INSERT INTO `admin_user` VALUES (158, 'test', '$2y$13$9O6bKJieocg//oSax9fZOOuljAKarBXknqD8.RyYg60FfNjS7SoqK', NULL, '', 'n', NULL, 10, 'admin', '2014-09-03 12:19:52', 'admin', '2014-11-21 19:19:22', 0, '', '', '', '', '', NULL);
+INSERT INTO `admin_user` VALUES (156, 'admin', '$2y$13$9O6bKJieocg//oSax9fZOOuljAKarBXknqD8.RyYg60FfNjS7SoqK', NULL, 'Unknown', 'n', NULL, 10, 'admin', '2014-07-07 00:05:47', 'admin', '2014-09-03 12:19:12', 0, '', '', 'admin', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', '', NULL);
 INSERT INTO `admin_user` VALUES (159, 'oeailwsked41rfDRR2VEpq4bbh2I', '$2y$05$x6evM.6pI.LHaJbGuVgc4etx/Aj8.1HXxDch2J5e/YVTEmETY7XIe', NULL, '219.136.74.189', 'n', NULL, 10, 'front', '0000-00-00 00:00:00', 'front', '0000-00-00 00:00:00', 2, '34_EiQVR7QTCyBCh9IwoksN8oUDgqRConR5IcakfgYR4jrkIGXbT9PkmqAfUmtm85dh1pjRecvYw1wcIga8Qrxpog', 'oeailwsked41rfDRR2VEpq4bbh2I', 'Edward', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', NULL, '');
-INSERT INTO `admin_user` VALUES (163, 'admin112312', '$2y$05$YL71JgVEPLN73kf3TPQWuO6XO7xTce/JqFoEpSq3HCZLsN2eGBvW2', NULL, NULL, 'n', NULL, 0, 'front', '2020-08-10 00:00:00', 'front', '2020-08-10 00:00:00', 2, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `admin_user` VALUES (164, 'admin1234444', '$2y$05$t2lDm.syZgOFfK2lXnjJ/ermVAcgXCgWtgcHhigLytjaMErBCADOG', NULL, NULL, 'n', NULL, 0, 'front', '2020-08-10 00:00:00', 'front', '2020-08-10 00:00:00', 2, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `admin_user` VALUES (165, 'admin123123dd', '$2y$05$YYYiWlCAxb3EUEF7bwyPXuQdkPSpmB9prMg.1l8z9wWXP9H7yeqku', NULL, NULL, 'n', NULL, 0, 'front', '2020-08-10 00:00:00', 'front', '2020-08-10 00:00:00', 2, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `admin_user` VALUES (166, 'adminqweas', '$2y$05$aOl8ijKXMhhYrTKLIvbmA.o6Z4q40GN.DlIsrbBuRnQY.NNwRDsBy', NULL, NULL, 'n', NULL, 0, 'front', '2020-08-10 00:00:00', 'front', '2020-08-10 00:00:00', 2, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `admin_user` VALUES (167, 'dasd', '$2y$05$hC70g3yWSXxnhB1zDbsUm.mN6HJveljlHNWy9ttgorn/9u2b0.WeG', NULL, NULL, 'n', NULL, 0, 'front', '2020-08-10 00:00:00', 'front', '2020-08-10 00:00:00', 2, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `admin_user` VALUES (160, 'admin1', '$2y$13$Z1jekffsOwNrSJR5MtC1rOoEm5mS0bcUW3nZzviv9ZX33vlBt5hJm', NULL, NULL, 'n', NULL, 10, 'front', '2020-08-14 00:00:00', 'front', '2020-08-14 00:00:00', 2, NULL, NULL, 'admin1', '/resource/uploads/avatar6.jpg', NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -3092,17 +3219,18 @@ CREATE TABLE `admin_user_detail` (
   `mate_require` varchar(500) DEFAULT NULL COMMENT '择偶要求',
   `gender` tinyint(1) DEFAULT NULL COMMENT '性别',
   `height` int(3) DEFAULT NULL COMMENT '身高',
-  `mobile` int(11) DEFAULT NULL COMMENT '联系方式',
+  `mobile` varchar(20) DEFAULT NULL COMMENT '联系方式',
   `addtime` datetime DEFAULT NULL COMMENT '添加时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户详细信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户详细信息表';
 
 -- ----------------------------
 -- Records of admin_user_detail
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_user_detail` VALUES (1, 159, '22222222', '2020-07-02 00:00:00', '公务员', '5万～10万', '无', '已婚', '大专', '广东', '活跃', 'qwe', 'asd', 1, 18, 2147483647, NULL, '2020-07-02 16:53:53');
+INSERT INTO `admin_user_detail` VALUES (1, 159, '22222222', '2020-07-02 00:00:00', '公务员', '5万～10万', '无', '已婚', '大专', '广东', '活跃', 'qwe', 'asd', 1, 18, '21474836471', NULL, '2020-07-02 16:53:53');
+INSERT INTO `admin_user_detail` VALUES (2, 160, '账号登录', '2020-08-12 00:00:00', '老师', '5万～10万', '无', '未婚', '大专', 'sas', '完美', '  sdasd', '  asdas', 1, 111, '13538863962', NULL, '2020-08-21 16:04:41');
 COMMIT;
 
 -- ----------------------------
@@ -3122,14 +3250,13 @@ CREATE TABLE `admin_user_role` (
   KEY `index_role_id` (`role_id`) USING BTREE,
   CONSTRAINT `admin_user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `admin_user` (`id`) ON DELETE CASCADE,
   CONSTRAINT `admin_user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `admin_role` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户权限表';
 
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
 BEGIN;
 INSERT INTO `admin_user_role` VALUES (1, 156, 1, 'admin', '2016-08-12 17:03:13', 'admin', '2016-08-12 17:03:13');
-INSERT INTO `admin_user_role` VALUES (2, 158, 2, 'test', '2016-08-13 16:34:20', 'test', '2016-08-13 16:34:20');
 COMMIT;
 
 -- ----------------------------
