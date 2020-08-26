@@ -24,7 +24,8 @@
         "2amigos/qrcode-library": "~1.1",
         "2amigos/yii2-qrcode-helper": "*",
         "yiisoft/yii2-redis": "^2.0",
-        "yiisoft/yii2-elasticsearch": "^2.1"
+        "yiisoft/yii2-elasticsearch": "^2.1",
+        "sizeg/yii2-jwt": "v2.0.1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

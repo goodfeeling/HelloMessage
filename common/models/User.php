@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\filters\RateLimitInterface;
 use yii\web\IdentityInterface;
 
 /**
@@ -33,10 +34,14 @@ use yii\web\IdentityInterface;
  * @property string $avatar_url
  * @property string $bind_phone
  * @property string $city
+ * @property string $allowance
+ * @property string $allowance_updated_at
+ * @property string $rateLimit
+ * @property string $rangeTime
  *
  * @property AdminUserRole[] $adminUserRoles
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface,RateLimitInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
@@ -90,11 +95,12 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
+     * @param \Lcobucci\JWT\Token $token
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => (string) $token->getClaim('uid')]);
     }
 
     /**
@@ -218,5 +224,23 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+
+    public function getRateLimit($request, $action)
+    {
+        return [$this->rateLimit, $this->rangeTime]; // $rateLimit requests per second
+    }
+
+    public function loadAllowance($request, $action)
+    {
+        return [$this->allowance, $this->allowance_updated_at];
+    }
+
+    public function saveAllowance($request, $action, $allowance, $timestamp)
+    {
+        $this->allowance = $allowance;
+        $this->allowance_updated_at = $timestamp;
+        $this->save();
     }
 }

@@ -87,7 +87,7 @@ class LoginController extends BaseController
     }
 
     /**
-     * Weacht Jump API
+     * WeachtJumpUrl API
      * @return \yii\web\Response
      */
     public function actionJumpLoginPage()

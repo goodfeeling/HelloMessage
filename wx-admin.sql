@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 21/08/2020 17:20:09
+ Date: 26/08/2020 16:16:24
 */
 
 SET NAMES utf8mb4;
@@ -44,7 +44,7 @@ CREATE TABLE `admin_activity` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `admin_activity` VALUES (2, 'test', '2020-07-02 17:22:37', '2020-06-05 11:45:00', '100|10', '<blockquote><blockquote><p></p><p></p><p></p><p></p><h1>asdasdads</h1></blockquote></blockquote><p></p>', '12', 1, 1, '联谊', 159, 2, 43, 1);
-INSERT INTO `admin_activity` VALUES (3, 'test2', '2020-07-02 13:19:06', '2020-06-21 03:52:00', '100|10', '<p>123123</p>', '12', 123, 1, '联谊1', 159, 2, 1143, 2);
+INSERT INTO `admin_activity` VALUES (3, 'test2', '2020-07-02 13:19:06', '2020-06-21 03:52:00', '100|10', '<p>123123</p>', '12', 123, 1, '联谊1', 159, 2, 1145, 2);
 INSERT INTO `admin_activity` VALUES (4, 'test3', '2020-07-02 17:22:18', '2020-06-21 22:58:00', '100|10', '<p>asdasdasd</p>', '12', 12, 1, '联谊12', 159, 2, 869, 3);
 INSERT INTO `admin_activity` VALUES (5, 'test4', '2020-07-01 23:17:03', '2020-07-05 22:55:00', '100|10', '<p>asdasdasf</p>', 'dddd', 5, 1, '联谊222', 159, 2, 2231, 2);
 COMMIT;
@@ -61,7 +61,7 @@ CREATE TABLE `admin_activity_comments` (
   `status` tinyint(1) NOT NULL COMMENT '审核状态',
   `uid` int(11) NOT NULL COMMENT '用户id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='评论表';
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='评论表';
 
 -- ----------------------------
 -- Records of admin_activity_comments
@@ -118,6 +118,9 @@ INSERT INTO `admin_activity_comments` VALUES (48, 4, '\"自行车自行车\"', '
 INSERT INTO `admin_activity_comments` VALUES (49, 4, '\"自行车自行车\"', '2020-08-21 16:54:54', 0, 160);
 INSERT INTO `admin_activity_comments` VALUES (50, 4, '\"asdasd\"', '2020-08-21 17:19:19', 0, 160);
 INSERT INTO `admin_activity_comments` VALUES (51, 4, '\"asdads\"', '2020-08-21 17:19:19', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (52, 3, '\"真好玩儿鸭\"', '2020-08-21 17:23:23', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (53, 3, '\"晚上一起去玩\"', '2020-08-21 17:23:23', 0, 160);
+INSERT INTO `admin_activity_comments` VALUES (54, 3, '\"你好鸭\"', '2020-08-21 17:23:23', 0, 160);
 COMMIT;
 
 -- ----------------------------
@@ -163,6 +166,23 @@ BEGIN;
 INSERT INTO `admin_activity_user` VALUES (1, 4, 159, 0, NULL, '2020-07-01 17:33:37');
 INSERT INTO `admin_activity_user` VALUES (2, 3, 159, 0, NULL, '2020-07-01 23:18:37');
 INSERT INTO `admin_activity_user` VALUES (3, 4, 160, 0, NULL, '2020-08-21 17:03:46');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for admin_car
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_car`;
+CREATE TABLE `admin_car` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of admin_car
+-- ----------------------------
+BEGIN;
+INSERT INTO `admin_car` VALUES (1, '111');
 COMMIT;
 
 -- ----------------------------
@@ -254,7 +274,7 @@ CREATE TABLE `admin_log` (
   KEY `index_create_date` (`create_date`) USING BTREE,
   KEY `index_create_index` (`create_user`) USING BTREE,
   KEY `index_url` (`url`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2448 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=2466 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统日志表';
 
 -- ----------------------------
 -- Records of admin_log
@@ -2707,6 +2727,24 @@ INSERT INTO `admin_log` VALUES (2444, 'admin-user', 'index', 'admin-user/index',
 INSERT INTO `admin_log` VALUES (2445, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-14 10:53:23');
 INSERT INTO `admin_log` VALUES (2446, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-21 15:12:19');
 INSERT INTO `admin_log` VALUES (2447, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-21 15:12:27');
+INSERT INTO `admin_log` VALUES (2448, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-25 10:52:41');
+INSERT INTO `admin_log` VALUES (2449, 'admin-user', 'index', 'admin-user/index', '菜单用户权限', '用户管理', '用户操作', '::1', 'admin', '2020-08-25 10:52:43');
+INSERT INTO `admin_log` VALUES (2450, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-25 10:52:46');
+INSERT INTO `admin_log` VALUES (2451, 'system', 'index', 'system/index', '系统管理', '系统配置', '查看', '::1', 'admin', '2020-08-25 10:52:48');
+INSERT INTO `admin_log` VALUES (2452, 'mail-setting', 'index', 'mail-setting/index', '系统管理', '邮箱设置', '查看', '::1', 'admin', '2020-08-25 10:52:48');
+INSERT INTO `admin_log` VALUES (2453, 'wechat-config', 'index', 'wechat-config/index', '系统管理', '微信配置', '微信配置', '::1', 'admin', '2020-08-25 10:52:49');
+INSERT INTO `admin_log` VALUES (2454, 'admin-role', 'index', 'admin-role/index', '菜单用户权限', '角色管理', '分配权限', '::1', 'admin', '2020-08-25 10:52:51');
+INSERT INTO `admin_log` VALUES (2455, 'admin-module', 'index', 'admin-module/index', '菜单用户权限', '菜单管理', '一级菜单查看', '::1', 'admin', '2020-08-25 10:52:52');
+INSERT INTO `admin_log` VALUES (2456, 'feedback', 'index', 'feedback/index', '反馈管理', '公众号反馈', '查看', '::1', 'admin', '2020-08-25 10:52:56');
+INSERT INTO `admin_log` VALUES (2457, 'images', 'index', 'images/index', '资源管理', '图片列表', '查看', '::1', 'admin', '2020-08-25 10:53:02');
+INSERT INTO `admin_log` VALUES (2458, 'order', 'index', 'order/index', '订单管理', '订单列表', '查看', '::1', 'admin', '2020-08-25 10:53:06');
+INSERT INTO `admin_log` VALUES (2459, 'user-detail', 'index', 'user-detail/index', '用户管理', '详细信息', '查看', '::1', 'admin', '2020-08-25 10:53:08');
+INSERT INTO `admin_log` VALUES (2460, 'user-avatar', 'index', 'user-avatar/index', '用户管理', '头像管理', '查看', '::1', 'admin', '2020-08-25 10:53:08');
+INSERT INTO `admin_log` VALUES (2461, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-25 10:53:10');
+INSERT INTO `admin_log` VALUES (2462, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-25 10:53:10');
+INSERT INTO `admin_log` VALUES (2463, 'activity', 'index', 'activity/index', '活动管理', '活动列表', '查看', '::1', 'admin', '2020-08-25 10:53:11');
+INSERT INTO `admin_log` VALUES (2464, 'activity-user', 'index', 'activity-user/index', '活动管理', '活动用户列表', '用户列表', '::1', 'admin', '2020-08-25 10:53:12');
+INSERT INTO `admin_log` VALUES (2465, 'activity-comment', 'index', 'activity-comment/index', '活动管理', '文章评论', '查看', '::1', 'admin', '2020-08-25 10:53:12');
 COMMIT;
 
 -- ----------------------------
@@ -3175,6 +3213,10 @@ CREATE TABLE `admin_user` (
   `avatar_url` varchar(200) DEFAULT NULL COMMENT '微信头像',
   `bind_phone` varchar(11) DEFAULT NULL COMMENT '绑定手机',
   `city` varchar(20) DEFAULT NULL COMMENT '城市',
+  `allowance` int(50) DEFAULT NULL COMMENT 'api参数',
+  `allowance_updated_at` int(32) DEFAULT NULL COMMENT 'api参数',
+  `rateLimit` varchar(20) DEFAULT '100' COMMENT 'api参数',
+  `rangeTime` int(20) DEFAULT '100' COMMENT 'api参数',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
@@ -3182,9 +3224,9 @@ CREATE TABLE `admin_user` (
 -- Records of admin_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `admin_user` VALUES (156, 'admin', '$2y$13$9O6bKJieocg//oSax9fZOOuljAKarBXknqD8.RyYg60FfNjS7SoqK', NULL, 'Unknown', 'n', NULL, 10, 'admin', '2014-07-07 00:05:47', 'admin', '2014-09-03 12:19:12', 0, '', '', 'admin', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', '', NULL);
-INSERT INTO `admin_user` VALUES (159, 'oeailwsked41rfDRR2VEpq4bbh2I', '$2y$05$x6evM.6pI.LHaJbGuVgc4etx/Aj8.1HXxDch2J5e/YVTEmETY7XIe', NULL, '219.136.74.189', 'n', NULL, 10, 'front', '0000-00-00 00:00:00', 'front', '0000-00-00 00:00:00', 2, '34_EiQVR7QTCyBCh9IwoksN8oUDgqRConR5IcakfgYR4jrkIGXbT9PkmqAfUmtm85dh1pjRecvYw1wcIga8Qrxpog', 'oeailwsked41rfDRR2VEpq4bbh2I', 'Edward', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', NULL, '');
-INSERT INTO `admin_user` VALUES (160, 'admin1', '$2y$13$Z1jekffsOwNrSJR5MtC1rOoEm5mS0bcUW3nZzviv9ZX33vlBt5hJm', NULL, NULL, 'n', NULL, 10, 'front', '2020-08-14 00:00:00', 'front', '2020-08-14 00:00:00', 2, NULL, NULL, 'admin1', '/resource/uploads/avatar6.jpg', NULL, NULL);
+INSERT INTO `admin_user` VALUES (156, 'admin', '$2y$13$9O6bKJieocg//oSax9fZOOuljAKarBXknqD8.RyYg60FfNjS7SoqK', NULL, 'Unknown', 'n', NULL, 10, 'admin', '2014-07-07 00:05:47', 'admin', '2014-09-03 12:19:12', 0, '', '', 'admin', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', '', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `admin_user` VALUES (159, 'oeailwsked41rfDRR2VEpq4bbh2I', '$2y$05$x6evM.6pI.LHaJbGuVgc4etx/Aj8.1HXxDch2J5e/YVTEmETY7XIe', NULL, '219.136.74.189', 'n', NULL, 10, 'front', '0000-00-00 00:00:00', 'front', '0000-00-00 00:00:00', 2, '34_EiQVR7QTCyBCh9IwoksN8oUDgqRConR5IcakfgYR4jrkIGXbT9PkmqAfUmtm85dh1pjRecvYw1wcIga8Qrxpog', 'oeailwsked41rfDRR2VEpq4bbh2I', 'Edward', 'http://thirdwx.qlogo.cn/mmopen/vi_32/XtRviaT0jQ6mMcQDBicHh23Rs8GyVXicQicNhhPAgw1P4SeribRnwjniasibEHd5ibqJkRFrtbzuwnaX5kBicMdYfceDAog/132', NULL, '', NULL, NULL, NULL, NULL);
+INSERT INTO `admin_user` VALUES (160, 'admin1', '$2y$13$Z1jekffsOwNrSJR5MtC1rOoEm5mS0bcUW3nZzviv9ZX33vlBt5hJm', NULL, NULL, 'n', NULL, 10, 'front', '2020-08-14 00:00:00', 'front', '2020-08-14 00:00:00', 2, NULL, NULL, 'admin1', '/resource/uploads/avatar6.jpg', NULL, NULL, NULL, NULL, '100', 100);
 COMMIT;
 
 -- ----------------------------
@@ -3230,7 +3272,7 @@ CREATE TABLE `admin_user_detail` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `admin_user_detail` VALUES (1, 159, '22222222', '2020-07-02 00:00:00', '公务员', '5万～10万', '无', '已婚', '大专', '广东', '活跃', 'qwe', 'asd', 1, 18, '21474836471', NULL, '2020-07-02 16:53:53');
-INSERT INTO `admin_user_detail` VALUES (2, 160, '账号登录', '2020-08-12 00:00:00', '老师', '5万～10万', '无', '未婚', '大专', 'sas', '完美', '  sdasd', '  asdas', 1, 111, '13538863962', NULL, '2020-08-21 16:04:41');
+INSERT INTO `admin_user_detail` VALUES (2, 160, '账号登录', '2020-08-12 00:00:00', '老师', '5万～10万', '无', '未婚', '大专', 'sas', '完美', ' sdasd', ' asdas', 1, 111, '13538863962', NULL, '2020-08-26 11:55:08');
 COMMIT;
 
 -- ----------------------------
