@@ -1,4 +1,3 @@
-
 $('#applyBtn').on('click', function (e) {
     $.ajax({
         url: VERIFY_USER,

@@ -15,20 +15,15 @@ class ChatController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['apply', 'verify-user', 'user-pay', 'likes-increase'],
+                'only' => ['index', 'my-chat'],
                 'rules' => [
                     [
                         'allow' => true,
                         'roles' => ['@'],
-                        'verbs' => ['POST']
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
-                    return $this->asJson([
-                        'msg' => '您需要登陆!',
-                        'state' => 100,
-                        'data' => null,
-                    ]);
+                    return $this->redirect(['login/index']);
                 }
             ],
         ];
