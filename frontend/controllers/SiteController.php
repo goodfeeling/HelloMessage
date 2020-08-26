@@ -46,6 +46,10 @@ class SiteController extends BaseController
         return $this->render('setting');
     }
 
+    /**
+     * Displays helper document.
+     * @return string
+     */
     public function actionFaq()
     {
         return $this->render('faq');

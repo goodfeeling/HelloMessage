@@ -33,7 +33,7 @@ class MyActivityController extends BaseController
     }
 
     /**
-     * Displays 我的分类.
+     * Displays my class.
      *
      * @return mixed
      */

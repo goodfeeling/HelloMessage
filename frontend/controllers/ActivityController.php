@@ -57,7 +57,8 @@ class ActivityController extends BaseController
     }
 
     /**
-     * 验证用户
+     * verify user
+     * @return \yii\web\Response
      */
     public function actionVerifyUser()
     {
@@ -69,7 +70,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 活动详情.
+     * Displays article detail.
      *
      * @return mixed
      */
@@ -86,7 +87,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 活动分类.
+     * Displays new class.
      *
      * @return mixed
      */
@@ -103,7 +104,7 @@ class ActivityController extends BaseController
 
 
     /**
-     * Displays 支付报名费.
+     * Displays pay.
      *
      * @return mixed
      */
@@ -123,7 +124,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 喜欢递增.
+     * Displays incr like.
      *
      * @return mixed
      */
@@ -137,7 +138,7 @@ class ActivityController extends BaseController
     }
 
     /**
-     * Displays 评论列表.
+     * Displays comment list.
      *
      * @return mixed
      */

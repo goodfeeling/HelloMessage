@@ -57,7 +57,11 @@ class LoginController extends BaseController
             ],
         ];
     }
-    
+
+    /**
+     * Display Login Page
+     * @return string|\yii\web\Response
+     */
     public function actionIndex()
     {
         $request = Yii::$app->request;
@@ -82,11 +86,19 @@ class LoginController extends BaseController
         return $this->render('index',['model'=> new User()]);
     }
 
+    /**
+     * Weacht Jump API
+     * @return \yii\web\Response
+     */
     public function actionJumpLoginPage()
     {
         return $this->asJson((new User())->jumpLogin());
     }
 
+    /**
+     * User Register API
+     * @return string|\yii\web\Response
+     */
     public function actionRegister()
     {
         $request = Yii::$app->request;
@@ -108,11 +120,19 @@ class LoginController extends BaseController
         return $this->render('register');
     }
 
+    /**
+     * Edit Password
+     * @return string
+     */
     public function actionForgotPassword()
     {
         return $this->render('forgot-password');
     }
 
+    /**
+     * User Logout
+     * @return \yii\web\Response
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();

@@ -36,6 +36,10 @@ class DiscoverController extends BaseController
         ];
     }
 
+    /**
+     * Display Discover page
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');

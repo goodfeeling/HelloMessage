@@ -39,6 +39,10 @@ class UserInfoController extends BaseController
         ];
     }
 
+    /**
+     * Display user detail
+     * @return string|\yii\web\Response
+     */
     public function actionIndex()
     {
         $request = Yii::$app->request;

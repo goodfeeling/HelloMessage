@@ -34,11 +34,19 @@ class SearchController extends BaseController
         ];
     }
 
+    /**
+     * Display Search Page
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    /**
+     * Display Search lists
+     * @return string
+     */
     public function actionLists()
     {
         return $this->render('lists');

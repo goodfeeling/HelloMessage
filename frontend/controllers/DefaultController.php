@@ -34,13 +34,19 @@ class DefaultController extends BaseController
         ];
     }
 
-    // 微信支付接口
+    /**
+     * wechat pay api
+     */
     public function actionPay()
     {
 
     }
 
-    // 获取二维码接口
+    /**
+     * get QR code api
+     * @return mixed
+     * @throws \yii\base\InvalidConfigException
+     */
     public function actionGetQr()
     {
         if (\Yii::$app->request->isGet) {

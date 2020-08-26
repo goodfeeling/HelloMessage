@@ -8,6 +8,10 @@ use yii\web\Controller;
 
 class FeedbackController extends BaseController
 {
+    /**
+     * Display Feedback page
+     * @return string|\yii\web\Response
+     */
     public function actionIndex()
     {
         $request = Yii::$app->request;

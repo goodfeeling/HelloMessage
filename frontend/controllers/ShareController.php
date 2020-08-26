@@ -36,6 +36,10 @@ class ShareController extends BaseController
         ];
     }
 
+    /**
+     * Get Setting config
+     * @return \yii\web\Response
+     */
     public function actionGetConfig()
     {
         $request = \Yii::$app->request;

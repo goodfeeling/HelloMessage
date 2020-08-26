@@ -29,11 +29,19 @@ class ChatController extends BaseController
         ];
     }
 
+    /**
+     * chat page
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    /**
+     * address list
+     * @return string
+     */
     public function actionMyChat()
     {
         return $this->render('my-chat');
