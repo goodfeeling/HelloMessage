@@ -226,13 +226,6 @@ $modelLabel = new \backend\models\ActivityModel();
                     </div>
 
 
-                    <div id="status_div" class="form-group">
-                        <label for="status" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("status") ?></label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="status" name="ActivityModel[status]" placeholder="" />
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
 
                     <div id="status_div" class="form-group">
                         <label for="status" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("status")?></label>
@@ -243,7 +236,6 @@ $modelLabel = new \backend\models\ActivityModel();
                                     echo "<option value=\"{$key}\">{$value}</option>";
                                 }
                                 ?>
-
                             </select>
                         </div>
                         <div class="clearfix"></div>

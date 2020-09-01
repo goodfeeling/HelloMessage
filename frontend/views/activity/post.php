@@ -38,7 +38,7 @@ $urlManager = Yii::$app->urlManager;
         <!-- post body -->
         <div class="postBody">
             <?= $data['describe'] ?>
-            <button id="applyBtn" class="btn btn-primary btn-block mb-1">活动资格申请</button>
+<!--            <button id="applyBtn" class="btn btn-primary btn-block mb-1">活动资格申请</button>-->
         </div>
         <!-- * post body -->
 

@@ -5,6 +5,7 @@ namespace frontend\models;
 
 
 use backend\models\ActivityUserModel;
+use backend\models\AdminUser;
 use backend\models\UserDetailModel;
 use common\utils\ConstStatus;
 

@@ -20,7 +20,6 @@ $('.submit').on('click', function (e) {
             $.triggerModalBox(data['msg']);
         },
         error: function (jqXHR, errMsg) {
-            alert(errMsg);
         }
     });
     return false; // 防止默认提交

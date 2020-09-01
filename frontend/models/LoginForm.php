@@ -128,7 +128,11 @@ class LoginForm extends BaseModel
         if (Yii::$app->getSecurity()->validatePassword($this->password, $checkData['password'])) {
             // all good, logging user in
             $duration = $this->rememberme == "on" ? 3600 * 24 * 30 : \Yii::$app->user->authTimeout;
-            \Yii::$app->user->login(\common\models\User::findIdentity($checkData['id']), $duration);
+            if ($user_instance = \common\models\User::findIdentity($checkData['id'])) {
+                \Yii::$app->user->login(\common\models\User::findIdentity($checkData['id']), $duration);
+            } else {
+                return $this->resultMsg(null, ConstStatus::CODE_LOGIN_ERROR,'用户未审核');
+            }
         } else {
             return $this->resultMsg(null, ConstStatus::CODE_LOGIN_ERROR,'账号或密码错误');
         }
