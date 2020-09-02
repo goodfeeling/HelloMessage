@@ -23,6 +23,14 @@ use yii\helpers\Url;
         </a>
     </div>
     <div class="item" id="search">
+        <a href="<?php echo Url::to(['cart/index']) ?>">
+            <p>
+                <i class="icon ion-ios-cart"></i>
+                <span>购物车</span>
+            </p>
+        </a>
+    </div>
+    <div class="item" id="search">
         <a href="<?php echo Url::to(['search/index']) ?>">
             <p>
                 <i class="icon ion-ios-search"></i>

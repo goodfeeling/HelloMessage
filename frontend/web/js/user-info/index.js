@@ -8,6 +8,10 @@ $('#gender2').click(function (e) {
     $('#gender1').children().attr('value', '0')
 })
 
+$('#showimg').click(function(e){
+    window.location = AVATAR
+})
+
 $('#submit').click(function (e) {
     $.ajax({
         url: USER_INFO,

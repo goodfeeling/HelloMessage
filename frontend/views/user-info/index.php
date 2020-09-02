@@ -6,7 +6,7 @@ $this->title = '个人中心';
 $urlManager = Yii::$app->urlManager;
 \common\services\StaticServices::includeAppJsStatic('@web/js/user-info/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
-$avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url']);
+$avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url'] ?? '');
 ?>
 
 <!-- App Header -->
@@ -18,7 +18,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <label for="exampleInputFile">头像</label>
-            <img id="showimg" src="<?= $avatar_url ?? '' ?>" class="img-circle" style="width: 60px;height: 60px;"/>
+            <img id="showimg" src="<?= $avatar_url ?? '' ?>" class="img-circle" style="width: 60px;height: 60px;margin-left: 10px;margin-top: 10px"/>
             <p class="help-block">点击按钮即可上传.</p>
         </div>
 

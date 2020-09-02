@@ -89,7 +89,7 @@ class UserDetail extends \yii\db\ActiveRecord
         $model = UserDetailModel::findOne(['uid' => $this->uid]);
         if (empty($model)) {
             $model = new UserDetailModel();
-            $model->attributes = $this->attributes();
+            $model->attributes = $this->attributes;
             $model->uid = $this->uid;
         } else {
             $model->attributes = $this->attributes;

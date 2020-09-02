@@ -67,28 +67,6 @@ class User extends ActiveRecord implements IdentityInterface,RateLimitInterface
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
-        return [
-            [['uname', 'password', 'create_user', 'create_date', 'update_user', 'update_date', 'access_token', 'wechat_platform_open_id', 'nickname', 'avatar_url'], 'required'],
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['create_date', 'update_date'], 'safe'],
-            [['uname', 'domain_account', 'create_user'], 'string', 'max' => 100],
-            [['password', 'avatar_url'], 'string', 'max' => 200],
-            [['auth_key', 'last_ip'], 'string', 'max' => 50],
-            [['is_online'], 'string', 'max' => 1],
-            [['update_user'], 'string', 'max' => 101],
-            [['access_token', 'nickname'], 'string', 'max' => 255],
-            [['wechat_platform_open_id'], 'string', 'max' => 64],
-            [['bind_phone'], 'string', 'max' => 11],
-            [['city'], 'string', 'max' => 20]
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
