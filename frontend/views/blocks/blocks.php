@@ -24,3 +24,7 @@ use yii\helpers\Url;
 <?php $this->beginBlock('login'); ?>
 <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
 <?php $this->endBlock(); ?>
+
+<?php $this->beginBlock('cart'); ?>
+<a href="<?php echo Url::to(['login/register']) ?>" class="link">管理</a>
+<?php $this->endBlock(); ?>
