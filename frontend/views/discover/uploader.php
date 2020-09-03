@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-$this->title = '上传动态';
+$this->title = '发动态';
 $urlManager = Yii::$app->urlManager;
 \common\services\StaticServices::includeAppJsStatic('@web/js/discover/uploader.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
@@ -18,7 +18,7 @@ $urlManager = Yii::$app->urlManager;
             <div class="card-body">
                 <h5 class="card-title">动态发表</h5>
                 <div class="form-group">
-                    <textarea rows="3" class="form-control" placeholder="Textarea"></textarea>
+                    <textarea rows="3" class="form-control" placeholder="此刻想说点什么"></textarea>
                 </div>
                 <div class="weui-cells weui-cells_form">
                     <div class="weui-cell  weui-cell_uploader">
@@ -30,8 +30,6 @@ $urlManager = Yii::$app->urlManager;
                                 </div>
                                 <div class="weui-uploader__bd">
                                     <ul class="weui-uploader__files" id="uploaderFiles">
-                                        <li class="weui-uploader__file" style="background-image: url(./images/pic_160.png);"></li>
-                                        <li class="weui-uploader__file" style="background-image: url(./images/pic_160.png);"></li>
                                         <li class="weui-uploader__file" style="background-image: url(./images/pic_160.png);"></li>
                                         <li class="weui-uploader__file weui-uploader__file_status" style="background-image: url(./images/pic_160.png);">
                                             <div class="weui-uploader__file-content">
@@ -53,8 +51,6 @@ $urlManager = Yii::$app->urlManager;
                 <button type="button" class="btn btn-primary">Send</button>
             </div>
         </div>
-
-
     </div>
 </div>
 

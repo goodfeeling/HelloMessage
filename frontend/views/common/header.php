@@ -4,12 +4,13 @@ use yii\helpers\Url;
 $controller = Yii::$app->controller->id;
 $action = Yii::$app->controller->action->id;
 $operation = $controller.'/'.$action;
+$color_controller = in_array($operation,['chat/my-chat']) ? 'bg-success color-light' : '';
 ?>
 <?php $this->render('@app/views/blocks/blocks.php') ?>
 
-<div class="appHeader">
+<div class="appHeader <?= $color_controller ?>">
     <div class="left">
-        <?php if (!in_array($operation,['site/index','discover/index','search/index'])): ?>
+        <?php if (!in_array($operation,['site/index','discover/index','search/index','cart/index'])): ?>
             <a href="javascript:;" class="icon goBack">
                 <i class="icon ion-ios-arrow-back"></i>
             </a>

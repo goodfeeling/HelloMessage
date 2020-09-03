@@ -13,6 +13,7 @@ $('#applyBtn').on('click', function (e) {
 });
 
 $('#likes').on('click', function (e) {
+    var that = this;
     $.ajax({
         url: LINKES_INCREASE,
         type: "POST",
@@ -23,6 +24,8 @@ $('#likes').on('click', function (e) {
                 $.triggerModalBox(res['msg'], '去登陆', LOGIN);
             } else if (res['state'] == 1) {
                 $.triggerModalBox(res['msg']);
+            } else if (res['state'] == 0) {
+                $(that).html("<i class=\"icon ion-ios-heart\"></i>"+res['data'])
             }
         }
     })

@@ -20,9 +20,11 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 <div id="appCapsule">
     <div class="appContent">
         <img id="showimg" src="<?= $avatar_url ?? '' ?>" class="imageBlock img-fluid"/>
-        <input type="file" id="inputFile">
+        <div class="divider mt-4 mb-4"></div>
         <p class="help-block">点击按钮即可上传.</p>
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+        <input type="file" id="inputFile">
+        <div class="divider mt-4 mb-4"></div>
+        <button type="submit" class="btn btn-outline-dark mr-1 mb-1 btn-lg btn-block" id="submit">
             上传
         </button>
     </div>

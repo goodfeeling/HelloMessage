@@ -15,13 +15,13 @@ $urlManager = Yii::$app->urlManager;
     <div class="appContent">
         <h3 class="mb-2 mt-2">购物清单</h3>
         <div class="table-responsive">
-            <table class="table table-dark">
+            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Tag</th>
+                    <th scope="col">图片</th>
+                    <th scope="col">价格</th>
+                    <th scope="col">数量</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,8 +47,13 @@ $urlManager = Yii::$app->urlManager;
             </table>
         </div>
         <div class="divider large mt-2 mb-2"></div>
-        <p>小计:100.00</p>
-        <button type="button" class="btn btn-primary btn-lg btn-block mb-1">付款</button>
+
+        <div class="pull-right">
+            <h4>运费:100.00</h4>
+            <h4>小计:100.00</h4>
+            <h3 class="text-primary">合计:100.00</h3>
+        </div>
+        <button type="button" class="btn btn-outline-dark mr-1 mb-1 btn-lg btn-block">付款</button>
     </div>
 </div>
 <!-- Sidebar Menu -->

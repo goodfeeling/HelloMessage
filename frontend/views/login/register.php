@@ -27,7 +27,7 @@ $this->title = '注册账号';
         <div class="form-group">
             <label for="exampleInputFile">上传您的头像</label>
             <input type="file" id="inputFile">
-            <img id="showimg" src="" class="img-circle" style="width: 60px;height: 60px;display: none"/>
+            <img id="showimg" src="" class="img-circle" style="display: none;margin-top: 10px"/>
             <p class="help-block">点击按钮即可上传.</p>
         </div>
 

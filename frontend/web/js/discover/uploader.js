@@ -1,8 +1,7 @@
 var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
     $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
     $uploaderInput = $("#uploaderInput"),
-    $uploaderFiles = $("#uploaderFiles")
-;
+    $uploaderFiles = $("#uploaderFiles");
 
 $uploaderInput.on("change", function(e){
     var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;

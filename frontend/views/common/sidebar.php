@@ -81,6 +81,6 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
                 </li>
             </ul>
         </div>
-        <?php echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
+<!--        --><?php //echo \Yii::$app->view->renderFile('@app/views/common/copyright.php'); ?>
     </nav>
 </div>

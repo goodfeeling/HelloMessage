@@ -1,6 +1,5 @@
 
 $('#submit').on('click', function (e) {
-    console.log(11)
     if(!$('#inputFile')[0].files[0]) {
         $.triggerModalBox('请上传头像文件');
         return false;
