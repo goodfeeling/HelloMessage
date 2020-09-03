@@ -8,7 +8,7 @@ $identity = \Yii::$app->user->identity;
 \common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url'] ?? '');
-$title = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
+$nickname = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
 $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
 
 ?>
@@ -17,9 +17,8 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
     <div class="overlay toggleSidebar"></div>
     <nav class="sidebar">
         <div class="profilebox">
-            <img src="<?= $avatar_url ?>"
-                 alt="avatar" class="avatar">
-            <h2 class="title"><?= $title ?></h2>
+            <img src="<?= $avatar_url ?>" alt="avatar" class="avatar">
+            <h2 class="title"><?= $nickname ?></h2>
             <h5 class="lead" <?= $city ? '' : 'hidden' ?>>
                 <i class="icon ion-ios-pin mr-1"></i>
                 <?= $city ?>
