@@ -44,4 +44,13 @@ class DiscoverController extends BaseController
     {
         return $this->render('index');
     }
+
+    /**
+     * Display uploader page
+     * @return string
+     */
+    public function actionUploader()
+    {
+        return $this->render('uploader');
+    }
 }

@@ -16,9 +16,7 @@ use yii\helpers\Url;
 <?php $this->endBlock(); ?>
 
 <?php $this->beginBlock('discover'); ?>
-<label for="sendInput" class="mb-0 icon">
-    <i class="icon ion-md-apps"></i>
-</label>
+<a href="<?php echo Url::to(['discover/uploader']) ?>" class="link">发动态</a>
 <?php $this->endBlock(); ?>
 
 <?php $this->beginBlock('login'); ?>

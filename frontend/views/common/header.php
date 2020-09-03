@@ -23,7 +23,7 @@ $operation = $controller.'/'.$action;
             <?= $this->blocks['search'] ?>
         <?php elseif(isset($this->blocks['chat']) && $operation == 'chat/my-chat'): ?>
             <?= $this->blocks['chat'] ?>
-        <?php elseif(isset($this->blocks['discover'])  && $controller == 'discover'): ?>
+        <?php elseif(isset($this->blocks['discover']) && in_array($operation,['discover/index'])): ?>
             <?= $this->blocks['discover'] ?>
         <?php elseif(isset($this->blocks['login'])  && $controller == 'login' && $action =='index'): ?>
             <?= $this->blocks['login'] ?>
