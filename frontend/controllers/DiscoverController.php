@@ -3,10 +3,7 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use frontend\models\Feedback;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 class DiscoverController extends BaseController
 {

@@ -3,7 +3,6 @@
 
 namespace frontend\controllers;
 
-
 use frontend\models\Share;
 use yii\filters\AccessControl;
 

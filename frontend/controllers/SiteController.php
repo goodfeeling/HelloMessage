@@ -1,10 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
 use frontend\models\ActivityForm;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 /**
  * Site controller

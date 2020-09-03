@@ -4,11 +4,9 @@
 namespace frontend\controllers;
 
 use frontend\models\AvatarForm;
-use frontend\models\RegisterForm;
 use Yii;
 use frontend\models\UserDetail;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 class UserInfoController extends BaseController

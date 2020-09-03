@@ -3,7 +3,6 @@
 
 namespace frontend\controllers;
 
-use backend\models\AdminUser;
 use frontend\models\LoginForm;
 use frontend\models\RegisterForm;
 use frontend\models\User;

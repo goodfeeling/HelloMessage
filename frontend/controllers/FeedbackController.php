@@ -4,7 +4,6 @@ namespace frontend\controllers;
 
 use frontend\models\Feedback;
 use Yii;
-use yii\web\Controller;
 
 class FeedbackController extends BaseController
 {
