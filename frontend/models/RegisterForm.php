@@ -58,6 +58,7 @@ class RegisterForm extends BaseModel
 
         $model = new User();
         $model->uname = $this->username;
+        $model->nickname = $this->username;
         $model->password = \Yii::$app->security->generatePasswordHash($this->password);
         $model->status = 0;
         $model->create_user = 'front';

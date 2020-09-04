@@ -52,7 +52,7 @@ class LoginController extends BaseController
                 'width' => 100,  //宽度
                 'foreColor'=>0xffffff,     //字体颜色
                 'offset'=>4,        //设置字符偏移量 有效果
-                //'controller'=>'login',        //拥有这个动作的controller
+//                'controller'=>'login',        //拥有这个动作的controller
             ],
         ];
     }

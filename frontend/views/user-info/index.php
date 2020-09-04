@@ -4,9 +4,10 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 $this->title = '个人中心';
 $urlManager = Yii::$app->urlManager;
+$avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url'] ?? '');
+
 \common\services\StaticServices::includeAppJsStatic('@web/js/user-info/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
-$avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url'] ?? '');
 ?>
 
 <!-- App Header -->

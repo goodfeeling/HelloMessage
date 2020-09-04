@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 $controller = Yii::$app->controller->id;
 $action = Yii::$app->controller->action->id;
@@ -17,7 +18,7 @@ $color_controller = in_array($operation,['chat/my-chat']) ? 'bg-success color-li
         <?php endif; ?>
     </div>
     <div class="pageTitle">
-        <?= $this->title ?>
+        <?= Html::encode($this->title) ?>
     </div>
     <div class="right">
         <?php if (isset($this->blocks['search']) && in_array($operation,['site/index'])): ?>

@@ -7828,7 +7828,7 @@ body.sidebarActive {
     .sidebarMenu > li > a {
       display: block;
       color: #1B2C42;
-      padding: 18px 40px 12px 60px;
+      padding: 12px 40px 12px 60px;
       position: relative; }
       .sidebarMenu > li > a .badge {
         position: absolute;
