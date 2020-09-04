@@ -4,13 +4,12 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $identity = \Yii::$app->user->identity;
-
-\common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
-    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params['user_info']['avatar_url'] ?? '');
 $nickname = !empty($identity) ? $this->params['user_info']['nickname'] : '请点击头像进行登录';
 $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
 
+\common\services\StaticServices::includeAppJsStatic('@web/js/common/sidebar.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
 
 <div class="sidebarWrapper">
@@ -31,22 +30,22 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
         </div>
         <div class="sidebarGroup">
             <ul class="sidebarMenu">
-                <li hidden>
-                    <a href="social-home.html">
-                        <i class="icon ion-ios-people"></i>
-                        我的动态
-                    </a>
-                </li>
                 <li>
-                    <a href="<?php echo Url::to(['my-activity/index']) ?>">
-                        <i class="icon ion-ios-chatboxes"></i>
-                        我的活动
+                    <a href="<?php echo Url::to(['discover/my-lists']) ?>">
+                        <i class="icon ion-ios-aperture"></i>
+                        我的动态
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo Url::to(['chat/index']) ?>">
                         <i class="icon ion-ios-people"></i>
                         我的好友
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo Url::to(['my-activity/index']) ?>">
+                        <i class="icon ion-ios-chatboxes"></i>
+                        我的活动
                     </a>
                 </li>
                 <li>

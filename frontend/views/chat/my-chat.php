@@ -1,7 +1,6 @@
 <?php
 
-$this->title = '聊天界面';
-
+$this->title = 'Juli';
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>

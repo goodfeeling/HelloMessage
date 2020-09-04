@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -6,15 +7,25 @@ use yii\helpers\Url;
 $this->title = '购物车';
 $urlManager = Yii::$app->urlManager;
 $identity = \Yii::$app->user->identity;
+\common\services\StaticServices::includeAppJsStatic('@web/js/cart/index.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 ?>
+<script src="https://cdn.bootcdn.net/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
+<style>
+    .td-c > img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+</style>
 
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
 <!-- * App Header -->
 
-<div id="appCapsule">
+<div id="appCapsule" ng-app="cApp" ng-controller="cart">
     <div class="appContent">
-        <div class="splashBlock" <?= $identity ? 'hidden':'' ?>>
+        <div class="splashBlock" <?= $identity ? 'hidden' : '' ?>>
             <div class="splashTitle text-primary">
                 <div class="mb-3 mt-2">
                     <img src="fornt/img/sample/draw-5.png" alt="draw" class="img-fluid">
@@ -37,19 +48,21 @@ $identity = \Yii::$app->user->identity;
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">图片</th>
-                        <th scope="col">价格</th>
-                        <th scope="col">数量</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">图片</th>
+                            <th scope="col">价格</th>
+                            <th scope="col">数量</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td class="td-c">
+                            <img src="/images/pic_160.png" alt="123">
+                        </td>
+                        <td>100</td>
+                        <td><a>-</a>1<a>+</a></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
@@ -92,5 +105,4 @@ $identity = \Yii::$app->user->identity;
 <!-- Sidebar Menu -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/sidebar.php'); ?>
 <!-- * Sidebar Menu -->
-
 <?php echo \Yii::$app->view->renderFile('@app/views/common/menu.php'); ?>

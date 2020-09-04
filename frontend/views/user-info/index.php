@@ -194,15 +194,14 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <label for="hobby">爱好</label>
-            <textarea rows="3" class="form-control" id="hobby" placeholder="爱好"> <?= $data['hobby'] ?? '' ?></textarea>
+            <textarea rows="3" class="form-control" id="hobby" placeholder="爱好"><?= $data['hobby'] ?? '' ?></textarea>
         </div>
 
         <div class="form-group">
             <label for="mate_require">择偶要求</label>
             <textarea rows="3" class="form-control" id="mate_require"
-                      placeholder="择偶要求"> <?= $data['mate_require'] ?? '' ?></textarea>
+                      placeholder="择偶要求"><?= $data['mate_require'] ?? '' ?></textarea>
         </div>
-
-        <button type="button" class="btn btn-primary btn-lg btn-block mt-2" id="submit">保存</button>
+        <button type="button" class="btn btn-outline-primary btn-lg btn-block mt-2" id="submit">保存</button>
     </div>
 </div>

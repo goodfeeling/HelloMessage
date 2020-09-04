@@ -150,9 +150,7 @@ $modelLabel = new \backend\models\ImagesModel();
 			</div>
 			<div class="modal-body">
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data'],"action"=>Url::toRoute("images/create")]) ?>
-
                  <input type="hidden" class="form-control" id="id" name="id" />
-
                   <div id="url_div" class="form-group">
                       <label for="url" class="col-sm-2 control-label">上传文件</label>
                       <div class="col-sm-10">
@@ -160,7 +158,6 @@ $modelLabel = new \backend\models\ImagesModel();
                       </div>
                       <div class="clearfix"></div>
                   </div>
-
                 </div>
                 <div class="modal-footer">
                     <button>Submit</button>

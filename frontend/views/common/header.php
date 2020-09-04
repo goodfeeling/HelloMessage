@@ -6,6 +6,7 @@ $controller = Yii::$app->controller->id;
 $action = Yii::$app->controller->action->id;
 $operation = $controller.'/'.$action;
 $color_controller = in_array($operation,['chat/my-chat']) ? 'bg-success color-light' : '';
+$identity = \Yii::$app->user->identity;
 ?>
 <?php $this->render('@app/views/blocks/blocks.php') ?>
 
@@ -29,7 +30,7 @@ $color_controller = in_array($operation,['chat/my-chat']) ? 'bg-success color-li
             <?= $this->blocks['discover'] ?>
         <?php elseif(isset($this->blocks['login'])  && $controller == 'login' && $action =='index'): ?>
             <?= $this->blocks['login'] ?>
-        <?php elseif(isset($this->blocks['cart'])  && $controller == 'cart' && $action =='index'): ?>
+        <?php elseif(isset($this->blocks['cart'])  && $controller == 'cart' && $action =='index' && $identity): ?>
             <?= $this->blocks['cart'] ?>
         <?php endif; ?>
     </div>

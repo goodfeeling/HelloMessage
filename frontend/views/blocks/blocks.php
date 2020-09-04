@@ -8,7 +8,6 @@ use yii\helpers\Url;
 </label>
 <?php $this->endBlock(); ?>
 
-
 <?php $this->beginBlock('chat'); ?>
 <label for="phoneInput" class="mb-0 icon">
     <i class="icon ion-ios-call"></i>

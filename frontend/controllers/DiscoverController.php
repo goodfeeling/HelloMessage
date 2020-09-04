@@ -50,4 +50,23 @@ class DiscoverController extends BaseController
     {
         return $this->render('uploader');
     }
+
+    /**
+     * Display detail page
+     * @return string
+     */
+    public function actionDetail()
+    {
+        return $this->render('detail');
+    }
+
+
+    /**
+     * Display my-lists page
+     * @return string
+     */
+    public function actionMyLists()
+    {
+        return $this->render('my-lists');
+    }
 }

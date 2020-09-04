@@ -26,7 +26,7 @@ $identity = \Yii::$app->user->identity;
     <div class="form-group">
         <textarea class="form-control" rows="4" ng-model="content" placeholder="说点什么吧！"></textarea>
     </div>
-    <button type="button" class="btn btn-primary btn-large btn-block" ng-click="sendData()">
+    <button type="button" class="btn btn-outline-primary btn-large btn-block" ng-click="sendData()">
         提交
     </button>
     <!-- * submit -->
