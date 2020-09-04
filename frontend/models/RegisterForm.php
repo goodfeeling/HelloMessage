@@ -27,6 +27,7 @@ class RegisterForm extends BaseModel
             [['username', 'email', 'imageFile'], 'trim'],
             [['imageFile'], 'string',],
             ['imageFile', 'default', 'value' => '/images/temp_avatar.jpg'],
+            ['username', 'match', 'pattern'=>'/^[a-zA-Z][a-zA-Z0-9_]{4,29}$/', 'on'=>['create'], 'message'=>'5-30位字母、数字或“_”,字母开头'],
             // 定义为匿名函数的行内验证器
             ['username', function ($attribute, $params) {
                 $checkData = User::findOne(['uname' => $this->username]);
