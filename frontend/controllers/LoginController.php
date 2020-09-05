@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use frontend\models\LoginForm;
 use frontend\models\RegisterForm;
 use frontend\models\User;
+use frontend\models\WechatForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
@@ -64,10 +65,11 @@ class LoginController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        $form = new LoginForm();
+
 
         // 微信登录
         if ($request->isGet && $request->get('state') == 'now_jump_index') {
+            $form = new WechatForm();
             $form->code = $request->get('code');
             if (!$res = $form->wxLogin()) {
                 $this->goHome();
@@ -75,6 +77,7 @@ class LoginController extends BaseController
         }
         // 普通登录
         if ($request->isPost) {
+            $form = new LoginForm();
             $form->attributes = $request->post()["User"];
             if (!$res = $form->login()) {
                 return $this->goBack();
