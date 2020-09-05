@@ -44,7 +44,7 @@ class LoginForm extends BaseModel
     public function wxLogin()
     {
         if (!$this->validate()) {
-            return $this->resultMsg(null, ConstStatus::CODE_ERROR, '数据格式不正确');
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
 
         try {
@@ -105,7 +105,6 @@ class LoginForm extends BaseModel
             if ($res) {
                 $duration = \Yii::$app->user->authTimeout;
                 \Yii::$app->user->login($this->getUser(), $duration);
-                var_dump(111);exit;
             } else {
                 return $this->resultMsg(null, ConstStatus::CODE_ERROR,'登录失败请联系管理员');
             }
