@@ -91,7 +91,7 @@ class LoginController extends BaseController
      */
     public function actionJumpLoginPage()
     {
-        return $this->asJson((new User())->jumpLogin());
+        return $this->asJson((new LoginForm())->jumpLogin());
     }
 
     /**
