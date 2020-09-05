@@ -28,11 +28,18 @@ class LoginForm extends BaseModel
     {
         return [
             [['code', 'encrypted_data', 'iv'], 'string'],
-            ['verifyCode', 'required','message'=>'请输入验证码！'],
-            ['password', 'required','message'=>'请输入密码！'],
-            ['uname', 'required','message'=>'请输入用户名！'],
-            ['verifyCode', 'captcha','captchaAction'=>'login/captcha','message'=>'验证码错误！'],
-            ['rememberme', 'string'],
+            ['verifyCode', 'required','when' => function($model) {
+                return  Yii::$app->request->isPost;
+            },'message'=>'请输入验证码！'],
+            [['uname','password'], 'required','when' => function($model) {
+                return  Yii::$app->request->isPost;
+            },'message'=>'请输入完整的用户名或密码！'],
+            ['verifyCode', 'captcha','captchaAction'=>'login/captcha','when' => function($model) {
+                return  Yii::$app->request->isPost;
+            },'message'=>'验证码错误！'],
+            ['rememberme','when' => function($model) {
+                return  Yii::$app->request->isPost;
+            }, 'string'],
         ];
     }
 
