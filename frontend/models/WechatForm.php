@@ -6,6 +6,7 @@ namespace frontend\models;
 
 use backend\models\AdminUser;
 use common\utils\ConstStatus;
+use yii\helpers\Url;
 
 class WechatForm extends BaseModel
 {
@@ -115,6 +116,24 @@ class WechatForm extends BaseModel
             $this->_user = \common\models\User::findIdentityByOpenId($this->open_id);
         }
         return $this->_user;
+    }
+
+    /**
+     * 跳到登录
+     *
+     * @inheritdoc
+     */
+    public function jumpLogin()
+    {
+        try {
+            $config = $this->getWxConfig();
+            $wechat = new \WeChat\Oauth($config);
+            // 执行操作
+            $result = $wechat->getOauthRedirect(Url::toRoute('login/index', true), 'now_jump_index', 'snsapi_userinfo');
+            return $this->resultMsg($result, ConstStatus::CODE_SUCCESS,'获取成功');
+        } catch (\yii\base\Exception $e) {
+            return $this->resultMsg(null, ConstStatus::CODE_ERROR,$e->getMessage());
+        }
     }
 
 

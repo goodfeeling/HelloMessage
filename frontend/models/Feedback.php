@@ -7,6 +7,8 @@ use Yii;
 
 class Feedback extends \yii\db\ActiveRecord
 {
+    use Send;
+
     public $title;
     public $content;
     public $email;

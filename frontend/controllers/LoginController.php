@@ -94,7 +94,7 @@ class LoginController extends BaseController
      */
     public function actionJumpLoginPage()
     {
-        return $this->asJson((new LoginForm())->jumpLogin());
+        return $this->asJson((new WechatForm())->jumpLogin());
     }
 
     /**

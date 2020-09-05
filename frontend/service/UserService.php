@@ -9,7 +9,7 @@ class UserService extends View
     {
         $identity = \Yii::$app->user->identity;
         if (!empty($identity)) {
-            if ( strpos($avatar_url,'http') != false ) {
+            if ( strpos($avatar_url,'http') === false ) {
                 $avatar_url = \Yii::$app->params['backPage'].$avatar_url;
             }
         } else {

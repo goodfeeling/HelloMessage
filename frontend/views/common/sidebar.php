@@ -20,7 +20,7 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
             <h2 class="title"><?= $nickname ?? '未设置' ?></h2>
             <h5 class="lead">
                 <i class="icon ion-ios-pin mr-1"></i>
-                <?= $city ?>
+                <?= $city ?? '未知' ?>
             </h5>
             <div class="button">
                 <a href="<?php echo Url::to(['site/setting']) ?>">
