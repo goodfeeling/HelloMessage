@@ -4,7 +4,8 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = '首页';
-$is_search = 1;
+var_dump($this->params['user_info']['city']);exit;
+
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
