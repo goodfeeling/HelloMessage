@@ -20,3 +20,17 @@ $('#submit').on('click', function (e) {
     });
 
 });
+
+// 获取上传文件信息
+$('#inputFile').on('change', function () {
+    var file = this.files[0];
+    if (window.FileReader) {
+        var fr = new FileReader();
+        fr.readAsDataURL(file);
+        fr.onload = function (e) {
+            $("#showimg").attr('src', this.result); // 图片可显示出来
+        };
+    } else {
+        $.triggerModalBox('暂不支持FileReader')
+    };
+});

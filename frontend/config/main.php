@@ -34,7 +34,7 @@ return [
         'session' => [
             'class' => 'yii\redis\Session',
             'redis' => [
-                'hostname' => '127.0.0.1',
+                'hostname' => 'redis',
                 'port' => 6379,
                 'database' => 0,
             ],
@@ -42,7 +42,7 @@ return [
         'qr' => [
             'class' => '\Da\QrCode\Component\QrCodeComponent',
             // ... you can configure more properties of the component here
-        ]
+        ],
     ],
     'params' => $params,
 ];

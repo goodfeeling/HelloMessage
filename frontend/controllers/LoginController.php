@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use frontend\models\LoginForm;
+use frontend\models\MailForm;
 use frontend\models\RegisterForm;
 use frontend\models\User;
 use frontend\models\WechatForm;
@@ -128,6 +129,12 @@ class LoginController extends BaseController
      */
     public function actionForgotPassword()
     {
+        $request = Yii::$app->request;
+        if ($request->isAjax) {
+            $form = new MailForm();
+            $form->to = $request->get('to');
+           return $this->asJson( $form->send());
+        }
         return $this->render('forgot-password');
     }
 
@@ -139,5 +146,18 @@ class LoginController extends BaseController
     {
         Yii::$app->user->logout();
         return $this->goHome();
+    }
+
+    /**
+     * Edit Password reset
+     * @return string
+     */
+    public function actionPasswordReset()
+    {
+        $request = Yii::$app->request;
+        if($request->isAjax) {
+
+        }
+        return $this->render('password-reset');
     }
 }

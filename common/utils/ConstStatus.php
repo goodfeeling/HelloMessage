@@ -13,6 +13,8 @@ class ConstStatus
     const CODE_GO_TOCENTER = 302;
     const CODE_LOGIN_ERROR = 101;
     const CODE_REGISTER_SUCCESS = 201;
+    const CODE_MAIL_SEND_SUCCESS = 202;
     const CODE_REGISTER_ERROR = 401;
+    const CODE_MAIL_SEND_ERROR = 402;
 
 }
