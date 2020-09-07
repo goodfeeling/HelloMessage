@@ -5,10 +5,10 @@ namespace micro\modules\v1\models;
 
 use yii\db\ActiveRecord;
 
-class Car extends ActiveRecord
+class User extends ActiveRecord
 {
     public static function tableName()
     {
-        return '{{%car}}';
+        return '{{%user}}';
     }
 }

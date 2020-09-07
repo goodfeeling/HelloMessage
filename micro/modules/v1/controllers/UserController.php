@@ -4,9 +4,9 @@ namespace micro\modules\v1\controllers;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
-class CarController extends ActiveController
+class UserController extends ActiveController
 {
-    public $modelClass = 'micro\modules\v1\models\Car';
+    public $modelClass = 'micro\modules\v1\models\User';
     public $serializer = [
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'items',
