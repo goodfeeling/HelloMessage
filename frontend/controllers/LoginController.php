@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use frontend\models\LoginForm;
 use frontend\models\MailForm;
 use frontend\models\RegisterForm;
+use frontend\models\ResetPassword;
 use frontend\models\User;
 use frontend\models\WechatForm;
 use Yii;
@@ -66,8 +67,6 @@ class LoginController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-
-
         // 微信登录
         if ($request->isGet && $request->get('state') == 'now_jump_index') {
             $form = new WechatForm();
@@ -118,7 +117,6 @@ class LoginController extends BaseController
                 $msg = array('errno'=>2, 'data'=>$upload_model->getErrors());
                 return $this->asJson($msg);
             }
-
         }
         return $this->render('register');
     }
@@ -133,7 +131,7 @@ class LoginController extends BaseController
         if ($request->isAjax) {
             $form = new MailForm();
             $form->to = $request->get('to');
-           return $this->asJson( $form->send());
+            return $this->asJson( $form->send());
         }
         return $this->render('forgot-password');
     }
@@ -155,8 +153,10 @@ class LoginController extends BaseController
     public function actionPasswordReset()
     {
         $request = Yii::$app->request;
-        if($request->isAjax) {
-
+        if($request->isPost) {
+            $form = new ResetPassword();
+            $form->attributes = $request->post();
+            return $this->asJson( $form->save());
         }
         return $this->render('password-reset');
     }

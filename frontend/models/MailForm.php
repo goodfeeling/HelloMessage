@@ -3,6 +3,7 @@
 
 namespace frontend\models;
 
+use common\helpers\RedisString;
 use common\utils\ConstStatus;
 use Yii;
 use yii\helpers\Url;
@@ -24,7 +25,7 @@ class MailForm extends BaseModel
             // 定义为匿名函数的行内验证器
             ['to', function ($attribute, $params) {
                 $checkData = User::findOne(['email' => $this->to]);
-                if (!empty($checkData)) {
+                if (empty($checkData)) {
                     $this->addError($attribute, '不存在该邮箱地址！');
                 }
             }],
@@ -36,7 +37,9 @@ class MailForm extends BaseModel
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
         try {
-            $url = Url::base();
+            $key = Yii::$app->getSecurity()->generateRandomString();
+            RedisString::set($key,$this->to,['EX', '3600']);
+            $url = Yii::$app->request->hostInfo.Url::to(['login/password-reset'])."&verify_str=$key";
             $res = Yii::$app->mailer->compose()
                 ->setTo($this->to)
                 ->setSubject('重置密码')
@@ -44,13 +47,13 @@ class MailForm extends BaseModel
                 ->setHtmlBody('<a href="'.$url.'">点击重置密码</a>')
                 ->send();
         } catch (\Exception $e) {
-            return $this->resultMsg(null, ConstStatus::CODE_MAIL_SEND_SUCCESS,$e->getMessage());
+            return $this->resultMsg(null, ConstStatus::CODE_MAIL_SEND_ERROR,$e->getMessage());
         }
 
         if(!empty($res)) {
             return $this->resultMsg(null, ConstStatus::CODE_MAIL_SEND_SUCCESS,'发送成功');
         } else{
-            return $this->resultMsg(null, ConstStatus::CODE_MAIL_SEND_SUCCESS,'发送失败');
+            return $this->resultMsg(null, ConstStatus::CODE_MAIL_SEND_ERROR,'发送失败');
         }
     }
 

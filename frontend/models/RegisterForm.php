@@ -66,6 +66,7 @@ class RegisterForm extends BaseModel
         $model->update_date = date('Y-m-d');
         $model->avatar_url = $this->imageFile;
         $model->type = 2;
+        $model->email = $this->email;
 
         if (!$model->validate()) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($model->getErrors())[0]);

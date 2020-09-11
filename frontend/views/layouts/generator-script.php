@@ -16,7 +16,7 @@ use yii\helpers\Url;
     });
 
     // 统一生成url
-    BASE_URL = "<?= Url::base() ?>";
+    BASE_URL = "<?= Yii::$app->request->hostInfo ?>";
     LOGIN = "<?= Url::toRoute('login/index', true) ?>"
     APPLY = "<?= Url::toRoute('activity/apply', true) ?>"
     USER_PAY = "<?= Url::toRoute('activity/user-pay', true) ?>"
@@ -32,6 +32,7 @@ use yii\helpers\Url;
     SHARE = "<?= Url::toRoute('share/get-config', true) ?>"
     AVATAR = "<?= Url::toRoute('user-info/setting-avatar', true) ?>"
     FORGOT_PW = "<?= Url::toRoute('login/forgot-password', true) ?>"
+    RESET_PW = "<?= Url::toRoute('login/password-reset', true) ?>"
     // 验证是否登录
     IDENTITY = <?= \Yii::$app->user->identity ? 0 : 1 ?>
 </script>

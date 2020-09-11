@@ -9,6 +9,9 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'aliases' => [
+        '@redisPrefix' => 'frontend_',
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -27,6 +30,12 @@ return [
                     'levels' => ['error', 'warning'],
                 ],
             ],
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'redis',
+            'port' => 6379,
+            'database' => 0,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
