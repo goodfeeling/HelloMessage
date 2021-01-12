@@ -15,6 +15,7 @@ return [
     'aliases' => [
         '@micro' => __DIR__,
     ],
+    'bootstrap' => ['log'],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User', // User must implement the IdentityInterface
@@ -28,6 +29,15 @@ return [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
+        ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
         ],
         'response' => [
             // ...

@@ -14,8 +14,6 @@ $(document).ready(function () {
         $('#sidebar').addClass('active')
     } else if (str.search('search') != -1) {
         $('#search').addClass('active')
-    }else if (str.search('cart') != -1) {
-        $('#cart').addClass('active')
     }
 
 });
