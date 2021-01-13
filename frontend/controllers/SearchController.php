@@ -7,8 +7,9 @@ use yii\filters\AccessControl;
 
 class SearchController extends BaseController
 {
+
     /**
-     * {@inheritdoc}
+     * @return array[]
      */
     public function behaviors()
     {

@@ -4,6 +4,10 @@ namespace frontend\controllers;
 use yii\web\Response;
 use yii\filters\AccessControl;
 
+/**
+ * Class DefaultController
+ * @package frontend\controllers
+ */
 class DefaultController extends BaseController
 {
     /**
@@ -60,6 +64,10 @@ class DefaultController extends BaseController
     }
 
     // 图片上传接口
+
+    /**
+     *
+     */
     public function actionUploadImage()
     {
         

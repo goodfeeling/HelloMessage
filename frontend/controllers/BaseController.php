@@ -11,8 +11,18 @@ namespace frontend\controllers;
 use backend\models\AdminUser;
 use yii\web\Controller;
 
+/**
+ * Class BaseController
+ * @package frontend\controllers
+ */
 class BaseController extends Controller
 {
+    /**
+     * BaseController constructor.
+     * @param $id
+     * @param $module
+     * @param array $config
+     */
     public function __construct($id, $module, $config = [])
     {
         parent::__construct($id, $module, $config = []);
@@ -25,6 +35,11 @@ class BaseController extends Controller
         }
     }
 
+    /**
+     * @param $url
+     * @param $param
+     * @return string
+     */
     public function renderJS($url, $param)
     {
         return $this->renderPartial($url, $param);

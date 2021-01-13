@@ -44,7 +44,7 @@ class UserDetail extends \yii\db\ActiveRecord
             [['birthday'], 'safe'],
             [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10, 'message' => '请输入的正确的内容！'],
             [['occupation'], 'string', 'max' => 20],
-            [['cars_and_houses', 'marital_status', 'education'], 'string', 'max' => 2],
+            [['cars_and_houses', 'marital_status', 'education'], 'string', 'max' => 2, 'message' => '必填项不能为空！'],
             [['hobby'], 'string', 'max' => 200, 'message' => '爱好只能在200字符以内！'],
             [['mate_require'], 'string', 'max' => 500, 'message' => '择偶只能在1000个字符内！'],
             [['gender'], 'string', 'max' => 1]

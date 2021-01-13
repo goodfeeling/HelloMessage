@@ -8,6 +8,10 @@ use frontend\models\UserDetail;
 use Yii;
 use yii\filters\AccessControl;
 
+/**
+ * Class ActivityController
+ * @package frontend\controllers
+ */
 class ActivityController extends BaseController
 {
     /**

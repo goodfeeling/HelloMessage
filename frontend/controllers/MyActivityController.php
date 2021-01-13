@@ -7,10 +7,15 @@ use Yii;
 use frontend\models\ActivityForm;
 use yii\filters\AccessControl;
 
+/**
+ * Class MyActivityController
+ * @package frontend\controllers
+ */
 class MyActivityController extends BaseController
 {
+
     /**
-     * {@inheritdoc}
+     * @return array[]
      */
     public function behaviors()
     {

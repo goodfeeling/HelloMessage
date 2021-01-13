@@ -25,25 +25,25 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <label for="name">真实姓名</label>
-            <input type="text" class="form-control" value="<?= $data['name'] ?? '' ?>" id="name" placeholder="真实姓名">
+            <input type="text" class="form-control" value="<?= isset($data['name']) ? $data['name'] : ''  ?>" id="name" placeholder="真实姓名">
         </div>
 
         <div class="form-group">
             <label for="birthday">生日</label>
-            <input type="date" class="form-control" value="<?= $data['birthday'] ?? '' ?>" id="birthday"
+            <input type="date" class="form-control" value="<?= isset($data['birthday']) ?$data['birthday']: '' ?>" id="birthday"
                    placeholder="生日">
         </div>
 
         <div class="form-group">
             <label for="gender">性别</label>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-outline-primary <?= $data['gender'] == 1 ? 'active' : '' ?>" id="gender1">
-                    <input type="radio" name="options" value="<?= $data['gender'] == 1 ? '1' : '0' ?>">
+                <label class="btn btn-outline-primary <?= isset($data['gender']) == 1 ? 'active' : '' ?>" id="gender1">
+                    <input type="radio" name="options" value="<?= isset($data['gender']) == 1 ? '1' : '0' ?>">
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
-                <label class="btn btn-outline-primary <?= $data['gender'] == 0 ? 'active' : '' ?>" id="gender2">
-                    <input type="radio" name="options" value="<?= $data['gender'] == 1 ? '0' : '1' ?>">
+                <label class="btn btn-outline-primary <?= isset($data['gender']) == 0 ? 'active' : '' ?>" id="gender2">
+                    <input type="radio" name="options" value="<?= isset($data['gender']) == 1 ? '0' : '1' ?>">
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
@@ -53,21 +53,21 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         <div class="form-group">
             <label for="height">身高</label>
             <div class="input-group">
-                <input type="number" class="form-control" value="<?= $data['height'] ?? '' ?>" id="height"
+                <input type="number" class="form-control" value="<?= isset($data['height']) ?$data['height']: '' ?>" id="height"
                        placeholder="身高">
             </div>
         </div>
 
         <div class="form-group">
             <label for="native_place">籍贯</label>
-            <input type="native_place" class="form-control" value="<?= $data['native_place'] ?? '' ?>" id="native_place"
+            <input type="native_place" class="form-control" value="<?= isset($data['native_place'])  ? $data['native_place'] : '' ?>" id="native_place"
                    placeholder="籍贯">
         </div>
 
         <div class="form-group">
             <label for="mobile">联系方式</label>
             <div class="input-group">
-                <input type="number" class="form-control" value="<?= $data['mobile'] ?? '' ?>" id="mobile"
+                <input type="number" class="form-control" value="<?= isset($data['mobile']) ?$data['mobile']: '' ?>" id="mobile"
                        placeholder="联系方式">
             </div>
             <p class="help-block">请正确填写联系方式.</p>
@@ -84,7 +84,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['occupation'] == '白领' ? 'selected' : null ?>>白领</option>
                     <option <?= $data['occupation'] == '其它' ? 'selected' : null ?>>其它</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>学生</option>
                     <option>学生</option>
                     <option>老师</option>
                     <option>公务员</option>
@@ -105,7 +105,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['income'] == '10万～20万' ? 'selected' : null ?>>10万～20万</option>
                     <option <?= $data['income'] == '20万～100万' ? 'selected' : null ?>>20万～100万</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>1万～5万</option>
                     <option>1万～5万</option>
                     <option>5万～10万</option>
                     <option>10万～20万</option>
@@ -123,7 +123,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['cars_and_houses'] ? 'selected' : null ?>>有</option>
                     <option <?= $data['cars_and_houses'] ? 'selected' : null ?>>无</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>有</option>
                     <option>有</option>
                     <option>无</option>
                 <?php endif; ?>
@@ -139,7 +139,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['marital_status'] == '未婚' ? 'selected' : null ?>>未婚</option>
                     <option <?= $data['marital_status'] == '单身' ? 'selected' : null ?>>单身</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>未婚</option>
                     <option>已婚</option>
                     <option>未婚</option>
                     <option>单身</option>
@@ -159,7 +159,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['education'] == '硕士' ? 'selected' : null ?>>硕士</option>
                     <option <?= $data['education'] == '博士' ? 'selected' : null ?>>博士</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>博士</option>
                     <option>高中</option>
                     <option>大专</option>
                     <option>本科</option>
@@ -181,7 +181,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
                     <option <?= $data['character'] == '活跃' ? 'selected' : null ?>>活跃</option>
                     <option <?= $data['character'] == '智慧' ? 'selected' : null ?>>智慧</option>
                 <?php else: ?>
-                    <option selected>请选择...</option>
+                    <option selected>活跃</option>
                     <option>开放</option>
                     <option>完美</option>
                     <option>浪漫</option>

@@ -1886,3 +1886,209 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1610464831.1773
     'REQUEST_TIME' => 1610464831
 ]
+2021-01-13 11:03:29 [172.20.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /www/wx-admin/vendor/yiisoft/yii2/web/Request.php:287
+Stack trace:
+#0 /www/wx-admin/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /www/wx-admin/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /www/wx-admin/micro/web/index.php(16): yii\base\Application->run()
+#3 {main}
+2021-01-13 11:03:28 [172.20.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => 'e65b0fb1003e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.7'
+    'COMPOSER_HOME' => '/tmp/composer'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'LD_PRELOAD' => '/usr/lib/preloadable_libiconv.so php'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PWD' => '/www'
+    'PHP_SHA256' => '53558f8f24cd8ab6fa0ea252ca8198e2650160649681ce5230c1df1dc2b52faf'
+    'USER' => 'www-data'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9,en;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'micro.test'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'micro.test'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.20.0.6'
+    'REMOTE_PORT' => '34672'
+    'REMOTE_ADDR' => '172.20.0.1'
+    'SERVER_SOFTWARE' => 'nginx'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/www/wx-admin/micro/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/www/wx-admin/micro/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1610507008.3095
+    'REQUEST_TIME' => 1610507008
+]
+2021-01-13 11:03:29 [172.20.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /www/wx-admin/vendor/yiisoft/yii2/web/Request.php:287
+Stack trace:
+#0 /www/wx-admin/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /www/wx-admin/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /www/wx-admin/micro/web/index.php(16): yii\base\Application->run()
+#3 {main}
+2021-01-13 11:03:29 [172.20.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => 'e65b0fb1003e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.7'
+    'COMPOSER_HOME' => '/tmp/composer'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'LD_PRELOAD' => '/usr/lib/preloadable_libiconv.so php'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PWD' => '/www'
+    'PHP_SHA256' => '53558f8f24cd8ab6fa0ea252ca8198e2650160649681ce5230c1df1dc2b52faf'
+    'USER' => 'www-data'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9,en;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://micro.test/'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'micro.test'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'micro.test'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.20.0.6'
+    'REMOTE_PORT' => '34672'
+    'REMOTE_ADDR' => '172.20.0.1'
+    'SERVER_SOFTWARE' => 'nginx'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/www/wx-admin/micro/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/favicon.ico'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/www/wx-admin/micro/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1610507009.4142
+    'REQUEST_TIME' => 1610507009
+]
+2021-01-13 11:03:34 [172.20.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in /www/wx-admin/vendor/yiisoft/yii2/filters/auth/AuthMethod.php:93
+Stack trace:
+#0 /www/wx-admin/vendor/yiisoft/yii2/filters/auth/AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 /www/wx-admin/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\rest\IndexAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 /www/wx-admin/vendor/yiisoft/yii2/base/Component.php(627): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 /www/wx-admin/vendor/yiisoft/yii2/base/Controller.php(299): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 /www/wx-admin/vendor/yiisoft/yii2/web/Controller.php(202): yii\base\Controller->beforeAction(Object(yii\rest\IndexAction))
+#6 /www/wx-admin/vendor/yiisoft/yii2/base/Controller.php(178): yii\web\Controller->beforeAction(Object(yii\rest\IndexAction))
+#7 /www/wx-admin/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('index', Array)
+#8 /www/wx-admin/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('post/index', Array)
+#9 /www/wx-admin/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /www/wx-admin/micro/web/index.php(16): yii\base\Application->run()
+#11 {main}
+2021-01-13 11:03:33 [172.20.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi'
+    'HOSTNAME' => 'e65b0fb1003e'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_MD5' => ''
+    'PHP_VERSION' => '7.4.7'
+    'COMPOSER_HOME' => '/tmp/composer'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.7.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'LD_PRELOAD' => '/usr/lib/preloadable_libiconv.so php'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PWD' => '/www'
+    'PHP_SHA256' => '53558f8f24cd8ab6fa0ea252ca8198e2650160649681ce5230c1df1dc2b52faf'
+    'USER' => 'www-data'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9,en;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'micro.test'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'micro.test'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.20.0.6'
+    'REMOTE_PORT' => '34684'
+    'REMOTE_ADDR' => '172.20.0.1'
+    'SERVER_SOFTWARE' => 'nginx'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/www/wx-admin/micro/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/posts'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/www/wx-admin/micro/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1610507013.6147
+    'REQUEST_TIME' => 1610507013
+]

@@ -6,5 +6,5 @@ return [
     'appVersion' => '2.0.0',
     'appName' => 'YiiBoot',
     'homePage' => 'http://git.oschina.net/penngo/chadmin',
-    'backPage' => 'http://www.wxback.test',
+    'backPage' => 'http://backend.test',
 ];
