@@ -22,3 +22,6 @@ use yii\helpers\Url;
 <a href="<?php echo Url::to(['login/register']) ?>" class="link">注册</a>
 <?php $this->endBlock(); ?>
 
+<?php $this->beginBlock('friend'); ?>
+    <a href="<?php echo Url::to(['chat/information-setting']) ?>" class="link">...</a>
+<?php $this->endBlock(); ?>

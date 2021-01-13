@@ -51,4 +51,12 @@ class ChatController extends BaseController
         return $this->render('my-chat');
     }
 
+    public function actionFriend() {
+        return $this->render('friend');
+    }
+
+    public function actionInformationSetting() {
+        return $this->render("information-setting");
+    }
+
 }

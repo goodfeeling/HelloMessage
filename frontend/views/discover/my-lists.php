@@ -3,7 +3,7 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
-$this->title = '我的动态';
+$this->title = '';
 $urlManager = Yii::$app->urlManager;
 ?>
 
@@ -15,6 +15,12 @@ $urlManager = Yii::$app->urlManager;
 <div id="appCapsule">
 
     <div class="appContent">
+        <div style="position: relative;z-index: 1">
+            <img src="fornt/img/sample/photo3.jpg" alt="image" class="imageBlock img-fluid rounded">
+            <div style="z-index: 999;position: absolute;float: none">
+                <img src="fornt/img/sample/avatar.jpg" alt="image" class="imageBlock large rounded">
+            </div>
+        </div>
 
         <div class="card mt-2 mb-4">
             <div class="card-body">
