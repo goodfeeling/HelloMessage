@@ -39,7 +39,7 @@ class LoginForm extends BaseModel
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
         $checkData = User::findOne(['uname' => $this->uname]);
-        if (Yii::$app->getSecurity()->validatePassword($this->password, $checkData['password'])) {
+        if (!empty($checkData) && Yii::$app->getSecurity()->validatePassword($this->password, $checkData['password'])) {
             // all good, logging user in
             $duration = $this->rememberme == "on" ? 3600 * 24 * 30 : \Yii::$app->user->authTimeout;
             if ($user_instance = \common\models\User::findIdentity($checkData['id'])) {

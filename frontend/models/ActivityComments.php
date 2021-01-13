@@ -76,7 +76,7 @@ class ActivityComments extends \yii\db\ActiveRecord
                 ->select('avatar_url,nickname')
                 ->one();
             if (!( strpos($author['avatar_url'],'http') !== false )) {
-                $value['avatar_url'] = \Yii::$app->params['backPage'].$author['avatar_url'];
+                $value['avatar_url'] = \Yii::getAlias('@back').$author['avatar_url'];
             }else {
                 $value['avatar_url'] =$author['avatar_url'];
             }
