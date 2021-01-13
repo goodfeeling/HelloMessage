@@ -1,4 +1,6 @@
 <?php
+
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -18,32 +20,32 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
     <div class="appContent">
 
         <div class="form-group">
-            <label for="exampleInputFile">头像</label>
+            <?= Html::label('头像', 'avatar') ?>
             <img id="showimg" src="<?= $avatar_url ?? '' ?>" class="img-circle" style="width: 60px;height: 60px;margin-left: 10px;margin-top: 10px"/>
             <p class="help-block">点击按钮即可上传.</p>
         </div>
 
         <div class="form-group">
-            <label for="name">真实姓名</label>
-            <input type="text" class="form-control" value="<?= isset($data['name']) ? $data['name'] : ''  ?>" id="name" placeholder="真实姓名">
+            <?= Html::label('真实姓名', 'name') ?>
+            <?= Html::input('text', '', $data['name'], ['class' => 'form-control','id'=>'name',"placeholder"=>"真实姓名"]) ?>
         </div>
 
         <div class="form-group">
             <label for="birthday">生日</label>
-            <input type="date" class="form-control" value="<?= isset($data['birthday']) ?$data['birthday']: '' ?>" id="birthday"
-                   placeholder="生日">
+            <?= Html::label('生日', 'birthday') ?>
+            <?= Html::input('date', '', $data['birthday'], ['class' => 'form-control','id'=>'birthday',"placeholder"=>"生日"]) ?>
         </div>
 
         <div class="form-group">
-            <label for="gender">性别</label>
+            <?= Html::label('性别', 'gender') ?>
             <div class="input-group btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-outline-primary <?= isset($data['gender']) == 1 ? 'active' : '' ?>" id="gender1">
-                    <input type="radio" name="options" value="<?= isset($data['gender']) == 1 ? '1' : '0' ?>">
+                    <?= Html::input('radio', 'options', isset($data['gender'])? '1' : '0') ?>
                     <i class="icon ion-ios-male"></i>
                     男性
                 </label>
                 <label class="btn btn-outline-primary <?= isset($data['gender']) == 0 ? 'active' : '' ?>" id="gender2">
-                    <input type="radio" name="options" value="<?= isset($data['gender']) == 1 ? '0' : '1' ?>">
+                    <?= Html::input('radio', 'options', isset($data['gender'])? '0' : '1') ?>
                     <i class="icon ion-ios-female"></i>
                     女性
                 </label>
@@ -52,29 +54,28 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <label for="height">身高</label>
+            <?= Html::label('身高', 'height') ?>
+
             <div class="input-group">
-                <input type="number" class="form-control" value="<?= isset($data['height']) ?$data['height']: '' ?>" id="height"
-                       placeholder="身高">
+                <?= Html::input('number', '', $data['height'], ['class' => 'form-control','id'=>'height',"placeholder"=>"身高"]) ?>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="native_place">籍贯</label>
-            <input type="native_place" class="form-control" value="<?= isset($data['native_place'])  ? $data['native_place'] : '' ?>" id="native_place"
-                   placeholder="籍贯">
+            <?= Html::label('籍贯', 'native_place') ?>
+            <?= Html::input('native_place', '', $data['native_place'], ['class' => 'form-control','id'=>'native_place',"placeholder"=>"籍贯"]) ?>
         </div>
 
         <div class="form-group">
-            <label for="mobile">联系方式</label>
+            <?= Html::label('联系方式', 'mobile') ?>
             <div class="input-group">
-                <input type="number" class="form-control" value="<?= isset($data['mobile']) ?$data['mobile']: '' ?>" id="mobile"
-                       placeholder="联系方式">
+                <?= Html::input('number', '', $data['mobile'], ['class' => 'form-control','id'=>'mobile',"placeholder"=>"联系方式"]) ?>
             </div>
             <p class="help-block">请正确填写联系方式.</p>
         </div>
 
         <div class="form-group">
-            <label for="occupation">职业</label>
+            <?= Html::label('职业', 'occupation') ?>
             <select class="form-control" id="occupation">
                 <?php if (isset($data['occupation'])): ?>
                     <option>请选择...</option>
@@ -96,7 +97,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="income">月收入</label>
+            <?= Html::label('月收入', 'income') ?>
             <select class="form-control" id="income">
                 <?php if (isset($data['income'])): ?>
                     <option>请选择...</option>
@@ -116,7 +117,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="cars_and_houses">有无车和房</label>
+            <?= Html::label('有无车和房', 'cars_and_houses') ?>
             <select class="form-control" id="cars_and_houses">
                 <?php if (isset($data['cars_and_houses'])): ?>
                     <option>请选择...</option>
@@ -131,7 +132,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="marital_status">婚姻状况</label>
+            <?= Html::label('婚姻状况', 'marital_status') ?>
             <select class="form-control" id="marital_status">
                 <?php if (isset($data['marital_status'])): ?>
                     <option>请选择...</option>
@@ -149,7 +150,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="education">学历</label>
+            <?= Html::label('学历', 'education') ?>
             <select class="form-control" id="education">
                 <?php if (isset($data['education'])): ?>
                     <option>请选择...</option>
@@ -171,7 +172,7 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="character">性格</label>
+            <?= Html::label('性格', 'character') ?>
             <select class="form-control" id="character">
                 <?php if (isset($data['character'])): ?>
                     <option>请选择...</option>
@@ -193,15 +194,14 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
         </div>
 
         <div class="form-group">
-            <label for="hobby">爱好</label>
-            <textarea rows="3" class="form-control" id="hobby" placeholder="爱好"><?= $data['hobby'] ?? '' ?></textarea>
+            <?= Html::label('爱好', 'hobby') ?>
+            <?= Html::textarea('textarea', Html::encode($data['hobby']), ['class' => 'form-control','id'=>'hobby"','placeholder'=>'爱好']) ?>
         </div>
 
         <div class="form-group">
-            <label for="mate_require">择偶要求</label>
-            <textarea rows="3" class="form-control" id="mate_require"
-                      placeholder="择偶要求"><?= $data['mate_require'] ?? '' ?></textarea>
+            <?= Html::label('择偶要求', 'mate_require') ?>
+            <?= Html::textarea('textarea', Html::encode($data['mate_require']), ['class' => 'form-control','id'=>'mate_require"','placeholder'=>'择偶要求','rows'=>3]) ?>
         </div>
-        <button type="button" class="btn btn-outline-primary btn-lg btn-block mt-2" id="submit">保存</button>
+        <?= Html::button('保存', ['class' => 'btn btn-outline-primary btn-lg btn-block mt-2']) ?>
     </div>
 </div>

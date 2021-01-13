@@ -31,6 +31,9 @@ class ActivityComments extends \yii\db\ActiveRecord
             [['aid'], 'integer', 'message' => 'aid error！'],
             [['addtime'], 'safe'],
             [['content'], 'string', 'max' => 1000, 'message' => '评论内容不能为空且最大为1000个字符！'],
+            ['content', 'filter', 'filter' => function ($value) {
+                return str_replace('"',"",$value);
+            }],
             [['status'], 'string', 'max' => 1]
         ];
     }
