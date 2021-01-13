@@ -3,8 +3,10 @@ namespace frontend\controllers;
 
 use frontend\models\ActivityForm;
 
+
 /**
- * Site controller
+ * Class SiteController
+ * @package frontend\controllers
  */
 class SiteController extends BaseController
 {

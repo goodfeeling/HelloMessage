@@ -5,6 +5,10 @@ namespace frontend\controllers;
 
 use yii\filters\AccessControl;
 
+/**
+ * Class ChatController
+ * @package frontend\controllers
+ */
 class ChatController extends BaseController
 {
     /**

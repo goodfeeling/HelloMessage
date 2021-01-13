@@ -6,6 +6,10 @@ namespace frontend\controllers;
 use frontend\models\Share;
 use yii\filters\AccessControl;
 
+/**
+ * Class ShareController
+ * @package frontend\controllers
+ */
 class ShareController extends BaseController
 {
     /**

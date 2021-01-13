@@ -9,8 +9,15 @@ use frontend\models\UserDetail;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 
+/**
+ * Class UserInfoController
+ * @package frontend\controllers
+ */
 class UserInfoController extends BaseController
 {
+    /**
+     * @return array[]
+     */
     public function behaviors()
     {
         return [
@@ -61,6 +68,9 @@ class UserInfoController extends BaseController
         }
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionSettingAvatar()
     {
         $request = Yii::$app->request;

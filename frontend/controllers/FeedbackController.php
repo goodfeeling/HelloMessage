@@ -5,6 +5,10 @@ namespace frontend\controllers;
 use frontend\models\Feedback;
 use Yii;
 
+/**
+ * Class FeedbackController
+ * @package frontend\controllers
+ */
 class FeedbackController extends BaseController
 {
     /**

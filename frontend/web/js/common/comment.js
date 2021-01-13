@@ -18,7 +18,7 @@ angular.module('cApp', [])
                 $.triggerModalBox('评论内容不能为空！');
                 return false;
             }
-            var msg = JSON.stringify($scope.content);
+            var msg = $scope.content;
             form.append('content', msg);
             $.ajax({
                 url: COMMENT + "&id=" + $.getUrlParam('id'),

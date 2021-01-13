@@ -13,6 +13,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 
+/**
+ * Class LoginController
+ * @package frontend\controllers
+ */
 class LoginController extends BaseController
 {
     /**
@@ -41,6 +45,9 @@ class LoginController extends BaseController
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public function actions()
     {
         return [
