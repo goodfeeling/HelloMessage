@@ -39,7 +39,7 @@ class UserDetail extends \yii\db\ActiveRecord
             [['uid'], 'required'],
             [
                 ['uid', 'height', 'mobile'], 'integer',
-                'message' => '请输入正确的我手机号码、身高'
+                'message' => '请输入正确的手机号码、身高'
             ],
             [['birthday'], 'safe'],
             [['name', 'income', 'native_place', 'character'], 'string', 'max' => 10, 'message' => '请输入的正确的内容！'],

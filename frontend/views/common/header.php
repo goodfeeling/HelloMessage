@@ -30,8 +30,6 @@ $identity = \Yii::$app->user->identity;
             <?= $this->blocks['discover'] ?>
         <?php elseif(isset($this->blocks['login'])  && $controller == 'login' && $action =='index'): ?>
             <?= $this->blocks['login'] ?>
-        <?php elseif(isset($this->blocks['cart'])  && $controller == 'cart' && $action =='index' && $identity): ?>
-            <?= $this->blocks['cart'] ?>
         <?php endif; ?>
     </div>
 </div>
