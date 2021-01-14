@@ -76,7 +76,9 @@ $captcha_config = [
         <div class=" other-login">
             <div class="text-muted mb-2" hidden>或者其它登录方式</div>
             <div class="col-6 wechat-login">
-                <img src="images/icon48_wx_button.png" id="wechat-contr" alt="微信登陆">
+                <img src="images/wechat.png" id="wechat-contr" alt="微信登陆">
+                <img src="images/weibo.png" id="wechat-contr" alt="微博登录">
+                <img src="images/qq_connet.png" id="wechat-contr" alt="QQ登录">
             </div>
         </div>
     </div>
