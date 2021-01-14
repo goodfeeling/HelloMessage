@@ -8,7 +8,7 @@ use \common\services\StaticServices;
 $this->title = '参加成功';
 $urlManager = Yii::$app->urlManager;
 
-StaticServices::includeAppJsStatic('@web/js/activity/user-pay.js',
+StaticServices::includeAppJsStatic('@web/js/post/user-pay.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
 ?>

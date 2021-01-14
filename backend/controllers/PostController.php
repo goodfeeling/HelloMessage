@@ -4,26 +4,26 @@ namespace backend\controllers;
 
 use Yii;
 use yii\data\Pagination;
-use backend\models\MailSettingModel;
+use backend\models\PostModel;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MailSettingController implements the CRUD actions for MailSettingModel model.
+ * ActivityController implements the CRUD actions for PostModel model.
  */
-class MailSettingController extends BaseController
+class PostController extends BaseController
 {
 	public $layout = "lte_main";
 
     /**
-     * Lists all MailSettingModel models.
+     * Lists all ActivityModel models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = MailSettingModel::find();
+        $query = PostModel::find();
          $querys = Yii::$app->request->get('query');
         if(empty($querys)== false && count($querys) > 0){
             $condition = "";
@@ -70,7 +70,7 @@ class MailSettingController extends BaseController
     }
 
     /**
-     * Displays a single MailSettingModel model.
+     * Displays a single ActivityModel model.
      * @param integer $id
      * @return mixed
      */
@@ -85,16 +85,22 @@ class MailSettingController extends BaseController
     }
 
     /**
-     * Creates a new MailSettingModel model.
+     * Creates a new ActivityModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MailSettingModel();
+        $model = new PostModel();
         if ($model->load(Yii::$app->request->post())) {
         
-            $model->addtime = date('y-m-d h:i:s');
+              if(empty($model->status) == true){
+                  $model->status = 1;
+              }
+              if(empty($model->sort) == true){
+                  $model->sort = 1;
+              }
+        
             if($model->validate() == true && $model->save()){
                 $msg = array('errno'=>0, 'msg'=>'保存成功');
                 return $this->asJson($msg);
@@ -110,7 +116,7 @@ class MailSettingController extends BaseController
     }
 
     /**
-     * Updates an existing MailSettingModel model.
+     * Updates an existing ActivityModel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -121,6 +127,12 @@ class MailSettingController extends BaseController
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
         
+             if(empty($model->status) == true){
+                 $model->status = 1;
+             }
+             if(empty($model->sort) == true){
+                 $model->sort = 1;
+             }
         
         
             if($model->validate() == true && $model->save()){
@@ -139,7 +151,7 @@ class MailSettingController extends BaseController
     }
 
     /**
-     * Deletes an existing MailSettingModel model.
+     * Deletes an existing ActivityModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -147,7 +159,7 @@ class MailSettingController extends BaseController
     public function actionDelete(array $ids)
     {
         if(count($ids) > 0){
-            $c = MailSettingModel::deleteAll(['in', 'id', $ids]);
+            $c = PostModel::deleteAll(['in', 'id', $ids]);
             return $this->asJson(array('errno'=>0, 'data'=>$c, 'msg'=>json_encode($ids)));
         }
         else{
@@ -159,15 +171,15 @@ class MailSettingController extends BaseController
 	 
 
     /**
-     * Finds the MailSettingModel model based on its primary key value.
+     * Finds the ActivityModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MailSettingModel the loaded model
+     * @return PostModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MailSettingModel::findOne($id)) !== null) {
+        if (($model = PostModel::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

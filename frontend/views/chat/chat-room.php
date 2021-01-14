@@ -6,7 +6,7 @@ use \common\services\StaticServices;
 $this->title = '我的聊天室';
 $urlManager = Yii::$app->urlManager;
 
-StaticServices::includeAppJsStatic('@web/js/activity/apply.js',
+StaticServices::includeAppJsStatic('@web/js/post/apply.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
 ?>

@@ -4,24 +4,23 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_mail_setting}}".
+ * This is the model class for table "{{%admin_activity_comments}}".
  *
  * @property integer $id
- * @property string $send_mail
- * @property string $send_pwd
- * @property string $send_name
- * @property string $receive_mail
- * @property integer $status
+ * @property integer $aid
+ * @property string $content
  * @property string $addtime
+ * @property integer $status
+ * @property integer $uid
  */
-class MailSettingModel extends \backend\models\BaseModel
+class PostCommentModel extends \backend\models\BaseModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%mail_setting}}';
+        return '{{%post_comment}}';
     }
 
     /**
@@ -30,10 +29,10 @@ class MailSettingModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['send_mail', 'send_pwd', 'send_name', 'receive_mail'], 'required'],
-            [['send_mail', 'receive_mail'], 'string'],
+            [['aid', 'content', 'addtime', 'status', 'uid'], 'required'],
+            [['aid', 'uid'], 'integer'],
             [['addtime'], 'safe'],
-            [['send_pwd', 'send_name'], 'string', 'max' => 255],
+            [['content'], 'string', 'max' => 1000],
             [['status'], 'string', 'max' => 1]
         ];
     }
@@ -45,12 +44,11 @@ class MailSettingModel extends \backend\models\BaseModel
     {
         return [
             'id' => 'ID',
-            'send_mail' => '发件人邮箱',
-            'send_pwd' => '授权码',
-            'send_name' => '发件平台名称',
-            'receive_mail' => '收件人邮箱',
-            'status' => '状态',
-            'addtime' => '创建时间',
+            'aid' => '活动id',
+            'content' => '内容',
+            'addtime' => '添加时间',
+            'status' => '审核状态',
+            'uid' => '用户id',
         ];
     }
 
@@ -94,12 +92,58 @@ class MailSettingModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'send_mail' => array(
-                        'name' => 'send_mail',
+		'aid' => array(
+                        'name' => 'aid',
                         'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '发件人邮箱',
-//                         'dbType' => "longtext",
+//                         'comment' => '活动id',
+//                         'dbType' => "int(11)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'integer',
+                        'precision' => '11',
+                        'scale' => '',
+                        'size' => '11',
+                        'type' => 'integer',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('aid'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'content' => array(
+                        'name' => 'content',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '内容',
+//                         'dbType' => "varchar(1000)",
+                        'defaultValue' => '',
+                        'enumValues' => null,
+                        'isPrimaryKey' => false,
+                        'phpType' => 'string',
+                        'precision' => '1000',
+                        'scale' => '',
+                        'size' => '1000',
+                        'type' => 'string',
+                        'unsigned' => false,
+                        'label'=>$this->getAttributeLabel('content'),
+                        'inputType' => 'text',
+                        'isEdit' => true,
+                        'isSearch' => false,
+                        'isDisplay' => true,
+                        'isSort' => true,
+//                         'udc'=>'',
+                    ),
+		'addtime' => array(
+                        'name' => 'addtime',
+                        'allowNull' => false,
+//                         'autoIncrement' => false,
+//                         'comment' => '添加时间',
+//                         'dbType' => "datetime",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
@@ -107,78 +151,9 @@ class MailSettingModel extends \backend\models\BaseModel
                         'precision' => '',
                         'scale' => '',
                         'size' => '',
-                        'type' => 'text',
+                        'type' => 'datetime',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('send_mail'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'send_pwd' => array(
-                        'name' => 'send_pwd',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '授权码',
-//                         'dbType' => "varchar(255)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '255',
-                        'scale' => '',
-                        'size' => '255',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('send_pwd'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'send_name' => array(
-                        'name' => 'send_name',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '发件平台名称',
-//                         'dbType' => "varchar(255)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '255',
-                        'scale' => '',
-                        'size' => '255',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('send_name'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'receive_mail' => array(
-                        'name' => 'receive_mail',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '收件人邮箱',
-//                         'dbType' => "longtext",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '',
-                        'scale' => '',
-                        'size' => '',
-                        'type' => 'text',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('receive_mail'),
+                        'label'=>$this->getAttributeLabel('addtime'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,
@@ -188,9 +163,9 @@ class MailSettingModel extends \backend\models\BaseModel
                     ),
 		'status' => array(
                         'name' => 'status',
-                        'allowNull' => true,
+                        'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '状态',
+//                         'comment' => '审核状态',
 //                         'dbType' => "tinyint(1)",
                         'defaultValue' => '',
                         'enumValues' => null,
@@ -209,22 +184,22 @@ class MailSettingModel extends \backend\models\BaseModel
                         'isSort' => true,
 //                         'udc'=>'',
                     ),
-		'addtime' => array(
-                        'name' => 'addtime',
-                        'allowNull' => true,
+		'uid' => array(
+                        'name' => 'uid',
+                        'allowNull' => false,
 //                         'autoIncrement' => false,
-//                         'comment' => '创建时间',
-//                         'dbType' => "datetime",
+//                         'comment' => '用户id',
+//                         'dbType' => "int(11)",
                         'defaultValue' => '',
                         'enumValues' => null,
                         'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '',
+                        'phpType' => 'integer',
+                        'precision' => '11',
                         'scale' => '',
-                        'size' => '',
-                        'type' => 'datetime',
+                        'size' => '11',
+                        'type' => 'integer',
                         'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('addtime'),
+                        'label'=>$this->getAttributeLabel('uid'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

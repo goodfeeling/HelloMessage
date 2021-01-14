@@ -19,7 +19,7 @@ $this->title = '活动列表';
             <?php foreach ($models as $key => $value) : ?>
                 <!-- item -->
                 <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post', 'id' => $value['id']]) ?>" class="postItem">
+                    <a href="<?php echo Url::to(['post/index', 'id' => $value['id']]) ?>" class="postItem">
                         <div class="imageWrapper">
                             <img src="<?= $value['img_url'] ?>" alt="image" class="image">
                         </div>

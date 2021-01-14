@@ -17,7 +17,7 @@ $this->title = '首页';
             <?php foreach ($recomment as $key => $value) : ?>
                 <!-- item -->
                 <div class="item">
-                    <a href="<?php echo Url::to(['activity/post', 'id' => $value['id']]) ?>" class="card card-overlay text-white">
+                    <a href="<?php echo Url::to(['post/index', 'id' => $value['id']]) ?>" class="card card-overlay text-white">
                         <img src="<?= $value['img_url'] ?>" class="card-img img-fluid" alt="image">
                         <div class="card-img-overlay">
                             <div class="header row">
@@ -205,7 +205,7 @@ $this->title = '首页';
             <div class="text-muted">Lastest</div>
             <div class="title">
                 <h1>热门帖子</h1>
-                <a href="<?php echo Url::to(['activity/category']) ?>">查看全部</a>
+                <a href="<?php echo Url::to(['post/category']) ?>">查看全部</a>
             </div>
         </div>
 
@@ -214,7 +214,7 @@ $this->title = '首页';
             <?php foreach ($model as $key => $value) : ?>
                 <!-- item -->
                 <div class="col-6">
-                    <a href="<?php echo Url::to(['activity/post', 'id' => $value['id']]) ?>" class="postItem">
+                    <a href="<?php echo Url::to(['post/index', 'id' => $value['id']]) ?>" class="postItem">
                         <div class="imageWrapper">
                             <img src="<?= $value['img_url'] ?>" alt="image" class="image">
                             <div class="badge badge-warning"><?= $value['keyword'] ?></div>

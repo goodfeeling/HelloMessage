@@ -5,10 +5,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
-$this->title = '活动详情';
+$this->title = '帖子详情';
 $urlManager = Yii::$app->urlManager;
 
-\common\services\StaticServices::includeAppJsStatic('@web/js/activity/post.js',
+\common\services\StaticServices::includeAppJsStatic('@web/js/post/index.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
 ?>
@@ -69,7 +69,7 @@ $urlManager = Yii::$app->urlManager;
         <!-- related posts -->
         <div class="sectionTitle mb-2">
             <div class="title">
-                <h1>最近的活动</h1>
+                <h1>最近的帖子</h1>
             </div>
         </div>
         <div class="postCarousel owl-carousel">

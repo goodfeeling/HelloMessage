@@ -10,14 +10,14 @@ use Yii;
  * @property integer $uid
  * @property integer $aid
  */
-class ActivityLikesUserModel extends \backend\models\BaseModel
+class PostLikesUserModel extends \backend\models\BaseModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%activity_likes_user}}';
+        return '{{%post_likes_user}}';
     }
 
     /**

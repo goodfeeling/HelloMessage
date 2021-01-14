@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
  * Class ActivityController
  * @package frontend\controllers
  */
-class ActivityController extends BaseController
+class PostController extends BaseController
 {
     /**
      * {@inheritdoc}
@@ -78,14 +78,14 @@ class ActivityController extends BaseController
      *
      * @return mixed
      */
-    public function actionPost()
+    public function actionIndex()
     {
         $request = Yii::$app->request;
         $form = new ActivityForm();
         $form->id = $request->get('id');
         $res = $form->getData();
         $form->postIncrease();
-        return $this->render('post', [
+        return $this->render('index', [
             'data' => $res
         ]);
     }

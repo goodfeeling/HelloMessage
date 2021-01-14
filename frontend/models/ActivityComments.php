@@ -4,7 +4,7 @@
 namespace frontend\models;
 
 
-use backend\models\ActivityCommentModel;
+use backend\models\PostCommentModel;
 use backend\models\AdminUser;
 use common\utils\CommonFun;
 use common\utils\ConstStatus;
@@ -45,7 +45,7 @@ class ActivityComments extends \yii\db\ActiveRecord
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, current($this->getErrors())[0]);
         }
 
-        $model = new ActivityCommentModel();
+        $model = new PostCommentModel();
         $model->attributes = $this->attributes;
         $model->addtime = date("yy-m-d H:i:i");
         $model->status = '0';
@@ -58,7 +58,7 @@ class ActivityComments extends \yii\db\ActiveRecord
 
     public function getData()
     {
-        $query = ActivityCommentModel::find()
+        $query = PostCommentModel::find()
             ->where(['aid' => $this->aid]);
         $count = (clone $query)->count();
         $pagination = new Pagination([
