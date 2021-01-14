@@ -20,7 +20,7 @@ $urlManager = Yii::$app->urlManager;
         <!-- Button Carousel -->
         <div class="buttonCarousel owl-carousel mt-2 mb-2">
             <div class="item active">
-                <a href="#">
+                <a href="<?= Url::to(['discover/my-lists']) ?>">
                     <div class="imgWrapper">
                         <img src="fornt/img/sample/avatar.jpg" alt="image">
                     </div>
@@ -94,7 +94,7 @@ $urlManager = Yii::$app->urlManager;
                 </div>
             </header>
             <div class="image">
-                <a href="social-post.html">
+                <a href="<?= Url::to(['discover/detail']) ?>">
                     <img src="fornt/img/sample/photo8.jpg" alt="photo" class="img-fluid">
                 </a>
             </div>

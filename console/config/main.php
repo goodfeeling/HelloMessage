@@ -8,6 +8,9 @@ return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@console/controllers'	=> '/console'
+    ],
     'controllerNamespace' => 'console\controllers',
     'components' => [
         'log' => [

@@ -12,9 +12,7 @@ $this->title = '相关设置';
 <div id="appCapsule">
     <div class="appContent">
         <div class="contentList">
-            <div>
-                <h6>夜间模式</h6>
-            </div>
+            <div>夜间模式</div>
             <div>
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitch0">
@@ -72,7 +70,6 @@ $this->title = '相关设置';
                 </div>
             </div>
         </div>
-        <a href="#" class="btn btn-primary btn-lg btn-block mt-2">Save</a>
     </div>
 </div>
 <!-- appCapsule -->

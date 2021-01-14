@@ -93,6 +93,51 @@ $this->title = '首页';
         <div class="divider mt-4 mb-2"></div>
 
 
+        <div class="sectionTitle mb-2">
+            <div class="text-muted">Overview</div>
+            <div class="title">
+                <h1>热门周边</h1>
+                <a href="blog-category.html">查看全部</a>
+            </div>
+            <div class="lead">
+                Bitter is using modern design style. Simple and elegant design lines.
+            </div>
+        </div>
+
+        <!-- item list -->
+        <div class="itemList">
+            <div class="item">
+                <div class="image">
+                    <img src="fornt/img/sample/photo14.jpg" alt="image">
+                </div>
+                <div class="text">
+                    <h4 class="title">Pinky Glasses</h4>
+                    <div class="text-muted">Simple and elegant design line and has stunning looks</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="image">
+                    <img src="fornt/img/sample/photo13.jpg" alt="image">
+                </div>
+                <div class="text">
+                    <h4 class="title">Yellowish Headphone</h4>
+                    <div class="text-muted">Perfect spacing and perfect color sheme.</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="image">
+                    <img src="fornt/img/sample/photo4.jpg" alt="image">
+                </div>
+                <div class="text">
+                    <h4 class="title">Hybrid</h4>
+                    <div class="text-muted">Just what you need for perfect hybrid app design.</div>
+                </div>
+            </div>
+        </div>
+        <!-- * item list -->
+
+        <div class="divider mt-2 mb-4"></div>
+
         <!-- Button Carousel -->
         <div class="buttonCarousel owl-carousel">
             <div class="item">
@@ -154,57 +199,12 @@ $this->title = '首页';
         </div>
         <!-- Button Carousel -->
 
-        <div class="divider mt-2 mb-4"></div>
-
-        <div class="sectionTitle mb-2">
-            <div class="text-muted">Overview</div>
-            <div class="title">
-                <h1>产品</h1>
-                <a href="blog-category.html">查看全部</a>
-            </div>
-            <div class="lead">
-                Bitter is using modern design style. Simple and elegant design lines.
-            </div>
-        </div>
-
-        <!-- item list -->
-        <div class="itemList">
-            <div class="item">
-                <div class="image">
-                    <img src="fornt/img/sample/photo14.jpg" alt="image">
-                </div>
-                <div class="text">
-                    <h4 class="title">Pinky Glasses</h4>
-                    <div class="text-muted">Simple and elegant design line and has stunning looks</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="image">
-                    <img src="fornt/img/sample/photo13.jpg" alt="image">
-                </div>
-                <div class="text">
-                    <h4 class="title">Yellowish Headphone</h4>
-                    <div class="text-muted">Perfect spacing and perfect color sheme.</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="image">
-                    <img src="fornt/img/sample/photo4.jpg" alt="image">
-                </div>
-                <div class="text">
-                    <h4 class="title">Hybrid</h4>
-                    <div class="text-muted">Just what you need for perfect hybrid app design.</div>
-                </div>
-            </div>
-        </div>
-        <!-- * item list -->
-
         <div class="divider mt-4 mb-4"></div>
 
         <div class="sectionTitle mb-2">
             <div class="text-muted">Lastest</div>
             <div class="title">
-                <h1>热门活动</h1>
+                <h1>热门帖子</h1>
                 <a href="<?php echo Url::to(['activity/category']) ?>">查看全部</a>
             </div>
         </div>

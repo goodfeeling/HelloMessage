@@ -3,7 +3,7 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
-$this->title = '';
+$this->title = '个人动态';
 $urlManager = Yii::$app->urlManager;
 ?>
 
@@ -15,12 +15,6 @@ $urlManager = Yii::$app->urlManager;
 <div id="appCapsule">
 
     <div class="appContent">
-        <div style="position: relative;z-index: 1">
-            <img src="fornt/img/sample/photo3.jpg" alt="image" class="imageBlock img-fluid rounded">
-            <div style="z-index: 999;position: absolute;float: none">
-                <img src="fornt/img/sample/avatar.jpg" alt="image" class="imageBlock large rounded">
-            </div>
-        </div>
 
         <div class="card mt-2 mb-4">
             <div class="card-body">
@@ -70,35 +64,6 @@ $urlManager = Yii::$app->urlManager;
 
 
     </div>
-
-    <!-- app Footer -->
-    <footer class="appFooter">
-        <div class="heading">Copyright © Bitter 2019. All Rights Reserved.</div>
-        <p>
-            Modern, simple and elegant design for mobile devices. Based on Bootstrap.
-        </p>
-        <!-- facebook -->
-        <a href="#" class="btn btn-facebook btn-icon mr-1">
-            <i class="icon ion-logo-facebook"></i>
-        </a>
-        <!-- twitter -->
-        <a href="#" class="btn btn-twitter btn-icon mr-1">
-            <i class="icon ion-logo-twitter"></i>
-        </a>
-        <!-- instagram -->
-        <a href="#" class="btn btn-instagram btn-icon mr-1">
-            <i class="icon ion-logo-instagram"></i>
-        </a>
-        <!-- linkedin -->
-        <a href="#" class="btn btn-linkedin btn-icon mr-1">
-            <i class="icon ion-logo-linkedin"></i>
-        </a>
-        <!-- whatsapp -->
-        <a href="#" class="btn btn-whatsapp btn-icon mr-1">
-            <i class="icon ion-logo-whatsapp"></i>
-        </a>
-    </footer>
-    <!-- * app Footer -->
 
 </div>
 <!-- appCapsule -->

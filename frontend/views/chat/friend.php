@@ -15,14 +15,15 @@ $urlManager = Yii::$app->urlManager;
     <div class="appContent">
         <div class="contentList">
             <img src="fornt/img/sample/avatar.jpg" alt="image" class="imageBlock large rounded">
+
             <div>
-                <div class="custom-control">
+                <div class="text-muted">
                     <h4>
                         Aisa
-                        <i class="icon ion-ios-male"></i>
+                        <i class="icon ion-ios-female"></i>
                     </h4>
-                    <h6>微信号：21312313</h6>
-                    <h6>地区：广东 广州</h6>
+                    <small>微信号：21312313</small><br>
+                    <small>地区：<i class="icon ion-ios-pin mr-1"></i>广东 广州</small>
                 </div>
             </div>
             <div style="margin-right: 14rem"></div>

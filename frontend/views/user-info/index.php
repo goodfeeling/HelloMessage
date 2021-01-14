@@ -202,6 +202,6 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
             <?= Html::label('择偶要求', 'mate_require') ?>
             <?= Html::textarea('textarea', Html::encode($data['mate_require'] ?? ''), ['class' => 'form-control','id'=>'mate_require"','placeholder'=>'择偶要求','rows'=>3]) ?>
         </div>
-        <?= Html::button('保存', ['class' => 'btn btn-outline-primary btn-lg btn-block mt-2']) ?>
+        <?= Html::button('保存', ['class' => 'btn btn-outline-primary btn-lg btn-block mt-2',"id"=>'submit']) ?>
     </div>
 </div>

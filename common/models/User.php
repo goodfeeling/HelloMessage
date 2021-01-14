@@ -39,6 +39,7 @@ use yii\web\IdentityInterface;
  * @property string $rateLimit
  * @property string $rangeTime
  * @property string $updated_at
+ * @property string $email
  *
  * @property AdminUserRole[] $adminUserRoles
  */
