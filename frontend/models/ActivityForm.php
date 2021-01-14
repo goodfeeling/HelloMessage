@@ -8,8 +8,8 @@ use backend\models\UserDetailModel;
 use common\utils\CommonFun;
 use common\utils\ConstStatus;
 use Yii;
-use backend\models\ActivityLikesUserModel;
-use backend\models\ActivityModel;
+use backend\models\PostLikesUserModel;
+use backend\models\PostModel;
 use backend\models\AdminUser;
 use backend\models\ImagesModel;
 use yii\data\Pagination;
@@ -28,7 +28,7 @@ class ActivityForm extends \yii\db\ActiveRecord
      */
     public function getData()
     {
-        $model = ActivityModel::find();
+        $model = PostModel::find();
         $res = $model->where(['id' => $this->id])
             ->select('id,addtime,name,describe,join_number,keyword,author_id,pic_url_id,views')
             ->asArray()
@@ -41,7 +41,7 @@ class ActivityForm extends \yii\db\ActiveRecord
 
         $res['avatar_url'] = $author['avatar_url'];
         $res['nickname'] = $author['nickname'];
-        $res['likes'] = ActivityLikesUserModel::find()
+        $res['likes'] = PostLikesUserModel::find()
             ->where(['aid' => $this->id])
             ->count();
         return $res;
@@ -53,7 +53,7 @@ class ActivityForm extends \yii\db\ActiveRecord
      */
     public function getActivityData()
     {
-        $query = ActivityModel::find();
+        $query = PostModel::find();
         $user_query = AdminUser::find();
         $recomment = $query
             ->orderBy("sort DESC")
@@ -103,7 +103,7 @@ class ActivityForm extends \yii\db\ActiveRecord
      */
     public function postIncrease()
     {
-        return ActivityModel::updateAllCounters([
+        return PostModel::updateAllCounters([
             'views' => 1
         ], [
             'id' => $this->id
@@ -117,16 +117,16 @@ class ActivityForm extends \yii\db\ActiveRecord
      */
     public function LikeIncrease($uid)
     {
-        $checkData = ActivityLikesUserModel::findOne(['uid' => $uid, 'aid' => $this->id]);
+        $checkData = PostLikesUserModel::findOne(['uid' => $uid, 'aid' => $this->id]);
         if ($checkData) {
             return $this->resultMsg(null, ConstStatus::CODE_ERROR, '您已经点过赞啦！');
         }
-        $model = new ActivityLikesUserModel();
+        $model = new PostLikesUserModel();
         $model->aid = $this->id;
         $model->uid = $uid;
 
         if ($model->save()) {
-            $count = ActivityLikesUserModel::find()
+            $count = PostLikesUserModel::find()
                 ->where(['aid' => $this->id])->count();
             return $this->resultMsg($count, ConstStatus::CODE_SUCCESS, '点赞成功！');
         } else {
@@ -147,7 +147,7 @@ class ActivityForm extends \yii\db\ActiveRecord
             ->all();
         foreach ($userActivity as $key=>&$value) {
             // 这个用户参加的所有活动
-            $activity = ActivityModel::find()
+            $activity = PostModel::find()
                 ->where(['id'=>$value['aid']])
                 ->select('name,addtime,endtime,theme')
                 ->asArray()
@@ -219,7 +219,7 @@ class ActivityForm extends \yii\db\ActiveRecord
     // 获得所有有效的活动分类
     public function getCategory()
     {
-        $query = ActivityModel::find()->where(['status' => 1]);
+        $query = PostModel::find()->where(['status' => 1]);
         $pages = new Pagination([
             'totalCount' => (clone $query)->count(),
             'defaultPageSize' => $this->size,

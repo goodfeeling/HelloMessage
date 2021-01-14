@@ -19,7 +19,7 @@ class ChatController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'my-chat'],
+                'only' => ['index', 'my-chat','chat-room','friend'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -49,6 +49,31 @@ class ChatController extends BaseController
     public function actionMyChat()
     {
         return $this->render('my-chat');
+    }
+
+    /**
+     * 好友资料
+     * @return string
+     */
+    public function actionFriend() {
+        return $this->render('friend');
+    }
+
+    /**
+     * 信息设置
+     * @return string
+     */
+    public function actionInformationSetting() {
+        return $this->render("information-setting");
+    }
+
+
+    /**
+     * 我的聊天室
+     * @return string
+     */
+    public function actionChatRoom() {
+        return $this->render('chat-room');
     }
 
 }

@@ -43,22 +43,28 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo Url::to(['my-activity/index']) ?>">
+                    <a href="<?php echo Url::to(['chat/chat-room']) ?>">
                         <i class="icon ion-ios-chatboxes"></i>
-                        我的活动
+                        我的聊天室
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo Url::to(['site/faq']) ?>">
+                        <i class="icon ion-ios-navigate"></i>
+                        我的收藏
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo Url::to(['nearby/index']) ?>">
+                        <i class="icon ion-ios-book"></i>
+                        附近的人
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo Url::to(['feedback/index']) ?>">
-                        <i class="icon ion-ios-analytics"></i>意见反馈</a>
-                </li>
-                <li>
-                    <a href="<?php echo Url::to(['site/guidance']) ?>">
-                        <i class="icon ion-ios-book"></i>导航</a>
-                </li>
-                <li>
-                    <a href="<?php echo Url::to(['site/faq']) ?>">
-                        <i class="icon ion-ios-navigate"></i>FAQ</a>
+                        <i class="icon ion-ios-analytics"></i>
+                        意见反馈
+                    </a>
                 </li>
                 <li <?php echo $identity ? '' : 'hidden' ?>>
                     <a href="<?php echo Url::to(['login/logout']) ?>">

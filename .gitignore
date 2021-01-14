@@ -34,3 +34,8 @@ sonar-project.properties
 backend/runtime/
 /vendor/
 /common/config/main.php
+
+/micro/runtime/
+/frontend/runtime/
+/console/runtime/
+/backend/web/resource/uploads/

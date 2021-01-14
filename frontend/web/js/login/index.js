@@ -1,4 +1,4 @@
-$(document).on('click', '#wechat-contr', function () {
+$(document).on('click', '.wechat-contr', function () {
     $.ajax({
         url: LOGIN_JUMP,
         type: "GET",

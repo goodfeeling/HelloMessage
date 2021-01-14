@@ -21,19 +21,19 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <?= Html::label('头像', 'avatar') ?>
-            <img id="showimg" src="<?= $avatar_url ?? '' ?>" class="img-circle" style="width: 60px;height: 60px;margin-left: 10px;margin-top: 10px"/>
-            <p class="help-block">点击按钮即可上传.</p>
+            <?= Html::img($avatar_url ?? '', ['class' => 'img-circle',"id"=>"showimg","style"=>"width: 60px;height: 60px;margin-left: 10px;margin-top: 10px"]) ?>
+            <?= Html::tag('p', "点击按钮即可上传.", ['class' => 'help-block']) ?>
         </div>
 
         <div class="form-group">
             <?= Html::label('真实姓名', 'name') ?>
-            <?= Html::input('text', '', $data['name'], ['class' => 'form-control','id'=>'name',"placeholder"=>"真实姓名"]) ?>
+            <?= Html::input('text', '', $data['name'] ?? '', ['class' => 'form-control','id'=>'name',"placeholder"=>"真实姓名"]) ?>
         </div>
 
         <div class="form-group">
             <label for="birthday">生日</label>
             <?= Html::label('生日', 'birthday') ?>
-            <?= Html::input('date', '', $data['birthday'], ['class' => 'form-control','id'=>'birthday',"placeholder"=>"生日"]) ?>
+            <?= Html::input('date', '', $data['birthday'] ?? '', ['class' => 'form-control','id'=>'birthday',"placeholder"=>"生日"]) ?>
         </div>
 
         <div class="form-group">
@@ -57,19 +57,19 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
             <?= Html::label('身高', 'height') ?>
 
             <div class="input-group">
-                <?= Html::input('number', '', $data['height'], ['class' => 'form-control','id'=>'height',"placeholder"=>"身高"]) ?>
+                <?= Html::input('number', '', $data['height'] ?? '', ['class' => 'form-control','id'=>'height',"placeholder"=>"身高"]) ?>
             </div>
         </div>
 
         <div class="form-group">
             <?= Html::label('籍贯', 'native_place') ?>
-            <?= Html::input('native_place', '', $data['native_place'], ['class' => 'form-control','id'=>'native_place',"placeholder"=>"籍贯"]) ?>
+            <?= Html::input('native_place', '', $data['native_place'] ?? '', ['class' => 'form-control','id'=>'native_place',"placeholder"=>"籍贯"]) ?>
         </div>
 
         <div class="form-group">
             <?= Html::label('联系方式', 'mobile') ?>
             <div class="input-group">
-                <?= Html::input('number', '', $data['mobile'], ['class' => 'form-control','id'=>'mobile',"placeholder"=>"联系方式"]) ?>
+                <?= Html::input('number', '', $data['mobile'] ?? '', ['class' => 'form-control','id'=>'mobile',"placeholder"=>"联系方式"]) ?>
             </div>
             <p class="help-block">请正确填写联系方式.</p>
         </div>
@@ -195,13 +195,13 @@ $avatar_url = (new \frontend\service\UserService())->generaterUrl($this->params[
 
         <div class="form-group">
             <?= Html::label('爱好', 'hobby') ?>
-            <?= Html::textarea('textarea', Html::encode($data['hobby']), ['class' => 'form-control','id'=>'hobby"','placeholder'=>'爱好']) ?>
+            <?= Html::textarea('textarea', Html::encode($data['hobby'] ?? ''), ['class' => 'form-control','id'=>'hobby"','placeholder'=>'爱好']) ?>
         </div>
 
         <div class="form-group">
             <?= Html::label('择偶要求', 'mate_require') ?>
-            <?= Html::textarea('textarea', Html::encode($data['mate_require']), ['class' => 'form-control','id'=>'mate_require"','placeholder'=>'择偶要求','rows'=>3]) ?>
+            <?= Html::textarea('textarea', Html::encode($data['mate_require'] ?? ''), ['class' => 'form-control','id'=>'mate_require"','placeholder'=>'择偶要求','rows'=>3]) ?>
         </div>
-        <?= Html::button('保存', ['class' => 'btn btn-outline-primary btn-lg btn-block mt-2']) ?>
+        <?= Html::button('保存', ['class' => 'btn btn-outline-primary btn-lg btn-block mt-2',"id"=>'submit']) ?>
     </div>
 </div>

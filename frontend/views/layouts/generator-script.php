@@ -18,13 +18,13 @@ use yii\helpers\Url;
     // 统一生成url
     BASE_URL = "<?= Yii::$app->request->hostInfo ?>";
     LOGIN = "<?= Url::toRoute('login/index', true) ?>"
-    APPLY = "<?= Url::toRoute('activity/apply', true) ?>"
-    USER_PAY = "<?= Url::toRoute('activity/user-pay', true) ?>"
-    VERIFY_USER = "<?= Url::toRoute('activity/verify-user', true) ?>"
+    APPLY = "<?= Url::toRoute('post/apply', true) ?>"
+    USER_PAY = "<?= Url::toRoute('post/user-pay', true) ?>"
+    VERIFY_USER = "<?= Url::toRoute('post/verify-user', true) ?>"
     LOGIN_JUMP = "<?= Url::toRoute('login/jump-login-page', true) ?>"
     USER_INFO = "<?= Url::toRoute('user-info/index', true) ?>"
-    COMMENT = "<?= Url::toRoute('activity/comment', true) ?>"
-    LINKES_INCREASE = "<?= Url::toRoute('activity/likes-increase', true) ?>"
+    COMMENT = "<?= Url::toRoute('post/comment', true) ?>"
+    LINKES_INCREASE = "<?= Url::toRoute('post/likes-increase', true) ?>"
     SITE_INDEX = "<?= Url::toRoute('site/index', true) ?>"
     FEEDBACK = "<?= Url::toRoute('feedback/index', true) ?>"
     QRCODE = "<?= Url::toRoute('default/get-qr', true) ?>"

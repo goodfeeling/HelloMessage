@@ -1,7 +1,10 @@
 <?php
-
 use yii\helpers\Url;
 
+/* @var $this yii\web\View */
+
+$this->title = '动态';
+$urlManager = Yii::$app->urlManager;
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
@@ -15,7 +18,7 @@ use yii\helpers\Url;
             <header>
                 <div class="user">
                     <a href="social-profile.html">
-                        <img src="assets/img/sample/avatar6.jpg" alt="avatar" class="avatar">
+                        <img src="fornt/img/sample/avatar6.jpg" alt="avatar" class="avatar">
                         <strong>Diego Esteve</strong>
                     </a>
                 </div>
@@ -24,7 +27,7 @@ use yii\helpers\Url;
                 </div>
             </header>
             <div class="image">
-                <img src="assets/img/sample/photo4.jpg" alt="photo" class="img-fluid">
+                <img src="fornt/img/sample/photo4.jpg" alt="photo" class="img-fluid">
             </div>
             <footer class="row">
                 <div class="col-8">
@@ -42,7 +45,7 @@ use yii\helpers\Url;
         <div class="comments">
             <div class="item">
                 <div class="image">
-                    <img src="assets/img/sample/avatar5.jpg" alt="avatar" class="avatar">
+                    <img src="fornt/img/sample/avatar5.jpg" alt="avatar" class="avatar">
                 </div>
                 <div class="content">
                     <strong>Juan Morata</strong>
@@ -54,7 +57,7 @@ use yii\helpers\Url;
             </div>
             <div class="item">
                 <div class="image">
-                    <img src="assets/img/sample/avatar4.jpg" alt="avatar" class="avatar">
+                    <img src="fornt/img/sample/avatar4.jpg" alt="avatar" class="avatar">
                 </div>
                 <div class="content">
                     <strong>Niek Gaspar</strong>
