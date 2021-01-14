@@ -48,7 +48,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['127.0.0.1', '::1', '192.168.205.*'], // 按需调整这里
+        'allowedIPs' => ['172.18.0.*'], // 按需调整这里
         'generators' => [
             'model' => [
                 'class' => 'common\generators\model\Generator2',

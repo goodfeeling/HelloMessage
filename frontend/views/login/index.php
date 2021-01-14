@@ -71,14 +71,14 @@ $captcha_config = [
         </div>
         <?php ActiveForm::end() ?>
 
-        <div class="divider mt-3 mb-3" hidden></div>
+        <div class="divider mt-3 mb-3"></div>
 
-        <div class=" other-login">
-            <div class="text-muted mb-2" hidden>或者其它登录方式</div>
-            <div class="col-6 wechat-login">
-                <img src="images/wechat.png" id="wechat-contr" alt="微信登陆">
-                <img src="images/weibo.png" id="wechat-contr" alt="微博登录">
-                <img src="images/qq_connet.png" id="wechat-contr" alt="QQ登录">
+        <div class="other-login">
+            <div class="text-muted mb-2">或者其它登录方式</div>
+            <div class="wechat-login">
+                <img src="images/wechat.png" class="imageBlock large wechat-contr" alt="微信登陆">
+                <img src="images/weibo.png" class="imageBlock large" alt="微博登录">
+                <img src="images/qq_connet.png" class="imageBlock large" alt="QQ登录">
             </div>
         </div>
     </div>

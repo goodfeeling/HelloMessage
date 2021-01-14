@@ -4,13 +4,11 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%admin_activity}}".
+ * This is the model class for table "{{%post}}".
  *
  * @property integer $id
  * @property string $name
  * @property string $addtime
- * @property string $endtime
- * @property string $money
  * @property string $describe
  * @property string $theme
  * @property integer $join_number
@@ -37,12 +35,11 @@ class PostModel extends \backend\models\BaseModel
     public function rules()
     {
         return [
-            [['name', 'addtime', 'endtime'], 'required'],
-            [['addtime', 'endtime'], 'safe'],
+            [['name', 'addtime'], 'required'],
+            [['addtime'], 'safe'],
             [['describe'], 'string'],
             [['join_number', 'status', 'author_id', 'views'], 'integer'],
             [['name'], 'string', 'max' => 30],
-            [['money'], 'string', 'max' => 10],
             [['theme'], 'string', 'max' => 50],
             [['keyword'], 'string', 'max' => 100],
             [['pic_url_id'], 'string', 'max' => 1],
@@ -56,20 +53,18 @@ class PostModel extends \backend\models\BaseModel
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => '活动名称',
-            'addtime' => '报名时间',
-            'endtime' => '截止时间',
-            'money' => '需要金额',
-            'describe' => '描述',
-            'theme' => '主题',
-            'join_number' => '参加人数',
-            'status' => '状态',
-            'keyword' => '关键词',
-            'author_id' => '作者id',
-            'pic_url_id' => '大图id',
-            'views' => '浏览量',
-            'sort' => '排序',
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', '活动名称'),
+            'addtime' => Yii::t('app', '报名时间'),
+            'describe' => Yii::t('app', '描述'),
+            'theme' => Yii::t('app', '主题'),
+            'join_number' => Yii::t('app', '参加人数'),
+            'status' => Yii::t('app', '状态'),
+            'keyword' => Yii::t('app', '关键词'),
+            'author_id' => Yii::t('app', '作者id'),
+            'pic_url_id' => Yii::t('app', '大图id'),
+            'views' => Yii::t('app', '浏览量'),
+            'sort' => Yii::t('app', '排序'),
         ];
     }
 
@@ -152,52 +147,6 @@ class PostModel extends \backend\models\BaseModel
                         'type' => 'datetime',
                         'unsigned' => false,
                         'label'=>$this->getAttributeLabel('addtime'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'endtime' => array(
-                        'name' => 'endtime',
-                        'allowNull' => false,
-//                         'autoIncrement' => false,
-//                         'comment' => '截止时间',
-//                         'dbType' => "datetime",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '',
-                        'scale' => '',
-                        'size' => '',
-                        'type' => 'datetime',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('endtime'),
-                        'inputType' => 'text',
-                        'isEdit' => true,
-                        'isSearch' => false,
-                        'isDisplay' => true,
-                        'isSort' => true,
-//                         'udc'=>'',
-                    ),
-		'money' => array(
-                        'name' => 'money',
-                        'allowNull' => true,
-//                         'autoIncrement' => false,
-//                         'comment' => '需要金额',
-//                         'dbType' => "varchar(10)",
-                        'defaultValue' => '',
-                        'enumValues' => null,
-                        'isPrimaryKey' => false,
-                        'phpType' => 'string',
-                        'precision' => '10',
-                        'scale' => '',
-                        'size' => '10',
-                        'type' => 'string',
-                        'unsigned' => false,
-                        'label'=>$this->getAttributeLabel('money'),
                         'inputType' => 'text',
                         'isEdit' => true,
                         'isSearch' => false,

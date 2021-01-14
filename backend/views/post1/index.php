@@ -5,9 +5,9 @@ use yii\bootstrap\ActiveForm;
 use common\utils\CommonFun;
 use yii\helpers\Url;
 
-use common\models\TestUser;
+use backend\models\PostModel;
 
-$modelLabel = new \common\models\TestUser();
+$modelLabel = new \backend\models\PostModel();
 ?>
 
 <?php $this->beginBlock('header');  ?>
@@ -37,7 +37,7 @@ $modelLabel = new \common\models\TestUser();
             <!-- row start search-->
           	<div class="row">
           	<div class="col-sm-12">
-                <?php ActiveForm::begin(['id' => 'test-user-search-form', 'method'=>'get', 'options' => ['class' => 'form-inline'], 'action'=>Url::toRoute('test-user/index')]); ?>     
+                <?php ActiveForm::begin(['id' => 'post-search-form', 'method'=>'get', 'options' => ['class' => 'form-inline'], 'action'=>Url::toRoute('post/index')]); ?>     
                 
                   <div class="form-group" style="margin: 5px;">
                       <label><?=$modelLabel->getAttributeLabel('id')?>:</label>
@@ -62,17 +62,17 @@ $modelLabel = new \common\models\TestUser();
               $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : '';
 		      echo '<th><input id="data_table_check" type="checkbox"></th>';
               echo '<th onclick="orderby(\'id\', \'desc\')" '.CommonFun::sortClass($orderby, 'id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('id').'</th>';
-              echo '<th onclick="orderby(\'uname\', \'desc\')" '.CommonFun::sortClass($orderby, 'uname').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('uname').'</th>';
-              echo '<th onclick="orderby(\'password\', \'desc\')" '.CommonFun::sortClass($orderby, 'password').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('password').'</th>';
-              echo '<th onclick="orderby(\'auth_key\', \'desc\')" '.CommonFun::sortClass($orderby, 'auth_key').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('auth_key').'</th>';
-              echo '<th onclick="orderby(\'last_ip\', \'desc\')" '.CommonFun::sortClass($orderby, 'last_ip').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('last_ip').'</th>';
-              echo '<th onclick="orderby(\'is_online\', \'desc\')" '.CommonFun::sortClass($orderby, 'is_online').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('is_online').'</th>';
-              echo '<th onclick="orderby(\'domain_account\', \'desc\')" '.CommonFun::sortClass($orderby, 'domain_account').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('domain_account').'</th>';
+              echo '<th onclick="orderby(\'name\', \'desc\')" '.CommonFun::sortClass($orderby, 'name').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('name').'</th>';
+              echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
+              echo '<th onclick="orderby(\'describe\', \'desc\')" '.CommonFun::sortClass($orderby, 'describe').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('describe').'</th>';
+              echo '<th onclick="orderby(\'theme\', \'desc\')" '.CommonFun::sortClass($orderby, 'theme').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('theme').'</th>';
+              echo '<th onclick="orderby(\'join_number\', \'desc\')" '.CommonFun::sortClass($orderby, 'join_number').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('join_number').'</th>';
               echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
-              echo '<th onclick="orderby(\'create_user\', \'desc\')" '.CommonFun::sortClass($orderby, 'create_user').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('create_user').'</th>';
-              echo '<th onclick="orderby(\'create_date\', \'desc\')" '.CommonFun::sortClass($orderby, 'create_date').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('create_date').'</th>';
-              echo '<th onclick="orderby(\'update_user\', \'desc\')" '.CommonFun::sortClass($orderby, 'update_user').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('update_user').'</th>';
-              echo '<th onclick="orderby(\'update_date\', \'desc\')" '.CommonFun::sortClass($orderby, 'update_date').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('update_date').'</th>';
+              echo '<th onclick="orderby(\'keyword\', \'desc\')" '.CommonFun::sortClass($orderby, 'keyword').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('keyword').'</th>';
+              echo '<th onclick="orderby(\'author_id\', \'desc\')" '.CommonFun::sortClass($orderby, 'author_id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('author_id').'</th>';
+              echo '<th onclick="orderby(\'pic_url_id\', \'desc\')" '.CommonFun::sortClass($orderby, 'pic_url_id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('pic_url_id').'</th>';
+              echo '<th onclick="orderby(\'views\', \'desc\')" '.CommonFun::sortClass($orderby, 'views').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('views').'</th>';
+              echo '<th onclick="orderby(\'sort\', \'desc\')" '.CommonFun::sortClass($orderby, 'sort').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('sort').'</th>';
          
 			?>
 	
@@ -86,17 +86,17 @@ $modelLabel = new \common\models\TestUser();
                 echo '<tr id="rowid_' . $model->id . '">';
                 echo '  <td><label><input type="checkbox" value="' . $model->id . '"></label></td>';
                 echo '  <td>' . $model->id . '</td>';
-                echo '  <td>' . $model->uname . '</td>';
-                echo '  <td>' . $model->password . '</td>';
-                echo '  <td>' . $model->auth_key . '</td>';
-                echo '  <td>' . $model->last_ip . '</td>';
-                echo '  <td>' . $model->is_online . '</td>';
-                echo '  <td>' . $model->domain_account . '</td>';
+                echo '  <td>' . $model->name . '</td>';
+                echo '  <td>' . $model->addtime . '</td>';
+                echo '  <td>' . '....' . '</td>';
+                echo '  <td>' . $model->theme . '</td>';
+                echo '  <td>' . $model->join_number . '</td>';
                 echo '  <td>' . $model->status . '</td>';
-                echo '  <td>' . $model->create_user . '</td>';
-                echo '  <td>' . $model->create_date . '</td>';
-                echo '  <td>' . $model->update_user . '</td>';
-                echo '  <td>' . $model->update_date . '</td>';
+                echo '  <td>' . $model->keyword . '</td>';
+                echo '  <td>' . $model->author_id . '</td>';
+                echo '  <td>' . $model->pic_url_id . '</td>';
+                echo '  <td>' . $model->views . '</td>';
+                echo '  <td>' . $model->sort . '</td>';
                 echo '  <td class="center">';
                 echo '      <a id="view_btn" onclick="viewAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看</a>';
                 echo '      <a id="edit_btn" onclick="editAction(' . $model->id . ')" class="btn btn-primary btn-sm" href="#"> <i class="glyphicon glyphicon-edit icon-white"></i>修改</a>';
@@ -159,54 +159,47 @@ $modelLabel = new \common\models\TestUser();
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">
-                <?php $form = ActiveForm::begin(["id" => "test-user-form", "class"=>"form-horizontal", "action"=>Url::toRoute("test-user/save")]); ?>                      
+                <?php $form = ActiveForm::begin(["id" => "post-form", "class"=>"form-horizontal", "action"=>Url::toRoute("post/save")]); ?>                      
                  
           <input type="hidden" class="form-control" id="id" name="id" />
 
-          <div id="uname_div" class="form-group">
-              <label for="uname" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("uname")?></label>
+          <div id="name_div" class="form-group">
+              <label for="name" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("name")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="uname" name="TestUser[uname]" placeholder="必填" />
+                  <input type="text" class="form-control" id="name" name="PostModel[name]" placeholder="必填" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="password_div" class="form-group">
-              <label for="password" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("password")?></label>
+          <div id="addtime_div" class="form-group">
+              <label for="addtime" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("addtime")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="password" name="TestUser[password]" placeholder="必填" />
+                  <input type="datetime-local" class="form-control" id="addtime" name="ActivityModel[addtime]" value="123" placeholder="yyyy-mm-dd hh:mm:ss" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="auth_key_div" class="form-group">
-              <label for="auth_key" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("auth_key")?></label>
+          <div id="describe_div" class="form-group">
+              <label for="describe" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("describe")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="auth_key" name="TestUser[auth_key]" placeholder="" />
+                 <textarea id="describe" name="ActivityModel[describe]" placeholder="">
+                 </textarea>
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="last_ip_div" class="form-group">
-              <label for="last_ip" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("last_ip")?></label>
+          <div id="theme_div" class="form-group">
+              <label for="theme" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("theme")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="last_ip" name="TestUser[last_ip]" placeholder="" />
+                  <input type="text" class="form-control" id="theme" name="PostModel[theme]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="is_online_div" class="form-group">
-              <label for="is_online" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("is_online")?></label>
+          <div id="join_number_div" class="form-group">
+              <label for="join_number" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("join_number")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="is_online" name="TestUser[is_online]" placeholder="" />
-              </div>
-              <div class="clearfix"></div>
-          </div>
-
-          <div id="domain_account_div" class="form-group">
-              <label for="domain_account" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("domain_account")?></label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" id="domain_account" name="TestUser[domain_account]" placeholder="" />
+                  <input type="number" class="form-control" id="join_number" name="PostModel[join_number]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -214,39 +207,53 @@ $modelLabel = new \common\models\TestUser();
           <div id="status_div" class="form-group">
               <label for="status" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("status")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="status" name="TestUser[status]" placeholder="必填" />
+                  <select class="form-control" name="ActivityModel[status]" id="status">
+                      <?php
+                      foreach(\backend\services\PostModelService::$STATUS_CODE as $key=> $value){
+                          echo "<option value=\"{$key}\">{$value}</option>";
+                      }
+                      ?>
+                  </select>
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="create_user_div" class="form-group">
-              <label for="create_user" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("create_user")?></label>
+          <div id="keyword_div" class="form-group">
+              <label for="keyword" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("keyword")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="create_user" name="TestUser[create_user]" placeholder="必填" />
+                  <input type="text" class="form-control" id="keyword" name="PostModel[keyword]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="create_date_div" class="form-group">
-              <label for="create_date" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("create_date")?></label>
+          <div id="author_id_div" class="form-group">
+              <label for="author_id" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("author_id")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="create_date" name="TestUser[create_date]" placeholder="必填" />
+                  <input type="text" class="form-control" id="author_id" name="PostModel[author_id]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="update_user_div" class="form-group">
-              <label for="update_user" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("update_user")?></label>
+          <div id="pic_url_id_div" class="form-group">
+              <label for="pic_url_id" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("pic_url_id")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="update_user" name="TestUser[update_user]" placeholder="必填" />
+                  <input type="text" class="form-control" id="pic_url_id" name="PostModel[pic_url_id]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
 
-          <div id="update_date_div" class="form-group">
-              <label for="update_date" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("update_date")?></label>
+          <div id="views_div" class="form-group">
+              <label for="views" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("views")?></label>
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="update_date" name="TestUser[update_date]" placeholder="必填" />
+                  <input type="text" class="form-control" id="views" name="PostModel[views]" placeholder="" />
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+          <div id="sort_div" class="form-group">
+              <label for="sort" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("sort")?></label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="sort" name="PostModel[sort]" placeholder="" />
               </div>
               <div class="clearfix"></div>
           </div>
@@ -264,6 +271,15 @@ $modelLabel = new \common\models\TestUser();
 <?php $this->beginBlock('footer');  ?>
 <!-- <body></body>后代码块 -->
  <script>
+     var option = {
+         "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+         "emphasis": true, //Italics, bold, etc. Default true
+         "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+         "html": true, //Button which allows you to edit the generated HTML. Default false
+         "link": true, //Button to insert a link. Default true
+         "image": true, //Button to insert an image. Default true,
+         "color": true, //Button to change color of font
+     }
 function orderby(field, op){
 	 var url = window.location.search;
 	 var optemp = field + " desc";
@@ -285,70 +301,71 @@ function orderby(field, op){
 	 window.location.href=url; 
  }
  function searchAction(){
-		$('#test-user-search-form').submit();
+		$('#post-search-form').submit();
 	}
  function viewAction(id){
 		initModel(id, 'view', 'fun');
 	}
 
  function initEditSystemModule(data, type){
+     $('#describe').wysihtml5(option);
 	if(type == 'create'){
     	        $("#id").val("");
-        $("#uname").val("");
-        $("#password").val("");
-        $("#auth_key").val("");
-        $("#last_ip").val("");
-        $("#is_online").val("");
-        $("#domain_account").val("");
+        $("#name").val("");
+        $("#addtime").val("");
+        $("#describe").val("");
+        $("#theme").val("");
+        $("#join_number").val("");
         $("#status").val("");
-        $("#create_user").val("");
-        $("#create_date").val("");
-        $("#update_user").val("");
-        $("#update_date").val("");
+        $("#keyword").val("");
+        $("#author_id").val("");
+        $("#pic_url_id").val("");
+        $("#views").val("");
+        $("#sort").val("");
 	
 	}
 	else{
     	        $("#id").val(data.id)
-        $("#uname").val(data.uname)
-        $("#password").val(data.password)
-        $("#auth_key").val(data.auth_key)
-        $("#last_ip").val(data.last_ip)
-        $("#is_online").val(data.is_online)
-        $("#domain_account").val(data.domain_account)
+        $("#name").val(data.name)
+        $("#addtime").val(data.addtime)
+        $("#describe").val(data.describe)
+        $("#theme").val(data.theme)
+        $("#join_number").val(data.join_number)
         $("#status").val(data.status)
-        $("#create_user").val(data.create_user)
-        $("#create_date").val(data.create_date)
-        $("#update_user").val(data.update_user)
-        $("#update_date").val(data.update_date)
+        $("#keyword").val(data.keyword)
+        $("#author_id").val(data.author_id)
+        $("#pic_url_id").val(data.pic_url_id)
+        $("#views").val(data.views)
+        $("#sort").val(data.sort)
 	}
 	if(type == "view"){
       $("#id").attr({readonly:true,disabled:true});
-      $("#uname").attr({readonly:true,disabled:true});
-      $("#password").attr({readonly:true,disabled:true});
-      $("#auth_key").attr({readonly:true,disabled:true});
-      $("#last_ip").attr({readonly:true,disabled:true});
-      $("#is_online").attr({readonly:true,disabled:true});
-      $("#domain_account").attr({readonly:true,disabled:true});
+      $("#name").attr({readonly:true,disabled:true});
+      $("#addtime").attr({readonly:true,disabled:true});
+      $("#describe").attr({readonly:true,disabled:true});
+      $("#theme").attr({readonly:true,disabled:true});
+      $("#join_number").attr({readonly:true,disabled:true});
       $("#status").attr({readonly:true,disabled:true});
-      $("#create_user").attr({readonly:true,disabled:true});
-      $("#create_date").attr({readonly:true,disabled:true});
-      $("#update_user").attr({readonly:true,disabled:true});
-      $("#update_date").attr({readonly:true,disabled:true});
+      $("#keyword").attr({readonly:true,disabled:true});
+      $("#author_id").attr({readonly:true,disabled:true});
+      $("#pic_url_id").attr({readonly:true,disabled:true});
+      $("#views").attr({readonly:true,disabled:true});
+      $("#sort").attr({readonly:true,disabled:true});
 	$('#edit_dialog_ok').addClass('hidden');
 	}
 	else{
       $("#id").attr({readonly:false,disabled:false});
-      $("#uname").attr({readonly:false,disabled:false});
-      $("#password").attr({readonly:false,disabled:false});
-      $("#auth_key").attr({readonly:false,disabled:false});
-      $("#last_ip").attr({readonly:false,disabled:false});
-      $("#is_online").attr({readonly:false,disabled:false});
-      $("#domain_account").attr({readonly:false,disabled:false});
+      $("#name").attr({readonly:false,disabled:false});
+      $("#addtime").attr({readonly:false,disabled:false});
+      $("#describe").attr({readonly:false,disabled:false});
+      $("#theme").attr({readonly:false,disabled:false});
+      $("#join_number").attr({readonly:false,disabled:false});
       $("#status").attr({readonly:false,disabled:false});
-      $("#create_user").attr({readonly:false,disabled:false});
-      $("#create_date").attr({readonly:false,disabled:false});
-      $("#update_user").attr({readonly:false,disabled:false});
-      $("#update_date").attr({readonly:false,disabled:false});
+      $("#keyword").attr({readonly:false,disabled:false});
+      $("#author_id").attr({readonly:false,disabled:false});
+      $("#pic_url_id").attr({readonly:false,disabled:false});
+      $("#views").attr({readonly:false,disabled:false});
+      $("#sort").attr({readonly:false,disabled:false});
 		$('#edit_dialog_ok').removeClass('hidden');
 		}
 		$('#edit_dialog').modal('show');
@@ -358,7 +375,7 @@ function initModel(id, type, fun){
 	
 	$.ajax({
 		   type: "GET",
-		   url: "<?=Url::toRoute('test-user/view')?>",
+		   url: "<?=Url::toRoute('post/view')?>",
 		   data: {"id":id},
 		   cache: false,
 		   dataType:"json",
@@ -398,7 +415,7 @@ function deleteAction(id){
 		admin_tool.confirm('请确认是否删除', function(){
 		    $.ajax({
 				   type: "GET",
-				   url: "<?=Url::toRoute('test-user/delete')?>",
+				   url: "<?=Url::toRoute('post/delete')?>",
 				   data: {"ids":ids},
 				   cache: false,
 				   dataType:"json",
@@ -441,7 +458,7 @@ function getSelectedIdValues(formId)
 
 $('#edit_dialog_ok').click(function (e) {
     e.preventDefault();
-	$('#test-user-form').submit();
+	$('#post-form').submit();
 });
 
 $('#create_btn').click(function (e) {
@@ -454,10 +471,10 @@ $('#delete_btn').click(function (e) {
     deleteAction('');
 });
 
-$('#test-user-form').bind('submit', function(e) {
+$('#post-form').bind('submit', function(e) {
 	e.preventDefault();
 	var id = $("#id").val();
-	var action = id == "" ? "<?=Url::toRoute('test-user/create')?>" : "<?=Url::toRoute('test-user/update')?>";
+	var action = id == "" ? "<?=Url::toRoute('post/create')?>" : "<?=Url::toRoute('post/update')?>";
     $(this).ajaxSubmit({
     	type: "post",
     	dataType:"json",
@@ -480,6 +497,8 @@ $('#test-user-form').bind('submit', function(e) {
     	}
     });
 });
-
+     $('.close').on('click', function(e) {
+         $('#describe-insert').html('<textarea id="describe" name="ActivityModel[describe]" placeholder=""></textarea>');
+     })
 </script>
 <?php $this->endBlock(); ?>

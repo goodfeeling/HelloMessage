@@ -7,34 +7,27 @@ $action = Yii::$app->controller->action->id;
 $operation = $controller.'/'.$action;
 $color_controller = in_array($operation,['chat/my-chat']) ? 'bg-success color-light' : '';
 $identity = \Yii::$app->user->identity;
+$param = [
+    'color_controller'=>$color_controller,
+    'operation'=>$operation,
+    'title'=>$this->title
+];
 ?>
-<?php $this->render('@app/views/blocks/blocks.php') ?>
+<?php $this->render('@app/views/blocks/blocks.php',$param) ?>
 
-<div class="appHeader <?= $color_controller ?>">
-    <div class="left">
-        <?php if (!in_array($operation,['site/index','discover/index','search/index','cart/index'])): ?>
-            <a href="javascript:;" class="icon goBack">
-                <i class="icon ion-ios-arrow-back"></i>
-            </a>
-        <?php endif; ?>
-    </div>
-    <div class="pageTitle">
-        <?= Html::encode($this->title) ?>
-    </div>
-    <div class="right">
-        <?php if (isset($this->blocks['search']) && in_array($operation,['site/index'])): ?>
-            <?= $this->blocks['search'] ?>
-        <?php elseif(isset($this->blocks['chat']) && $operation == 'chat/my-chat'): ?>
-            <?= $this->blocks['chat'] ?>
-        <?php elseif(isset($this->blocks['discover']) && in_array($operation,['discover/index'])): ?>
-            <?= $this->blocks['discover'] ?>
-        <?php elseif(isset($this->blocks['login'])  && $controller == 'login' && $action =='index'): ?>
-            <?= $this->blocks['login'] ?>
-        <?php elseif(isset($this->blocks['friend'])  && $operation == 'chat/friend'): ?>
-            <?= $this->blocks['friend'] ?>
-        <?php endif; ?>
-    </div>
-</div>
+<?php if (in_array($operation,['site/index'])): ?>
+    <?= $this->blocks['search'] ?>
+<?php elseif($operation == 'chat/my-chat'): ?>
+    <?= $this->blocks['chat'] ?>
+<?php elseif( in_array($operation,['discover/index'])): ?>
+    <?= $this->blocks['discover'] ?>
+<?php elseif($controller == 'login' && $action =='index'): ?>
+    <?= $this->blocks['login'] ?>
+<?php elseif($operation == 'chat/friend'): ?>
+    <?= $this->blocks['friend'] ?>
+<?php else: ?>
+    <?= $this->blocks['default'] ?>
+<?php endif; ?>
 
 <!-- searchBox -->
 <div class="searchBox">

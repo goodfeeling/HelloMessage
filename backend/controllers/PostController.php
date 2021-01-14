@@ -11,14 +11,14 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ActivityController implements the CRUD actions for PostModel model.
+ * PostController implements the CRUD actions for PostModel model.
  */
 class PostController extends BaseController
 {
 	public $layout = "lte_main";
 
     /**
-     * Lists all ActivityModel models.
+     * Lists all PostModel models.
      * @return mixed
      */
     public function actionIndex()
@@ -70,7 +70,7 @@ class PostController extends BaseController
     }
 
     /**
-     * Displays a single ActivityModel model.
+     * Displays a single PostModel model.
      * @param integer $id
      * @return mixed
      */
@@ -85,7 +85,7 @@ class PostController extends BaseController
     }
 
     /**
-     * Creates a new ActivityModel model.
+     * Creates a new PostModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -116,7 +116,7 @@ class PostController extends BaseController
     }
 
     /**
-     * Updates an existing ActivityModel model.
+     * Updates an existing PostModel model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -151,7 +151,7 @@ class PostController extends BaseController
     }
 
     /**
-     * Deletes an existing ActivityModel model.
+     * Deletes an existing PostModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -171,7 +171,7 @@ class PostController extends BaseController
 	 
 
     /**
-     * Finds the ActivityModel model based on its primary key value.
+     * Finds the PostModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return PostModel the loaded model
