@@ -1,6 +1,6 @@
 # !/bin/bash
 echo Gitee
-git push gitee master
+git push gitee $0
 echo
 echo GitHub
-git push github master
+git push github $0
