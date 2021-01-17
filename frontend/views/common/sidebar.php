@@ -49,7 +49,7 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo Url::to(['site/faq']) ?>">
+                    <a href="<?php echo Url::to(['collect/index']) ?>">
                         <i class="icon ion-ios-navigate"></i>
                         我的收藏
                     </a>
