@@ -46,9 +46,9 @@ class ChatController extends BaseController
      * address list
      * @return string
      */
-    public function actionMyChat()
+    public function actionChatInterface()
     {
-        return $this->render('my-chat');
+        return $this->render('chat-interface');
     }
 
     /**

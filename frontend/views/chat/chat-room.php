@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 use \common\services\StaticServices;
 
 /* @var $this yii\web\View */
@@ -6,7 +7,7 @@ use \common\services\StaticServices;
 $this->title = '我的聊天室';
 $urlManager = Yii::$app->urlManager;
 
-StaticServices::includeAppJsStatic('@web/js/post/apply.js',
+StaticServices::includeAppJsStatic('@web/js/chat/chatRoom.js',
     ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
 ?>
@@ -23,7 +24,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
 
         <!-- listview -->
         <div class="listView detailed">
-            <a href="#" class="listItem">
+            <a href="<?= Url::to(['chat/chat-interface']) ?>" class="listItem">
                 <div class="image">
                     <img src="fornt/img/sample/avatar.jpg" alt="avatar">
                 </div>

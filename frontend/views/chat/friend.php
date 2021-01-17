@@ -1,10 +1,14 @@
 <?php
 use yii\helpers\Url;
-
+use \common\services\StaticServices;
 /* @var $this yii\web\View */
 
 $this->title = '';
 $urlManager = Yii::$app->urlManager;
+
+StaticServices::includeAppJsStatic('@web/js/chat/friend.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>

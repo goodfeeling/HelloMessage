@@ -17,7 +17,7 @@ $param = [
 
 <?php if (in_array($operation,['site/index'])): ?>
     <?= $this->blocks['search'] ?>
-<?php elseif($operation == 'chat/my-chat'): ?>
+<?php elseif($operation == 'chat/chat-interface'): ?>
     <?= $this->blocks['chat'] ?>
 <?php elseif( in_array($operation,['discover/index'])): ?>
     <?= $this->blocks['discover'] ?>

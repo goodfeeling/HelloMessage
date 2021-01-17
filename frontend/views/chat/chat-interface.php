@@ -1,6 +1,9 @@
 <?php
-
+use common\services\StaticServices;
 $this->title = 'Juli';
+StaticServices::includeAppJsStatic('@web/js/chat/chatInterface.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 <!-- App Header -->
 <?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>

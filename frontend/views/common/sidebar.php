@@ -78,7 +78,7 @@ $city = !empty($identity) ? $this->params['user_info']['city'] : '未知';
             <ul class="sidebarMenu">
                 <li class="title">消息</li>
                 <li>
-                    <a href="<?php echo Url::to(['chat/my-chat']) ?>">
+                    <a href="<?php echo Url::to(['chat/chat-interface']) ?>">
                         <img src="fornt/img/sample/avatar3.jpg" alt="avatar" class="avatar">
                         Kita Chihoko
                         <span class="badge badge-primary">100</span>

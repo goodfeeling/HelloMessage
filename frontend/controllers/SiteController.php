@@ -31,7 +31,7 @@ class SiteController extends BaseController
     public function actionIndex()
     {
         $form = new PostForm();
-        $res = $form->getActivityData();
+        $res = $form->getPostData();
         return $this->render('index',[
            'model'=>$res['model'],
            'recomment'=>$res['recomment']

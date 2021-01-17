@@ -48,10 +48,10 @@ class PostForm extends \yii\db\ActiveRecord
     }
 
     /**
-     * 获得活动数据
+     * 获得贴子数据
      * @return array
      */
-    public function getActivityData()
+    public function getPostData()
     {
         $query = PostModel::find();
         $user_query = AdminUser::find();
@@ -68,7 +68,7 @@ class PostForm extends \yii\db\ActiveRecord
                 ->one();
             $val['avatar_url'] = $author['avatar_url'];
             $val['nickname'] = $author['nickname'];
-            $val['addtime'] = CommonFun::get_last_time(strtotime($val['addtime']));
+            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
             $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
             $val['img_url'] = Yii::getAlias('@back') . $img['url'];
         }
@@ -87,7 +87,7 @@ class PostForm extends \yii\db\ActiveRecord
                 ->one();
             $val['avatar_url'] = $author['avatar_url'];
             $val['nickname'] = $author['nickname'];
-            $val['addtime'] = CommonFun::get_last_time(strtotime($val['addtime']));
+            $val['addtime'] = \Yii::$app->formatter->asRelativeTime($val['addtime']);
             $img = ImagesModel::findOne(['id' => $val['pic_url_id']]);
             $val['img_url'] = Yii::getAlias('@back') . $img['url'];
         }

@@ -1,10 +1,14 @@
 <?php
 use yii\helpers\Url;
-
+use common\services\StaticServices;
 /* @var $this yii\web\View */
 
 $this->title = '资料设置';
 $urlManager = Yii::$app->urlManager;
+
+StaticServices::includeAppJsStatic('@web/js/chat/infoSetting.js',
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+
 ?>
 
 <!-- App Header -->
