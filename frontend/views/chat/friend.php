@@ -78,6 +78,10 @@ StaticServices::includeAppJsStatic('@web/js/chat/friend.js',
             <i class="icon ion-ios-camera"></i>
             视频
         </a>
+
+        <a href="#" class="btn btn-outline-primary btn-lg btn-block mt-2">
+            加为好友
+        </a>
     </div>
 </div>
 <!-- appCapsule -->

@@ -7,9 +7,13 @@ $this->title = '附近的人';
 $urlManager = Yii::$app->urlManager;
 
 StaticServices::includeAppJsStatic('@web/js/post/apply.js',
-    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\fornt\WebAsset::className()]]);
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
 
 ?>
+<!-- App Header -->
+<?php echo \Yii::$app->view->renderFile('@app/views/common/header.php'); ?>
+<!-- * App Header -->
+
 <!-- App Capsule -->
 <div id="appCapsule">
 

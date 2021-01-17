@@ -7828,13 +7828,13 @@ body.sidebarActive {
     .sidebarMenu > li > a {
       display: block;
       color: #1B2C42;
-      padding: 12px 40px 12px 60px;
+      padding: 17px 40px 14px 60px;
       position: relative; }
       .sidebarMenu > li > a .badge {
         position: absolute;
         right: 20px;
-        top: 15px;
-        padding: 2px 6px; }
+        top: 20px;
+        padding: 3px 6px; }
       .sidebarMenu > li > a i.icon {
         text-align: center;
         font-size: 26px;
@@ -7846,7 +7846,7 @@ body.sidebarActive {
         height: 26px;
         position: absolute;
         left: 20px;
-        top: 11px;
+        top: 16px;
         border-radius: 100px; }
       .sidebarMenu > li > a:active {
         background: rgba(229, 233, 242, 0.4); }
