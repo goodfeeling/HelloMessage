@@ -7,7 +7,7 @@ $this->title = '附近的人';
 $urlManager = Yii::$app->urlManager;
 
 StaticServices::includeAppJsStatic('@web/js/post/apply.js',
-    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\assets\WebAsset::className()]]);
+    ['position' => \yii\web\View::POS_END, 'depends' => [\frontend\fornt\WebAsset::className()]]);
 
 ?>
 <!-- App Capsule -->
@@ -20,7 +20,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
         <div class="listView detailed">
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -34,7 +34,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar2.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar2.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -48,7 +48,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar3.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar3.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -62,7 +62,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar4.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar4.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -76,7 +76,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar5.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar5.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -90,7 +90,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar6.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar6.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -104,7 +104,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar7.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar7.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>
@@ -118,7 +118,7 @@ StaticServices::includeAppJsStatic('@web/js/post/apply.js',
             </a>
             <a href="#" class="listItem">
                 <div class="image">
-                    <img src="assets/img/sample/avatar8.jpg" alt="avatar">
+                    <img src="fornt/img/sample/avatar8.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div>

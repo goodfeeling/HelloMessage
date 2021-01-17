@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ActivityForm;
+use frontend\models\PostForm;
 
 
 /**
@@ -30,7 +30,7 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        $form = new ActivityForm();
+        $form = new PostForm();
         $res = $form->getActivityData();
         return $this->render('index',[
            'model'=>$res['model'],

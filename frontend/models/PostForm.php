@@ -14,7 +14,7 @@ use backend\models\AdminUser;
 use backend\models\ImagesModel;
 use yii\data\Pagination;
 
-class ActivityForm extends \yii\db\ActiveRecord
+class PostForm extends \yii\db\ActiveRecord
 {
     use Send;
 

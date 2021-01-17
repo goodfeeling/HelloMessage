@@ -10,7 +10,7 @@ use common\utils\CommonFun;
 use common\utils\ConstStatus;
 use yii\data\Pagination;
 
-class ActivityComments extends \yii\db\ActiveRecord
+class PostComment extends \yii\db\ActiveRecord
 {
     use Send;
 
@@ -47,7 +47,7 @@ class ActivityComments extends \yii\db\ActiveRecord
 
         $model = new PostCommentModel();
         $model->attributes = $this->attributes;
-        $model->addtime = date("yy-m-d H:i:i");
+        $model->addtime = date("Y-m-d H:i:s");
         $model->status = '0';
         if ($model->save()) {
             return $this->resultMsg(self::getData(), ConstStatus::CODE_SUCCESS, '评论成功');
@@ -78,11 +78,10 @@ class ActivityComments extends \yii\db\ActiveRecord
             if (!( strpos($author['avatar_url'],'http') !== false )) {
                 $value['avatar_url'] = \Yii::getAlias('@back').$author['avatar_url'];
             }else {
-                $value['avatar_url'] =$author['avatar_url'];
+                $value['avatar_url'] = $author['avatar_url'];
             }
             $value['nickname'] = $author['nickname'];
-//            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
-            $value['addtime'] = CommonFun::get_last_time(strtotime($value['addtime']));
+            $value['addtime'] = \Yii::$app->formatter->asRelativeTime($value['addtime']);
         }
         return ['list' => $comments, 'count' => $count];
     }

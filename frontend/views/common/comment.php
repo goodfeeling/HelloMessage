@@ -49,7 +49,7 @@ $identity = \Yii::$app->user->identity;
     </div>
 
     <nav class="mt-3">
-        <ul class="pagination justify-content-center pagination-lg">
+        <ul class="pagination justify-content-center pagination-sm">
             <li class="page-item" ng-class="{true:'disabled'}[p_current==1]">
                 <a class="page-link" href="javascript:void(0);" ng-click="p_index()">首页</a>
             </li>

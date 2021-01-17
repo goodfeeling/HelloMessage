@@ -1,8 +1,8 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ActivityComments;
-use frontend\models\ActivityForm;
+use frontend\models\PostComment;
+use frontend\models\PostForm;
 use frontend\models\Order;
 use frontend\models\UserDetail;
 use Yii;
@@ -66,7 +66,7 @@ class PostController extends BaseController
      */
     public function actionVerifyUser()
     {
-        $form = new ActivityForm();
+        $form = new PostForm();
         $form->id = Yii::$app->request->get('id');
         $form->uid = Yii::$app->user->id;
         $res = $form->saveVerify();
@@ -81,7 +81,7 @@ class PostController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        $form = new ActivityForm();
+        $form = new PostForm();
         $form->id = $request->get('id');
         $res = $form->getData();
         $form->postIncrease();
@@ -97,7 +97,7 @@ class PostController extends BaseController
      */
     public function actionCategory()
     {
-        $form = new ActivityForm();
+        $form = new PostForm();
         $form->size = Yii::$app->request->get('size', '10');
         $res = $form->getCategory();
         return $this->render('category', [
@@ -135,7 +135,7 @@ class PostController extends BaseController
     public function actionLikesIncrease()
     {
         $request = Yii::$app->request;
-        $form = new ActivityForm();
+        $form = new PostForm();
         $form->id = $request->post('id');
         $res = $form->LikeIncrease(Yii::$app->user->id);
         return $this->asJson($res);
@@ -149,7 +149,7 @@ class PostController extends BaseController
     public function actionComment()
     {
         $request = Yii::$app->request;
-        $form = new ActivityComments();
+        $form = new PostComment();
         $form->aid = $request->get('id');
         $form->size = $request->get('size', '10');
         if ($request->isPost) {
