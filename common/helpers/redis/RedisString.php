@@ -4,7 +4,7 @@
 namespace common\helpers;
 
 
-class RedisString extends RedisBase
+class RedisString extends Base
 {
 
     /**

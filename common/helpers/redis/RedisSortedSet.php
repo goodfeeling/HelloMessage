@@ -4,7 +4,7 @@
 namespace common\helpers;
 
 
-class RedisSortedSet extends RedisBase
+class RedisSortedSet extends Base
 {
     /**
      * # ZADD key score1 member1 [score2 member2]

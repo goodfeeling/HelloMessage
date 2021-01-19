@@ -4,7 +4,7 @@
 namespace common\helpers;
 
 
-class RedisSet extends RedisBase
+class RedisSet extends Base
 {
     /**
      * # SADD key member1 [member2]

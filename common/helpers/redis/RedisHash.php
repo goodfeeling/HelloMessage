@@ -1,7 +1,7 @@
 <?php
 
 
-namespace common\helpers;
+namespace common\redis\helpers;
 
 
 class RedisHash extends RedisBase
