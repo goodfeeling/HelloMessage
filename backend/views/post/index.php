@@ -66,7 +66,6 @@ $modelLabel = new \backend\models\PostModel();
                                         echo '<th onclick="orderby(\'addtime\', \'desc\')" '.CommonFun::sortClass($orderby, 'addtime').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('addtime').'</th>';
                                         echo '<th onclick="orderby(\'describe\', \'desc\')" '.CommonFun::sortClass($orderby, 'describe').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('describe').'</th>';
                                         echo '<th onclick="orderby(\'theme\', \'desc\')" '.CommonFun::sortClass($orderby, 'theme').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('theme').'</th>';
-                                        echo '<th onclick="orderby(\'join_number\', \'desc\')" '.CommonFun::sortClass($orderby, 'join_number').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('join_number').'</th>';
                                         echo '<th onclick="orderby(\'status\', \'desc\')" '.CommonFun::sortClass($orderby, 'status').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('status').'</th>';
                                         echo '<th onclick="orderby(\'keyword\', \'desc\')" '.CommonFun::sortClass($orderby, 'keyword').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('keyword').'</th>';
                                         echo '<th onclick="orderby(\'author_id\', \'desc\')" '.CommonFun::sortClass($orderby, 'author_id').' tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-sort="ascending" >'.$modelLabel->getAttributeLabel('author_id').'</th>';
@@ -90,7 +89,6 @@ $modelLabel = new \backend\models\PostModel();
                                         echo '  <td>' . $model->addtime . '</td>';
                                         echo '  <td>' . '....' . '</td>';
                                         echo '  <td>' . $model->theme . '</td>';
-                                        echo '  <td>' . $model->join_number . '</td>';
                                         echo '  <td>' . $model->status . '</td>';
                                         echo '  <td>' . $model->keyword . '</td>';
                                         echo '  <td>' . $model->author_id . '</td>';
@@ -192,14 +190,6 @@ $modelLabel = new \backend\models\PostModel();
                     <label for="theme" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("theme")?></label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="theme" name="PostModel[theme]" placeholder="" />
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-
-                <div id="join_number_div" class="form-group">
-                    <label for="join_number" class="col-sm-2 control-label"><?php echo $modelLabel->getAttributeLabel("join_number")?></label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="join_number" name="PostModel[join_number]" placeholder="" />
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -315,7 +305,6 @@ $modelLabel = new \backend\models\PostModel();
             $("#addtime").val("");
             $("#describe").val("");
             $("#theme").val("");
-            $("#join_number").val("");
             $("#status").val("");
             $("#keyword").val("");
             $("#author_id").val("");
@@ -330,7 +319,6 @@ $modelLabel = new \backend\models\PostModel();
             $("#addtime").val(data.addtime)
             $("#describe").val(data.describe)
             $("#theme").val(data.theme)
-            $("#join_number").val(data.join_number)
             $("#status").val(data.status)
             $("#keyword").val(data.keyword)
             $("#author_id").val(data.author_id)
@@ -344,7 +332,6 @@ $modelLabel = new \backend\models\PostModel();
             $("#addtime").attr({readonly:true,disabled:true});
             $("#describe").attr({readonly:true,disabled:true});
             $("#theme").attr({readonly:true,disabled:true});
-            $("#join_number").attr({readonly:true,disabled:true});
             $("#status").attr({readonly:true,disabled:true});
             $("#keyword").attr({readonly:true,disabled:true});
             $("#author_id").attr({readonly:true,disabled:true});
@@ -359,7 +346,6 @@ $modelLabel = new \backend\models\PostModel();
             $("#addtime").attr({readonly:false,disabled:false});
             $("#describe").attr({readonly:false,disabled:false});
             $("#theme").attr({readonly:false,disabled:false});
-            $("#join_number").attr({readonly:false,disabled:false});
             $("#status").attr({readonly:false,disabled:false});
             $("#keyword").attr({readonly:false,disabled:false});
             $("#author_id").attr({readonly:false,disabled:false});

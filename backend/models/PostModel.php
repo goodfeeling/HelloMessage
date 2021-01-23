@@ -38,7 +38,7 @@ class PostModel extends \backend\models\BaseModel
             [['name', 'addtime'], 'required'],
             [['addtime'], 'safe'],
             [['describe'], 'string'],
-            [['join_number', 'status', 'author_id', 'views'], 'integer'],
+            [[ 'status', 'author_id', 'views'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['theme'], 'string', 'max' => 50],
             [['keyword'], 'string', 'max' => 100],
@@ -54,11 +54,10 @@ class PostModel extends \backend\models\BaseModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', '活动名称'),
-            'addtime' => Yii::t('app', '报名时间'),
+            'name' => Yii::t('app', '名称'),
+            'addtime' => Yii::t('app', '创建时间'),
             'describe' => Yii::t('app', '描述'),
             'theme' => Yii::t('app', '主题'),
-            'join_number' => Yii::t('app', '参加人数'),
             'status' => Yii::t('app', '状态'),
             'keyword' => Yii::t('app', '关键词'),
             'author_id' => Yii::t('app', '作者id'),

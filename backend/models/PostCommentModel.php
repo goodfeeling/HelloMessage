@@ -44,7 +44,7 @@ class PostCommentModel extends \backend\models\BaseModel
     {
         return [
             'id' => 'ID',
-            'aid' => '活动id',
+            'aid' => '帖子id',
             'content' => '内容',
             'addtime' => '添加时间',
             'status' => '审核状态',

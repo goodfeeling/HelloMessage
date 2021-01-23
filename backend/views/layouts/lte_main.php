@@ -328,7 +328,7 @@ if($otherMenu == false){
     <div class="pull-right hidden-xs">
       <b>Version</b> <?=Yii::$app->params['appVersion']?>
     </div>
-    <strong>Copyright &copy; 2015-<?=date('Y')?> <a href="<?=Yii::$app->params['homePage']?>"><?=Yii::$app->params['appName']?></a>.</strong> All rights
+    <strong>Copyright &copy; 2020-<?=date('Y')?> <a href="<?=Yii::$app->params['homePage']?>"><?=Yii::$app->params['appName']?></a>.</strong> All rights
     reserved.
   </footer>
 
